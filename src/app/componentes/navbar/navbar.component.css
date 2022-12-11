@@ -4,16 +4,16 @@ nav.navbar{
     width:100%;
     z-index:1200;
     background-color: #fff;
-    box-shadow: 1px 6px 14px 2px #69014bbf;
-    -webkit-box-shadow: 1px 6px 14px 2px #af014bbf;
-    -moz-box-shadow: 1px 6px 14px 2px #af014bbf;
-    -ms-box-shadow: 1px 6px 14px 2px #af014bbf;
+    box-shadow: 0.063rem 0.375rem 0.875rem 0.152rem #69014bbf;
+    -webkit-box-shadow: 0.063rem 0.375rem 0.875rem 0.152rem #af014bbf;
+    -moz-box-shadow: 0.063rem 0.375rem 0.875rem 0.152rem #af014bbf;
+    -ms-box-shadow: 0.063rem 0.375rem 0.875rem 0.152rem #af014bbf;
 }
 
 .list-group-item {
   position: relative;
   display: block;
-  padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+  /* padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x); */
   /*color: var(--bs-list-group-color);*/
   color: #505050;
   /* text-decoration: none; */

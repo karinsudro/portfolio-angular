@@ -1,55 +1,16 @@
-.container-fluid-modal{
-    text-align: left !important;
-    width: 75%;
-    margin-top: 7rem;
-    padding-left: 3rem;
-    background-color: transparent !important;
-    border:none !important;
-    border-radius:none !important;
-    box-shadow:none !important;
-    -webkit-box-shadow:none !important;
-    -moz-box-shadow:none !important;
-  }
-  .admin-siguiente{
-    margin-top: 3rem !important;
-  }
-  
-  .admin{
-    margin-top: 20px;
-  }
-  
-  .links{
-    text-decoration: none;
-  }
-  .yo-image{
-    width: 50%;;
-  }
-  
-  .fa-plus:hover{
-    color:#f71aa6;
-  }
-  .fa-pencil:hover{
-    color:#2c9011;
-  }
-  .fa-trash-can-arrow-up:hover{
-    color:#ab0c0c;
-  }
-  .fa-xmark:hover{
-    color:#f1ee06;
-  }
+input::placeholder{
+  font-style: italic;
+  font-size: .9em;
+}
 
-  .bio-image-col{
-    align-items:center;
-  }
-  
-  .bio-title{
-    text-align: center;
-    font-size:.75em;
-  }
-  
-  .rounded-circle{
-    border: 3px solid #69014bbf;
-    box-shadow: 1px 6px 10px 2px #69014bbf;
-    -webkit-box-shadow: 1px 6px 10px 2px #af014bbf;
-    -moz-box-shadow: 1px 6px 10px 2px #af014bbf;
-  }
+.txt-small{
+  margin-bottom: 1.3rem;
+}
+
+.error{
+  color:#770000
+}
+
+.border-danger{
+  border-color: #770000;
+}

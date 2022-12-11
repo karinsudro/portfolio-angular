@@ -3,23 +3,23 @@
     <h3 class="titulo-centrado">Projects</h3>
     
      <!--ARMADO TARJETAS CON PROYECTOS--> 
-      <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-g-4">
         <!--PROYECTO PORTFOLIO-->
-        <div class="col">
+        <div class="col"  *ngFor="let proy of projects">
           <div class="card card-proy">
-            <img src="assets/images/portfolio frente.png" class="card-img-top" alt="portfolio">
+            <img class="card-img-top"  [src]="proy.imagen" alt="portfolio">
             <div class="card-body">
-              <h5 class="card-title">Portfolio personal</h5>
-              <p class="card-text"><i>Armado de portfolio personal utilizando las herramientas aprendidas de FrontEnd y BackEnd para <strong>"Argentina Programa #YoProgramo, 3ª cohorte"</strong>.</i></p>
+              <h5 class="card-title">{{proy.proyecto}}</h5>
+              <p class="card-text"><i>{{proy.descripcion}}<strong> "{{proy.descripcion1}}"</strong></i></p>
                 <div class="text-center">
-                <a href="#" class="btn btn-secondary btn-sm btn-project">URL live demo</a>
-                <a href="#" class="btn btn-secondary btn-sm btn-project">URL repositorio</a>
+                <a href="#" class="btn btn-secondary btn-sm btn-project">{{proy.live_demo}}</a>
+                <a href="#" class="btn btn-secondary btn-sm btn-project">{{proy.repo}}</a>
                 </div>
             </div>
           </div>
         </div>
         <!--PROYECTO 2-->
-        <div class="col">
+        <!-- <div class="col">
           <div class="card card-proy">
             <img src="assets/images/portfolio frente.png" class="card-img-top" alt="portfolio">
             <div class="card-body">
@@ -31,7 +31,9 @@
                 </div>
             </div>
           </div>
-        </div>
+        </div> -->
+
+
         <!--PROYECTO 3-->
         <!--PROYECTO 4-->
         <!--Fin armado PROYECTO 4-->

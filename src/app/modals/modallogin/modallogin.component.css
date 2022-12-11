@@ -1,16 +1,6 @@
 /*---LOGIN MODAL---*/
 
-.login-base{
-    margin-top: 0;
-    background-color: transparent;
-  }
-  
-  .armado-login{
-    margin-top: 15%;
-  }
-  .contact{
-    margin-top: 10% !important;
-  }
+
   input::placeholder{
     font-style: italic;
     font-size: .9em;
@@ -20,4 +10,10 @@
     margin-bottom: 1.3rem;
   }
 
+  .error{
+    color:#770000
+  }
   
+  .border-danger{
+    border-color: #770000;
+  }

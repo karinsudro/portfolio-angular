@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 //import { PortfolioService } from './servicios/portfolio.service';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { PortadaComponent } from './componentes/portada/portada.component';
@@ -23,24 +24,23 @@ import { LoginComponent } from './componentes/navbar/login/login.component';
 import { NavbaradminComponent } from './componentes/navbaradmin/navbaradmin.component';
 import { LogoapComponent } from './componentes/navbar/logoap/logoap.component';
 import { HomeComponent } from './componentes/navbar/home/home.component';
-import { LinkedinComponent } from './componentes/navbar/linkedin/linkedin.component';
-import { GithubComponent } from './componentes/navbar/github/github.component';
+import { RedesComponent } from './componentes/navbar/redes/redes.component';
 import { LogoapadminComponent } from './componentes/navbaradmin/logoapadmin/logoapadmin.component';
 import { LogoutComponent } from './componentes/navbaradmin/logout/logout.component';
 import { HomeeadminComponent } from './componentes/navbaradmin/homeeadmin/homeeadmin.component';
-import { ContactmodallComponent } from './componentes/navbar/contactmodall/contactmodall.component';
 import { AadminComponent } from './componentes/aadmin/aadmin.component';
-import { ModalloginComponent } from './componentes/modals/modallogin/modallogin.component';
-import { ModalredesComponent } from './componentes/modals/modalredes/modalredes.component';
-import { ModalportadaComponent } from './componentes/modals/modalportada/modalportada.component';
-import { ModalregisterComponent } from './componentes/modals/modalregister/modalregister.component';
-import { ModalteachingComponent } from './componentes/modals/modalteaching/modalteaching.component';
-import { ModalaboutmeComponent } from './componentes/modals/modalaboutme/modalaboutme.component';
-import { ModalcontactmeComponent } from './componentes/modals/modalcontactme/modalcontactme.component';
-import { ModaldesignComponent } from './componentes/modals/modaldesign/modaldesign.component';
-import { ModaleducationComponent } from './componentes/modals/modaleducation/modaleducation.component';
-import { ModalskillsComponent } from './componentes/modals/modalskills/modalskills.component';
-import { ModalprojectsComponent } from './componentes/modals/modalprojects/modalprojects.component';
+import { ModalloginComponent } from './modals/modallogin/modallogin.component';
+import { ModalredesComponent } from './modals/modalredes/modalredes.component';
+import { ModalportadaComponent } from './modals/modalportada/modalportada.component';
+import { ModalregisterComponent } from './modals/modalregister/modalregister.component';
+import { ModalteachingComponent } from './modals/modalteaching/modalteaching.component';
+import { ModalaboutmeComponent } from './modals/modalaboutme/modalaboutme.component';
+import { ModaldesignComponent } from './modals/modaldesign/modaldesign.component';
+import { ModaleducationComponent } from './modals/modaleducation/modaleducation.component';
+import { ModalskillsComponent } from './modals/modalskills/modalskills.component';
+import { ModalprojectsComponent } from './modals/modalprojects/modalprojects.component';
+import { ModalcontactmeComponent } from './modals/modalcontactme/modalcontactme.component';
+
 
 
 
@@ -64,12 +64,10 @@ import { ModalprojectsComponent } from './componentes/modals/modalprojects/modal
     NavbaradminComponent,
     LogoapComponent,
     HomeComponent,
-    LinkedinComponent,
-    GithubComponent,
+    RedesComponent,
     LogoapadminComponent,
     LogoutComponent,
     HomeeadminComponent,
-    ContactmodallComponent,
     AadminComponent,
     ModalloginComponent,
     ModalredesComponent,
@@ -77,19 +75,22 @@ import { ModalprojectsComponent } from './componentes/modals/modalprojects/modal
     ModalregisterComponent,
     ModalteachingComponent,
     ModalaboutmeComponent,
-    ModalcontactmeComponent,
     ModaldesignComponent,
     ModaleducationComponent,
     ModalskillsComponent,
+    ModalcontactmeComponent,
     ModalprojectsComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],  //PortfolioService
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

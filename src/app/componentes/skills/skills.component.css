@@ -1,7 +1,7 @@
 /*---PROGRESS BARS---*/
 .grosor{
-    height: 5px;
-    border-radius: 5px;
+    height: 0.313rem;
+    border-radius: 0.313rem;
   }
   .progress-bar{
     background-color: #c5068f;
@@ -18,14 +18,17 @@
   .progress-bar-language{
     background-color: #1a85f7;
   }
+  .progress-bar-soft{
+    background-color: #f98538;
+  }
   
   span {
     display:block;
     position: relative;
-    margin-top:20px;
+    margin-top:1.25rem;
     font-size: .85em;
     color: #888888;
-    line-height: 17px;
-    margin-bottom:5px;
+    line-height: 1.063rem;
+    margin-bottom:0.313rem;
   }
   /*--FIN PROGRESS BAR--*/

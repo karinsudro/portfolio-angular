@@ -21,7 +21,7 @@
 /*--ADMIN PANEL DAMERO--*/
 .aadmin-panel{
   width:70%;
-  margin-bottom:15px;
+  margin-bottom:0.938rem;
   position:relative;
 }
 
@@ -31,12 +31,12 @@
 }
 
 .aadmin-iconos:hover{
-  color:#fff;
+  color:#00a927;
 }
 
 
   .admin{
-    margin-top: 20px;
+    margin-top: 1.25rem;
   }
   .aadmin{
     margin-top: 7rem !important;

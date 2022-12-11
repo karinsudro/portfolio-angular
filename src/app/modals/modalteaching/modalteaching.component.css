@@ -1,38 +1,16 @@
-.admin{
-    margin-top: 20px;
-  }
-  
-  .links{
-    text-decoration: none;
-  }
-  .fa-plus:hover{
-    color:#f71aa6;
-  }
-  .fa-pencil:hover{
-    color:#2c9011;
-  }
-  .fa-trash-can-arrow-up:hover{
-    color:#ab0c0c;
-  }
-  .fa-xmark:hover{
-    color:#f1ee06;
-  }
+input::placeholder{
+  font-style: italic;
+  font-size: .9em;
+}
 
-  .login-base{
-    margin-top: 0;
-  }
-  
-  .contact{
-    margin-top: 10% !important;
-  }
-  input::placeholder{
-    font-style: italic;
-    font-size: .9em;
-  }
+.txt-small{
+  margin-bottom: 1.3rem;
+}
 
-  .aadmin-panel{
-    width:70%;
-    margin-bottom:15px;
-    position:relative;
-    
-  }
+.error{
+  color:#770000
+}
+
+.border-danger{
+  border-color: #770000;
+}

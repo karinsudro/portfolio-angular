@@ -1,49 +1,59 @@
-<div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-          <!--REGISTER-->
+<div class="modal fade" id="modalRegister" aria-labelledby="modalRegister" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
 
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModal"></h5>
-            
-          <div class="container-fluid">
-           <div class="login-base">
-             <div class="contenido-login">
-               <div class="row">
-  
-                 <div class="col armado-login">
-                   <div class="modal-body">
-                       <form>
-                         <div class="mb-3">
-                           <label for="InputNombre" class="form-label">Nombre</label>
-                           <input type="text" class="form-control" id="InputNombre" placeholder="Tus datos son confidenciales" aria-describedby="nombreHelp">
-                         </div>
-                         <div class="mb-3">
-                           <label for="InputEmail" class="form-label">Email</label>
-                           <input type="email" class="form-control" id="InputEmail" placeholder="Tus datos son confidenciales" aria-describedby="emailHelp">
-                         </div>
-                         <div class="mb-3">
-                           <label for="InputPassword" class="form-label">Password</label>
-                           <input type="password" class="form-control" id="InputPassword"placeholder="Tus datos son confidenciales" >
-                         </div>
-                       </form>
-                   </div>
-                 
-                   <div class="modal-footer">
-                    <button type="button" class="btn" data-bs-dismiss="modal" data-bs-target="#my-modal"><i class="fa-solid fa-circle-xmark"></i></button>
-                     <button type="button" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                     </div>
-                     <small>Si ya tenés cuenta, <a routerLink="#modalLogin">ingresá</a>.</small>
-                 </div>
-               
-               </div>
+        <!--REGISTER-->
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalRegister">Registrate</h5>
+        </div>
+
+        <form [formGroup]="register_form" (ngSubmit)="onSubmit()" id="register_form">
+        <div class="modal-body">
+              
+                  <div class="mb-3">
+                    <label for="usernameLogin" class="form-label"><i>Username</i></label>
+                    <input type="text" formControlName="username" id="usernameLogin" placeholder="  Username" class="col-12" [class.border-danger]="UsernameInvalid" aria-describedby="usernameHelp">
+                    <div *ngIf="Username?.errors  && Username?.touched" class="mb-4">
+                      <small *ngIf="Username?.hasError('required')" class="error text-small"><i>Username requerido.</i></small>
+                      <small *ngIf="Username?.hasError('minlength')" class="error text-small"><i>Debe tener entre 6 y 20 caracteres.</i></small>
+                    </div>
+                  </div>
+              
+                  <div class="mb-3">
+                    <label for="emailLogin" class="form-label"><i>Email</i></label>
+                    <input type="text" formControlName="email" id="emailLogin" placeholder="  nombre@correo.com" class="col-12" [class.border-danger]="MailInvalid" aria-describedby="emailHelp">
+                    <div *ngIf="Mail?.errors  && Mail?.touched" class="mb-4">    
+                      <small *ngIf="Mail?.hasError('required')" class="error text-small"><i>El email es requerido.</i></small>
+                      <small *ngIf="Mail?.hasError('email')" class="error text-small"><i>El formato del email debe ser válido.</i></small>
+                    </div>
+                  </div>
+              
+                  <div class="mb-3">
+                    <label for="passwordLogin" class="form-label"><i>Password</i></label>
+                    <input type="password" formControlName="password" class="form-control" id="passwordLogin" placeholder="  Escribí tu contraseña" class="col-12" [class.border-danger]="PasswordInvalid" aria-describedby="passwordHelp">
+                    <div *ngIf="Password?.errors  && Password?.touched" class="mb-4">
+                      <small *ngIf="Password?.hasError('required')" class="error text-small"><i>El password es requerido.</i></small>
+                      <small *ngIf="Password?.hasError('minlength')" class="error text-small"><i>Debe tener entre 6 y 20 caracteres.</i></small>
+                    </div>
+                  </div>
+              
+                  <div class="text-end">
+                  <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="onReset()"><i class="fa-solid fa-circle-xmark"></i></button>
+                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                  </div>
+
+                
+
+                <div class="modal-footer">
+                  <small>Si ya tenés cuenta <a data-bs-target="#modalLogin" data-bs-toggle="modal"><b>iniciá sesión</b></a></small>
+                </div>
+             
              </div>
-            </div>
-           </div>
-  
-      </div>
+            </form>
     </div>
   </div>
-  
-  <app-modallogin></app-modallogin>
+</div>
+
+         <!-- Boton que llama al primer Modal (modalLogin) -->
+  <a data-bs-toggle="modal" href="#modalLogin" role="button"><!-- <i class="fa-solid fa-user-lock fa-lg me-5 text-dark"></i> --></a>

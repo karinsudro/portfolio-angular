@@ -1,46 +1,87 @@
 <!--Modal PORTADA-->
-<div class="modal fade" id="modalPortada" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+<div class="modal fade" id="modalPortada" tabindex="-1" aria-labelledby="modalPortada" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
 <!----------------------------------->
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModal"></h5>
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalPortada">Edit Portada</h5>
+      </div>
 
-        <div class="container-fluid">
-         <div class="login-base">
-           <div class="contenido-login">
-             <div class="row">
-               <div class="col armado-login">
-                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                          <label for="portada" class="form-label">Imagen de portada</label>
-                          <input type="file" class="form-control" id="portada" placeholder="Ruta de la nueva imagen">
-                        </div>
-                        <div class="mb-3">
-                          <label for="intro" class="form-label">Texto intro</label>
-                          <textarea class="form-control" id="intro" style="height: 195px"></textarea>
-                        </div>
-                        <div class="text-center">
-                          <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-                          <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-                          <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                          <button type="button" class="btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                      </form>
-                 </div>
-<!----------------------------------->                
-                  <!--<div class="modal-footer">
-                   <button type="button" class="btn" data-bs-target="#my-modal" data-bs-dismiss="modal"><a routerLink="/aadmin"><i class="fa-solid fa-circle-xmark"></i></a></button>
-                   <button type="button" class="btn"><a routerLink="/aadmin"><i class="fa-solid fa-circle-check"></i></a></button>
-                  </div>-->
-               </div>
+              <form name="portada_form" (ngSubmit)="onSubmit()" id="portada_form">
               
-             </div>
-           </div>
-         </div>
-        </div>
-  
+                <div class="modal-body">
+
+                  <div class="form-group mb-3">
+                    <label for="portadaImagen" class="form-label"><i>Imagen de portada</i></label>
+                    <input type="file" formControlName="imagen" class="form-control" id="portadaImagen">
+                  
+                    <div *ngIf="Imagen?.touched" class="mb-4">
+                      <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Insertar imagen.</i></small>    
+                    </div>
+                  
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="portadaIntro" class="form-label"><i>Texto intro</i></label>
+                    <textarea class="text w-100" formControlName="intro" class="form-control" id="portadaIntro"  style="overflow:auto;" rows="7" [class.border-danger]="IntroInvalid" aria-describedby="portadaIntroHelp"></textarea>
+                    <div *ngIf="Intro?.touched" class="mb-4">    
+                      <small *ngIf="Intro?.hasError('required')" class="error text-small"><i>Escribir una intro.</i></small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-end">
+                  <button type="button" class="btn" data-bs-target="#modalPortadaDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                  <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+              </form>
+
     </div>
   </div>
+</div>
+
+
+
+<!--Modal ABOUT ME-->
+<div class="modal fade" id="modalPortadaDelete" tabindex="-1" aria-labelledby="modalPortadaDelete" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+<!----------------------------------->
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalPortadaDelete">Delete Portada</h5>
+      </div>
+
+              <form name="portada_form" (ngSubmit)="onSubmit()" id="portada_formDelete">
+                      
+                <div class="modal-body">
+                
+                  <div class="form-group mb-3">
+                    <label for="portadaImagen" class="form-label"><i>Imagen de portada</i></label>
+                    <input type="file" formControlName="imagen" class="form-control" id="portadaImagen">
+                  
+                    <div *ngIf="Imagen?.touched" class="mb-4">
+                      <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Insertar imagen.</i></small>    
+                    </div>
+                  
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="portadaIntro" class="form-label"><i>Texto intro</i></label>
+                    <textarea  class="text w-100" formControlName="intro" class="form-control" id="portadaIntro"  style="overflow:auto;" rows="7" [class.border-danger]="IntroInvalid" aria-describedby="portadaIntroHelp"></textarea>
+                    <div *ngIf="Intro?.touched" class="mb-4">    
+                      <small *ngIf="Intro?.hasError('required')" class="error text-small"><i>Escribir una intro.</i></small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-end">
+                  <button type="button" class="btn" data-bs-target="#modalPortada" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
+                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                  <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+              </form>
+
+    </div>
   </div>
+</div>

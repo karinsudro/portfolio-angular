@@ -1,0 +1,16 @@
+input::placeholder{
+    font-style: italic;
+    font-size: .9em;
+  }
+
+  .txt-small{
+    margin-bottom: 1.3rem;
+  }
+
+  .error{
+    color:#770000
+  }
+  
+  .border-danger{
+    border-color: #770000;
+  }

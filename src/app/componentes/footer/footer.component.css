@@ -1,13 +1,13 @@
 /*--FOOTER--*/
 #footer{ 
     background-color: #69014b;
-    margin-top:20px;
+    margin-top:1.25rem;
     justify-content: center;
     display: flex;
   }
   .datos-pie{
     color:#fff;
     text-align: center center;
-    padding-top: 5px;
+    padding-top: 0.313rem;
     font-size: .8rem;
   }

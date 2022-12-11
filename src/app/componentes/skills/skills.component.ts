@@ -8,8 +8,11 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class SkillsComponent implements OnInit {
 //inicializo variables de instancias (el array)
-  skills:any = [];
-
+  skillsfront:any = [];
+  skillsback:any=[];
+  skillsdesign:any=[];
+  skillslang:any=[];
+  skillssoft:any = [];
 
   //inyecto el servicio para tener acceso en la clase a los métodos
   constructor(private portfolioservice:PortfolioService) { }
@@ -20,7 +23,11 @@ export class SkillsComponent implements OnInit {
     this.portfolioservice.getDatos().subscribe(portfolio =>{
 
     //inicializa variable skills (lo q puse en el json)
-    this.skills=portfolio.skills;
+    this.skillsfront=portfolio.skillsfront;
+    this.skillsback=portfolio.skillsback;
+    this.skillsdesign=portfolio.skillsdesign;
+    this.skillslang=portfolio.skillslang;
+    this.skillssoft=portfolio.skillssoft;
     });
   }
 

@@ -1,12 +1,4 @@
-/*---INTRO---*/
-/*.container-2{
-  width:100vh;
-  margin-top:10px;
-  padding:20px;
-  position:relative;
-  z-index:1080;
-  background-color:transparent;
-}*/
+
 .caratula-intro{
     height: 100vh;
     background-color: transparent !important;
@@ -18,7 +10,7 @@
   }
   
   .intro{
-    text-shadow: #69014b 3px 2px 10px;
+    text-shadow: #69014b 0.188rem 0.125rem 0.63rem;
   }
   h1.intro{
     font-size: 3rem;

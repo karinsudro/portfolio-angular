@@ -2,22 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  selector: 'app-redes',
+  templateUrl: './redes.component.html',
+  styleUrls: ['./redes.component.css']
 })
-export class ProjectsComponent implements OnInit {
-  projects:any;
+export class RedesComponent implements OnInit {
+  redes:any = [];
 
   constructor(private portfolioservice:PortfolioService) { }
 
   ngOnInit(): void {
     this.portfolioservice.getDatos().subscribe(portfolio =>{
 
-      //inicializa variable skills (lo q puse en el json)
-      this.projects=portfolio.projects;
+      //inicializa variable
+      this.redes=portfolio.redes;
       });
   }
-
 
 }

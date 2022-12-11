@@ -1,162 +1,204 @@
-<!--Modal DESIGN-->
-<div class="modal fade" id="modalDesign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+<!--Modal DESIGN EDIT-->
+<div class="modal 'fade" id="modalDesign" tabindex="-1" aria-labelledby="modalDesign" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
   <!----------------------------------->
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModal"></h5>
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDesign">Edit Design Experience</h5>
+      </div>
   
-  
-        <div class="container">
-  <!--CARGO 1-->
-             <div class="row">
-               <div class="col">
-                 <div class="modal-body">
-                  <form>
-                    <div class="mb-3 form-group">
-                      <label for="cargoUno" class="form-label"><strong>Cargo 1</strong></label>
-                      <input type="text" class="form-control" id="cargoUno">
-                    </div>
-                    <div class="mb-3 form-group">
-                      <label for="fechaUno" class="form-label">Inicio - Fin</label>
-                      <input type="text" class="form-control" id="fechaUno">
-                    </div>
-                    <div class="mb-3 form-group">
-                      <label for="lugarUno" class="form-label">Lugar</label>
-                      <input type="text" class="form-control" id="lugarUno">
-                    </div>
-                    <div class="mb-3 form-group">
-                      <label for="descripcionUno" class="form-label">Descripción</label>
-                      <textarea class="text w-100" id="descripcionUno" style="overflow:auto;" rows="7"></textarea>
-                    </div>
-                  </form>
-                        <div class="text-center">
-                          <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-                          <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-                          <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                          <button type="button" class="btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                 </div>
-  <!----------------------------------->                
-                  <!--<div class="modal-footer">
-                   <button type="button" class="btn" data-bs-target="#my-modal" data-bs-dismiss="modal"><a routerLink="/aadmin"><i class="fa-solid fa-circle-xmark"></i></a></button>
-                   <button type="button" class="btn"><a routerLink="/aadmin"><i class="fa-solid fa-circle-check"></i></a></button>
-                  </div>-->
-               </div>
-             </div>
-  
-  <!--CARGO 2-->
-             <div class="row">
-              <div class="col">
+              <form [formGroup]="design_form" (ngSubmit)="onSubmit()" id="design_form">
+
                 <div class="modal-body">
-                  <form>
-                    <div class="mb-3">
-                      <label for="cargoDos" class="form-label"><strong>Cargo 2</strong></label>
-                      <input type="text" class="form-control" id="cargoDos">
-                    </div>
-                    <div class="mb-3">
-                      <label for="fechaDos" class="form-label">Inicio - Fin</label>
-                      <input type="text" class="form-control" id="fechaDos">
-                    </div>
-                    <div class="mb-3">
-                      <label for="lugarDos" class="form-label">Lugar</label>
-                      <input type="text" class="form-control" id="lugarDos">
-                    </div>
-                    <div class="mb-3">
-                      <label for="descripcionDos" class="form-label">Descripción</label>
-                      <textarea class="text w-100" id="descripcionDos" style="overflow:auto;" rows="7"></textarea>
-                    </div>
-                  </form>
-                       <div class="text-center">
-                         <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-                         <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-                         <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                         <button type="button" class="btn"><i class="fa-solid fa-xmark"></i></button>
-                       </div>
+
+                  <div class="mb-3">
+                    <label for="designLugar" class="form-label col-12"><i>Elegir experiencia</i></label>
+                    <select formControlName="designId" id="designId" class="mb-3" >
+                      <option>Seleccionar Design Experience</option>
+                      <option *ngFor="let id of lugar">{{id.lugar}}</option>
+                    </select>
+                  </div>
+                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
+                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
+                  </div>
+                  
+
+                  <div class="mb-3">
+                    <label for="designLugar" class="form-label"><i>Lugar</i></label>
+                    <input type="text" formControlName="designLugar" id="designLugar" class="col-12" [class.border-danger]="LugarInvalid" aria-describedby="designLugarHelp">
+                  </div>
+                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
+                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="designAnioInicio" class="form-label"><i>Inicio</i></label>
+                    <input type="text" formControlName="designAnioInicio" id="designAnioInicio" class="col-12" [class.border-danger]="AnioInicioInvalid" aria-describedby="designAnioInicioHelp">
+                  </div>
+                  <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
+                    <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año inicio requerido.</i></small>
+                    <!--<small *ngIf="AnioInicio?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="designAnioFin" class="form-label"><i>Inicio</i></label>
+                    <input type="text" formControlName="designAnioFin" id="designAnioFin" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="designAnioFinHelp">
+                  </div>
+                  <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
+                    <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año fin requerido.</i></small>
+                    <!-- <small *ngIf="AnioFin?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
+                  </div>
+
+
+                  <div class="mb-3">
+                    <label for="designDescripcion" class="form-label"><i>Descripción</i></label>
+                    <textarea class="text w-100" id="designDescripcion" style="overflow:auto;" rows="7"></textarea>
+                  </div>
+                  <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
+                    <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Completar descripción.</i></small>
+                  </div>
                 </div>
-  <!----------------------------------->                
-                 <!--<div class="modal-footer">
-                  <button type="button" class="btn" data-bs-target="#my-modal" data-bs-dismiss="modal"><a routerLink="/aadmin"><i class="fa-solid fa-circle-xmark"></i></a></button>
-                  <button type="button" class="btn"><a routerLink="/aadmin"><i class="fa-solid fa-circle-check"></i></a></button>
-                 </div>-->
-              </div>
-            </div>
-  
-  <!--CARGO 3-->
-            <div class="row">
-              <div class="col">
-                <div class="modal-body">
-                  <form>
-                    <div class="mb-3">
-                      <label for="cargoTres" class="form-label"><strong>Cargo 3</strong></label>
-                      <input type="text" class="form-control" id="cargoTres">
-                    </div>
-                    <div class="mb-3">
-                      <label for="fechaTres" class="form-label">Inicio - Fin</label>
-                      <input type="text" class="form-control" id="fechaTres">
-                    </div>
-                    <div class="mb-3">
-                      <label for="lugarTres" class="form-label">Lugar</label>
-                      <input type="text" class="form-control" id="lugarTres">
-                    </div>
-                    <div class="mb-3">
-                      <label for="descripcion" class="form-label">Descripción</label>
-                      <textarea class="text w-100" id="descripcion" style="overflow:auto;" rows="7"></textarea>
-                    </div>
-                  </form>
-                       <div class="text-center">
-                         <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-                         <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-                         <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                         <button type="button" class="btn"><i class="fa-solid fa-xmark"></i></button>
-                       </div>
-                </div>
-            <!----------------------------------->                
-                 <!--<div class="modal-footer">
-                  <button type="button" class="btn" data-bs-target="#my-modal" data-bs-dismiss="modal"><a routerLink="/aadmin"><i class="fa-solid fa-circle-xmark"></i></a></button>
-                  <button type="button" class="btn"><a routerLink="/aadmin"><i class="fa-solid fa-circle-check"></i></a></button>
-                 </div>-->
-              </div>
-            </div>
-  
-  <!--CARGO 4
-            <div class="row">
-    <div class="col">
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="cargoCuatro" class="form-label"><strong>Cargo 4</strong></label>
-            <input type="text" class="form-control" id="cargoCuatro">
-          </div>
-          <div class="mb-3">
-            <label for="fechaCuatro" class="form-label">Inicio - Fin</label>
-            <input type="text" class="form-control" id="fechaCuatro">
-          </div>
-          <div class="mb-3">
-            <label for="lugarCuatro" class="form-label">Lugar</label>
-            <input type="text" class="form-control" id="lugarCuatro">
-          </div>
-          <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <textarea class="text w-100" id="descripcion" style="overflow:auto;" rows="7"></textarea>
-          </div>
-        </form>
-             <div class="text-center">
-               <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-               <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-               <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-               <button type="button" class="btn"><i class="fa-solid fa-xmark"></i></button>
-             </div>
-      </div>-->
-  <!----------------------------------->                
-       <!--<div class="modal-footer">
-        <button type="button" class="btn" data-bs-target="#my-modal" data-bs-dismiss="modal"><a routerLink="/aadmin"><i class="fa-solid fa-circle-xmark"></i></a></button>
-        <button type="button" class="btn"><a routerLink="/aadmin"><i class="fa-solid fa-circle-check"></i></a></button>
-       </div>-->
+                <!--cierre body del modal-->
+                <div class="text-center">
+                  <button type="button" class="btn" data-bs-target="#modalDesignAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
+                  <button type="button" class="btn" data-bs-target="#modalDesignDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                  <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
+                </div> 
+              
+              </form>
+
     </div>
-            </div>
+  </div>
+</div>
   
-          </div>
+
+
+<!--Modal DESIGN ADD-->
+<div class="modal 'fade" id="modalDesignAdd" tabindex="-1" aria-labelledby="modalDesignAdd" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+  <!----------------------------------->
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDesignAdd">Add Design Experience</h5>
+      </div>
   
+              <form [formGroup]="design_form" (ngSubmit)="onSubmit()" id="design_formAdd">
+
+                <div class="modal-body">
+                  
+                  <div class="mb-3">
+                    <label for="designLugarAdd" class="form-label"><i>Lugar</i></label>
+                    <input type="text" formControlName="designLugarAdd" id="designLugarAdd" class="col-12" [class.border-danger]="LugarInvalid" aria-describedby="designLugarAddHelp">
+                  </div>
+                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
+                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="designAnioInicioAdd" class="form-label"><i>Inicio</i></label>
+                    <input type="text" formControlName="designAnioInicioAdd" id="designAnioInicioAdd" class="col-12" [class.border-danger]="AnioInicioInvalid" aria-describedby="designAnioInicioAddHelp">
+                  </div>
+                  <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
+                    <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
+                    <!--<small *ngIf="AnioInicio?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="designAnioFinAdd" class="form-label"><i>Hasta</i></label>
+                    <input type="text" formControlName="designAnioFinAdd" id="designAnioFinAdd" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="designAnioFinAddHelp">
+                  </div>
+                  <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
+                    <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
+                    <!-- <small *ngIf="AnioFin?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="designDescripcionAdd" class="form-label"><i>Descripción</i></label>
+                    <textarea class="text w-100" id="designDescripcionAdd" style="overflow:auto;" rows="7"></textarea>
+                  </div>
+                  <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
+                    <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Completar descripción.</i></small>
+                  </div>
+                </div>
+                <!--cierre body del modal-->
+                <div class="text-center">
+                  <button type="button" class="btn" data-bs-target="#modalDesign" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
+                  <button type="button" class="btn" data-bs-target="#modalDesignDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                  <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
+                </div> 
+              
+              </form>
+
+    </div>
+  </div>
+</div>
+  
+  
+
+<!--Modal DESIGN DELETE-->
+<div class="modal 'fade" id="modalDesignDelete" tabindex="-1" aria-labelledby="modalDesignDelete" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+  <!----------------------------------->
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDesignDelete">Delete Design Experience</h5>
+      </div>
+  
+              <form [formGroup]="design_form" (ngSubmit)="onSubmit()" id="design_formDelete">
+
+                <div class="modal-body">
+
+                  <div class="mb-3">
+                    <label for="designLugarDelete" class="form-label col-12"><i>Elegir experiencia</i></label>
+                    <select formControlName="designIdDelete" id="designIdDelete" class="mb-3">
+                      <option selected>Seleccionar Design Experience</option>
+                      <option *ngFor="let id of lugar">{{id.lugar}}</option>
+                    </select>
+                  </div>
+                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
+                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="designAnioInicioDelete" class="form-label"><i>Inicio</i></label>
+                    <input type="text" formControlName="designAnioIniciDeleteo" id="designAnioInicioDelete" class="col-12" [class.border-danger]="AnioInicioInvalid" aria-describedby="designAnioInicioDeleteHelp">
+                  </div>
+                  <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
+                    <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
+                    <!--<small *ngIf="AnioInicio?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="designAnioFinDelete" class="form-label"><i>Hasta</i></label>
+                    <input type="text" formControlName="designAnioFinDelete" id="designAnioFinDelete" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="designAnioFinDeleteHelp">
+                  </div>
+                  <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
+                    <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
+                    <!-- <small *ngIf="AnioFin?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="designDescripcionDelete" class="form-label"><i>Descripción</i></label>
+                    <textarea class="text w-100" id="designDescripcionDelete" style="overflow:auto;" rows="7"></textarea>
+                  </div>
+                  <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
+                    <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Completar descripción.</i></small>
+                  </div>
+                </div>
+                <!--cierre body del modal-->
+                <div class="text-center">
+                  <button type="button" class="btn" data-bs-target="#modalDesignAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
+                  <button type="button" class="btn" data-bs-target="#modalDesign" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
+                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                  <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
+                </div> 
+              
+              </form>
+
+    </div>
+  </div>
+</div>
   
   

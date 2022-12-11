@@ -1,7 +1,7 @@
 *{
   font-family: 'PT Sans', sans-serif;
-  margin: 0px;
-  padding:0px;
+  margin: 0rem;
+  padding:0rem;
 }
 
 *, *:before, *:after {
@@ -34,7 +34,7 @@ background-size:cover;
   .fa-solid.fa-user-lock:hover,
   .fa-solid.fa-user:hover,
   .fa-solid.fa-user-lock:hover,
-  .fa-solid.fa-right-to-bracket:hover{
+  .fas.fa-sign-out-alt:hover{
     color: #f7a61a;
   }
 
@@ -45,14 +45,20 @@ a, a:hover{
 
 
 /*--ICONOS FORMULARIOS--*/
-.fa-circle-plus:hover{
+.fa-plus:hover{
   color:#f71aa6;
+}
+.fa-pencil:hover{
+  color:#f67010;
+}
+.fa-trash-can-arrow-up:hover{
+  color:#ab0c0c;
 }
 .fa-circle-check:hover{
   color:#2c9011;
 }
 .fa-circle-xmark:hover{
-  color:#ab0c0c;
+  color:#b1b1b0;
 }
 .btn-form-cierre{
   margin-top: -1.2rem;
@@ -63,32 +69,19 @@ a, a:hover{
 }
 
 /*---CONTENEDORES---*/
-/*.container{
-  width:70%;
-  margin-bottom:15px;
-  padding:20px;
-  position:relative;
-  z-index:1080;
-  background-color:#fff;
-  border:2px solid #69014b;
-  border-radius:0px 30px 0px 30px;
-  box-shadow: 1px 6px 14px 2px #69014bbf;
-  -webkit-box-shadow: 1px 6px 14px 2px #af014bbf;
-  -moz-box-shadow: 1px 6px 14px 2px #af014bbf;
-}*/
 
 .caja{
   width:70%;
-  margin-bottom:15px;
-  padding:20px;
+  margin-bottom:0.938rem;
+  padding:1.25rem;
   position:relative;
   z-index:1080;
   background-color:#fff;
-  border:2px solid #69014b;
-  border-radius:0px 30px 0px 30px;
-  box-shadow: 1px 6px 14px 2px #69014bbf;
-  -webkit-box-shadow: 1px 6px 14px 2px #af014bbf;
-  -moz-box-shadow: 1px 6px 14px 2px #af014bbf;
+  border:0.125rem solid #69014b;
+  border-radius:0rem 1.875rem 0rem 1.875rem;
+  box-shadow: 0.063rem 0.375rem 0.875rem 0.125rem #69014bbf;
+  -webkit-box-shadow: 0.063rem 0.375rem 0.875rem 0.125rem #af014bbf;
+  -moz-box-shadow: 0.063rem 0.375rem 0.875rem 0.125rem #af014bbf;
 }
 
 /*---TEXTOS---*/
@@ -110,12 +103,16 @@ p.fechas{
   text-align:left;
 }
 
+.modal-title{
+  color:#a9a7a7;
+}
+
 /*--@media--*/
 @media (max-width: 575px){
   .container.bio{
-      max-width: 350px;
+      max-width: 21.875rem;
   }
   .bio-image-col{
-    max-width: 280px;
+    max-width: 10rem;
   }
 }

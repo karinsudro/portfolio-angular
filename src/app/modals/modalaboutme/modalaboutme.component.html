@@ -1,46 +1,85 @@
 <!--Modal ABOUT ME-->
-<div class="modal fade" id="modalAboutme" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-<!----------------------------------->
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModal"></h5>
+<div class="modal fade" id="modalAboutme" tabindex="-1" aria-labelledby="modalAboutme" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
 
-        <div class="container-fluid">
-         <div class="login-base">
-           <div class="contenido-login">
-             <div class="row">
-               <div class="col armado-login">
-                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                          <label for="imagenAbout" class="form-label">Imagen personal</label>
-                          <input type="file" class="form-control" id="imagenAbout" placeholder="URL de la imagen">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAboutme">Edit About me</h5>
+      </div>
+
+              <form  [formGroup]="aboutme_form" (ngSubmit)="onSubmit()" id="aboutme_form">
+                <div class="modal-body">
+                  
+                      <div class="mb-3">
+                        <label for="aboutmeImagen" class="form-label"><i>Imagen personal</i></label>
+                        <input type="file" formControlName="aboutmeImagen" id="aboutmeImagen" class="col-12" [class.border-danger]="ImagenInvalid" aria-describedby="aboutmeImagenHelp">
+                        <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
+                          <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
                         </div>
-                        <div class="mb-3">
-                          <label for="about" class="form-label">Algo más sobre mí</label>
-                          <textarea class="text w-100" id="about" style="overflow:auto;" rows="7"></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="aboutmeTexto" class="form-label"><i>Algo más sobre mí</i></label>
+                        <textarea class="text w-100" formControlName="texto" id="aboutmeTexto" style="overflow:auto;" rows="7" [class.border-danger]="TextoInvalid" aria-describedby="aboutmeTextoHelp"></textarea>
+                        <div *ngIf="Texto?.errors  && Texto?.touched" class="mb-4">    
+                          <small *ngIf="Texto?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
+                          <small *ngIf="Texto?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
                         </div>
-                        <div class="text-center">
-                          <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-                          <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-                          <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                          <button type="button" class="btn"><i class="fa-solid fa-xmark"></i></button>
+                      </div>
+
+                      <div class="text-end">
+                       <!--  <button type="button" class="btn" data-bs-target="#modalAboutmeDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button> -->
+                        <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
                         </div>
-                      </form>
-                 </div>
-<!----------------------------------->                
-                  <!--<div class="modal-footer">
-                   <button type="button" class="btn" data-bs-target="#my-modal" data-bs-dismiss="modal"><a routerLink="/aadmin"><i class="fa-solid fa-circle-xmark"></i></a></button>
-                   <button type="button" class="btn"><a routerLink="/aadmin"><i class="fa-solid fa-circle-check"></i></a></button>
-                  </div>-->
-               </div>
-              
-             </div>
-           </div>
-         </div>
-        </div>
-  
+
+                </div>
+              </form>
+
     </div>
   </div>
+</div>
+
+
+
+<!--Modal ABOUT ME DELETE-->
+<!-- <div class="modal fade" id="modalAboutmeDelete" tabindex="-1" aria-labelledby="modalAboutmeDelete" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAboutmeDelete">Delete About me</h5>
+      </div>
+
+              <form  [formGroup]="aboutme_form" (ngSubmit)="onSubmit($event)">
+                <div class="modal-body">
+                  
+                      <div class="mb-3">
+                        <label for="aboutmeImagen" class="form-label"><i>Imagen personal</i></label>
+                        <input type="file" formControlName="aboutmeImagen" id="aboutmeImagen" class="col-12" [class.border-danger]="ImagenInvalid" aria-describedby="aboutmeImagenHelp">
+                        <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
+                          <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
+                        </div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="aboutmeTexto" class="form-label"><i>Algo más sobre mí</i></label>
+                        <textarea class="text w-100" formControlName="texto"id="aboutmeTexto" style="overflow:auto;" rows="7" [class.border-danger]="TextoInvalid" aria-describedby="aboutmeTextoHelp"></textarea>
+                        <div *ngIf="Texto?.errors  && Texto?.touched" class="mb-4">    
+                          <small *ngIf="Texto?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
+                          <small *ngIf="Texto?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+                        </div>
+                      </div>
+
+                      <div class="text-end">
+                        <button type="button" class="btn" data-bs-target="#modalAboutme" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
+                        <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                        <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                </div>
+              </form>
+
+    </div>
   </div>
+</div> -->

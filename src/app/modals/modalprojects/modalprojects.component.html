@@ -1,140 +1,82 @@
 <!--Modal SKILLS-->
-<div class="modal fade" id="modalProjects" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+<div class="modal 'fade" id="modalProjects" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
   <!----------------------------------->
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModal"></h5>
-  
-  
-        <div class="container">
-
-<!--PROJECTS-->
-  <!--PROJECT 1-->
-  <div class="row">
-    <div class="col">
-      <div class="modal-body">
-        <form>
-            <div class="mb-3">
-              <label for="proyectoUnoImax" class="form-label">Imagen 1</label>
-              <input type="file" class="form-control" id="proyectoUnoImax" placeholder="imagen">
-            </div>
-            <div class="mb-3">
-              <label for="proyectoUno" class="form-label">Proyecto 1</label>
-              <input type="text" class="form-control" id="proyectoUno">
-            </div>
-            <div class="mb-3">
-              <label for="proyectoUnoDescrip" class="form-label">Descripción 1</label>
-              <textarea class="text w-100" id="proyectoUnoDescrip" style="overflow:auto;" rows="3"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="proyectoUnoDemo" class="form-label">Demo 1</label>
-              <input type="text" class="form-control" id="proyectoUnoDemo" placeholder="URL live demo">
-            </div>
-            <div class="mb-3">
-              <label for="proyectoUnoRepo" class="form-label">Repo 1</label>
-              <input type="text" class="form-control" id="proyectoUnoRepo" placeholder="URL repositorio">
-            </div>
-          </form>
-             <div class="text-center">
-               <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-               <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-               <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-               <button type="button" class="btn"><i class="fa-solid fa-xmark"></i></button>
-             </div>
-      </div>
-<!----------------------------------->                
-       <!--<div class="modal-footer">
-        <button type="button" class="btn" data-bs-target="#my-modal" data-bs-dismiss="modal"><a routerLink="/aadmin"><i class="fa-solid fa-circle-xmark"></i></a></button>
-        <button type="button" class="btn"><a routerLink="/aadmin"><i class="fa-solid fa-circle-check"></i></a></button>
-       </div>-->
-    </div>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modalDesign">Edit a Project</h5>
   </div>
 
-    <!--PROJECT 2-->
-    <div class="row">
-        <div class="col">
-          <div class="modal-body">
-            <form>
-                <div class="mb-3">
-                    <label for="proyectoDosImax" class="form-label">Imagen 2</label>
-                    <input type="file" class="form-control" id="proyectoDosImax" placeholder="imagen">
+          <form [formGroup]="project_form" (ngSubmit)="onSubmit()" id="project_form">
+
+            <div class="modal-body">
+
+              <div class="mb-3">
+                <label for="proyId" class="form-label col-12"><i>Elegir proyecto</i></label>
+                <select formControlName="proyId" id="proyId" class="mb-3">
+                  <option selected>Seleccionar proyecto</option>
+                  <option *ngFor="let id of proyecto">{{id.proyecto}}</option>
+                </select>
+              </div>
+            
+
+                  <div class="mb-3">
+                    <label for="projectImagen" class="form-label"><i>Imagen</i></label>
+                    <input type="file" class="form-control" id="projectImagen" placeholder="imagen" class="col-12" [class.border-danger]="ImagenInvalid" >
                   </div>
-                <div class="mb-3">
-                  <label for="proyectoDos" class="form-label">Proyecto 2</label>
-                  <input type="text" class="form-control" id="proyectoDos">
-                </div>
-                <div class="mb-3">
-                  <label for="proyectoDosDescrip" class="form-label">Descripción 2</label>
-                  <textarea class="text w-100" id="proyectoDosDescrip" style="overflow:auto;" rows="3"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="proyectoDosDemo" class="form-label">Demo 2</label>
-                  <input type="text" class="form-control" id="proyectoDosDemo" placeholder="URL live demo">
-                </div>
-                <div class="mb-3">
-                  <label for="proyectoDosRepo" class="form-label">Repo 2</label>
-                  <input type="text" class="form-control" id="proyectoDosRepo" placeholder="URL repositorio">
-                </div>
-              </form>
-                 <div class="text-center">
-                   <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-                   <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-                   <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                   <button type="button" class="btn"><i class="fa-solid fa-xmark"></i></button>
-                 </div>
-          </div>
-    <!----------------------------------->                
-           <!--<div class="modal-footer">
-            <button type="button" class="btn" data-bs-target="#my-modal" data-bs-dismiss="modal"><a routerLink="/aadmin"><i class="fa-solid fa-circle-xmark"></i></a></button>
-            <button type="button" class="btn"><a routerLink="/aadmin"><i class="fa-solid fa-circle-check"></i></a></button>
-           </div>-->
+                  <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">    
+                    <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Insertar imagen.</i></small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="projectTitulo" class="form-label"><i>Proyecto</i></label>
+                    <input type="text" class="form-control" id="projectTitulo" class="col-12" [class.border-danger]="TituloInvalid" >
+                  </div>
+                  <div *ngIf="Titulo?.errors  && Titulo?.touched" class="mb-4">    
+                    <small *ngIf="Titulo?.hasError('required')" class="error text-small"><i>Título del proyecto.</i></small>
+                    <small *ngIf="Titulo?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="projectDescripcion" class="form-label"><i>Descripción</i></label>
+                    <textarea class="text w-100" id="projectDescripcion" style="overflow:auto;" rows="3" [class.border-danger]="DescripInvalid" ></textarea>
+                  </div>
+                  <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
+                    <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Escribir descripción.</i></small>
+                    <small *ngIf="Descrip?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="projectDemo" class="form-label"><i>Demo</i></label>
+                    <input type="text" class="form-control" id="projectDemo" placeholder="URL live demo" class="col-12" [class.border-danger]="DemoInvalid" >
+                  </div>
+                  <div *ngIf="Demo?.errors  && Demo?.touched" class="mb-4">    
+                    <small *ngIf="Demo?.hasError('required')" class="error text-small"><i>Url demo.</i></small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="projectRepo" class="form-label"><i>Repositorio</i></label>
+                    <input type="text" class="form-control" id="projectRepo" placeholder="URL repositorio" class="col-12" [class.border-danger]="RepoInvalid" >
+                  </div>
+                  <div *ngIf="Repo?.errors  && Repo?.touched" class="mb-4">    
+                    <small *ngIf="Repo?.hasError('required')" class="error text-small"><i>Url repositorio.</i></small>
+                  </div>
+            </div>
+            <!--cierre body del modal-->
+            <div class="text-center">
+              <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
+              <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
+              <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+              <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+              <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-circle-xmark"></i></button>
+            </div>
+
+          </form>
+
         </div>
       </div>
 
-    <!--PROJECT 3-->
-    <div class="row">
-        <div class="col">
-          <div class="modal-body">
-            <form>
-                <div class="mb-3">
-                    <label for="proyectoTresImax" class="form-label">Imagen 3</label>
-                    <input type="file" class="form-control" id="proyectoTresImax" placeholder="imagen">
-                  </div>
-                <div class="mb-3">
-                  <label for="proyectoTres" class="form-label">Proyecto 3</label>
-                  <input type="text" class="form-control" id="proyectoTres">
-                </div>
-                <div class="mb-3">
-                  <label for="proyectoTresDescrip" class="form-label">Descripción 3</label>
-                  <textarea class="text w-100" id="proyectoTresDescrip" style="overflow:auto;" rows="3"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="proyectoTresDemo" class="form-label">Demo 3</label>
-                  <input type="text" class="form-control" id="proyectoTresDemo" placeholder="URL live demo">
-                </div>
-                <div class="mb-3">
-                  <label for="proyectoTresRepo" class="form-label">Repo 3</label>
-                  <input type="text" class="form-control" id="proyectoTresRepo" placeholder="URL repositorio">
-                </div>
-              </form>
-                 <div class="text-center">
-                   <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-                   <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-                   <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                   <button type="button" class="btn"><i class="fa-solid fa-xmark"></i></button>
-                 </div>
-          </div>
-    <!----------------------------------->                
-           <!--<div class="modal-footer">
-            <button type="button" class="btn" data-bs-target="#my-modal" data-bs-dismiss="modal"><a routerLink="/aadmin"><i class="fa-solid fa-circle-xmark"></i></a></button>
-            <button type="button" class="btn"><a routerLink="/aadmin"><i class="fa-solid fa-circle-check"></i></a></button>
-           </div>-->
-        </div>
-      </div>         
-
- <!--cierre contenedor--> 
-          </div>
+    </div>
   
   
   
