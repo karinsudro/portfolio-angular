@@ -37,55 +37,62 @@
     "teaching":[
         {
             "id": 4,
+            "cargo": "Facilitadora Pedagógico Digital",
             "lugar": "GoINTEC (Ministerio de Educación C.A.B.A.)",
             "anio_inicio": "2011",
             "anio_fin": "actualidad",
-            "cargo": "Soy facilitadora pedagógico digital en nivel primario. Trabajo como par pedagógico del docente, planificando conjuntamente diversas actividades con incorporación de TIC. Capacito a niños y a adultos en el uso de las herramientas necesarias para los diferentes dispositivos y web."
+            "descripcion": "Soy facilitadora pedagógico digital en nivel primario. Trabajo como par pedagógico del docente, planificando conjuntamente diversas actividades con incorporación de TIC. Capacito a niños y a adultos en el uso de las herramientas necesarias para los diferentes dispositivos y web."
         },
         {
             "id": 3,
+            "cargo": "Profesora de computación",
             "lugar": "Escuela Dr.Hertz - Iona",
             "anio_inicio": "2021",
             "anio_fin": "2022",
-            "cargo": "Profesora de computación, programación y robótica de niños de 3 a 5 años. Enseñando pensamiento computacional, programación por bloques y otras aplicaciones. En el área de robótica, utilizando los equipos de Matatalab."
+            "descripcion": "Profesora de computación, programación y robótica de niños de 3 a 5 años. Enseñando pensamiento computacional, programación por bloques y otras aplicaciones. En el área de robótica, utilizando los equipos de Matatalab."
         },
         {
             "id": 2,
+            "cargo": "Docente de hebreo",
             "lugar": "Escuela Tel Aviv",
             "anio_inicio": "2008",
             "anio_fin": "2018",
-            "cargo": "Docente de hebreo nivel primario. Enseñanza de la lectoescritura en el idioma. Armado de libros para practicar."
+            "descripcion": "Docente de hebreo (área judaica) nivel primario. Enseñanza de la lectoescritura en el idioma. Armado de libros para practicar."
         },
         {
             "id": 1,
+            "cargo": "Astronomía amateur",
             "lugar": "Asociación Amigos de la Astronomía",
             "anio_inicio": "2000",
             "anio_fin": "2015",
-            "cargo": "Investigación en fotografía electrónica (Meade). Visitas astronómicas guiadas para público general. Atención de contingentes escolares (visitas educativas)"
+            "descripcion": "Investigación en fotografía electrónica (Meade). Visitas astronómicas guiadas para público general. Atención de contingentes escolares (visitas educativas)."
         }
     ],
 
     "design":[
         {
             "id": 3,
+            "cargo": "Diseñadora gráfica",
             "lugar": "TecnoDesign",
             "anio_inicio": "2020",
             "anio_fin": "2021",
-            "cargo": "Cambios en el código del sitio. Apertura y manejo de redes sociales."
+            "descripcion": "Cambios en el código del sitio. Apertura y manejo de redes sociales."
         },
         {
             "id": 2,
+            "cargo": "Diseñadora gráfica",
             "lugar": "Trabajos varios",
             "anio_inicio": "1994",
             "anio_fin": "actualidad",
-            "cargo": "Trabajos varios de diseño: logotipos, sitios web, diseño editorial, entre otros."
+            "descripcion": "Trabajos varios de diseño: logotipos, sitios web, diseño editorial, entre otros."
         },
         {
             "id": 1,
+            "cargo": "Diseñadora gráfica",
             "lugar": "Asociación Amigos de la Astronomía",
             "anio_inicio": "2000",
             "anio_fin": "2015",
-            "cargo": "Diseño gráfico de algunos ejemplares de la revista institucional y especiales para número aniversario (cd, portada contenedor, revista)."
+            "descripcion": "Diseño gráfico de algunos ejemplares de la revista institucional y especiales para número aniversario (cd, portada contenedor, revista)."
         }
     ],
 

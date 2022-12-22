@@ -17,16 +17,16 @@ export class ModalaboutmeComponent implements OnInit {
       aboutme:['', Validators.required],
       texto:['',[Validators.required, Validators.minLength(6)]],
    }) */
+   this.portfolioService.getDatos().subscribe(portfolio =>{
+    this.aboutme_form=portfolio.aboutme;
+    });
+  this.aboutme_form= this.formBuilder.group({
+    aboutme:['', Validators.required],
+    texto:['',[Validators.required, Validators.minLength(6)]],
+})
   }
 
   ngOnInit(): void {
-    this.portfolioService.getDatos().subscribe(portfolio =>{
-      this.aboutme_form=portfolio.aboutme;
-      });
-    this.aboutme_form= this.formBuilder.group({
-      aboutme:['', Validators.required],
-      texto:['',[Validators.required, Validators.minLength(6)]],
-  })
   }
 
 
@@ -45,15 +45,19 @@ get Imagen(){
    return this.Texto?.touched && !this.Texto?.valid;
  }
 
- 
- onSubmit(): void {
-  this.submitted = true;
+ onSubmit(event: Event) {
+  // Detenemos la propagación o ejecución del comportamiento submit de un form
+  event.preventDefault; 
 
-  if (this.aboutme_form.invalid) {
-    return;
+  if (this.aboutme_form.valid){
+    // Llamamos a nuestro servicio para enviar los datos al servidor
+    // También podríamos ejecutar alguna lógica extra
+    alert("Todo en orden. Ya puede enviar su formulario.");
+  }else{
+    // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+    this.aboutme_form.markAllAsTouched()
+    alert("Revise su formulario."); 
   }
-
-  console.log(JSON.stringify(this.aboutme_form.value, null, 2));
 }
 
 onReset(): void {

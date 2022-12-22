@@ -7,24 +7,24 @@
         <h5 class="modal-title" id="modalAboutme">Edit About me</h5>
       </div>
 
-              <form  [formGroup]="aboutme_form" (ngSubmit)="onSubmit()" id="aboutme_form">
+              <form  [formGroup]="aboutme_form" (ngSubmit)="onSubmit($event)" id="aboutme_form">
                 <div class="modal-body">
                   
                       <div class="mb-3">
                         <label for="aboutmeImagen" class="form-label"><i>Imagen personal</i></label>
                         <input type="file" formControlName="aboutmeImagen" id="aboutmeImagen" class="col-12" [class.border-danger]="ImagenInvalid" aria-describedby="aboutmeImagenHelp">
-                        <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
+                        <!-- <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
                           <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
-                        </div>
+                        </div> -->
                       </div>
 
                       <div class="mb-3">
                         <label for="aboutmeTexto" class="form-label"><i>Algo más sobre mí</i></label>
                         <textarea class="text w-100" formControlName="texto" id="aboutmeTexto" style="overflow:auto;" rows="7" [class.border-danger]="TextoInvalid" aria-describedby="aboutmeTextoHelp"></textarea>
-                        <div *ngIf="Texto?.errors  && Texto?.touched" class="mb-4">    
+                        <!-- <div *ngIf="Texto?.errors  && Texto?.touched" class="mb-4">    
                           <small *ngIf="Texto?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
                           <small *ngIf="Texto?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
-                        </div>
+                        </div> -->
                       </div>
 
                       <div class="text-end">

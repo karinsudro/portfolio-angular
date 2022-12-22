@@ -3,16 +3,9 @@ a, a:hover{
     border: none;
   }
 
-  /*---LOGIN MODAL---*/
-
-  input::placeholder{
-    font-style: italic;
-    font-size: .9em;
-  }
-
   .list-group-item {
     position: relative;
-    display: inline-block;
+    display: block;
     padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
     /*color: var(--bs-list-group-color);*/
     color: #505050;

@@ -2,6 +2,7 @@
   font-family: 'PT Sans', sans-serif;
   margin: 0rem;
   padding:0rem;
+  scroll-behavior: smooth;
 }
 
 *, *:before, *:after {
@@ -34,7 +35,8 @@ background-size:cover;
   .fa-solid.fa-user-lock:hover,
   .fa-solid.fa-user:hover,
   .fa-solid.fa-user-lock:hover,
-  .fas.fa-sign-out-alt:hover{
+  .fas.fa-sign-out-alt:hover,
+  .fa-solid.fa-file:hover{
     color: #f7a61a;
   }
 

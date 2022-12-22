@@ -7,7 +7,7 @@
         <h5 class="modal-title" id="modalDesign">Edit Design Experience</h5>
       </div>
   
-              <form [formGroup]="design_form" (ngSubmit)="onSubmit()" id="design_form">
+              <form [formGroup]="design_form" (ngSubmit)="onSubmit($event)" id="design_form">
 
                 <div class="modal-body">
 
@@ -41,7 +41,7 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="designAnioFin" class="form-label"><i>Inicio</i></label>
+                    <label for="designAnioFin" class="form-label"><i>Fin</i></label>
                     <input type="text" formControlName="designAnioFin" id="designAnioFin" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="designAnioFinHelp">
                   </div>
                   <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
@@ -83,7 +83,7 @@
         <h5 class="modal-title" id="modalDesignAdd">Add Design Experience</h5>
       </div>
   
-              <form [formGroup]="design_form" (ngSubmit)="onSubmit()" id="design_formAdd">
+              <form [formGroup]="design_form" (ngSubmit)="onSubmit($event)" id="design_formAdd">
 
                 <div class="modal-body">
                   
@@ -105,7 +105,7 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="designAnioFinAdd" class="form-label"><i>Hasta</i></label>
+                    <label for="designAnioFinAdd" class="form-label"><i>Fin</i></label>
                     <input type="text" formControlName="designAnioFinAdd" id="designAnioFinAdd" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="designAnioFinAddHelp">
                   </div>
                   <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
@@ -146,7 +146,7 @@
         <h5 class="modal-title" id="modalDesignDelete">Delete Design Experience</h5>
       </div>
   
-              <form [formGroup]="design_form" (ngSubmit)="onSubmit()" id="design_formDelete">
+              <form [formGroup]="design_form" (ngSubmit)="onSubmit($event)" id="design_formDelete">
 
                 <div class="modal-body">
 
@@ -157,35 +157,7 @@
                       <option *ngFor="let id of lugar">{{id.lugar}}</option>
                     </select>
                   </div>
-                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
-                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="designAnioInicioDelete" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="designAnioIniciDeleteo" id="designAnioInicioDelete" class="col-12" [class.border-danger]="AnioInicioInvalid" aria-describedby="designAnioInicioDeleteHelp">
-                  </div>
-                  <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
-                    <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
-                    <!--<small *ngIf="AnioInicio?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="designAnioFinDelete" class="form-label"><i>Hasta</i></label>
-                    <input type="text" formControlName="designAnioFinDelete" id="designAnioFinDelete" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="designAnioFinDeleteHelp">
-                  </div>
-                  <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
-                    <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
-                    <!-- <small *ngIf="AnioFin?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="designDescripcionDelete" class="form-label"><i>Descripción</i></label>
-                    <textarea class="text w-100" id="designDescripcionDelete" style="overflow:auto;" rows="7"></textarea>
-                  </div>
-                  <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
-                    <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Completar descripción.</i></small>
-                  </div>
+                  
                 </div>
                 <!--cierre body del modal-->
                 <div class="text-center">
@@ -201,4 +173,128 @@
   </div>
 </div>
   
+  <!----------
+  HTML
+
+  <div *ngIf="mje === 'eliminar'">
+    titulito  agregar....
+    <ul *ngFor="let proyecto of proyectoList">
+      <li>botoncito para eliminar (i iconito)</li>
+    </ul>
+    botoncito para guardar elección
+  </div>
   
+  
+    <div *ngIf="mje === 'agregar'">
+    titulito  agregar....
+    <form (ngSubmit)="onCreate()">
+      desarrollo del form
+      botoncito para guardar eleccion
+    </div>
+  
+    <div *ngIf="mje === 'editar'">
+    titulito  agregar....
+        <div *ngFor="let proyecto of proyectoList">
+<ul><li type="button" class="proyecto" (click)="cargarDetalle(proyecto.id)">{{proyecto......}}
+  <i fontawesome></i></li></ul>
+    </div>
+
+    <div *ngIf="proyec">
+      titulito para gregar proyecto
+      <form (ngSubmit)="OnUpdate(proyect.id)">
+
+
+        TS
+
+ import { Component, OnInit,Input } from '@angular/core';
+import { Proyecto } from 'src/app/model/proyecto';
+import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { ProyectoService } from 'src/app/servicios/proyecto.service';
+import { ImageService } from 'src/app/servicios/image.service';
+
+@Component({
+  selector: 'app-modal-proyectos',
+  templateUrl: './modal-proyectos.component.html',
+  styleUrls: ['./modal-proyectos.component.css']
+})
+export class ModalProyectosComponent implements OnInit {
+ 
+  @Input() mje:string="";
+  proyectoList: Proyecto[]=[];
+  img:string="";
+  path:string="";
+  proyec:Proyecto|any=null;
+  proyecto:string=""
+  id:number=0;
+  completo:boolean=false;
+ 
+  constructor(private proyectos:ProyectoService,private imageService:ImageService) { }
+
+  ngOnInit(): void {
+    this.proyectos.lista().subscribe(data =>{
+      this.proyectoList= data;
+      
+    })
+  }
+cargarDetalle(id?:number){
+    if(id != undefined){
+    this.proyectos.detail(id).subscribe(data=>{
+      this.proyec=data;
+    },err=>{
+      alert("error al modificar");
+    })
+  }
+  }
+  cargarProyecto():void{
+    this.proyectos.lista().subscribe(data =>{this.proyec=data;})
+    
+  }
+  borrar(id?:number){
+    if(id != undefined){
+      this.proyectos.delete(id).subscribe(data =>{
+        this.cargarProyecto();
+        alert("se pudo eliminar satisfactoriamente");
+      },err =>{
+        alert(
+
+  
+OnUpdate(id?:number):void{
+    this.completo= this.imageService.completed;
+      if(id != undefined){
+          this.proyectos.update(id,this.proyec).subscribe(data=>{
+          alert("certificado modificado"); 
+          this.cargarProyecto();
+      },err =>{
+        alert("Error al modificar certificado");
+        
+      })
+    }
+  }
+  uploadImage($event:any){
+    
+     const name="proyect_"+ this.proyec.id;
+     this.imageService.uploadImage($event,name,3);
+   
+
+   }
+
+OnCreate():void{
+    // this.habilidad.icono = this.imageService.url;
+   this.completo= this.imageService.completed;
+    this.img= this.imageService.url[this.imageService.url.length-1]
+   console.log( this.img)
+     const habi= new Proyecto(this.proyecto,this.path,this.img)
+    
+     this.proyectos.save(habi).subscribe(data=>{
+       alert("Proyecto añadido");
+       
+     },err=>{
+       alert("Fallo al añadir");
+     })
+     
+   }
+
+
+}
+  
+  -->

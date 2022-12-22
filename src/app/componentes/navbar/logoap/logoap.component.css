@@ -1,9 +1,3 @@
 .logo-ap{
     max-width: 6em;
   }
-
-
-  /* Logo con Filtro */
-.img-black{
-  filter:invert(1) !important;
-}

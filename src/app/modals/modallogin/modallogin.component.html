@@ -6,12 +6,12 @@
         <h5 class="modal-title" id="modalLogin">Logueate</h5>
       </div>
 
-      <form  [formGroup]="login_form" (ngSubmit)="onSubmit()">
+      <form  [formGroup]="login_form" (ngSubmit)="onSubmit($event)">
         <div class="modal-body">
           
               <div class="mb-3">
                 <label for="emailLogin" class="form-label"><i>Email</i></label>
-                <input type="email" formControlName="email" id="emailLogin" placeholder="  nombre@correo.com" class="col-12" [class.border-danger]="MailInvalid" aria-describedby="emailHelp">
+                <input type="email" formControlName="email" id="emailLogin" placeholder="  nombre@correo.com" class="col-12" [class.border-danger]="MailInvalid">
               </div>
               <div *ngIf="Mail?.errors  && Mail?.touched" class="mb-4">    
                 <small *ngIf="Mail?.hasError('required')" class="error text-small"><i>El email es requerido.</i></small>

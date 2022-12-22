@@ -19,16 +19,15 @@ export class ModalregisterComponent implements OnInit {
   submitted = false;
 
   constructor(private formBuilder: FormBuilder) {
-    
-  }
-
-  ngOnInit(): void {
     this.register_form = this.formBuilder.group(
       {username: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
         email: ['', [Validators.required, Validators.email]],
         password: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]]},
       {validators: [Validation.match('password', 'confirmPassword')]}
     );
+  }
+
+  ngOnInit(): void {
   }
 
  //estos son todos métodos
@@ -52,14 +51,19 @@ export class ModalregisterComponent implements OnInit {
    return this.Password?.touched && !this.Password?.valid;
  }
 
- onSubmit(): void {
-  this.submitted = true;
+ onSubmit(event: Event) {
+  // Detenemos la propagación o ejecución del comportamiento submit de un form
+  event.preventDefault; 
 
-  if (this.register_form.invalid) {
-    return;
+  if (this.register_form.valid){
+    // Llamamos a nuestro servicio para enviar los datos al servidor
+    // También podríamos ejecutar alguna lógica extra
+    alert("Todo en orden. Ya puede enviar su formulario.");
+  }else{
+    // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+    this.register_form.markAllAsTouched()
+    alert("Revise su formulario."); 
   }
-
-  console.log(JSON.stringify(this.register_form.value, null, 2));
 }
 
 onReset(): void {

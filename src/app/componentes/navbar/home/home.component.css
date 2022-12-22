@@ -3,17 +3,6 @@ a, a:hover{
   }
 
   /*---LOGIN MODAL---*/
-
-.login-base{
-    margin-top: 0;
-  }
-  
-  .armado-login{
-    margin-top: 15%;
-  }
-  .contact{
-    margin-top: 10% !important;
-  }
   input::placeholder{
     font-style: italic;
     font-size: .9em;
@@ -29,4 +18,5 @@ a, a:hover{
     background-color: var(--bs-list-group-bg);
     /* border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color); */
     border:none;
+    /* scroll-behavior: smooth; */
   }

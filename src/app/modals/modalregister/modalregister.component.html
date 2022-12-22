@@ -8,7 +8,7 @@
           <h5 class="modal-title" id="modalRegister">Registrate</h5>
         </div>
 
-        <form [formGroup]="register_form" (ngSubmit)="onSubmit()" id="register_form">
+        <form [formGroup]="register_form" (ngSubmit)="onSubmit($event)" id="register_form">
         <div class="modal-body">
               
                   <div class="mb-3">
@@ -39,8 +39,8 @@
                   </div>
               
                   <div class="text-end">
-                  <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="onReset()"><i class="fa-solid fa-circle-xmark"></i></button>
                   <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                  <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="onReset()"><i class="fa-solid fa-circle-xmark"></i></button>
                   </div>
 
                 

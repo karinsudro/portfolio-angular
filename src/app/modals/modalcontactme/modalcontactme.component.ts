@@ -13,17 +13,16 @@ export class ModalcontactmeComponent implements OnInit {
 
   
   constructor(private formBuilder: FormBuilder) { 
-  
+    /* let mensajes=this.contact_form.value as  */
+
+    this.contact_form= this.formBuilder.group({
+      nombre:['',Validators.required],
+      email:['', [Validators.required, Validators.email]],
+      mensaje:['',Validators.required]
+   })
   }
 
   ngOnInit(): void {
-      /* let mensajes=this.contact_form.value as  */
-
-      this.contact_form= this.formBuilder.group({
-        nombre:['',Validators.required],
-        email:['', [Validators.required, Validators.email]],
-        mensaje:['',Validators.required]
-     })
   }
 
 
@@ -42,16 +41,19 @@ get Mail(){
   return this.contact_form.get("mensaje");
  }
 
+ onSubmit(event: Event) {
+  // Detenemos la propagación o ejecución del comportamiento submit de un form
+  event.preventDefault; 
 
-
- onSubmit(): void {
-  this.submitted = true;
-
-  if (this.contact_form.invalid) {
-    return;
+  if (this.contact_form.valid){
+    // Llamamos a nuestro servicio para enviar los datos al servidor
+    // También podríamos ejecutar alguna lógica extra
+    alert("Todo en orden. Ya puede enviar su formulario.");
+  }else{
+    // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+    this.contact_form.markAllAsTouched()
+    alert("Revise su formulario."); 
   }
-
-  console.log(JSON.stringify(this.contact_form.value, null, 2));
 }
 
 onReset(): void {
@@ -59,21 +61,4 @@ onReset(): void {
   this.contact_form.reset();
 }
 
-
-
-
-  /* onSubmit(event: Event){
-    // Detenemos la propagación o ejecución del comportamiento submit de un form
-    event.preventDefault; 
- 
-    if (this.contact_form.valid){
-      // Llamamos a nuestro servicio para enviar los datos al servidor
-      // También podríamos ejecutar alguna lógica extra
-      alert("Todo en orden. Ya puede enviar su formulario.")
-    }else{
-      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
-      this.contact_form.markAllAsTouched(); 
-    }
- 
-  } */
 }

@@ -40,6 +40,7 @@ import { ModaleducationComponent } from './modals/modaleducation/modaleducation.
 import { ModalskillsComponent } from './modals/modalskills/modalskills.component';
 import { ModalprojectsComponent } from './modals/modalprojects/modalprojects.component';
 import { ModalcontactmeComponent } from './modals/modalcontactme/modalcontactme.component';
+import { ResumeComponent } from './componentes/navbar/resume/resume.component';
 
 
 
@@ -79,7 +80,8 @@ import { ModalcontactmeComponent } from './modals/modalcontactme/modalcontactme.
     ModaleducationComponent,
     ModalskillsComponent,
     ModalcontactmeComponent,
-    ModalprojectsComponent
+    ModalprojectsComponent,
+    ResumeComponent
 
   ],
   imports: [
