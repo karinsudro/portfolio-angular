@@ -7,13 +7,13 @@
         <h5 class="modal-title" id="modalSkills">Edit Skills</h5>
       </div>
   
-              <form [formGroup]="skills_form" (ngSubmit)="onSubmit()">
+              <form [formGroup]="skills_form" (ngSubmit)="onSubmit($event)">
 
                 <div class="modal-body">
                     
                     <div class="mb-3">
                       <label for="tipoSkills" class="form-label col-12"><i>Habilidad</i></label>
-                      <select formControlName="skillId" id="skillId" class="mb-3" [class.border-danger]="TipoInvalid">
+                      <select formControlName="skillId" id="skillId" class="mb-3" [class.border-danger]="TipoValid">
                         <option selected>Seleccionar tipo de habilidad</option>
                         <option *ngFor="let id of tipo">{{id.tipo}}</option>
                       </select>
@@ -32,7 +32,7 @@
 
                     <div class="mb-3">
                       <label for="nombreSkills" class="form-label"><i>Nombre habilidad</i></label>                     
-                      <input type="text" formControlName="nombreSkills" id="nombrekills" class="col-12" [class.border-danger]="NombreInvalid">
+                      <input type="text" formControlName="nombreSkills" id="nombrekills" class="col-12" [class.border-danger]="NombreValid">
                     </div>
                     <div *ngIf="Nombre?.errors  && Nombre?.touched" class="mb-4">    
                       <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Nombre de habilidad requerido.</i></small>
@@ -40,7 +40,7 @@
 
                     <div class="mb-3">
                       <label for="colorSkills" formControlName="colorSkills" class="col-12"><i>Color de la barra</i></label>
-                      <select formControlName="colorId" id="colorId" class="mb-3" [class.border-danger]="ColorInvalid">
+                      <select formControlName="colorId" id="colorId" class="mb-3" [class.border-danger]="ColorValid">
                         <option selected>Seleccionar color de la habilidad</option>
                         <option *ngFor="let id of color">{{id.color}}</option>
                       </select>
@@ -51,7 +51,7 @@
 
                     <div class="mb-3">
                       <label for="porcentajeSkills" class="form-label" ><i>Porcentaje</i></label>
-                      <input type="text" formControlName="porcentajeSkills" id="porcentajeSkills"  class="col-12" [class.border-danger]="PorcentInvalid">
+                      <input type="text" formControlName="porcentajeSkills" id="porcentajeSkills"  class="col-12" [class.border-danger]="PorcentValid">
                     </div>
                     <div *ngIf="Porcent?.errors  && Porcent?.touched" class="mb-4">
                       <small *ngIf="Porcent?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
@@ -84,13 +84,13 @@
         <h5 class="modal-title" id="modalSkillsAdd">Add Skills</h5>
       </div>
   
-              <form [formGroup]="skills_form" (ngSubmit)="onSubmit()" id="skills_formAdd">
+              <form [formGroup]="skills_form" (ngSubmit)="onSubmit($event)" id="skills_formAdd">
 
                 <div class="modal-body">
                     
                     <div class="mb-3">
                       <label for="tipoSkills" class="form-label col-12"><i>Habilidad</i></label>
-                      <select formControlName="skillId" id="skillId" class="mb-3" [class.border-danger]="TipoInvalid">
+                      <select formControlName="skillId" id="skillId" class="mb-3" [class.border-danger]="TipoValid">
                         <option selected>Seleccionar tipo de habilidad</option>
                         <option *ngFor="let id of tipo">{{id.tipo}}</option>
                       </select>
@@ -109,7 +109,7 @@
 
                     <div class="mb-3">
                       <label for="nombreSkills" class="form-label"><i>Nombre habilidad</i></label>                     
-                      <input type="text" formControlName="nombreSkills" id="nombrekills" class="col-12" [class.border-danger]="NombreInvalid">
+                      <input type="text" formControlName="nombreSkills" id="nombrekills" class="col-12" [class.border-danger]="NombreValid">
                     </div>
                     <div *ngIf="Nombre?.errors  && Nombre?.touched" class="mb-4">    
                       <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Nombre de habilidad requerido.</i></small>
@@ -117,7 +117,7 @@
 
                     <div class="mb-3">
                       <label for="colorSkills" formControlName="colorSkills" class="col-12"><i>Color de la barra</i></label>
-                      <select formControlName="colorId" id="colorId" class="mb-3" [class.border-danger]="ColorInvalid">
+                      <select formControlName="colorId" id="colorId" class="mb-3" [class.border-danger]="ColorValid">
                         <option selected>Seleccionar color de la habilidad</option>
                         <option *ngFor="let id of color">{{id.color}}</option>
                       </select>
@@ -128,7 +128,7 @@
 
                     <div class="mb-3">
                       <label for="porcentajeSkills" class="form-label" ><i>Porcentaje</i></label>
-                      <input type="text" formControlName="porcentajeSkills" id="porcentajeSkills"  class="col-12" [class.border-danger]="PorcentInvalid">
+                      <input type="text" formControlName="porcentajeSkills" id="porcentajeSkills"  class="col-12" [class.border-danger]="PorcentValid">
                     </div>
                     <div *ngIf="Porcent?.errors  && Porcent?.touched" class="mb-4">
                       <small *ngIf="Porcent?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
@@ -162,13 +162,13 @@
         <h5 class="modal-title" id="modalSkillsDelete">Delete Skills</h5>
       </div>
   
-              <form [formGroup]="skills_form" (ngSubmit)="onSubmit()" id="skills_formDelete">
+              <form [formGroup]="skills_form" (ngSubmit)="onSubmit($event)" id="skills_formDelete">
 
                 <div class="modal-body">
                     
                     <div class="mb-3">
                       <label for="tipoSkills" class="form-label col-12"><i>Habilidad</i></label>
-                      <select formControlName="skillId" id="skillId" class="mb-3" [class.border-danger]="TipoInvalid">
+                      <select formControlName="skillId" id="skillId" class="mb-3" [class.border-danger]="TipoValid">
                         <option selected>Seleccionar tipo de habilidad</option>
                         <option *ngFor="let id of tipo">{{id.tipo}}</option>
                       </select>
@@ -187,7 +187,7 @@
 
                     <div class="mb-3">
                       <label for="nombreSkills" class="form-label"><i>Nombre habilidad</i></label>                     
-                      <input type="text" formControlName="nombreSkills" id="nombrekills" class="col-12" [class.border-danger]="NombreInvalid">
+                      <input type="text" formControlName="nombreSkills" id="nombrekills" class="col-12" [class.border-danger]="NombreValid">
                     </div>
                     <div *ngIf="Nombre?.errors  && Nombre?.touched" class="mb-4">    
                       <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Nombre de habilidad requerido.</i></small>
@@ -195,7 +195,7 @@
 
                     <div class="mb-3">
                       <label for="colorSkills" formControlName="colorSkills" class="col-12"><i>Color de la barra</i></label>
-                      <select formControlName="colorId" id="colorId" class="mb-3" [class.border-danger]="ColorInvalid">
+                      <select formControlName="colorId" id="colorId" class="mb-3" [class.border-danger]="ColorValid">
                         <option selected>Seleccionar color de la habilidad</option>
                         <option *ngFor="let id of color">{{id.color}}</option>
                       </select>
@@ -206,7 +206,7 @@
 
                     <div class="mb-3">
                       <label for="porcentajeSkills" class="form-label" ><i>Porcentaje</i></label>
-                      <input type="text" formControlName="porcentajeSkills" id="porcentajeSkills"  class="col-12" [class.border-danger]="PorcentInvalid">
+                      <input type="text" formControlName="porcentajeSkills" id="porcentajeSkills"  class="col-12" [class.border-danger]="PorcentValid">
                     </div>
                     <div *ngIf="Porcent?.errors  && Porcent?.touched" class="mb-4">
                       <small *ngIf="Porcent?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>

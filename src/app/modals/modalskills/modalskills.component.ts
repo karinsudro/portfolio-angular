@@ -14,10 +14,9 @@ export class ModalskillsComponent implements OnInit {
   submitted=false;
 
   constructor(private portfolioService:PortfolioService, private formBuilder: FormBuilder) { 
-    
-  }
-
-  ngOnInit(): void {
+    this.portfolioService.getDatos().subscribe(portfolio =>{
+      this.skills_form=portfolio.aboutme;
+      });
     this.skills_form= this.formBuilder.group({
       tipo:['', Validators.required],
       nombre:['',Validators.required],
@@ -26,46 +25,55 @@ export class ModalskillsComponent implements OnInit {
    })
   }
 
+  ngOnInit(): void {
+    
+  }
+
 
   get Tipo(){
     return this.skills_form.get("tipo");
    }
-   get TipoInvalid() {
+   get TipoValid() {
      return this.Tipo?.touched && !this.Tipo?.valid;
    }
  
    get Nombre(){
     return this.skills_form.get("nombre");
    }
-   get NombreInvalid() {
+   get NombreValid() {
      return this.Nombre?.touched && !this.Nombre?.valid;
    }
 
    get Color(){
     return this.skills_form.get("color");
    }
-   get ColorInvalid() {
+   get ColorValid() {
      return this.Color?.touched && !this.Color?.valid;
    }
 
    get Porcent(){
     return this.skills_form.get("porcent");
    }
-   get PorcentInvalid() {
+   get PorcentValid() {
      return this.Porcent?.touched && !this.Porcent?.valid;
    }
 
 
-   onSubmit(): void {
-    this.submitted = true;
-  
-    if (this.skills_form.invalid) {
-      return;
+   onSubmit(event: Event) {
+    // Detenemos la propagación o ejecución del comportamiento submit de un form
+    event.preventDefault; 
+ 
+    if (this.skills_form.valid){
+      // Llamamos a nuestro servicio para enviar los datos al servidor
+      // También podríamos ejecutar alguna lógica extra
+      alert("Todo en orden. Ya puede enviar su formulario.");
+    }else{
+      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+      this.skills_form.markAllAsTouched()
+      alert("Revise su formulario."); 
     }
-  
-    console.log(JSON.stringify(this.skills_form.value, null, 2));
   }
-  
+
   onReset(): void {
     this.submitted = false;
     this.skills_form.reset();

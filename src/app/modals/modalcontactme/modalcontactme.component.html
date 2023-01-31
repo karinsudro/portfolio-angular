@@ -19,7 +19,7 @@
                          </div>
                         <div class="mb-3">
                           <label for="emailContact" class="form-label col-12">Email</label>
-                          <input type="email" formControlName="email" id="emailContact" [class.border-danger]="MailInvalid" class="col-12">
+                          <input type="email" formControlName="email" id="emailContact" [class.border-danger]="MailValid" class="col-12">
                         </div>
                         <div *ngIf="Mail?.errors  && Mail?.touched" class="mb-4">    
                           <small *ngIf="Mail?.hasError('required')" class="error text-small"><i>El email es requerido.</i></small>
@@ -46,10 +46,10 @@
            </div>
 
 <!--Modal CONTACT ME DELETE-->
-<div class="modal fade" id="modalContactmeDelete" tabindex="-1" aria-labelledby="modalContactmeDelete" aria-hidden="true">
+<!-- <div class="modal fade" id="modalContactmeDelete" tabindex="-1" aria-labelledby="modalContactmeDelete" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-<!----------------------------------->
+
         <div class="modal-header">
           <h5 class="modal-title" id="modalContactmeDelete">Delete Contact me</h5>
         </div>
@@ -66,7 +66,7 @@
                          </div>
                         <div class="mb-3">
                           <label for="emailContact" class="form-label col-12">Email</label>
-                          <input type="email" formControlName="email" id="emailContact" [class.border-danger]="MailInvalid" class="col-12">
+                          <input type="email" formControlName="email" id="emailContact" [class.border-danger]="MailValid" class="col-12">
                         </div>
                         <div *ngIf="Mail?.errors  && Mail?.touched" class="mb-4">    
                           <small *ngIf="Mail?.hasError('required')" class="error text-small"><i>El email es requerido.</i></small>
@@ -90,4 +90,4 @@
                </div>
               
              </div>
-           </div>
+           </div> -->

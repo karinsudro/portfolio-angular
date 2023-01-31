@@ -31,28 +31,28 @@ export class ModaldesignComponent implements OnInit {
   get Lugar(){
     return this.design_form.get("lugar");
    }
-   get LugarInvalid() {
+   get LugarValid() {
      return this.Lugar?.touched && !this.Lugar?.valid;
    }
  
    get AnioInicio(){
     return this.design_form.get("anioInicio");
    }
-   get AnioInicioInvalid() {
+   get AnioInicioValid() {
      return this.AnioInicio?.touched && !this.AnioInicio?.valid;
    }
 
    get AnioFin(){
     return this.design_form.get("anioFin");
    }
-   get AnioFinInvalid() {
+   get AnioFinValid() {
      return this.AnioFin?.touched && !this.AnioFin?.valid;
    }
 
    get Descrip(){
     return this.design_form.get("descrip");
    }
-   get DescripInvalid() {
+   get DescripValid() {
      return this.Descrip?.touched && !this.Descrip?.valid;
    }
 

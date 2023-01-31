@@ -7,7 +7,7 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
   styleUrls: ['./redes.component.css']
 })
 export class RedesComponent implements OnInit {
-  redes:any = [];
+  red:any = [];
 
   constructor(private portfolioservice:PortfolioService) { }
 
@@ -15,7 +15,7 @@ export class RedesComponent implements OnInit {
     this.portfolioservice.getDatos().subscribe(portfolio =>{
 
       //inicializa variable
-      this.redes=portfolio.redes;
+      this.red=portfolio.red;
       });
   }
 

@@ -34,7 +34,7 @@ get Nombre(){
 get Mail(){
   return this.contact_form.get("email");
  }
- get MailInvalid() {
+ get MailValid() {
    return this.Mail?.touched && !this.Mail?.valid;
  }
  get Mensaje(){

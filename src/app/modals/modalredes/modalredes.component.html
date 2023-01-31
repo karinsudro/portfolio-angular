@@ -1,5 +1,5 @@
-<!--Modal REDES-->
-<div class="modal fade" id="modalRedes" tabindex="-1" aria-labelledby="modalRedes" aria-hidden="true">
+<!--Modal REDES EDIT-->
+<div class="modal fade" id="modalRedesEdit" tabindex="-1" aria-labelledby="modalRedesEdit" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 <!----------------------------------->
@@ -7,12 +7,20 @@
         <h5 class="modal-title" id="modalRedes">Edit Redes</h5>
       </div>
 
-              <form  [formGroup]="redes_form" (ngSubmit)="onSubmit()" id="redes_form">
+              <form  [formGroup]="redes_form" (ngSubmit)="onSubmit($event)" id="redes_form">
                 <div class="modal-body">
                   
                       <div class="mb-3">
+                        <select class="form-select mb-3" aria-label="Default select example">
+                          <option selected>Elija una red</option>
+                          <option value="1">GitHub</option>
+                          <option value="3">Linkedin</option>
+                          <option value="1">Agregar red</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
                         <label for="redIcono" class="form-label"><i>Icono</i></label>
-                        <input type="text" formControlName="redIcono" id="redIcono" class="col-12" [class.border-danger]="IconoInvalid" aria-describedby="redIconoHelp">
+                        <input type="text" formControlName="redIcono" id="redIcono" class="form-control col-12" aria-describedby="redIconoHelp">
                         <div *ngIf="Icono?.errors  && Icono?.touched" class="mb-4">
                           <small *ngIf="Icono?.hasError('required')" class="error text-small"><i>Icono requerido.</i></small>
                         </div>
@@ -20,12 +28,17 @@
 
                       <div class="mb-3">
                         <label for="redLink" class="form-label"><i>URL</i></label>
-                        <input type="text" formControlName="redLink" id="redUrl" class="col-12" [class.border-danger]="LinkInvalid" aria-describedby="redLinkHelp">
+                        <input type="url" formControlName="redLink" id="redUrl" class="form-control col-12" [class.border-danger]="LinkValid" aria-describedBy="redLinkHelp">  
+                         
                         <div *ngIf="Link?.errors  && Link?.touched" class="mb-4">    
                           <small *ngIf="Link?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
-                          <small *ngIf="Link?.hasError('pattern')" class="error text-small"><i>Debe ser un formato válido.</i></small>
+                          <!--<small *ngIf="Link?.hasError('pattern')" class="error text-small"><i>Debe ser un formato válido.</i></small>-->
                         </div>
                       </div>
+
+
+
+
 
                       <div class="text-end">
                         <button type="button" class="btn" data-bs-target="#modalRedesAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
@@ -52,12 +65,12 @@
         <h5 class="modal-title" id="modalRedesAdd">Add Redes</h5>
       </div>
 
-              <form  [formGroup]="redes_form" (ngSubmit)="onSubmit()" id="redes_formAdd">
+              <form  [formGroup]="redes_form" (ngSubmit)="onSubmit($event)" id="redes_formAdd">
                 <div class="modal-body">
                   
                       <div class="mb-3">
                         <label for="redIcono" class="form-label"><i>Icono</i></label>
-                        <input type="text" formControlName="redIcono" id="redIcono" class="col-12" [class.border-danger]="IconoInvalid" aria-describedby="redIconoHelp">
+                        <input type="text" formControlName="redIcono" id="redIcono" class="col-12" [class.border-danger]="IconoValid" aria-describedby>
                         <div *ngIf="Icono?.errors  && Icono?.touched" class="mb-4">
                           <small *ngIf="Icono?.hasError('required')" class="error text-small"><i>Icono requerido.</i></small>
                         </div>
@@ -65,7 +78,7 @@
 
                       <div class="mb-3">
                         <label for="redLink" class="form-label"><i>URL</i></label>
-                        <input type="text" formControlName="redLink" id="redUrl" class="col-12" [class.border-danger]="LinkInvalid" aria-describedby="redLinkHelp">
+                        <input type="text" formControlName="redLink" id="redUrl" class="col-12" [class.border-danger]="LinkValid" aria-describedby>
                         <div *ngIf="Link?.errors  && Link?.touched" class="mb-4">    
                           <small *ngIf="Link?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
                           <small *ngIf="Link?.hasError('pattern')" class="error text-small"><i>Debe ser un formato válido.</i></small>
@@ -97,32 +110,16 @@
         <h5 class="modal-title" id="modalRedesDelete">Delete Redes</h5>
       </div>
 
-              <form  [formGroup]="redes_form" (ngSubmit)="onSubmit()" id="redes_formDelete">
+              <form  [formGroup]="redes_form" (ngSubmit)="onSubmit($event)" id="redes_formDelete">
                 <div class="modal-body">
                   
-                      <div class="mb-3">
-                        <label for="redIcono" class="form-label"><i>Icono</i></label>
-                        <input type="text" formControlName="redIcono" id="redIcono" class="col-12" [class.border-danger]="IconoInvalid" aria-describedby="redIconoHelp">
-                        <div *ngIf="Icono?.errors  && Icono?.touched" class="mb-4">
-                          <small *ngIf="Icono?.hasError('required')" class="error text-small"><i>Icono requerido.</i></small>
-                        </div>
+                  <div class="modal-body">
+                    <div class="text-end">
+                      <button type="button" class="btn" data-bs-target="#modalRedesEdit" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
+                      <button type="button" class="btn"  aria-label="Delete"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                      <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                       </div>
-
-                      <div class="mb-3">
-                        <label for="redLink" class="form-label"><i>URL</i></label>
-                        <input type="text" formControlName="redLink" id="redUrl" class="col-12" [class.border-danger]="LinkInvalid" aria-describedby="redLinkHelp">
-                        <div *ngIf="Link?.errors  && Link?.touched" class="mb-4">    
-                          <small *ngIf="Link?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
-                          <small *ngIf="Link?.hasError('pattern')" class="error text-small"><i>Debe ser un formato válido.</i></small>
-                        </div>
-                      </div>
-
-                      <div class="text-end">
-                        <button type="button" class="btn" data-bs-target="#modalRedesAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
-                        <button type="button" class="btn" data-bs-target="#modalRedes" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
-                        <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                        <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
+              </div>
 
                 </div>
               </form>

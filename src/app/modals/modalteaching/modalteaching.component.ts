@@ -13,10 +13,9 @@ export class ModalteachingComponent implements OnInit {
   submitted=false;
 
   constructor(private portfolioService:PortfolioService, private formBuilder: FormBuilder) { 
-    
-  }
-
-  ngOnInit(): void {
+    this.portfolioService.getDatos().subscribe(portfolio =>{
+      this.teaching_form=portfolio.aboutme;
+      });
     this.teaching_form= this.formBuilder.group({
       lugar:['', Validators.required],
       anioInicio:['',Validators.required],
@@ -25,46 +24,55 @@ export class ModalteachingComponent implements OnInit {
    })
   }
 
+  ngOnInit(): void {
+    
+  }
+
 
   get Lugar(){
     return this.teaching_form.get("lugar");
    }
-   get LugarInvalid() {
+   get LugarValid() {
      return this.Lugar?.touched && !this.Lugar?.valid;
    }
  
    get AnioInicio(){
     return this.teaching_form.get("anioInicio");
    }
-   get AnioInicioInvalid() {
+   get AnioInicioValid() {
      return this.AnioInicio?.touched && !this.AnioInicio?.valid;
    }
 
    get AnioFin(){
     return this.teaching_form.get("anioFin");
    }
-   get AnioFinInvalid() {
+   get AnioFinValid() {
      return this.AnioFin?.touched && !this.AnioFin?.valid;
    }
 
    get Descrip(){
     return this.teaching_form.get("descrip");
    }
-   get DescripInvalid() {
+   get DescripValid() {
      return this.Descrip?.touched && !this.Descrip?.valid;
    }
 
 
-   onSubmit(): void {
-    this.submitted = true;
-  
-    if (this.teaching_form.invalid) {
-      return;
+   onSubmit(event: Event) {
+    // Detenemos la propagación o ejecución del comportamiento submit de un form
+    event.preventDefault; 
+ 
+    if (this.teaching_form.valid){
+      // Llamamos a nuestro servicio para enviar los datos al servidor
+      // También podríamos ejecutar alguna lógica extra
+      alert("Todo en orden. Ya puede enviar su formulario.");
+    }else{
+      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+      this.teaching_form.markAllAsTouched()
+      alert("Revise su formulario."); 
     }
-  
-    console.log(JSON.stringify(this.teaching_form.value, null, 2));
   }
-  
+
   onReset(): void {
     this.submitted = false;
     this.teaching_form.reset();

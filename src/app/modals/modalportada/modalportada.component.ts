@@ -14,10 +14,6 @@ export class ModalportadaComponent implements OnInit {
 
 
   constructor(private portfolioService:PortfolioService, private formBuilder: FormBuilder) {
-    
-   }
-
-  ngOnInit(): void {
     this.portfolioService.getDatos().subscribe(portfolio =>{
       this.portada_form=portfolio.portada;
       });
@@ -26,6 +22,10 @@ export class ModalportadaComponent implements OnInit {
       imagen:['', Validators.required],
       intro:['', Validators.required],
    })
+   }
+
+  ngOnInit(): void {
+    
       
   }
 
@@ -33,25 +33,31 @@ export class ModalportadaComponent implements OnInit {
   get Imagen(){
     return this.portada_form.get("imagen");
    }
-   /* get ImagenInvalid() {
-     return this.imagen?.touched;
+  get ImagenValid() {
+     return this.Imagen?.touched;
    }
-  */
+  
    get Intro(){
      return this.portada_form.get("intro");
    }
-   get IntroInvalid(){
+   get IntroValid(){
      return this.Intro?.touched && !this.Intro?.valid;
    } 
  
-   onSubmit(): void {
-    this.submitted = true;
 
-    if (this.portada_form.invalid) {
-      return;
+   onSubmit(event: Event) {
+    // Detenemos la propagación o ejecución del comportamiento submit de un form
+    event.preventDefault; 
+ 
+    if (this.portada_form.valid){
+      // Llamamos a nuestro servicio para enviar los datos al servidor
+      // También podríamos ejecutar alguna lógica extra
+      alert("Todo en orden. Ya puede enviar su formulario.");
+    }else{
+      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+      this.portada_form.markAllAsTouched()
+      alert("Revise su formulario."); 
     }
-
-    console.log(JSON.stringify(this.portada_form.value, null, 2));
   }
 
   onReset(): void {

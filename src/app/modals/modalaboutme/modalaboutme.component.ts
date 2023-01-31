@@ -18,7 +18,8 @@ export class ModalaboutmeComponent implements OnInit {
       texto:['',[Validators.required, Validators.minLength(6)]],
    }) */
    this.portfolioService.getDatos().subscribe(portfolio =>{
-    this.aboutme_form=portfolio.aboutme;
+    //this.aboutme_form=portfolio.aboutme;
+    this.portfolioService=portfolio.portfolioService;
     });
   this.aboutme_form= this.formBuilder.group({
     aboutme:['', Validators.required],
@@ -34,16 +35,11 @@ export class ModalaboutmeComponent implements OnInit {
 get Imagen(){
   return this.aboutme_form.get("aboutme");
  }
- get ImagenInvalid() {
-   return this.Imagen?.touched && !this.Imagen?.valid;
- }
 
  get Texto(){
    return this.aboutme_form.get("texto");
  }
- get TextoInvalid(){
-   return this.Texto?.touched && !this.Texto?.valid;
- }
+
 
  onSubmit(event: Event) {
   // Detenemos la propagación o ejecución del comportamiento submit de un form

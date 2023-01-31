@@ -15,7 +15,7 @@ import { AadminComponent } from './componentes/aadmin/aadmin.component';
 const routes: Routes = [
   {path:'index', component:IndexComponent},
   {path:'navbar', component:NavbarComponent},
-  {path: 'login', component: LoginComponent },
+  //{path: 'login', component: LoginComponent },
   {path: 'aadmin', component:AadminComponent},
   {path:'navbaradmin', component:NavbaradminComponent},
   {path:'', redirectTo:'/index', pathMatch:'full'},
@@ -25,6 +25,7 @@ const routes: Routes = [
 
 
 @NgModule({
+  declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

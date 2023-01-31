@@ -25,7 +25,7 @@
 
                   <div class="mb-3">
                     <label for="designLugar" class="form-label"><i>Lugar</i></label>
-                    <input type="text" formControlName="designLugar" id="designLugar" class="col-12" [class.border-danger]="LugarInvalid" aria-describedby="designLugarHelp">
+                    <input type="text" formControlName="designLugar" id="designLugar" class="col-12" [class.border-danger]="LugarValid" aria-describedby="designLugarHelp">
                   </div>
                   <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
                     <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
@@ -33,7 +33,7 @@
 
                   <div class="mb-3">
                     <label for="designAnioInicio" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="designAnioInicio" id="designAnioInicio" class="col-12" [class.border-danger]="AnioInicioInvalid" aria-describedby="designAnioInicioHelp">
+                    <input type="text" formControlName="designAnioInicio" id="designAnioInicio" class="col-12" [class.border-danger]="AnioInicioValid" aria-describedby="designAnioInicioHelp">
                   </div>
                   <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
                     <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año inicio requerido.</i></small>
@@ -42,7 +42,7 @@
 
                   <div class="mb-3">
                     <label for="designAnioFin" class="form-label"><i>Fin</i></label>
-                    <input type="text" formControlName="designAnioFin" id="designAnioFin" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="designAnioFinHelp">
+                    <input type="text" formControlName="designAnioFin" id="designAnioFin" class="col-12" [class.border-danger]="AnioFinValid" aria-describedby="designAnioFinHelp">
                   </div>
                   <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
                     <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año fin requerido.</i></small>
@@ -89,7 +89,7 @@
                   
                   <div class="mb-3">
                     <label for="designLugarAdd" class="form-label"><i>Lugar</i></label>
-                    <input type="text" formControlName="designLugarAdd" id="designLugarAdd" class="col-12" [class.border-danger]="LugarInvalid" aria-describedby="designLugarAddHelp">
+                    <input type="text" formControlName="designLugarAdd" id="designLugarAdd" class="col-12" [class.border-danger]="LugarValid" aria-describedby="designLugarAddHelp">
                   </div>
                   <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
                     <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
@@ -97,7 +97,7 @@
 
                   <div class="mb-3">
                     <label for="designAnioInicioAdd" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="designAnioInicioAdd" id="designAnioInicioAdd" class="col-12" [class.border-danger]="AnioInicioInvalid" aria-describedby="designAnioInicioAddHelp">
+                    <input type="text" formControlName="designAnioInicioAdd" id="designAnioInicioAdd" class="col-12" [class.border-danger]="AnioInicioValid" aria-describedby="designAnioInicioAddHelp">
                   </div>
                   <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
                     <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
@@ -106,7 +106,7 @@
 
                   <div class="mb-3">
                     <label for="designAnioFinAdd" class="form-label"><i>Fin</i></label>
-                    <input type="text" formControlName="designAnioFinAdd" id="designAnioFinAdd" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="designAnioFinAddHelp">
+                    <input type="text" formControlName="designAnioFinAdd" id="designAnioFinAdd" class="col-12" [class.border-danger]="AnioFinValid" aria-describedby="designAnioFinAddHelp">
                   </div>
                   <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
                     <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>

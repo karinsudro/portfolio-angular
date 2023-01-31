@@ -10,17 +10,19 @@
         <div class="modal-body">
           
               <div class="mb-3">
-                <label for="emailLogin" class="form-label"><i>Email</i></label>
-                <input type="email" formControlName="email" id="emailLogin" placeholder="  nombre@correo.com" class="col-12" [class.border-danger]="MailInvalid">
+                <label for="userLogin" class="form-label"><i>Email</i></label>
+                <input type="user" formControlName="text" [ngClass]="{'is-invalid':User?.errors && User?.touched,'is-valid':!User?.errors && User?.touched}"
+                class="form-control col-12" id="userLogin" placeholder="  Ingresá tu usuario" aria-describedby="userLoginHelp">
               </div>
-              <div *ngIf="Mail?.errors  && Mail?.touched" class="mb-4">    
-                <small *ngIf="Mail?.hasError('required')" class="error text-small"><i>El email es requerido.</i></small>
-                <small *ngIf="Mail?.hasError('email')" class="error text-small"><i>El formato del email debe ser válido.</i></small>
+              <div *ngIf="User?.errors  && User?.touched" class="mb-4">    
+                <small *ngIf="User?.hasError('required')" class="error text-small"><i>El nombre de usuario es requerido.</i></small>
+                <small *ngIf="User?.hasError('user')" class="error text-small"><i>El formato debe ser válido.</i></small>
               </div>
 
               <div class="mb-3">
                 <label for="passwordLogin" class="form-label"><i>Password</i></label>
-                <input type="password" formControlName="password" id="passwordLogin" placeholder="  Ingresá tu contraseña" class="col-12" [class.border-danger]="PasswordInvalid">
+                <input type="password" formControlName="password" [ngClass]="{'is-invalid':Password?.errors && Password?.touched,'is-valid':!Password?.errors && Password?.touched}"
+                class="form-control col-12" id="passwordLogin" placeholder="  Ingresá tu contraseña" aria-describedby="passwordLoginHelp">
               </div>
               <div *ngIf="Password?.errors  && Password?.touched" class="mb-4">
                 <small *ngIf="Password?.hasError('required')" class="error text-small"><i>El password es requerido.</i></small>
@@ -34,12 +36,12 @@
             
         </div>
       </form>
-
-      <div class="modal-footer">
+      <!--Register a implementarse más adelante-->
+      <!-- <div class="modal-footer">
         <small>Si no tenés cuenta <a data-bs-target="#modalRegister" data-bs-toggle="modal"><b>registrate</b></a></small>
-      </div>
+      </div> -->
       
     </div>
   </div>
 </div>
-<app-modalregister></app-modalregister>
+<!-- <app-modalregister></app-modalregister> -->

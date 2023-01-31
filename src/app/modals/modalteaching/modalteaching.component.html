@@ -7,7 +7,7 @@
         <h5 class="modal-title" id="modalTeaching">Edit Teaching Experience</h5>
       </div>
   
-              <form [formGroup]="teaching_form" (ngSubmit)="onSubmit()" id="teaching_form">
+              <form [formGroup]="teaching_form" (ngSubmit)="onSubmit($event)" id="teaching_form">
 
                 <div class="modal-body">
                   
@@ -24,7 +24,7 @@
 
                   <div class="mb-3">
                     <label for="teachingLugar" class="form-label"><i>Lugar</i></label>
-                    <input type="text" formControlName="teachingLugar" id="teachingLugar" class="col-12" [class.border-danger]="LugarInvalid" aria-describedby="teachingLugarHelp">
+                    <input type="text" formControlName="teachingLugar" id="teachingLugar" class="col-12" [class.border-danger]="LugarValid" aria-describedby="teachingLugarHelp">
                   </div>
                   <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
                     <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
@@ -32,7 +32,7 @@
 
                   <div class="mb-3">
                     <label for="teachingAnioInicio" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="teachingAnioInicio" id="teachingAnioInicio" class="col-12" [class.border-danger]="AnioInicioInvalid" aria-describedby="teachingAnioInicioHelp">
+                    <input type="text" formControlName="teachingAnioInicio" id="teachingAnioInicio" class="col-12" [class.border-danger]="AnioInicioValid" aria-describedby="teachingAnioInicioHelp">
                   </div>
                   <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
                     <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año inicio requerido.</i></small>
@@ -41,7 +41,7 @@
 
                   <div class="mb-3">
                     <label for="teachingAnioFin" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="teachingAnioFin" id="teachingAnioFin" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="teachingAnioFinHelp">
+                    <input type="text" formControlName="teachingAnioFin" id="teachingAnioFin" class="col-12" [class.border-danger]="AnioFinValid" aria-describedby="teachingAnioFinHelp">
                   </div>
                   <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
                     <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año fin requerido.</i></small>
@@ -82,13 +82,13 @@
         <h5 class="modal-title" id="modalTeachingAdd">Add Teaching Experience</h5>
       </div>
   
-              <form [formGroup]="teaching_form" (ngSubmit)="onSubmit()" id="teaching_formAdd">
+              <form [formGroup]="teaching_form" (ngSubmit)="onSubmit($event)" id="teaching_formAdd">
 
                 <div class="modal-body">
                   
                   <div class="mb-3">
                     <label for="teachingLugar" class="form-label"><i>Lugar</i></label>
-                    <input type="text" formControlName="teachingLugar" id="teachingLugar" class="col-12" [class.border-danger]="LugarInvalid" aria-describedby="teachingLugarHelp">
+                    <input type="text" formControlName="teachingLugar" id="teachingLugar" class="col-12" [class.border-danger]="LugarValid" aria-describedby="teachingLugarHelp">
                   </div>
                   <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
                     <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
@@ -96,7 +96,7 @@
 
                   <div class="mb-3">
                     <label for="teachingAnioInicio" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="teachingAnioInicio" id="teachingAnioInicio" class="col-12" [class.border-danger]="AnioInicioInvalid" aria-describedby="teachingAnioInicioHelp">
+                    <input type="text" formControlName="teachingAnioInicio" id="teachingAnioInicio" class="col-12" [class.border-danger]="AnioInicioValid" aria-describedby="teachingAnioInicioHelp">
                   </div>
                   <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
                     <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
@@ -105,7 +105,7 @@
 
                   <div class="mb-3">
                     <label for="teachingAnioFin" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="teachingAnioFin" id="teachingAnioFin" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="teachingAnioFinHelp">
+                    <input type="text" formControlName="teachingAnioFin" id="teachingAnioFin" class="col-12" [class.border-danger]="AnioFinValid" aria-describedby="teachingAnioFinHelp">
                   </div>
                   <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
                     <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
@@ -145,7 +145,7 @@
         <h5 class="modal-title" id="modalTeachingDelete">Delete Teaching Experience</h5>
       </div>
   
-              <form [formGroup]="teaching_form" (ngSubmit)="onSubmit()" id="teaching_formDelete">
+              <form [formGroup]="teaching_form" (ngSubmit)="onSubmit($event)" id="teaching_formDelete">
 
                 <div class="modal-body">
 
@@ -162,7 +162,7 @@
                   
                   <div class="mb-3">
                     <label for="teachingLugar" class="form-label"><i>Lugar</i></label>
-                    <input type="text" formControlName="teachingLugar" id="teachingLugar" class="col-12" [class.border-danger]="LugarInvalid" aria-describedby="teachingLugarHelp">
+                    <input type="text" formControlName="teachingLugar" id="teachingLugar" class="col-12" [class.border-danger]="LugarValid" aria-describedby="teachingLugarHelp">
                   </div>
                   <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
                     <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
@@ -170,7 +170,7 @@
 
                   <div class="mb-3">
                     <label for="teachingAnioInicio" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="teachingAnioInicio" id="teachingAnioInicio" class="col-12" [class.border-danger]="AnioInicioInvalid" aria-describedby="teachingAnioInicioHelp">
+                    <input type="text" formControlName="teachingAnioInicio" id="teachingAnioInicio" class="col-12" [class.border-danger]="AnioInicioValid" aria-describedby="teachingAnioInicioHelp">
                   </div>
                   <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
                     <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
@@ -179,7 +179,7 @@
 
                   <div class="mb-3">
                     <label for="teachingAnioFin" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="teachingAnioFin" id="teachingAnioFin" class="col-12" [class.border-danger]="AnioFinInvalid" aria-describedby="teachingAnioFinHelp">
+                    <input type="text" formControlName="teachingAnioFin" id="teachingAnioFin" class="col-12" [class.border-danger]="AnioFinValid" aria-describedby="teachingAnioFinHelp">
                   </div>
                   <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
                     <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>

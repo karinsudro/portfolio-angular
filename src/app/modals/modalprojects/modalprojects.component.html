@@ -7,7 +7,7 @@
     <h5 class="modal-title" id="modalDesign">Edit a Project</h5>
   </div>
 
-          <form [formGroup]="project_form" (ngSubmit)="onSubmit()" id="project_form">
+          <form [formGroup]="project_form" (ngSubmit)="onSubmit($event)" id="project_form">
 
             <div class="modal-body">
 
@@ -22,7 +22,7 @@
 
                   <div class="mb-3">
                     <label for="projectImagen" class="form-label"><i>Imagen</i></label>
-                    <input type="file" class="form-control" id="projectImagen" placeholder="imagen" class="col-12" [class.border-danger]="ImagenInvalid" >
+                    <input type="file" class="form-control" id="projectImagen" placeholder="imagen" class="col-12" [class.border-danger]="ImagenValid" >
                   </div>
                   <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">    
                     <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Insertar imagen.</i></small>
@@ -30,7 +30,7 @@
 
                   <div class="mb-3">
                     <label for="projectTitulo" class="form-label"><i>Proyecto</i></label>
-                    <input type="text" class="form-control" id="projectTitulo" class="col-12" [class.border-danger]="TituloInvalid" >
+                    <input type="text" class="form-control" id="projectTitulo" class="col-12" [class.border-danger]="TituloValid" >
                   </div>
                   <div *ngIf="Titulo?.errors  && Titulo?.touched" class="mb-4">    
                     <small *ngIf="Titulo?.hasError('required')" class="error text-small"><i>Título del proyecto.</i></small>
@@ -39,7 +39,7 @@
 
                   <div class="mb-3">
                     <label for="projectDescripcion" class="form-label"><i>Descripción</i></label>
-                    <textarea class="text w-100" id="projectDescripcion" style="overflow:auto;" rows="3" [class.border-danger]="DescripInvalid" ></textarea>
+                    <textarea class="text w-100" id="projectDescripcion" style="overflow:auto;" rows="3" [class.border-danger]="DescripValid" ></textarea>
                   </div>
                   <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
                     <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Escribir descripción.</i></small>
@@ -48,7 +48,7 @@
 
                   <div class="mb-3">
                     <label for="projectDemo" class="form-label"><i>Demo</i></label>
-                    <input type="text" class="form-control" id="projectDemo" placeholder="URL live demo" class="col-12" [class.border-danger]="DemoInvalid" >
+                    <input type="text" class="form-control" id="projectDemo" placeholder="URL live demo" class="col-12" [class.border-danger]="DemoValid" >
                   </div>
                   <div *ngIf="Demo?.errors  && Demo?.touched" class="mb-4">    
                     <small *ngIf="Demo?.hasError('required')" class="error text-small"><i>Url demo.</i></small>
@@ -56,7 +56,7 @@
 
                   <div class="mb-3">
                     <label for="projectRepo" class="form-label"><i>Repositorio</i></label>
-                    <input type="text" class="form-control" id="projectRepo" placeholder="URL repositorio" class="col-12" [class.border-danger]="RepoInvalid" >
+                    <input type="text" class="form-control" id="projectRepo" placeholder="URL repositorio" class="col-12" [class.border-danger]="RepoValid" >
                   </div>
                   <div *ngIf="Repo?.errors  && Repo?.touched" class="mb-4">    
                     <small *ngIf="Repo?.hasError('required')" class="error text-small"><i>Url repositorio.</i></small>

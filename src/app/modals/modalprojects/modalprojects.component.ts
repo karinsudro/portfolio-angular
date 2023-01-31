@@ -15,10 +15,6 @@ export class ModalprojectsComponent implements OnInit {
 
 
   constructor(private portfolioService:PortfolioService, private formBuilder: FormBuilder) {
-    
-   }
-
-  ngOnInit(): void {
     this.portfolioService.getDatos().subscribe(portfolio =>{
       this.project_form=portfolio.aboutme;
       });
@@ -29,6 +25,10 @@ export class ModalprojectsComponent implements OnInit {
       demo:['', Validators.required],
       repo:['', Validators.required],
    })
+   }
+
+  ngOnInit(): void {
+    
   }
 
 
@@ -36,47 +36,52 @@ export class ModalprojectsComponent implements OnInit {
    get Imagen(){
     return this.project_form.get("imagen");
    }
-   get ImagenInvalid() {
+   get ImagenValid() {
      return this.Imagen?.touched && !this.Imagen?.valid;
    }
 
   get Titulo(){
     return this.project_form.get("titulo");
    }
-   get TituloInvalid() {
+   get TituloValid() {
      return this.Titulo?.touched && !this.Titulo?.valid;
    }
  
    get Descrip(){
     return this.project_form.get("descrip");
    }
-   get DescripInvalid() {
+   get DescripValid() {
      return this.Descrip?.touched && !this.Descrip?.valid;
    }
 
    get Demo(){
     return this.project_form.get("demo");
    }
-   get DemoInvalid() {
+   get DemoValid() {
      return this.Demo?.touched && !this.Demo?.valid;
    }
 
    get Repo(){
     return this.project_form.get("repo");
    }
-   get RepoInvalid() {
+   get RepoValid() {
      return this.Repo?.touched && !this.Repo?.valid;
    }
 
 
-   onSubmit(): void {
-    this.submitted = true;
-
-    if (this.project_form.invalid) {
-      return;
+   onSubmit(event: Event) {
+    // Detenemos la propagación o ejecución del comportamiento submit de un form
+    event.preventDefault; 
+ 
+    if (this.project_form.valid){
+      // Llamamos a nuestro servicio para enviar los datos al servidor
+      // También podríamos ejecutar alguna lógica extra
+      alert("Todo en orden. Ya puede enviar su formulario.");
+    }else{
+      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+      this.project_form.markAllAsTouched()
+      alert("Revise su formulario."); 
     }
-
-    console.log(JSON.stringify(this.project_form.value, null, 2));
   }
 
   onReset(): void {

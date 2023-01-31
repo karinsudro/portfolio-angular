@@ -13,12 +13,9 @@ export class ModalredesComponent implements OnInit {
   submitted=false;
 
   constructor(private portfolioService:PortfolioService, private formBuilder: FormBuilder) { 
-
-  }
-
-
-
-  ngOnInit(): void {
+    this.portfolioService.getDatos().subscribe(portfolio =>{
+      this.redes_form=portfolio.aboutme;
+      });
     const red = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
     this.redes_form= this.formBuilder.group({
       icono:['', Validators.required],
@@ -27,29 +24,40 @@ export class ModalredesComponent implements OnInit {
   }
 
 
+
+  ngOnInit(): void {
+    
+  }
+
+
 //estos son todos métodos
 get Icono(){
   return this.redes_form.get("aboutme");
  }
- get IconoInvalid() {
+ get IconoValid() {
    return this.Icono?.touched && !this.Icono?.valid;
  }
 
  get Link(){
    return this.redes_form.get("texto");
  }
- get LinkInvalid(){
+ get LinkValid(){
    return this.Link?.touched && !this.Link?.valid;
  }
 
- onSubmit(): void {
-  this.submitted = true;
+ onSubmit(event: Event) {
+  // Detenemos la propagación o ejecución del comportamiento submit de un form
+  event.preventDefault; 
 
-  if (this.redes_form.invalid) {
-    return;
+  if (this.redes_form.valid){
+    // Llamamos a nuestro servicio para enviar los datos al servidor
+    // También podríamos ejecutar alguna lógica extra
+    alert("Todo en orden. Ya puede enviar su formulario.");
+  }else{
+    // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+    this.redes_form.markAllAsTouched()
+    alert("Revise su formulario."); 
   }
-
-  console.log(JSON.stringify(this.redes_form.value, null, 2));
 }
 
 onReset(): void {
