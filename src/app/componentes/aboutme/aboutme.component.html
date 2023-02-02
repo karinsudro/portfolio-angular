@@ -1,19 +1,19 @@
 <!---ABOUT ME-->
 <div class="container caja bio arriba" id="home">
-  <h3 class="titulo-centrado">{{aboutme.titulo}}</h3>
+  <h3 class="titulo-centrado">{{ titulo }}</h3>
  
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" *ngFor="let about of persona">
     <div class="bio-image-col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-      <img class="rounded-circle img-fluid" [src]="aboutme.foto"  alt="Karin">
+      <img class="rounded-circle img-fluid" [src]="about.foto"  alt="Karin">
     </div>
     <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 col-xl-9">
     <p><i>
-      {{aboutme.saludoA}}<br>
-      {{aboutme.saludoB}}<br>
-      {{aboutme.saludoC}} <strong>{{aboutme.saludoD}}</strong><br>
-      {{aboutme.saludoE}}<br>
-      {{aboutme.saludoF}}<br>
-      {{aboutme.saludoG}}
+      {{ about.saludoA }}<br>
+      {{ about.saludoB }}<br>
+      {{ about.saludoC }} <strong>{{about.saludoD}}</strong><br>
+      {{ about.saludoE }}<br>
+      {{ about.saludoF }}<br>
+      {{ about.saludoG }}
   </i></p>
   </div>
   </div>

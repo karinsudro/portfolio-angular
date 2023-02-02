@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from 'src/app/model/project';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { ProjectService } from 'src/app/servicios/project.service';
 
 @Component({
   selector: 'app-projects',
@@ -7,16 +9,24 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-  projects:any;
+  project?:Project[];
 
-  constructor(private portfolioservice:PortfolioService) { }
+  
+
+  constructor(private projectServ:ProjectService) { }
 
   ngOnInit(): void {
-    this.portfolioservice.getDatos().subscribe(portfolio =>{
+    this.cargarProject();
+  }
 
-      //inicializa variable skills (lo q puse en el json)
-      this.projects=portfolio.projects;
-      });
+
+  /*cargarPersona(): void{
+    //muestra todas las personas
+    this.personaServ.get().subscribe(data => (this.persona=data));
+  }*/
+
+  cargarProject(): void{   //sin retorno, solo caraga datos
+    this.projectServ.getProjects().subscribe(data => (this.project=data));
   }
 
 

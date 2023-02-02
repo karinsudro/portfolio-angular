@@ -19,7 +19,7 @@ export class ModalloginComponent implements OnInit {
         ///grupo de controles para el form de modal login
         this.login_form= this.formBuilder.group({
           email:['', [Validators.required, Validators.email]],
-          password:['',[Validators.required, Validators.minLength(8)]],
+          password:['',[Validators.required, Validators.minLength(4)]],
        })
    }
 

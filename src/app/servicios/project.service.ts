@@ -6,11 +6,9 @@ import { Project } from '../model/project';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectService {
 
-  editProject(){
-    throw new Error('Method not implemented');
-  }
+
+export class ProjectService {
   
     //ruta del netbeans que trae a la persona
     url= 'http://localhost:8080/project/';
@@ -19,23 +17,24 @@ export class ProjectService {
     constructor(private httpClient:HttpClient) { }
   
   //traigo métodos del netbeans
-    public verProjects(): Observable<Project[]> {
+  //ver todods
+    public getProjects(): Observable<Project[]> {
       return this.httpClient.get<Project[]>(this.url + `lista`);
     }
-  
-    public verProject(id: number): Observable<Project> {
+  //ver uno
+    public findProject(id: number): Observable<Project> {
       return this.httpClient.get<Project>(this.url + `find/${id}`);
     }
-  
-    public crearProject(proj: Project): Observable<any> {
+  //crear
+    public saveProject(proj: Project): Observable<any> {
       return this.httpClient.post<Project>(this.url + `new`, proj);
     }
-  
-    public eliminarProject(id: number): Observable<Project> {
+  //eliminar
+    public deleteProject(id: number): Observable<Project> {
       return this.httpClient.delete<Project>(this.url + `delete/` + id);
     }
-    
-    public editarProject(proj: Project): Observable<any> {
+  //editar  
+    public editProject(proj: Project): Observable<any> {
       return this.httpClient.put<Project>(this.url + `edit/$`, proj);
     }
 }

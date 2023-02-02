@@ -1,0 +1,56 @@
+<!--antes de meter todo en el btn login-->
+<!-- Button trigger modal -->
+<a data-bs-toggle="modal" href="#modalLogin" role="button" class="btn list-group-item" ><i class="fa-solid fa-user-lock fa-lg"></i></a>
+
+<!--<app-modallogin></app-modallogin>-->
+<!--fin del diseño inicial-->
+
+
+
+<!--Modal LOGIN-->
+<div class="modal fade" id="modalLogin" aria-hidden="true" aria-labelledby="modalLogin" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLogin">Logueate</h5>
+        </div>
+  
+        <form  [formGroup]="login_form" name="login_form" (ngSubmit)="onSubmit($event)">
+          <div class="modal-body">
+            <!--USER-->
+                <div class="mb-3">
+                  <label for="userLogin" class="form-label"><i>User</i></label>
+                  <input type="text" formControlName="user" class="form-control col-12" [(ngModel)]="persona.user" [ngClass]="{'is-invalid':User?.errors && User?.touched,'is-valid':!User?.errors && User?.touched}"
+                  id="userLogin" placeholder="  Ingresá tu usuario" aria-describedby="userLoginHelp">
+                </div>
+                <div *ngIf="User?.errors  && User?.touched" class="mb-4">    
+                  <small *ngIf="User?.hasError('required')" class="error text-small"><i>El nombre de usuario es requerido.</i></small>
+                  <!--<small *ngIf="User?.hasError('user')" class="error text-small"><i>El formato debe ser válido.</i></small>-->
+                </div>
+            <!--PASSWORD-->
+                <div class="mb-3">
+                  <label for="passwordLogin" class="form-label"><i>Password</i></label>
+                  <input type="password" formControlName="password" [(ngModel)]="persona.password" [ngClass]="{'is-invalid':Password?.errors && Password?.touched,'is-valid':!Password?.errors && Password?.touched}"
+                  class="form-control col-12" id="passwordLogin" placeholder="  Ingresá tu contraseña" aria-describedby="passwordLoginHelp">
+                </div>
+                <div *ngIf="Password?.errors  && Password?.touched" class="mb-4">
+                  <small *ngIf="Password?.hasError('required')" class="error text-small"><i>El password es requerido.</i></small>
+                  <small *ngIf="Password?.hasError('minlength')" class="error text-small"><i>El password debe tener más de 8 caracteres.</i></small>
+                </div>
+  
+                <div class="text-end">
+                <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="onReset()"><i class="fa-solid fa-circle-xmark"></i></button>
+                </div>
+              
+          </div>
+        </form>
+        <!--Register a implementarse más adelante-->
+        <!-- <div class="modal-footer">
+          <small>Si no tenés cuenta <a data-bs-target="#modalRegister" data-bs-toggle="modal"><b>registrate</b></a></small>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+  <!-- <app-modalregister></app-modalregister> -->

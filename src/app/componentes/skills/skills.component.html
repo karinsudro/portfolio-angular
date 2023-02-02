@@ -54,13 +54,13 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-center" *ngFor="let caracter of skillssoft">
+                <div class="row justify-content-center" *ngFor="let progreso of skillssoft">
                   <div class="col-xs-9 col-sm-9 col-md-9">
   
-                      <span><i [ngClass]="caracter.icono"></i> {{caracter.skill}}</span>
+                      <span><i [ngClass]="progreso.icono"></i> {{progreso.skill}}</span>
                           <div class="progress grosor mb-2" > 
   
-                              <div  [ngClass]="caracter.color" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="caracter.progress">
+                              <div  [ngClass]="progreso.color" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="progreso.progress">
                               </div>
                           </div>
   

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { Skill } from 'src/app/model/skill';
+import { SkillService } from 'src/app/servicios/skill.service';
+//import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
   selector: 'app-skills',
@@ -14,21 +16,23 @@ export class SkillsComponent implements OnInit {
   skillslang:any=[];
   skillssoft:any = [];
 
+  //para el ngFor en el html
+  skills:Skill[]=[]; //trae array con info. CRUD conmodales
+
   //inyecto el servicio para tener acceso en la clase a los métodos
-  constructor(private portfolioservice:PortfolioService) { }
+  constructor(private skillservice:SkillService) { }
 
   ngOnInit(): void {
-    //almacena en la variable de instancia los datos recuperados por el servicio
-    //me suscribo xq son asincrónicos
-    this.portfolioservice.getDatos().subscribe(portfolio =>{
-
-    //inicializa variable skills (lo q puse en el json)
-    this.skillsfront=portfolio.skillsfront;
-    this.skillsback=portfolio.skillsback;
-    this.skillsdesign=portfolio.skillsdesign;
-    this.skillslang=portfolio.skillslang;
-    this.skillssoft=portfolio.skillssoft;
-    });
+    this.cargarSkills();
   }
 
-}
+
+  cargarSkills(): void{
+    this.skillservice.get().subscribe(data =>{
+      this.skills=data;
+  })}
+
+
+  }
+
+

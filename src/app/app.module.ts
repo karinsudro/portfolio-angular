@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -20,7 +20,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { ProjectsComponent } from './componentes/projects/projects.component';
 import { ErrorComponent } from './componentes/error/error.component';
 import { IndexComponent } from './componentes/index/index.component';
-import { LoginComponent } from './componentes/navbar/login/login.component';
+import { LoginComponent } from './componentes/login/login.component';
 import { NavbaradminComponent } from './componentes/navbaradmin/navbaradmin.component';
 import { LogoapComponent } from './componentes/navbar/logoap/logoap.component';
 import { HomeComponent } from './componentes/navbar/home/home.component';
@@ -41,6 +41,8 @@ import { ModalskillsComponent } from './modals/modalskills/modalskills.component
 import { ModalprojectsComponent } from './modals/modalprojects/modalprojects.component';
 import { ModalcontactmeComponent } from './modals/modalcontactme/modalcontactme.component';
 import { ResumeComponent } from './componentes/navbar/resume/resume.component';
+import { PersonaService } from './servicios/persona.service';
+import { InterceptorService } from './servicios/interceptor.service';
 
 
 
@@ -91,7 +93,10 @@ import { ResumeComponent } from './componentes/navbar/resume/resume.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],  //PortfolioService
+  providers: [
+    PersonaService,
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}
+  ],  //PortfolioService
   bootstrap: [AppComponent]
 })
 

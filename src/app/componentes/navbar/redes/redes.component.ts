@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { Red } from 'src/app/model/red';
+import { RedService } from 'src/app/servicios/red.service';
+//import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
   selector: 'app-redes',
@@ -7,16 +9,24 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
   styleUrls: ['./redes.component.css']
 })
 export class RedesComponent implements OnInit {
-  red:any = [];
+  red?:Red[];
 
-  constructor(private portfolioservice:PortfolioService) { }
+
+
+  constructor(private redesServ:RedService) { }
 
   ngOnInit(): void {
-    this.portfolioservice.getDatos().subscribe(portfolio =>{
+    this.cargarRed();
+  }
 
-      //inicializa variable
-      this.red=portfolio.red;
-      });
+
+  /*cargarPersona(): void{
+    //muestra todas las personas
+    this.personaServ.get().subscribe(data => (this.persona=data));
+  }*/
+
+  cargarRed(): void{   //sin retorno, solo caraga datos
+    this.redesServ.getRedes().subscribe(data => (this.red=data));
   }
 
 }

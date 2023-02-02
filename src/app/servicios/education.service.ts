@@ -8,34 +8,31 @@ import { Education } from '../model/education';
 })
 export class EducationService {
 
-  editEducation(){
-    throw new Error('Method not implemented');
-  }
-  
-    //ruta del netbeans que trae a la persona
-    url= 'http://localhost:8080/education/';
+  //ruta del netbeans que trae a la persona
+    url= 'http://localhost:8080/education/'; //reemplazar x ruta render
     updateEducation:any;
   
     constructor(private httpClient:HttpClient) { }
   
   //traigo métodos del netbeans
-    public verEducations(): Observable<Education[]> {
+  //vet todos
+    public getEducations(): Observable<Education[]> {
       return this.httpClient.get<Education[]>(this.url + `lista`);
     }
-  
-    public verEducation(id: number): Observable<Education> {
+  //ver uno
+    public findEducation(id: number): Observable<Education> {
       return this.httpClient.get<Education>(this.url + `find/${id}`);
     }
-  
-    public crearEducation(educ: Education): Observable<any> {
+  //crear
+    public saveEducation(educ: Education): Observable<any> {
       return this.httpClient.post<Education>(this.url + `new`, educ);
     }
-  
-    public eliminarEducation(id: number): Observable<Education> {
+  //eliminar
+    public deleteEducation(id: number): Observable<Education> {
       return this.httpClient.delete<Education>(this.url + `delete/` + id);
     }
-    
-    public editarEducation(educ: Education): Observable<any> {
+  //editar
+    public editEducation(educ: Education): Observable<any> {
       return this.httpClient.put<Education>(this.url + `edit/$`, educ);
     }
 }

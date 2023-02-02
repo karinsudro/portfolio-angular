@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/servicios/portfolio.service'; 
+import { Persona } from 'src/app/model/persona';
+import { PersonaService } from 'src/app/servicios/persona.service';
+//import { PortfolioService } from 'src/app/servicios/portfolio.service'; 
 
 @Component({
   selector: 'app-portada',
@@ -9,21 +11,27 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 export class PortadaComponent implements OnInit {
   //crear (inicializar) variables de instancia para guardar los datos con los que trata el servicio. SOn todos los datos que tenga q mostrar.
   //se pone el nombre q asigné en el apartado del json. Reepetir en cada .ts de componentes
+  //portada:any;
+
+  persona?:Persona[];
   portada:any;
 
 
   //inyectar servicio para tener acceso en la clase a los métodos
-  constructor(private portfolioService:PortfolioService) { }
+  constructor(private personaServ: PersonaService) { }
 
   ngOnInit(): void {
-    //almacena en la variable de instancia los datos recuperados por el servicio
-    this.portfolioService.getDatos().subscribe(portfolio =>{
-      //console.log(portfolio),
-    //definir información a mostrar (lo q puse en el json)
+    this.cargarPersona();
+  }
 
-    this.portada = portfolio.portada;
 
-    });
+  /*cargarPersona(): void{
+    //muestra todas las personas
+    this.personaServ.get().subscribe(data => (this.persona=data));
+  }*/
+
+  cargarPersona(): void{   //sin retorno, solo caraga datos
+    this.personaServ.getPersonas().subscribe(data => (this.persona=data));
   }
 
 }

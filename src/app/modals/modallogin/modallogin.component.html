@@ -26,7 +26,7 @@
               </div>
               <div *ngIf="Password?.errors  && Password?.touched" class="mb-4">
                 <small *ngIf="Password?.hasError('required')" class="error text-small"><i>El password es requerido.</i></small>
-                <small *ngIf="Password?.hasError('minlength')" class="error text-small"><i>El password debe tener más de 8 caracteres.</i></small>
+                <small *ngIf="Password?.hasError('minlength')" class="error text-small"><i>El password debe tener más de 4 caracteres.</i></small>
               </div>
 
               <div class="text-end">

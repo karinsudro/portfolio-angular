@@ -6,11 +6,9 @@ import { Skill } from '../model/skill';
 @Injectable({
   providedIn: 'root'
 })
-export class SkillService {
 
-  editSkill(){
-    throw new Error('Method not implemented');
-  }
+
+export class SkillService {
   
     //ruta del netbeans que trae a la persona
     url= 'http://localhost:8080/skill/';
@@ -19,23 +17,24 @@ export class SkillService {
     constructor(private httpClient:HttpClient) { }
   
   //traigo métodos del netbeans
-    public verSkills(): Observable<Skill[]> {
+  //ver todos
+    public getSkills(): Observable<Skill[]> {
       return this.httpClient.get<Skill[]>(this.url + `lista`);
     }
-  
-    public verSkill(id: number): Observable<Skill> {
+  //ver uno
+    public findSkill(id: number): Observable<Skill> {
       return this.httpClient.get<Skill>(this.url + `find/${id}`);
     }
-  
-    public crearSkill(skill: Skill): Observable<any> {
+  //crear
+    public saveSkill(skill: Skill): Observable<any> {
       return this.httpClient.post<Skill>(this.url + `new`, skill);
     }
-  
-    public eliminarSkill(id: number): Observable<Skill> {
+  //eliminar
+    public deleteSkill(id: number): Observable<Skill> {
       return this.httpClient.delete<Skill>(this.url + `delete/` + id);
     }
-    
-    public editarSkill(skill: Skill): Observable<any> {
+  //editar
+    public editSkill(skill: Skill): Observable<any> {
       return this.httpClient.put<Skill>(this.url + `edit/$`, skill);
     }
 }

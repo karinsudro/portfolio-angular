@@ -8,34 +8,31 @@ import { SkillTipo } from '../model/skill-tipo';
 })
 export class SkillTipoService {
 
-  editSkillTipo(){
-    throw new Error('Method not implemented');
-  }
-  
-    //ruta del netbeans que trae a la persona
+  //ruta del netbeans que trae a la persona
     url= 'http://localhost:8080/skillTipo/';
     updateSkillTipo:any;
   
     constructor(private httpClient:HttpClient) { }
   
   //traigo métodos del netbeans
-    public verSkillTipos(): Observable<SkillTipo[]> {
+  //ver todos
+    public getSkillTipos(): Observable<SkillTipo[]> {
       return this.httpClient.get<SkillTipo[]>(this.url + `lista`);
     }
-  
-    public verSkillTipo(id: number): Observable<SkillTipo> {
+  //ver uno
+    public findSkillTipo(id: number): Observable<SkillTipo> {
       return this.httpClient.get<SkillTipo>(this.url + `find/${id}`);
     }
-  
-    public crearSkillTipo(habil: SkillTipo): Observable<any> {
+  //crear
+    public saveSkillTipo(habil: SkillTipo): Observable<any> {
       return this.httpClient.post<SkillTipo>(this.url + `new`, habil);
     }
-  
-    public eliminarSkillTipo(id: number): Observable<SkillTipo> {
+  //eliminar
+    public deleteSkillTipo(id: number): Observable<SkillTipo> {
       return this.httpClient.delete<SkillTipo>(this.url + `delete/` + id);
     }
-    
-    public editarSkillTipo(habil: SkillTipo): Observable<any> {
+  //editar
+    public editSkillTipo(habil: SkillTipo): Observable<any> {
       return this.httpClient.put<SkillTipo>(this.url + `edit/$`, habil);
     }
 }

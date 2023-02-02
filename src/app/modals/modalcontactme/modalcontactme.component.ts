@@ -18,7 +18,7 @@ export class ModalcontactmeComponent implements OnInit {
     this.contact_form= this.formBuilder.group({
       nombre:['',Validators.required],
       email:['', [Validators.required, Validators.email]],
-      mensaje:['',Validators.required]
+      mensaje:['',[Validators.required, Validators.minLength(5), Validators.maxLength(250)]]
    })
   }
 
@@ -29,18 +29,30 @@ export class ModalcontactmeComponent implements OnInit {
 //estos son todos métodos
 get Nombre(){
   return this.contact_form.get("nombre");
-  
  }
+
 get Mail(){
   return this.contact_form.get("email");
  }
- get MailValid() {
+
+ get Mensaje(){
+  return this.contact_form.get("mensaje");
+ }
+ /*get MailValid() {
    return this.Mail?.touched && !this.Mail?.valid;
  }
  get Mensaje(){
   return this.contact_form.get("mensaje");
- }
+ }*/
 
+
+//para limpiar el form
+onReset(): void {
+  this.submitted = false;     //sacar o dejar?
+  this.contact_form.reset();
+}
+
+//PROBAR DE IMPLEMENTAR EL ENVIO DEL FORM DE CONTACTO
  onSubmit(event: Event) {
   // Detenemos la propagación o ejecución del comportamiento submit de un form
   event.preventDefault; 
@@ -56,9 +68,25 @@ get Mail(){
   }
 }
 
-onReset(): void {
-  this.submitted = false;
-  this.contact_form.reset();
-}
+//revisar
+/*onEnviar(event: Event){
+  event.preventDefault();
+  if (this.form.valid){
+    return this.http.post( "https://sifx3.com/emailpf.php",JSON.stringify(this.form.value)).subscribe( data=>{
+      alert("Tu Mensaje ha sido enviado con exito, Gracias por Contactarme");
+      this.form.reset();  
+      console.log(data);
+
+    });
+    return "Exito";    
+  }else{
+    alert("Debe ingresar todos los datos");
+    this.form.markAllAsTouched();
+    return null;
+  }       
+}*/
+
+
+
 
 }

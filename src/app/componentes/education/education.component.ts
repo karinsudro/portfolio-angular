@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { Education } from 'src/app/model/education';
+import { EducationService } from 'src/app/servicios/education.service';
+//import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
   selector: 'app-education',
@@ -7,17 +9,27 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
   styleUrls: ['./education.component.css']
 })
 export class EducationComponent implements OnInit {
-  education:any=[];
+  //education:any=[];
 
-  constructor(private portfolioservice:PortfolioService) { }
+  education!: Education[];
+  titulo: string = "Education";
+
+
+
+  constructor(private educationServ:EducationService) { }
 
   ngOnInit(): void {
-    this.portfolioservice.getDatos().subscribe(portfolio =>{
-      
-      //definir información a mostrar (lo q puse en el json)
-      this.education=portfolio.education;
-  
-      });
-    }
+    this.cargarEducation();
+  }
+
+
+  /*cargarPersona(): void{
+    //muestra todas las personas
+    this.personaServ.get().subscribe(data => (this.persona=data));
+  }*/
+
+  cargarEducation(): void{   //sin retorno, solo caraga datos
+    this.educationServ.getEducations().subscribe(data => (this.education=data));
+  }
   
   }

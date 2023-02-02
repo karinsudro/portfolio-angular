@@ -8,7 +8,7 @@
     },
 
     "aboutme":{
-        "titulo" : "Something about me",
+        
         "foto": "assets/images/fotoBio2.jpg",
         "saludoA" : "¡Hola! Yo soy Karin.",
         "saludoB": "Me apasiona aprender y enseñar, la tecnología, el diseño y la astronomía.",
@@ -31,6 +31,12 @@
             "red": "LinkedIn",
             "link":"https://www.linkedin.com/in/karin-sudro/",
             "icono": "fa-brands fa-linkedin fa-lg"
+        },
+        {
+            "id":3,
+            "red": "Curriculum Vitae",
+            "link":"https://drive.google.com/file/d/1TvAQF_ienjSZ0Q8fvLr0xMFklHsSgPx3/view?usp=sharing",
+            "icono": "fa-solid fa-file fa-lg"
         }
     ],
 

@@ -8,34 +8,32 @@ import { Persona } from '../model/persona';
 })
 export class PersonaService {
 
-editPersona(){
-  throw new Error('Method not implemented');
-}
 
   //ruta del netbeans que trae a la persona
-  url= 'http://localhost:8080/persona/';
+  url= 'http://localhost:8080/persona/';  //reemplazar x ruta render
   updatePersona:any;
 
   constructor(private httpClient:HttpClient) { }
 
 //traigo métodos del netbeans
-  public verPersonas(): Observable<Persona[]> {
+//ver todos
+  public getPersonas(): Observable<Persona[]> {
     return this.httpClient.get<Persona[]>(this.url + `lista`);
   }
-
-  public verPersona(id: number): Observable<Persona> {
+//ver uno
+  public findPersona(id: number): Observable<Persona> {
     return this.httpClient.get<Persona>(this.url + `find/${id}`);
   }
-
-  public crearPersona(per: Persona): Observable<any> {
+//crear
+  public savePersona(per: Persona): Observable<any> {
     return this.httpClient.post<Persona>(this.url + `new`, per);
   }
-
-  public eliminarPersona(id: number): Observable<Persona> {
+//eliminar
+  public deletePersona(id: number): Observable<Persona> {
     return this.httpClient.delete<Persona>(this.url + `delete/` + id);
   }
-  
-  public editarPersona(per: Persona): Observable<any> {
+  //editar
+  public editPersona(per: Persona): Observable<any> {
     return this.httpClient.put<Persona>(this.url + `edit/$`, per);
   }
 
