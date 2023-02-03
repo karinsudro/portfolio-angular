@@ -11,7 +11,7 @@ export class PersonaService {
 
   //ruta del netbeans que trae a la persona
   url= 'http://localhost:8080/persona/';  //reemplazar x ruta render
-  updatePersona:any;
+
 
   constructor(private httpClient:HttpClient) { }
 

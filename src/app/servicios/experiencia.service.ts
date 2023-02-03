@@ -8,9 +8,8 @@ import { Experiencia } from '../model/experiencia';
 })
 export class ExperienciaService {
 
-  //ruta del netbeans que trae a la persona
+  //ruta del netbeans que trae las experiencias laborales
     url= 'http://localhost:8080/experiencia/';
-    updateExperiencia:any;
   
     constructor(private httpClient:HttpClient) { }
   

@@ -28,7 +28,7 @@ export class SkillsComponent implements OnInit {
 
 
   cargarSkills(): void{
-    this.skillservice.get().subscribe(data =>{
+    this.skillservice.getSkills().subscribe(data =>{
       this.skills=data;
   })}
 
