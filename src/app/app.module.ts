@@ -42,7 +42,7 @@ import { ModalprojectsComponent } from './modals/modalprojects/modalprojects.com
 import { ModalcontactmeComponent } from './modals/modalcontactme/modalcontactme.component';
 import { ResumeComponent } from './componentes/navbar/resume/resume.component';
 import { PersonaService } from './servicios/persona.service';
-import { InterceptorService } from './servicios/interceptor.service';
+import { InterceptorInterceptor } from './interceptor.interceptor';
 
 
 
@@ -95,7 +95,7 @@ import { InterceptorService } from './servicios/interceptor.service';
   ],
   providers: [
     PersonaService,
-    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi:true}
   ],  //PortfolioService
   bootstrap: [AppComponent]
 })

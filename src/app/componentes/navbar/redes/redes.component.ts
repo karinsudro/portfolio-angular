@@ -20,10 +20,6 @@ export class RedesComponent implements OnInit {
   }
 
 
-  /*cargarPersona(): void{
-    //muestra todas las personas
-    this.personaServ.get().subscribe(data => (this.persona=data));
-  }*/
 
   cargarRed(): void{   //sin retorno, solo caraga datos
     this.redesServ.getRedes().subscribe(data => (this.red=data));

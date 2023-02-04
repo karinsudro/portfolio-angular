@@ -13,24 +13,26 @@ import { AuthService } from 'src/app/servicios/auth.service';
 
 export class LoginComponent implements OnInit {  
   login_form: FormGroup;
+  //FormGroup: any;
+  //login_form:any;
   user='';
-  password='';
-  //submitted = false;
+  clave='';
+  authService: any;
+  
+  //persona:Persona = new Persona("", "", "", "", "", "");
 
-  persona:Persona = new Persona("", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-
-  constructor(private ruta: Router, private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private ruta: Router, private formBuilder: FormBuilder, private autenService: AuthService) {
     ///grupo de controles para el form de login
     this.login_form= this.formBuilder.group({
       user:['', Validators.required],
-      password:['',[Validators.required, Validators.minLength(8)]],
+      clave:['',[Validators.required, Validators.minLength(8)]],
    })
   }
-}
+
 
   ngOnInit(): void {
-    sessionStorage.setItem('currentUser', null);
+    //sessionStorage.setItem('currentUser', null);
   }
 
 
@@ -39,52 +41,60 @@ get User(){
   return this.login_form.get("user");
  }
 
-get Password(){
-  return this.login_form.get("password");
+get Clave(){
+  return this.login_form.get("clave");
 }
 //validaciones
 get UserValid() {
    return this.User?.touched && !this.User?.valid;
  }
 
-get PasswordValid(){
-   return this.Password?.touched && !this.Password?.valid;
+get ClaveValid(){
+   return this.Clave?.touched && !this.Clave?.valid;
  }
 
 
  //para limpiar el form
- onReset(): void {
-   //this.submitted = false;     //sacar o dejar?
+ limpiar(): void {
+  console.log("Formulario limpio")
    this.login_form.reset();
  }
 
- onSubmit(event: Event) {
-   // Detenemos la propagación o ejecución del comportamiento submit de un form
-   event.preventDefault; 
-   if (this.login_form.valid){
-     //alert("Todo en orden. Ya puede enviar su formulario.");
-     //console.log(JSON.stringify(this.login_form.value)
-     this.authService.loginPersona(this.login_form.value).subscribe(data => {
+ 
+ //para enviar el form
+ onEnviar(event: Event){
+  // Detenemos la propagación o ejecución del compotamiento submit de un form
+  
+   
+ if (this.login_form.valid){
+    // Llamamos a nuestro servicio para enviar los datos al servidor
+    // También podríamos ejecutar alguna lógica extra
+    event.preventDefault; 
+let persona:Persona = new Persona("", "", "", "", this.login_form.get("user"),this.login_form.get("clave"));
+
+    this.autenService.loginPersona(this.login_form.value).subscribe(data=>{
       console.log("DATA:" + JSON.stringify(data));
-
-      if(data){
-        alert("Ingresando al admin panel");
-        this.ruta.navigate(['/aadmin'])
+      if (data === null || data === undefined)
+      {
+        alert("Credenciales no validas");
       }else{
-        // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
-        //this.login_form.markAllAsTouched()
-        alert("Acceso denegado.");
-        alert("Error al iniciar sesión."); 
+      this.ruta.navigate(['/aadmin']);
       }
-    }, error => {
-         alert("Se produjo un error.")
-      })
-
-    } else {
-      sessionStorage.setItem('currentUser', null);
-      alert( "Ha ocurrido un error. Regresá a la página principal.")
-      this.ruta.navigate(['/']); 
+    },
+    error=>{
+      console.log(error);
+      alert("Credenciales no validos" + error);
+    })
     
-   }
+  }
+  else{
+    // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+    sessionStorage.setItem('currenUser', "null");
+    sessionStorage.setItem('idUser', "0");
+    alert("Credenciales no validas");
+  }
+
+}
+
 
 }

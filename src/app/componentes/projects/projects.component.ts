@@ -10,7 +10,7 @@ import { ProjectService } from 'src/app/servicios/project.service';
 })
 export class ProjectsComponent implements OnInit {
   project?:Project[];
-
+  titulo: string = "Projects";
   
 
   constructor(private projectServ:ProjectService) { }

@@ -7,7 +7,9 @@ import { Persona } from '../model/persona';
   providedIn: 'root'
 })
 export class PersonaService {
-
+  persona: Persona[]=[];
+  listarPersonas: any;
+  sPersona: any;
 
   //ruta del netbeans que trae a la persona
   url= 'http://localhost:8080/persona/';  //reemplazar x ruta render

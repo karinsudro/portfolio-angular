@@ -10,17 +10,18 @@ import { SkillService } from 'src/app/servicios/skill.service';
 })
 export class SkillsComponent implements OnInit {
 //inicializo variables de instancias (el array)
-  skillsfront:any = [];
+  /* skillsfront:any = [];
   skillsback:any=[];
   skillsdesign:any=[];
   skillslang:any=[];
-  skillssoft:any = [];
+  skillssoft:any = []; */
 
   //para el ngFor en el html
   skills:Skill[]=[]; //trae array con info. CRUD conmodales
+  titulo="Hard & Soft Skills";
 
   //inyecto el servicio para tener acceso en la clase a los métodos
-  constructor(private skillservice:SkillService) { }
+  constructor(private skillServ:SkillService) { }
 
   ngOnInit(): void {
     this.cargarSkills();
@@ -28,7 +29,7 @@ export class SkillsComponent implements OnInit {
 
 
   cargarSkills(): void{
-    this.skillservice.getSkills().subscribe(data =>{
+    this.skillServ.getSkills().subscribe(data =>{
       this.skills=data;
   })}
 

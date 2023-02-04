@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Persona } from 'src/app/model/persona';
-import { PersonaService } from 'src/app/servicios/persona.service';
+import { About } from 'src/app/model/about';
+import { AboutService } from 'src/app/servicios/about.service';
 //import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
@@ -15,16 +15,16 @@ export class AboutMeComponent implements OnInit {
   
   //personas:Persona[]=[];  //llama al modelo, q es un array 
   //personas:any;
-  persona?: Persona[];
+  acerca?: About[];
   titulo: string = "About me";
   
 
 
 
-  constructor(private personaServ: PersonaService) { }
+  constructor(private aboutServ: AboutService) { }
 
   ngOnInit(): void {
-    this.cargarPersona();
+    this.cargarAbout();
   }
 
 
@@ -33,8 +33,8 @@ export class AboutMeComponent implements OnInit {
     this.personaServ.get().subscribe(data => (this.persona=data));
   }*/
 
-  cargarPersona(): void{   //sin retorno, solo caraga datos
-    this.personaServ.getPersonas().subscribe(data => (this.persona=data));
+  cargarAbout(): void{   //sin retorno, solo caraga datos
+    this.aboutServ.getAbouts().subscribe(data => (this.acerca=data));
   }
 
 }
