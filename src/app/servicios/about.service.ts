@@ -9,7 +9,7 @@ import { About } from '../model/about';
 export class AboutService {
 
     //ruta del netbeans que trae a la persona
-    url= 'http://localhost:8080/persona/';  //reemplazar x ruta render
+    url= 'http://localhost:8080/about/';  //reemplazar x ruta render
 
 
     constructor(private httpClient:HttpClient) { }
