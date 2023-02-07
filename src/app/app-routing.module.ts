@@ -7,7 +7,7 @@ import { ErrorComponent } from './componentes/error/error.component';
 //import { NavbarComponent } from './componentes/navbar/navbar.component';
 //import { NavbaradminComponent } from './componentes/navbaradmin/navbaradmin.component';
 import { AadminComponent } from './componentes/aadmin/aadmin.component';
-import { GuardGuard } from './servicios/guard.guard';
+//import { GuardGuard } from './servicios/guard.guard';
 import { LoginComponent } from './componentes/login/login.component';
 import { LogoutComponent } from './componentes/navbaradmin/logout/logout.component';
 
@@ -17,7 +17,7 @@ import { LogoutComponent } from './componentes/navbaradmin/logout/logout.compone
 const routes: Routes = [
   {path:'index', component:IndexComponent},
   //{path:'navbar', component:NavbarComponent},
-  {path: 'Login', component: LoginComponent, canActivate: [GuardGuard]},
+  {path: 'Login', component: LoginComponent},
   {path: 'Logout', component:LogoutComponent},
   {path: 'aadmin', component:AadminComponent},
  // {path:'navbaradmin', component:NavbaradminComponent},

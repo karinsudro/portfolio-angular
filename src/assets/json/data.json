@@ -35,7 +35,7 @@
         {
             "id":3,
             "red": "Curriculum Vitae",
-            "link":"https://drive.google.com/file/d/1TvAQF_ienjSZ0Q8fvLr0xMFklHsSgPx3/view?usp=sharing",
+            "link":"https://drive.google.com/file/d/1HVA1TZshHUlMAf6H4tn-EhgvqtOrCrqD/view?usp=share_link",
             "icono": "fa-solid fa-file fa-lg"
         }
     ],
@@ -87,19 +87,20 @@
         {
             "id": 2,
             "cargo": "Diseñadora gráfica",
-            "inicio": "1994",
-            "fin": "actualidad",
-            "lugar": "Trabajos varios",
-            "descripcion": "Trabajos varios de diseño: logotipos, sitios web, diseño editorial, entre otros."
-        },
-        {
-            "id": 1,
-            "cargo": "Diseñadora gráfica",
             "inicio": "2000",
             "fin": "2015",
             "lugar": "Asociación Amigos de la Astronomía",
             "descripcion": "Diseño gráfico de algunos ejemplares de la revista institucional y especiales para número aniversario (cd, portada contenedor, revista)."
+        },
+        {
+            "id": 1,
+            "cargo": "Diseñadora gráfica",
+            "inicio": "1994",
+            "fin": "actualidad",
+            "lugar": "Trabajos varios",
+            "descripcion": "Trabajos varios de diseño: logotipos, sitios web, diseño editorial, entre otros."
         }
+        
     ],
 
     "education":[
@@ -156,7 +157,7 @@
             "id": 3,
             "skill": "JAVASCRIPT",
             "icono": "fa-brands fa-square-js",
-            "progress": "50",
+            "progress": "70",
             "color": "progress-bar-frontend"
         },
         {
@@ -178,7 +179,7 @@
             {
                 "id": 1,
                 "skill": "MYSQL",
-                "icono": "",
+                "icono": "fa-brands fa-angular",
                 "progress": "75",
                 "color": "progress-bar-backend"
             },
@@ -199,8 +200,8 @@
             {
                 "id": 4,
                 "skill": "JAVA",
-                "icono": "",
-                "progress": "50",
+                "icono": "fa-brands fa-java",
+                "progress": "60",
                 "color": "progress-bar-backend"
             }
     ],
@@ -232,14 +233,14 @@
                 "id": 1,
                 "skill": "HEBREO",
                 "icono":"",
-                "progress": "90",
+                "progress": "95",
                 "color": "progress-bar-language"
             },
             {
                 "id": 2,
                 "skill": "INGLES",
                 "icono":"",
-                "progress": "85",
+                "progress": "90",
                 "color": "progress-bar-language"
             }
 ],

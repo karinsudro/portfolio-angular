@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Skill } from 'src/app/model/skill';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { SkillService } from 'src/app/servicios/skill.service';
 
 @Component({
   selector: 'app-modalskills',
@@ -9,39 +13,42 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class ModalskillsComponent implements OnInit {
   skills_form!: FormGroup;
-  tipo:any;
-  color:any;
-  submitted=false;
+  skills:Skill[]=[];
+  skill: any;
+  id?: number;
 
-  constructor(private portfolioService:PortfolioService, private formBuilder: FormBuilder) { 
-    this.portfolioService.getDatos().subscribe(portfolio =>{
-      this.skills_form=portfolio.aboutme;
-      });
+  titulo= "Hard & Soft Skills";
+
+
+  constructor(private httpClient: HttpClient, private skillServ: SkillService, private formBuilder: FormBuilder, private ruta: Router) { 
     this.skills_form= this.formBuilder.group({
-      tipo:['', Validators.required],
-      nombre:['',Validators.required],
+      id: [''],
+      skill_tipo:['', Validators.required],
+      skill:['', [Validators.required, Validators.minLength(2)]],
+      icono: [''],
+      progreso:['', [Validators.required, Validators.min(0), Validators.max(100)]],
       color:['',Validators.required],
-      porcent:['', [Validators.required, Validators.min(0), Validators.max(100)]],
-   })
-  }
-
-  ngOnInit(): void {
+      });
     
   }
 
+  ngOnInit(): void {
+    this.listarSkills();
+  }
 
-  get Tipo(){
-    return this.skills_form.get("tipo");
+
+  get Skill_tipo(){
+    return this.skills_form.get("skill_tipo");
    }
-   get TipoValid() {
-     return this.Tipo?.touched && !this.Tipo?.valid;
+   get Skill_tipoValid() {
+     return this.Skill_tipo?.touched && !this.Skill_tipo?.valid;
    }
  
-   get Nombre(){
-    return this.skills_form.get("nombre");
+   get Skill(){
+    return this.skills_form.get("skill");
    }
-   get NombreValid() {
-     return this.Nombre?.touched && !this.Nombre?.valid;
+   get SkillValid() {
+     return this.Skill?.touched && !this.Skill?.valid;
    }
 
    get Color(){
@@ -51,33 +58,73 @@ export class ModalskillsComponent implements OnInit {
      return this.Color?.touched && !this.Color?.valid;
    }
 
-   get Porcent(){
-    return this.skills_form.get("porcent");
+   get Porcentaje(){
+    return this.skills_form.get("porcentaje");
    }
-   get PorcentValid() {
-     return this.Porcent?.touched && !this.Porcent?.valid;
+   get PorcentajeValid() {
+     return this.Porcentaje?.touched && !this.Porcentaje?.valid;
    }
 
 
-   onSubmit(event: Event) {
-    // Detenemos la propagación o ejecución del comportamiento submit de un form
-    event.preventDefault; 
- 
-    if (this.skills_form.valid){
-      // Llamamos a nuestro servicio para enviar los datos al servidor
-      // También podríamos ejecutar alguna lógica extra
-      alert("Todo en orden. Ya puede enviar su formulario.");
-    }else{
-      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
-      this.skills_form.markAllAsTouched()
-      alert("Revise su formulario."); 
+   listarSkills(): void{
+    this.skillServ.getSkills().subscribe({next: (data) => {
+      this.skills = data;
+      console.log("Skills cargados correctamente");
+    },
+    error: (e) => console.error(e),
+    complete: () => console.info("completo")
+    })
+   }
+
+
+   cargarSkill(id: number){
+    this.skillServ.findSkill(id).subscribe({
+        next: (data) => {
+          this.skills_form.setValue(data);
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      });
+    console.log("Skill cargado correctamente");
     }
-  }
 
-  onReset(): void {
-    this.submitted = false;
-    this.skills_form.reset();
-  }
+    guardarSkill() {
+      let skill = this.skills_form.value;
+
+      if (skill.id == '') {
+        this.skillServ.saveSkill(skill).subscribe({
+          next: (data) => {
+            this.limpiar();
+          },
+          error: (e) => console.error(e),
+          complete: () => console.info('complete')
+        });
+        window.location.reload();
+        alert("Skill agregado correctamente");
+      } else {
+        this.skillServ.editSkill(skill).subscribe({
+          next: (data) => {
+            this.limpiar();
+          },
+          error: (e) => console.error(e),
+          complete: () => console.info('complete')
+        });
+        window.location.reload();
+        alert("Skill modificado correctamente");
+      }
+    }
+  
+    borrarSkill(id: number) {
+      if (confirm("Desea eliminar este skill?")) {
+        this.skillServ.deleteSkill(id).subscribe(data => {});
+        window.location.reload();
+        alert("Skill eliminado correctamente");
+      }
+    }
+
+    limpiar(): void {
+      this.skills_form.reset();
+    }
 
 
 }

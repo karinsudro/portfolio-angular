@@ -14,3 +14,38 @@ input::placeholder{
   .border-danger{
     border-color: #770000;
   }
+
+  /*---PROGRESS BARS---*/
+.grosor{
+  height: 0.313rem;
+  border-radius: 0.313rem;
+}
+.progress-bar{
+  background-color: #c5068f;
+}
+.progress-bar-frontend{
+  background-color: #8b0666;
+}
+.progress-bar-backend{
+  background-color: #6ac61a;
+}
+.progress-bar-design{
+  background-color: #f7bf1a;
+}
+.progress-bar-language{
+  background-color: #1a85f7;
+}
+.progress-bar-soft{
+  background-color: #f98538;
+}
+
+span {
+  display:block;
+  position: relative;
+  margin-top:1.25rem;
+  font-size: .85em;
+  color: #888888;
+  line-height: 1.063rem;
+  margin-bottom:0.313rem;
+}
+/*--FIN PROGRESS BAR--*/

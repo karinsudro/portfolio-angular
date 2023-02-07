@@ -8,20 +8,21 @@ import { AuthService } from './auth.service';
 })
 export class GuardGuard implements CanActivate {
 
-  constructor(private authService: AuthService, private rutas: Router){
+  constructor(private autenService: AuthService, private ruta: Router){
 
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let currentUser= this.authService.usuarioAutenticado;
+    let currentUser= this.autenService.usuarioAutenticado;
 
     if(currentUser && currentUser.id){
       return true;
     }else{
-      this.rutas.navigate(['/login']);
-      return true;
+      //JOsman tiene this.ruta comentado y return true, Marie lo descomentó y el return en false. Ver cuál me sirve!!!
+      this.ruta.navigate(['/login']);
+      return false;
     }
   }
   

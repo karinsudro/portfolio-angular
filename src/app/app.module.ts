@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; //, HTTP_INTERCEPTORS
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -42,62 +42,61 @@ import { ModalprojectsComponent } from './modals/modalprojects/modalprojects.com
 import { ModalcontactmeComponent } from './modals/modalcontactme/modalcontactme.component';
 import { ResumeComponent } from './componentes/navbar/resume/resume.component';
 import { PersonaService } from './servicios/persona.service';
-import { InterceptorInterceptor } from './interceptor.interceptor';
+//import { InterceptorInterceptor } from './interceptor.interceptor';
 
 
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    PortadaComponent,
-    AboutMeComponent,
-    TeachingComponent,
-    DesignComponent,
-    EducationComponent,
-    SkillsComponent,
-    ContactComponent,
-    FooterComponent,
-    ProjectsComponent,
-    ErrorComponent,
-    IndexComponent,
-    LoginComponent,
-    NavbaradminComponent,
-    LogoapComponent,
-    HomeComponent,
-    RedesComponent,
-    LogoapadminComponent,
-    LogoutComponent,
-    HomeeadminComponent,
-    AadminComponent,
-    ModalloginComponent,
-    ModalredesComponent,
-    ModalportadaComponent,
-    ModalregisterComponent,
-    ModalteachingComponent,
-    ModalaboutmeComponent,
-    ModaldesignComponent,
-    ModaleducationComponent,
-    ModalskillsComponent,
-    ModalcontactmeComponent,
-    ModalprojectsComponent,
-    ResumeComponent
-
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [
-    PersonaService,
-    {provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi:true}
-  ],  //PortfolioService
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        PortadaComponent,
+        AboutMeComponent,
+        TeachingComponent,
+        DesignComponent,
+        EducationComponent,
+        SkillsComponent,
+        ContactComponent,
+        FooterComponent,
+        ProjectsComponent,
+        ErrorComponent,
+        IndexComponent,
+        LoginComponent,
+        NavbaradminComponent,
+        LogoapComponent,
+        HomeComponent,
+        RedesComponent,
+        LogoapadminComponent,
+        LogoutComponent,
+        HomeeadminComponent,
+        AadminComponent,
+        ModalloginComponent,
+        ModalredesComponent,
+        ModalportadaComponent,
+        ModalregisterComponent,
+        ModalteachingComponent,
+        ModalaboutmeComponent,
+        ModaldesignComponent,
+        ModaleducationComponent,
+        ModalskillsComponent,
+        ModalcontactmeComponent,
+        ModalprojectsComponent,
+        ResumeComponent
+    ],
+    providers: [
+        PersonaService,
+        //{provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi:true}
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule
+    ]
 })
 
 export class AppModule { }

@@ -1,227 +1,203 @@
-<!--Modal SKILLS EDIT-->
+<!------- Inicio SKILLS ------->
+<div class="container caja justify-content-center">
+  <h3 class="titulo-centrado">{{ titulo}}</h3>
+      <div class="row justify-content-center">
+        <div class="education col-xs-10 col-sm-6 col-md-8 col-lg-8 col-xl-9">
+          <ul class="row">
+
+<!------- FRONTEND ------->
+            <div>
+              <h3 class="titulo-centrado mb-3">FrontEnd</h3>
+                <div class="row justify-content-center" *ngFor="let skill of skills" [ngSwitch]="skill.skill_tipo">
+                  <div *ngSwitchCase="'Frontend'">
+                    <div class="col-xs-9 col-sm-9 col-md-9">                     
+                      <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                        <div class="progress grosor mb-2" >                              
+                          <div  class="progress-bar-frontend" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Botones CRUD -->
+                    <div class="text-center">
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal" title="Agregar nuevo"><i class="fa-solid fa-plus"></i></button>
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal"  (click)="skill.id? cargarSkill(skill.id): null" title="Editar"><i class="fa-solid fa-pencil"></i></button>
+                      <button type="button" class="btn" (click)="skill.id ? borrarSkill(skill.id) : null" title="Eliminar"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                      <button type="submit" class="btn" title="Enviar"><i class="fa-solid fa-circle-check"></i></button>
+                      <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()" title="Limpiar"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                  </div>
+                </div> 
+            </div>
+
+<!------- BACKEND ------->
+            <div>
+              <h3 class="titulo-centrado mb-3">BackEnd</h3>
+                <div class="row justify-content-center" *ngFor="let skill of skills" [ngSwitch]="skill.skill_tipo">
+                  <div *ngSwitchCase="'Frontend'">
+                    <div class="col-xs-9 col-sm-9 col-md-9">                     
+                      <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                        <div class="progress grosor mb-2" >                              
+                          <div  class="progress-bar-backend" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Botones CRUD -->
+                    <div class="text-center">
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal" title="Agregar nuevo"><i class="fa-solid fa-plus"></i></button>
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal"  (click)="skill.id? cargarSkill(skill.id): null" title="Editar"><i class="fa-solid fa-pencil"></i></button>
+                      <button type="button" class="btn" (click)="skill.id ? borrarSkill(skill.id) : null" title="Eliminar"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                      <button type="submit" class="btn" title="Enviar"><i class="fa-solid fa-circle-check"></i></button>
+                      <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()" title="Limpiar"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                  </div>
+                </div> 
+            </div>
+            
+<!------- DESIGN ------->
+            <div>
+              <h3 class="titulo-centrado mb-3">Design</h3>
+                <div class="row justify-content-center" *ngFor="let skill of skills" [ngSwitch]="skill.skill_tipo">
+                  <div *ngSwitchCase="'Frontend'">
+                    <div class="col-xs-9 col-sm-9 col-md-9">                     
+                      <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                        <div class="progress grosor mb-2" >                              
+                          <div  class="progress-bar-design" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Botones CRUD -->
+                    <div class="text-center">
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal" title="Agregar nuevo"><i class="fa-solid fa-plus"></i></button>
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal"  (click)="skill.id? cargarSkill(skill.id): null" title="Editar"><i class="fa-solid fa-pencil"></i></button>
+                      <button type="button" class="btn" (click)="skill.id ? borrarSkill(skill.id) : null" title="Eliminar"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                      <button type="submit" class="btn" title="Enviar"><i class="fa-solid fa-circle-check"></i></button>
+                      <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()" title="Limpiar"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                  </div>
+                </div> 
+            </div>
+
+<!------- LANGUAGE ------->
+            <div>
+              <h3 class="titulo-centrado mb-3">Language</h3>
+                <div class="row justify-content-center" *ngFor="let skill of skills" [ngSwitch]="skill.skill_tipo">
+                  <div *ngSwitchCase="'Frontend'">
+                    <div class="col-xs-9 col-sm-9 col-md-9">                     
+                      <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                        <div class="progress grosor mb-2" >                              
+                          <div  class="progress-bar-language" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Botones CRUD -->
+                    <div class="text-center">
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal" title="Agregar nuevo"><i class="fa-solid fa-plus"></i></button>
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal"  (click)="skill.id? cargarSkill(skill.id): null" title="Editar"><i class="fa-solid fa-pencil"></i></button>
+                      <button type="button" class="btn" (click)="skill.id ? borrarSkill(skill.id) : null" title="Eliminar"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                      <button type="submit" class="btn" title="Enviar"><i class="fa-solid fa-circle-check"></i></button>
+                      <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()" title="Limpiar"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                  </div>
+                </div> 
+            </div>
+
+<!------- SOFT SKILLS ------->
+            <div>
+              <h3 class="titulo-centrado mb-3">Soft Skills</h3>
+                <div class="row justify-content-center" *ngFor="let skill of skills" [ngSwitch]="skill.skill_tipo">
+                  <div *ngSwitchCase="'Frontend'">
+                    <div class="col-xs-9 col-sm-9 col-md-9">                     
+                      <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                        <div class="progress grosor mb-2" >                              
+                          <div  class="progress-bar-soft" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Botones CRUD -->
+                    <div class="text-center">
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal" title="Agregar nuevo"><i class="fa-solid fa-plus"></i></button>
+                      <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal"  (click)="skill.id? cargarSkill(skill.id): null" title="Editar"><i class="fa-solid fa-pencil"></i></button>
+                      <button type="button" class="btn" (click)="skill.id ? borrarSkill(skill.id) : null" title="Eliminar"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                      <button type="submit" class="btn" title="Enviar"><i class="fa-solid fa-circle-check"></i></button>
+                      <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()" title="Limpiar"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                  </div>
+                </div> 
+            </div>
+<!-- dentro del UL meto cada tipo de skill y desp del UL cierra el DIV gral de esta parte antes del modal-->
+          </ul>
+        </div>
+      </div>
+</div>
+
+
+
+<!-- Modal SKILLS -->
 <div class="modal 'fade" id="modalSkills" tabindex="-1" aria-labelledby="modalSkills" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
   <!----------------------------------->
       <div class="modal-header">
-        <h5 class="modal-title" id="modalSkills">Edit Skills</h5>
+        <h5 class="modal-title" id="modalSkills">Skills</h5>
       </div>
   
-              <form [formGroup]="skills_form" (ngSubmit)="onSubmit($event)">
+              <form [formGroup]="skills_form">   <!--- (ngSubmit)="onEnviar($event)"---->
 
                 <div class="modal-body">
+                  <input type="hidden" name="" id="id">
+                    <div class="mb-3">
+                      <label for="habilid" class="form-label col-12"><i>Tipo de habilidad</i></label>
+                      <input type="text" class="form-control" id="tipo" formControlName="tipo" name="" placeholder="Frontend, Backend, Language, Design, Soft Skills"
+                      [ngClass]="{'is-invalid':Skill_tipo?.errors && Skill_tipo?.touched,'is-valid':!Skill_tipo?.errors && Skill_tipo?.touched}">
                     
-                    <div class="mb-3">
-                      <label for="tipoSkills" class="form-label col-12"><i>Habilidad</i></label>
-                      <select formControlName="skillId" id="skillId" class="mb-3" [class.border-danger]="TipoValid">
-                        <option selected>Seleccionar tipo de habilidad</option>
-                        <option *ngFor="let id of tipo">{{id.tipo}}</option>
-                      </select>
+                      <div *ngIf="Skill_tipo?.errors  && Skill_tipo?.touched" class="mb-4">    
+                        <small *ngIf="Skill_tipo?.hasError('required')" class="error text-small"><i>Tipo de habilidad requerida.</i></small>
+                      </div>
                     </div>
-                    <div *ngIf="Tipo?.errors  && Tipo?.touched" class="mb-4">    
-                      <small *ngIf="Tipo?.hasError('required')" class="error text-small"><i>Tipo de habilidad requerida.</i></small>
+
+                    <div class="mb-3 row">
+                      <label for="habilid" class="form-label  col-12">Habilidad</label>
+                      <input type="text" class="form-control" id="habilidad" formControlName="habilidad" name="" placeholder="HTML, Amgular, otros..."
+                      [ngClass]="{'is-invalid':Skill?.errors && Skill?.touched,'is-valid':!Skill?.errors && Skill?.touched}">
+                      
+                      <div *ngIf="Skill?.errors && Skill?.touched">
+                        <small *ngIf="Skill?.hasError('required')" class="errores"><i>Habilidad requerida.</i></small>
+                        <small *ngIf="Skill?.errors?.['minlength']" class="errores"><i>Escriba por lo menos 2 caracteres.</i></small>
+                      </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="habilid" class="form-label col-12"><i>Icono habilidad</i></label>
+                        <input type="text" class="form-control" id="iconos" formControlName="iconos" name="" placeholder="url del icono">
                     </div>
 
                     <div class="mb-3">
-                      <label for="iconoSkills" class="form-label col-12"><i>Icono habilidad</i></label>                     
-                      <input type="text" formControlName="iconoSkills" id="iconoSkills" >
+                      <label for="habilid" class="form-label" ><i>Porcentaje</i></label>
+                      <input type="text" formControlName="porcentaje" id="porcentaje"  class="form-control col-12" name="" 
+                      [ngClass]="{'is-invalid':Porcentaje?.errors && Porcentaje?.touched,'is-valid':!Porcentaje?.errors && Porcentaje?.touched}">
+                    
+                      <div *ngIf="Porcentaje?.errors  && Porcentaje?.touched" class="mb-4">
+                        <small *ngIf="Porcentaje?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
+                        <small *ngIf="Porcentaje?.hasError('minlength')" class="error text-small"><i>El porcentaje mínimo es 0.</i></small>
+                        <small *ngIf="Porcentaje?.hasError('maxlength')" class="error text-small"><i>El porcentaje mínimo es 100.</i></small>
+                      </div>
                     </div>
-                    <!-- <div *ngIf="Nombre?.errors  && Nombre?.touched" class="mb-4">    
-                      <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Nombre de habilidad requerido.</i></small>
-                    </div> -->
-
-                    <div class="mb-3">
-                      <label for="nombreSkills" class="form-label"><i>Nombre habilidad</i></label>                     
-                      <input type="text" formControlName="nombreSkills" id="nombrekills" class="col-12" [class.border-danger]="NombreValid">
-                    </div>
-                    <div *ngIf="Nombre?.errors  && Nombre?.touched" class="mb-4">    
-                      <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Nombre de habilidad requerido.</i></small>
-                    </div>
-
+                  
                     <div class="mb-3">
                       <label for="colorSkills" formControlName="colorSkills" class="col-12"><i>Color de la barra</i></label>
-                      <select formControlName="colorId" id="colorId" class="mb-3" [class.border-danger]="ColorValid">
-                        <option selected>Seleccionar color de la habilidad</option>
-                        <option *ngFor="let id of color">{{id.color}}</option>
-                      </select>
+                      <input type="text" formControlName="color" id="color"  class="form-control col-12" name="" placeholder="Color de la habilidad"
+                      [ngClass]="{'is-invalid':Color?.errors && Color?.touched,'is-valid':!Color?.errors && Color?.touched}">               
+                    
+                      <div *ngIf="Color?.errors  && Color?.touched" class="mb-4">    
+                        <small *ngIf="Color?.hasError('required')" class="error text-small"><i>Color de habilidad requerida.</i></small>
+                      </div>
                     </div>
-                    <div *ngIf="Color?.errors  && Color?.touched" class="mb-4">    
-                      <small *ngIf="Color?.hasError('required')" class="error text-small"><i>Color de habilidad requerida.</i></small>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="porcentajeSkills" class="form-label" ><i>Porcentaje</i></label>
-                      <input type="text" formControlName="porcentajeSkills" id="porcentajeSkills"  class="col-12" [class.border-danger]="PorcentValid">
-                    </div>
-                    <div *ngIf="Porcent?.errors  && Porcent?.touched" class="mb-4">
-                      <small *ngIf="Porcent?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
-                      <small *ngIf="Porcent?.hasError('min')" class="error text-small"><i>El porcentaje mínimo es 0.</i></small>
-                      <small *ngIf="Porcent?.hasError('max')" class="error text-small"><i>El porcentaje mínimo es 100.</i></small>
-                    </div>
-
-
+                    
                 </div>
                 <!--cierre body del modal-->
                 <div class="text-center">
-                  <button type="button" class="btn" data-bs-target="#modalSkillsAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
-                  <button type="button" class="btn" data-bs-target="#modalSkillsDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                  <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-              </form>
-
-    </div>
-  </div>
-</div>
-  
-  
-<!--Modal SKILLS ADD-->
-<div class="modal 'fade" id="modalSkillsAdd" tabindex="-1" aria-labelledby="modalSkillsAdd" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-  <!----------------------------------->
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalSkillsAdd">Add Skills</h5>
-      </div>
-  
-              <form [formGroup]="skills_form" (ngSubmit)="onSubmit($event)" id="skills_formAdd">
-
-                <div class="modal-body">
-                    
-                    <div class="mb-3">
-                      <label for="tipoSkills" class="form-label col-12"><i>Habilidad</i></label>
-                      <select formControlName="skillId" id="skillId" class="mb-3" [class.border-danger]="TipoValid">
-                        <option selected>Seleccionar tipo de habilidad</option>
-                        <option *ngFor="let id of tipo">{{id.tipo}}</option>
-                      </select>
-                    </div>
-                    <div *ngIf="Tipo?.errors  && Tipo?.touched" class="mb-4">    
-                      <small *ngIf="Tipo?.hasError('required')" class="error text-small"><i>Tipo de habilidad requerida.</i></small>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="iconoSkills" class="form-label col-12"><i>Icono habilidad</i></label>                     
-                      <input type="text" formControlName="iconoSkills" id="iconoSkills" >
-                    </div>
-                    <!-- <div *ngIf="Nombre?.errors  && Nombre?.touched" class="mb-4">    
-                      <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Nombre de habilidad requerido.</i></small>
-                    </div> -->
-
-                    <div class="mb-3">
-                      <label for="nombreSkills" class="form-label"><i>Nombre habilidad</i></label>                     
-                      <input type="text" formControlName="nombreSkills" id="nombrekills" class="col-12" [class.border-danger]="NombreValid">
-                    </div>
-                    <div *ngIf="Nombre?.errors  && Nombre?.touched" class="mb-4">    
-                      <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Nombre de habilidad requerido.</i></small>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="colorSkills" formControlName="colorSkills" class="col-12"><i>Color de la barra</i></label>
-                      <select formControlName="colorId" id="colorId" class="mb-3" [class.border-danger]="ColorValid">
-                        <option selected>Seleccionar color de la habilidad</option>
-                        <option *ngFor="let id of color">{{id.color}}</option>
-                      </select>
-                    </div>
-                    <div *ngIf="Color?.errors  && Color?.touched" class="mb-4">    
-                      <small *ngIf="Color?.hasError('required')" class="error text-small"><i>Color de habilidad requerida.</i></small>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="porcentajeSkills" class="form-label" ><i>Porcentaje</i></label>
-                      <input type="text" formControlName="porcentajeSkills" id="porcentajeSkills"  class="col-12" [class.border-danger]="PorcentValid">
-                    </div>
-                    <div *ngIf="Porcent?.errors  && Porcent?.touched" class="mb-4">
-                      <small *ngIf="Porcent?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
-                      <small *ngIf="Porcent?.hasError('min')" class="error text-small"><i>El porcentaje mínimo es 0.</i></small>
-                      <small *ngIf="Porcent?.hasError('max')" class="error text-small"><i>El porcentaje mínimo es 100.</i></small>
-                    </div>
-
-
-                </div>
-                <!--cierre body del modal-->
-                <div class="text-center">
-                  <button type="button" class="btn" data-bs-target="#modalSkills" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
-                  <button type="button" class="btn" data-bs-target="#modalSkillsDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                  <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-              </form>
-
-    </div>
-  </div>
-</div>
-  
-  
-  
-<!--Modal SKILLS DELETE-->
-<div class="modal 'fade" id="modalSkillsDelete" tabindex="-1" aria-labelledby="modalSkillsDelete" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-  <!----------------------------------->
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalSkillsDelete">Delete Skills</h5>
-      </div>
-  
-              <form [formGroup]="skills_form" (ngSubmit)="onSubmit($event)" id="skills_formDelete">
-
-                <div class="modal-body">
-                    
-                    <div class="mb-3">
-                      <label for="tipoSkills" class="form-label col-12"><i>Habilidad</i></label>
-                      <select formControlName="skillId" id="skillId" class="mb-3" [class.border-danger]="TipoValid">
-                        <option selected>Seleccionar tipo de habilidad</option>
-                        <option *ngFor="let id of tipo">{{id.tipo}}</option>
-                      </select>
-                    </div>
-                    <div *ngIf="Tipo?.errors  && Tipo?.touched" class="mb-4">    
-                      <small *ngIf="Tipo?.hasError('required')" class="error text-small"><i>Tipo de habilidad requerida.</i></small>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="iconoSkills" class="form-label col-12"><i>Icono habilidad</i></label>                     
-                      <input type="text" formControlName="iconoSkills" id="iconoSkills" >
-                    </div>
-                    <!-- <div *ngIf="Nombre?.errors  && Nombre?.touched" class="mb-4">    
-                      <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Nombre de habilidad requerido.</i></small>
-                    </div> -->
-
-                    <div class="mb-3">
-                      <label for="nombreSkills" class="form-label"><i>Nombre habilidad</i></label>                     
-                      <input type="text" formControlName="nombreSkills" id="nombrekills" class="col-12" [class.border-danger]="NombreValid">
-                    </div>
-                    <div *ngIf="Nombre?.errors  && Nombre?.touched" class="mb-4">    
-                      <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Nombre de habilidad requerido.</i></small>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="colorSkills" formControlName="colorSkills" class="col-12"><i>Color de la barra</i></label>
-                      <select formControlName="colorId" id="colorId" class="mb-3" [class.border-danger]="ColorValid">
-                        <option selected>Seleccionar color de la habilidad</option>
-                        <option *ngFor="let id of color">{{id.color}}</option>
-                      </select>
-                    </div>
-                    <div *ngIf="Color?.errors  && Color?.touched" class="mb-4">    
-                      <small *ngIf="Color?.hasError('required')" class="error text-small"><i>Color de habilidad requerida.</i></small>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="porcentajeSkills" class="form-label" ><i>Porcentaje</i></label>
-                      <input type="text" formControlName="porcentajeSkills" id="porcentajeSkills"  class="col-12" [class.border-danger]="PorcentValid">
-                    </div>
-                    <div *ngIf="Porcent?.errors  && Porcent?.touched" class="mb-4">
-                      <small *ngIf="Porcent?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
-                      <small *ngIf="Porcent?.hasError('min')" class="error text-small"><i>El porcentaje mínimo es 0.</i></small>
-                      <small *ngIf="Porcent?.hasError('max')" class="error text-small"><i>El porcentaje mínimo es 100.</i></small>
-                    </div>
-
-
-                </div>
-                <!--cierre body del modal-->
-                <div class="text-center">
-                  <button type="button" class="btn" data-bs-target="#modalDesignAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
-                  <button type="button" class="btn" data-bs-target="#modalDesign" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
-                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                  <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
+                  <button type="submit" class="btn" (click)="guardarSkill()" data-bs-dismiss="modal" [disabled]="skills_form.invalid"><i class="fa-solid fa-circle-check"></i></button>
+                  <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
                 </div> 
               </form>
 
@@ -229,5 +205,7 @@
   </div>
 </div>
   
-  
-  
+ 
+
+
+                

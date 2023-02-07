@@ -5,7 +5,7 @@ export class Persona {
     nombre: string;
     apellido: string;
     cargo: string;
-    user: string;
+    email: string;
     clave: string;
 
     
@@ -14,14 +14,14 @@ export class Persona {
         nombre: string,
         apellido: string,
         cargo: string,
-        user: string,
+        email: string,
         clave: string){
 
         this.hola=hola;
         this.nombre=nombre;
         this.apellido=apellido;
         this.cargo=cargo;
-        this.user=user;
+        this.email=email;
         this.clave=clave;
     }
 
