@@ -1,19 +1,23 @@
 <!---EXPERIENCIA DESIGN-->
 <div class="container caja justify-content-center">
-    <h3 class="titulo-centrado">Graphic designer experience</h3>
-    <div *ngFor="let disegno of design">
-      
-      <div class="row justify-content-center">
-        
-        <div class="col col-xs-2 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-          <strong>{{disegno.cargo}}</strong>
-          <div class="row">
-            <p class="fechas">{{disegno.inicio}} - {{disegno.fin}}</p></div>
+    <h3 class="titulo-centrado">{{ titulo }}</h3>
+          
+      <div class="row justify-content-center"  *ngFor="let design of experience" [ngSwitch]="design.expe_tipo">
+        <div class="col col-xs-2 col-sm-6 col-md-4 col-lg-4 col-xl-3"> 
+          <div *ngSwitchCase="'Design'">  
+            <strong>{{design.cargo}}</strong>
+              <div class="row">
+                <p class="fechas">{{design.inicio}} - {{design.fin}}</p>
+              </div>
+          </div>
         </div>
-        <div class="col-xs-10 col-sm-6 col-md-8 col-lg-8 col-xl-9">
-          <p><i><strong>{{disegno.lugar}}</strong><br>{{disegno.descripcion}}</i></p>
-        </div>
+  
+          <div class="col-xs-10 col-sm-6 col-md-8 col-lg-8 col-xl-9">
+            <div *ngSwitchCase="'Design'"> 
+              <p><i><strong>{{design.lugar}}</strong><br>{{design.descripcion}}</i></p>
+            </div>
+          </div>
+            
       </div>
-      <hr>
-    </div>
+    <hr>
   </div>

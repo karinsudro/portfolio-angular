@@ -8,6 +8,7 @@ import { SkillService } from 'src/app/servicios/skill.service';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
+
 export class SkillsComponent implements OnInit {
 //inicializo variables de instancias (el array)
   /* skillsfront:any = [];

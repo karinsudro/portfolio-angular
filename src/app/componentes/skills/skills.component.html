@@ -1,6 +1,6 @@
 <!---HARD & SOFT SKILLS-->  
 <div class="container caja justify-content-center">
-    <h3 class="titulo-centrado">{{ titulo}}</h3>
+    <h3 class="titulo-centrado">{{ titulo }}</h3>
         <div class="row justify-content-center">
           <div class="education col-xs-10 col-sm-6 col-md-8 col-lg-8 col-xl-9">
             <p class="titulo-centrado"><i>Estas son algunas de mis habilidades:</i></p>
@@ -10,7 +10,7 @@
                     <div *ngSwitchCase="'FrontEnd'">
                         <div class="col-xs-9 col-sm-9 col-md-9">
 
-                            <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                            <span><i [ngClass]="skill.icono"></i>  {{skill.skill}}</span>
                                 <div class="progress grosor mb-2" > 
 
                                     <div  class="progress-bar-frontend" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">
@@ -26,7 +26,7 @@
                     <div *ngSwitchCase="'BackEnd'">
                         <div class="col-xs-9 col-sm-9 col-md-9">
                         
-                            <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                            <span><i [ngClass]="skill.icono"></i>  {{skill.skill}}</span>
                                 <div class="progress grosor mb-2" > 
                                 
                                     <div  class="progress-bar-backend" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">
@@ -42,7 +42,7 @@
                     <div *ngSwitchCase="'Design'">
                         <div class="col-xs-9 col-sm-9 col-md-9">
                         
-                            <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                            <span><i [ngClass]="skill.icono"></i>  {{skill.skill}}</span>
                                 <div class="progress grosor mb-2" > 
                                 
                                     <div  class="progress-bar-design" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">
@@ -53,12 +53,12 @@
                 </div> 
     
 
-<!------- LANGUAJE ------->
+<!------- LANGUAGE ------->
                 <div class="row justify-content-center" *ngFor="let skill of skills" [ngSwitch]="skill.skill_tipo">
                     <div *ngSwitchCase="'Language'">
                         <div class="col-xs-9 col-sm-9 col-md-9">
                         
-                            <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                            <span><i [ngClass]="skill.icono"></i>  {{skill.skill}}</span>
                                 <div class="progress grosor mb-2" > 
                                 
                                     <div  class="progress-bar-language" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">
@@ -74,7 +74,7 @@
                     <div *ngSwitchCase="'SoftSkills'">
                         <div class="col-xs-9 col-sm-9 col-md-9">
                         
-                            <span><i [ngClass]="skill.icono"></i> {{skill.skill}}</span>
+                            <span><i [ngClass]="skill.icono"></i>  {{skill.skill}}</span>
                                 <div class="progress grosor mb-2" > 
                                 
                                     <div  class="progress-bar-soft" role="progressbar"  aria-label="Basic Example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" [style.width.%]="skill.progreso">

@@ -15,10 +15,8 @@ export class AboutMeComponent implements OnInit {
   
   //personas:Persona[]=[];  //llama al modelo, q es un array 
   //personas:any;
-  acerca?: About[];
-  titulo: string = "About me";
-  
-
+  acerca: About[]=[];
+  titulo= "About me";
 
 
   constructor(private aboutServ: AboutService) { }
