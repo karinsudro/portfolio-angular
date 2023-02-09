@@ -29,7 +29,6 @@ import { LogoapadminComponent } from './componentes/navbaradmin/logoapadmin/logo
 import { LogoutComponent } from './componentes/navbaradmin/logout/logout.component';
 import { HomeeadminComponent } from './componentes/navbaradmin/homeeadmin/homeeadmin.component';
 import { AadminComponent } from './componentes/aadmin/aadmin.component';
-import { ModalloginComponent } from './modals/modallogin/modallogin.component';
 import { ModalredesComponent } from './modals/modalredes/modalredes.component';
 import { ModalportadaComponent } from './modals/modalportada/modalportada.component';
 import { ModalregisterComponent } from './modals/modalregister/modalregister.component';
@@ -72,7 +71,6 @@ import { PersonaService } from './servicios/persona.service';
         LogoutComponent,
         HomeeadminComponent,
         AadminComponent,
-        ModalloginComponent,
         ModalredesComponent,
         ModalportadaComponent,
         ModalregisterComponent,

@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { Router } from '@angular/router';
+import { Red } from 'src/app/model/red';
+import { RedService } from 'src/app/servicios/red.service';
+//import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 
 @Component({
@@ -10,60 +14,103 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class ModalredesComponent implements OnInit {
   redes_form !: FormGroup;
-  submitted=false;
+  redes: Red[]=[];
+  red: any;
+  id?: number;
 
-  constructor(private portfolioService:PortfolioService, private formBuilder: FormBuilder) { 
-    this.portfolioService.getDatos().subscribe(portfolio =>{
-      this.redes_form=portfolio.aboutme;
-      });
-    const red = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+  
+  constructor(private redServ: RedService, private formBuilder: FormBuilder, private httpClient: HttpClient, private ruta: Router) { 
     this.redes_form= this.formBuilder.group({
+      id: [''],
       icono:['', Validators.required],
-      link: ['', [Validators.required, Validators.pattern(red)]],
-   })
+      link: ['', Validators.required],
+      });
+   
   }
 
 
+//estos son todos métodos y validaciones
+get Icono(){
+  return this.redes_form.get("icono");
+}
+get IconoValid() {
+  return this.Icono?.touched && !this.Icono?.valid;
+}
+get Link(){
+  return this.redes_form.get("link");
+}
+get LinkValid(){
+  return this.Link?.touched && !this.Link?.valid;
+}
+
+
+
+listarRedes(): void{
+  this.redServ.getRedes().subscribe({
+    next: (data) => {
+      this.redes=data;
+      console.log("Redes cargadas correctamente");
+    },
+    error: (e) => console.error(e),
+    complete: () => console.info('complete')
+})
+}
 
   ngOnInit(): void {
-    
+    this.listarRedes();
   }
 
 
-//estos son todos métodos
-get Icono(){
-  return this.redes_form.get("aboutme");
- }
- get IconoValid() {
-   return this.Icono?.touched && !this.Icono?.valid;
- }
-
- get Link(){
-   return this.redes_form.get("texto");
- }
- get LinkValid(){
-   return this.Link?.touched && !this.Link?.valid;
- }
-
- onSubmit(event: Event) {
-  // Detenemos la propagación o ejecución del comportamiento submit de un form
-  event.preventDefault; 
-
-  if (this.redes_form.valid){
-    // Llamamos a nuestro servicio para enviar los datos al servidor
-    // También podríamos ejecutar alguna lógica extra
-    alert("Todo en orden. Ya puede enviar su formulario.");
-  }else{
-    // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
-    this.redes_form.markAllAsTouched()
-    alert("Revise su formulario."); 
+  cargarRed(id: number){
+    this.redServ.findRed(id).subscribe({
+      next: (data) => {
+        this.redes_form.setValue(data);
+      },
+      error: (e) => console.error(e),
+      complete: ()=> console.info('complete')
+    });
+    console.log("Red cargada correctamente");
   }
-}
 
-onReset(): void {
-  this.submitted = false;
-  this.redes_form.reset();
-}
+
+  guardarRed() {
+    let red = this.redes_form.value;
+    if (red.id == '') {
+      this.redServ.saveRed(red).subscribe({
+        next: (data) => {
+          this.limpiar();
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      });
+      window.location.reload();
+      console.log("Red agregada correctamente");
+    } else {
+      this.redServ.editRed(red).subscribe({
+        next: (data) => {
+          this.limpiar();
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      });
+      window.location.reload();
+      console.log("Red modificada correctamente");
+    }
+  }
+
+  borrarRed(id: number) {
+    if (confirm("Confirme si desea eliminar esta red")) {
+      this.redServ.deleteRed(id).subscribe(data => {});
+      window.location.reload();
+      console.log("Red eliminada correctamente");
+    }
+  }
+       
+  limpiar() {
+    console.log("Se limpió el formulario");
+    this.redes_form.reset();
+  }
+
 
 
 

@@ -20,8 +20,7 @@ export class GuardGuard implements CanActivate {
     if(currentUser && currentUser.id){
       return true;
     }else{
-      //JOsman tiene this.ruta comentado y return true, Marie lo descomentó y el return en false. Ver cuál me sirve!!!
-      this.ruta.navigate(['/login']);
+      this.ruta.navigate(['/']);
       return false;
     }
   }

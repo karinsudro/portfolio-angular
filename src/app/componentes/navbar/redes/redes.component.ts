@@ -9,7 +9,7 @@ import { RedService } from 'src/app/servicios/red.service';
   styleUrls: ['./redes.component.css']
 })
 export class RedesComponent implements OnInit {
-  red?:Red[];
+  redes?:Red[];
 
 
 
@@ -22,7 +22,7 @@ export class RedesComponent implements OnInit {
 
 
   cargarRed(): void{   //sin retorno, solo caraga datos
-    this.redesServ.getRedes().subscribe(data => (this.red=data));
+    this.redesServ.getRedes().subscribe(data => (this.redes=data));
   }
 
 }

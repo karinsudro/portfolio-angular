@@ -4,7 +4,7 @@
     <div class="modal-content">
 <!----------------------------------->
         <div class="modal-header">
-          <h5 class="modal-title" id="modalContactme">Edit Contact me</h5>
+          <h5 class="modal-title" id="modalContactme">Contact me!</h5>
         </div>
 
                 <form  [formGroup]="contact_form" name="contact_form" (ngSubmit)="onSubmit($event)" id="contact_form">
@@ -24,7 +24,7 @@
                           <input type="email" formControlName="email" name="email" id="email" class="col-12" pattern="[^ @]*@[^ @]*" [ngClass]="{'is-invalid':Mail?.errors && Mail?.touched,'is-valid':!Mail?.errors && Mail?.touched}">
                         </div>
                         <div *ngIf="Mail?.errors  && Mail?.touched" class="mb-4">    
-                          <small *ngIf="Mail?.hasError('required')" class="error text-small"><i>El email es requerido.</i></small>
+                          <small *ngIf="Mail?.hasError('required')" class="error text-small"><i>Por favor, escribí tu email.</i></small>
                           <small *ngIf="Mail?.hasError('email')" class="error text-small"><i>El formato del email debe ser válido.</i></small>
                          </div>
 

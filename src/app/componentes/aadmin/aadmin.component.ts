@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aadmin',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AadminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ruta: Router) { }
 
   ngOnInit(): void {
   }

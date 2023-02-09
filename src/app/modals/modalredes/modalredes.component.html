@@ -1,23 +1,60 @@
-<!--Modal REDES EDIT-->
-<div class="modal fade" id="modalRedesEdit" tabindex="-1" aria-labelledby="modalRedesEdit" aria-hidden="true">
+<!-- Modal que trae la info a editar-->
+<div class="modal fade" id="modalRedes" aria-hidden="true" aria-labelledby="modalRedes" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalRedes">Redes</h1>
+      </div>
+      <!-- Modal que muestra info -->
+      <div class="modal-body">
+
+
+          <div class="container mb-3" >
+              <li class="list-group-item mt-5" *ngFor="let red of redes">
+                      <div class="col-8 col-md-10">
+                          <p>Icono: {{red.icono}} <i [ngClass]="red.icono"></i></p>
+                          <p>Link: {{red.link}} </p>
+                      </div>
+                      <div class="col-8 col-md-10">
+                          <div>
+                              <button class="btn"  (click)="red.id? cargarRed(red.id): null" data-bs-target="#ModalRedesCrud" data-bs-toggle="modal" title="Editar"><i class="fa-solid fa-pencil"></i></button>
+                          </div>
+                          <div>
+                              <button class="btn"(click)="red.id? borrarRed(red.id) : null" title="Eliminar"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                          </div>
+                      </div>
+                  <hr class="linea">
+              </li>
+          </div>
+      
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#modalRedesCrud" data-bs-toggle="modal">CRUD</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Modal REDES CRUD -->
+<div class="modal fade" id="modalRedesCrud" tabindex="-1" aria-labelledby="modalRedesCrud" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 <!----------------------------------->
       <div class="modal-header">
-        <h5 class="modal-title" id="modalRedes">Edit Redes</h5>
+        <h5 class="modal-title" id="modalRedesCrud">Redes</h5>
       </div>
 
-              <form  [formGroup]="redes_form" (ngSubmit)="onSubmit($event)" id="redes_form">
+              <form  [formGroup]="redes_form" id="redes_form">
                 <div class="modal-body">
                   
-                      <div class="mb-3">
-                        <select class="form-select mb-3" aria-label="Default select example">
-                          <option selected>Elija una red</option>
-                          <option value="1">GitHub</option>
-                          <option value="3">Linkedin</option>
-                          <option value="1">Agregar red</option>
-                        </select>
-                      </div>
+                      
                       <div class="mb-3">
                         <label for="redIcono" class="form-label"><i>Icono</i></label>
                         <input type="text" formControlName="redIcono" id="redIcono" class="form-control col-12" aria-describedby="redIconoHelp">
@@ -37,89 +74,13 @@
                       </div>
 
 
-
-
-
-                      <div class="text-end">
+                      <div class="text-end">           
                         <button type="button" class="btn" data-bs-target="#modalRedesAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
-                        <button type="button" class="btn" data-bs-target="#modalRedesDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                        <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                        <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-
-                </div>
-              </form>
-
-    </div>
-  </div>
-</div>
-
-
-
-<!--Modal REDES ADD-->
-<div class="modal fade" id="modalRedesAdd" tabindex="-1" aria-labelledby="modalRedesAdd" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-<!----------------------------------->
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalRedesAdd">Add Redes</h5>
-      </div>
-
-              <form  [formGroup]="redes_form" (ngSubmit)="onSubmit($event)" id="redes_formAdd">
-                <div class="modal-body">
-                  
-                      <div class="mb-3">
-                        <label for="redIcono" class="form-label"><i>Icono</i></label>
-                        <input type="text" formControlName="redIcono" id="redIcono" class="col-12" [class.border-danger]="IconoValid" aria-describedby>
-                        <div *ngIf="Icono?.errors  && Icono?.touched" class="mb-4">
-                          <small *ngIf="Icono?.hasError('required')" class="error text-small"><i>Icono requerido.</i></small>
-                        </div>
-                      </div>
-
-                      <div class="mb-3">
-                        <label for="redLink" class="form-label"><i>URL</i></label>
-                        <input type="text" formControlName="redLink" id="redUrl" class="col-12" [class.border-danger]="LinkValid" aria-describedby>
-                        <div *ngIf="Link?.errors  && Link?.touched" class="mb-4">    
-                          <small *ngIf="Link?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
-                          <small *ngIf="Link?.hasError('pattern')" class="error text-small"><i>Debe ser un formato válido.</i></small>
-                        </div>
-                      </div>
-
-                      <div class="text-end">
                         <button type="button" class="btn" data-bs-target="#modalRedes" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
                         <button type="button" class="btn" data-bs-target="#modalRedesDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
                         <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                        <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-
-                </div>
-              </form>
-
-    </div>
-  </div>
-</div>
-
-
-
-<!--Modal REDES DELETE-->
-<div class="modal fade" id="modalRedesDelete" tabindex="-1" aria-labelledby="modalRedesDelete" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-<!----------------------------------->
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalRedesDelete">Delete Redes</h5>
-      </div>
-
-              <form  [formGroup]="redes_form" (ngSubmit)="onSubmit($event)" id="redes_formDelete">
-                <div class="modal-body">
-                  
-                  <div class="modal-body">
-                    <div class="text-end">
-                      <button type="button" class="btn" data-bs-target="#modalRedesEdit" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
-                      <button type="button" class="btn"  aria-label="Delete"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                      <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                        <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
                       </div>
-              </div>
 
                 </div>
               </form>

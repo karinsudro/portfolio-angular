@@ -1,7 +1,7 @@
 <!---EXPERIENCIA TEACHING-->
 <div class="container caja justify-content-center">
   <h3 class="titulo-centrado">{{ titulo }}</h3>
-    <div class="row justify-content-center"  *ngFor="let teach of experience" [ngSwitch]="teach.expe_tipo">
+    <div class="row justify-content-center border"  *ngFor="let teach of experience" [ngSwitch]="teach.expe_tipo">
       <div class="col col-xs-2 col-sm-6 col-md-4 col-lg-4 col-xl-3"> 
         <div *ngSwitchCase="'Teaching'">  
           <strong>{{teach.cargo}}</strong>
@@ -17,7 +17,6 @@
           </div>
         </div>
         
-        <hr>
     </div>
      
 </div>
