@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Experiencia } from 'src/app/model/experiencia';
-import { ExperienciaService } from 'src/app/servicios/experiencia.service';
-//import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { ExpeTeaching } from 'src/app/model/expe-teaching';
+import { ExpeTeachingService } from 'src/app/servicios/expe-teaching.service';
+
 
 @Component({
   selector: 'app-teaching',
@@ -13,21 +13,21 @@ export class TeachingComponent implements OnInit {
   //teaching: any = [];
 
   //para el ngFor en el html
-  experience:Experiencia[]=[]; //trae array con info. CRUD conmodales
+  expeTeach!:ExpeTeaching[]; //trae array con info. CRUD con modales
   titulo= "Teaching experience";
 
 
   //inyecto el servicio para tener acceso en la clase a los métodos
-  constructor(private expeServ:ExperienciaService) { }
+  constructor(private expeTeachServ: ExpeTeachingService) { }
 
   ngOnInit(): void {
-    this.cargarExperiencias();
+    this.cargarExpeTeach();
   }
 
 
-  cargarExperiencias(): void{
-    this.expeServ.getExperiencias().subscribe(data =>{
-      this.experience=data;
+  cargarExpeTeach(): void{
+    this.expeTeachServ.getExpeTeachings().subscribe(data =>{
+      this.expeTeach=data;
   })}
 
 }

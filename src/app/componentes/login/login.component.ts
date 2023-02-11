@@ -84,6 +84,7 @@ get ClaveValid(){
 limpiar(): void {
   console.log("Formulario limpio")
    this.login_form.reset();
+   //this.ruta.navigate(['']);
 }
 
 

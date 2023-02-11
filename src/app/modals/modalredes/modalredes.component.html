@@ -3,42 +3,30 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalRedes">Redes</h1>
+        <h1 class="modal-title fs-5" id="modalRedes">Redes</h1> <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <!-- Modal que muestra info -->
       <div class="modal-body">
-
-
           <div class="container mb-3" >
-              <li class="list-group-item mt-5" *ngFor="let red of redes">
-                      <div class="col-8 col-md-10">
-                          <p>Icono: {{red.icono}} <i [ngClass]="red.icono"></i></p>
-                          <p>Link: {{red.link}} </p>
+              <li class="list-group-item mt-4" *ngFor="let red of redes">
+                      <div class="col-12">
+                          <p><b>ICONO:   </b><i     [ngClass]="red.icono"></i></p>
+                          <p><b>FONTAWESOME:   </b>     {{red.icono}} </p>
+                          <p><b>LINK:   </b>     {{red.link}} </p>
                       </div>
-                      <div class="col-8 col-md-10">
-                          <div>
-                              <button class="btn"  (click)="red.id? cargarRed(red.id): null" data-bs-target="#ModalRedesCrud" data-bs-toggle="modal" title="Editar"><i class="fa-solid fa-pencil"></i></button>
-                          </div>
-                          <div>
-                              <button class="btn"(click)="red.id? borrarRed(red.id) : null" title="Eliminar"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                          </div>
+                      <div class="col-12 text-end">
+                        <button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalRedesCrud"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn" (click)="red.id? cargarRed(red.id): null" data-bs-toggle="modal"data-bs-target="#modalRedesCrud"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="btn" (click)="red.id? borrarRed(red.id): null"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                        <!--<button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>-->
                       </div>
-                  <hr class="linea">
+                  <hr>
               </li>
-          </div>
-      
-
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#modalRedesCrud" data-bs-toggle="modal">CRUD</button>
+          </div>     
       </div>
     </div>
   </div>
 </div>
-
-
-
-
 
 
 
@@ -48,42 +36,45 @@
     <div class="modal-content">
 <!----------------------------------->
       <div class="modal-header">
-        <h5 class="modal-title" id="modalRedesCrud">Redes</h5>
+        <h5 class="modal-title" id="modalRedesCrud">Add / Edit Red</h5> <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
-              <form  [formGroup]="redes_form" id="redes_form">
-                <div class="modal-body">
-                  
-                      
-                      <div class="mb-3">
-                        <label for="redIcono" class="form-label"><i>Icono</i></label>
-                        <input type="text" formControlName="redIcono" id="redIcono" class="form-control col-12" aria-describedby="redIconoHelp">
-                        <div *ngIf="Icono?.errors  && Icono?.touched" class="mb-4">
-                          <small *ngIf="Icono?.hasError('required')" class="error text-small"><i>Icono requerido.</i></small>
-                        </div>
-                      </div>
+        <div class="modal-body">
+          <form [formGroup]="redes_form">
+            <div class="mb-3">
+              <label for="redes" class="form-label"><i>Red</i></label>
+              <input type="text" formControlName="redes" id="redes" class="form-control col-12" aria-describedby="RedesHelp" [ngClass]="{'is-invalid':Redes?.errors && Redes?.touched,'is-valid':!Redes?.errors && Redes?.touched}">
+              <div *ngIf="Redes?.errors  && Redes?.touched" class="mb-4">
+                <small *ngIf="Redes?.hasError('required')" class="error text-small"><i>Red requerida.</i></small>
+              </div>
+            </div>
+                                 
+            <div class="mb-3">
+              <label for="icono" class="form-label"><i>Icono</i></label>
+              <input type="text" formControlName="icono" id="icono" class="form-control col-12" aria-describedby="iconoHelp" [ngClass]="{'is-invalid':Icono?.errors && Icono?.touched,'is-valid':!Icono?.errors && Icono?.touched}">
+              <div *ngIf="Icono?.errors  && Icono?.touched" class="mb-4">
+                <small *ngIf="Icono?.hasError('required')" class="error text-small"><i>Icono requerido.</i></small>
+              </div>
+            </div>
 
-                      <div class="mb-3">
-                        <label for="redLink" class="form-label"><i>URL</i></label>
-                        <input type="url" formControlName="redLink" id="redUrl" class="form-control col-12" [class.border-danger]="LinkValid" aria-describedBy="redLinkHelp">  
-                         
-                        <div *ngIf="Link?.errors  && Link?.touched" class="mb-4">    
-                          <small *ngIf="Link?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
-                          <!--<small *ngIf="Link?.hasError('pattern')" class="error text-small"><i>Debe ser un formato válido.</i></small>-->
-                        </div>
-                      </div>
+            <div class="mb-3">
+              <label for="link" class="form-label"><i>Link</i></label>
+              <input type="url" formControlName="link" id="link" class="form-control col-12" aria-describedBy="linkHelp" [ngClass]="{'is-invalid':Link?.errors && Link?.touched,'is-valid':!Link?.errors && Link?.touched}">                          
+              <div *ngIf="Link?.errors  && Link?.touched" class="mb-4">    
+                <small *ngIf="Link?.hasError('required')" class="error text-small"><i>Link requerido.</i></small>
+                <!--<small *ngIf="Link?.hasError('pattern')" class="error text-small"><i>Debe ser un formato válido.</i></small>-->
+              </div>
+            </div>
 
-
-                      <div class="text-end">           
-                        <button type="button" class="btn" data-bs-target="#modalRedesAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
-                        <button type="button" class="btn" data-bs-target="#modalRedes" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
-                        <button type="button" class="btn" data-bs-target="#modalRedesDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                        <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                        <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
-                      </div>
-
-                </div>
-              </form>
+            <input type="hidden" name="" id="id">
+            <div class="text-end">           
+              <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
+              <button type="btn" class="btn" data-bs-dismiss="modal" (click)="guardarRed()" [disabled]="redes_form.invalid"><i class="fa-solid fa-circle-check"></i></button>
+              <!--<button type="btn" class="btn" (click)="limpiar()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
+              <button class="btn" (click)="volver()" data-bs-toggle="modal"data-bs-target="#modalRedes"><i class="fa-solid fa-chevron-left"></i></button>
+            </div>
+          </form>
+        </div>
 
     </div>
   </div>

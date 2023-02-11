@@ -21,8 +21,8 @@
         <!-----------EMAIL-->
                 <div class="mb-3">
                   <label for="email" class="form-label"><i>Email</i></label>
-                  <input type="email" formControlName="email" class="form-control col-12" pattern="[^ @]*@[^ @]*" [ngClass]="{'is-invalid':Email?.errors && Email?.touched,'is-valid':!Email?.errors && Email?.touched}"
-                  id="email" placeholder="  email@correo.com" aria-describedby="emailHelp">
+                  <input type="email" formControlName="email" class="form-control col-12" [ngClass]="{'is-invalid':Email?.errors && Email?.touched,'is-valid':!Email?.errors && Email?.touched}"
+                  id="email" placeholder="  email@correo.com" aria-describedby="emailHelp" pattern="[^ @]*@[^ @]*">
                 </div>
                 <div *ngIf="Email?.errors && Email?.touched" class="mb-4">    
                   <small *ngIf="Email?.hasError('required')" class="error text-small"><i>Por favor escribí tu email.</i></small>
@@ -49,7 +49,7 @@
         </form>
       
 
-        <!--Register a implementarse más adelante-->
+        <!--Register a implementarse más adelante con los roles-->
         <!-- <div class="modal-footer">
           <small>Si no tenés cuenta <a data-bs-target="#modalRegister" data-bs-toggle="modal"><b>registrate</b></a></small>
         </div> -->

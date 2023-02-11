@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Experiencia } from 'src/app/model/experiencia';
-import { ExperienciaService } from 'src/app/servicios/experiencia.service';
-//import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { ExpeDesign } from 'src/app/model/expe-design';
+import { ExpeDesignService } from 'src/app/servicios/expe-design.service';
 
 @Component({
   selector: 'app-design',
@@ -13,20 +12,20 @@ export class DesignComponent implements OnInit {
 //design: any = [];
 
 //para el ngFor en el html
-experience:Experiencia[]=[]; //trae array con info. CRUD conmodales
+expeDes!:ExpeDesign[]; //trae array con info. CRUD conmodales
 titulo= "Graphic designer experience";
 
 //inyecto el servicio para tener acceso en la clase a los métodos
-constructor(private expeServ:ExperienciaService) { }
+constructor(private expeDesServ:ExpeDesignService) { }
 
 ngOnInit(): void {
-  this.cargarExperiencias();
+  this.cargarExpeDesigns();
 }
 
 
-cargarExperiencias(): void{
-  this.expeServ.getExperiencias().subscribe(data =>{
-    this.experience=data;
+cargarExpeDesigns(): void{
+  this.expeDesServ.getExpeDesigns().subscribe(data =>{
+    this.expeDes=data;
 })}
 
 }

@@ -98,7 +98,7 @@
             "inicio": "1994",
             "fin": "actualidad",
             "lugar": "Trabajos varios",
-            "descripcion": "Trabajos varios de diseño: logotipos, sitios web, diseño editorial, entre otros."
+            "descripcion": "Trabajos varios de diseño gráfico, diseño editorial y web."
         }
         
     ],
@@ -179,7 +179,7 @@
             {
                 "id": 1,
                 "skill": "MYSQL",
-                "icono": "fa-brands fa-angular",
+                "icono": "",
                 "progress": "75",
                 "color": "progress-bar-backend"
             },
@@ -232,14 +232,14 @@
             {
                 "id": 1,
                 "skill": "HEBREO",
-                "icono":"",
+                "icono":"fa-solid fa-language",
                 "progress": "95",
                 "color": "progress-bar-language"
             },
             {
                 "id": 2,
                 "skill": "INGLES",
-                "icono":"",
+                "icono":"fa-solid fa-language",
                 "progress": "90",
                 "color": "progress-bar-language"
             }
@@ -248,36 +248,29 @@
         {
             "id": 1,
             "skill": "COLABORATIVA",
-            "icono":"",
+            "icono":"fa-solid fa-hand-holding-hand",
             "progress": "85",
             "color": "progress-bar-soft"
         },
         {
             "id": 2,
             "skill": "COMUNICATIVA",
-            "icono":"",
+            "icono":"fa-regular fa-comments",
             "progress": "90",
             "color": "progress-bar-soft"
         },
         {
             "id": 3,
             "skill": "EMPATICA",
-            "icono":"",
+            "icono":"fa-solid fa-hand-holding-heart",
             "progress": "90",
             "color": "progress-bar-soft"
         },
         {
             "id": 4,
             "skill": "AUTODIDACTA",
-            "icono":"",
+            "icono":"fa-solid fa-book",
             "progress": "90",
-            "color": "progress-bar-soft"
-        },
-        {
-            "id": 5,
-            "skill": "PUNTUAL",
-            "icono":"",
-            "progress": "85",
             "color": "progress-bar-soft"
         }
     ],

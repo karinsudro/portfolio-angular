@@ -1,66 +1,109 @@
-<!--Modal ABOUT ME EDIT-->
-<div class="modal fade" id="modalAboutmeEdit" tabindex="-1" aria-labelledby="modalAboutmeEdit" aria-hidden="true">
+<div class="modal fade" id="modalAboutme" aria-hidden="true" aria-labelledby="modalAboutme" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-
       <div class="modal-header">
-        <h5 class="modal-title" id="modalAboutmeEdit">Edit About me</h5>
+        <h1 class="modal-title fs-5" id="modalAboutme">About me</h1> <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
       </div>
-
-              <form  [formGroup]="aboutme_form" name="aboutmeform" (ngSubmit)="onSubmit($event)" id="aboutme_form">
-                <div class="modal-body">
-                  
-                      <div class="mb-3">
-                        <label for="aboutmeImagen" class="form-label"><i>Imagen personal</i></label>
-                        <input type="file" formControlName="aboutmeImagen" id="aboutmeImagen" [ngClass]="{'is-invalid':Imagen?.errors && Imagen?.touched,'is-valid':!Imagen?.errors && Imagen?.touched}" 
-                        class="form-control col-12" aria-describedby="aboutmeImagenHelp">
-                        <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
-                          <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
-                        </div>
+      <!-- Modal que muestra info -->
+      <div class="modal-body">
+          <div class="container mb-3" >
+              <li class="list-group-item mt-4" *ngFor="let about of acerca">
+                      <div class="col-12">
+                        <img class="rounded-circle img-fluid" [src]="about.foto"  alt="Karin">
+                        <p><b>SALUDO A:</b>     {{ about.saludoA }}</p>
+                        <p><b>SALUDO B:</b>     {{ about.saludoB }}</p>
+                        <p><b>SALUDO C:</b>     {{ about.saludoC }}</p>
+                        <p><b>SALUDO D:</b>     {{ about.saludoD }}</p>
+                        <p><b>SALUDO E:</b>     {{ about.saludoE }}</p>
+                        <p><b>SALUDO F:</b>     {{ about.saludoF }}</p>
+                        <p><b>SALUDO G:</b>     {{ about.saludoG }}</p>
                       </div>
-
-                      <div class="mb-3">
-                        <label for="aboutmeTexto" class="form-label"><i>Algo más sobre mí</i></label>
-                        <textarea class="text w-100" formControlName="texto" id="aboutmeTexto" [ngClass]="{'is-invalid':Texto?.errors && Texto?.touched,'is-valid':!Texto?.errors && Texto?.touched}" 
-                        style="overflow:auto;" rows="7" aria-describedby="aboutmeTextoHelp"></textarea>
-                        <div *ngIf="Texto?.errors  && Texto?.touched" class="mb-4">    
-                          <small *ngIf="Texto?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
-                          <small *ngIf="Texto?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
-                        </div>
+                      <div class="col-12 text-end">
+                        <!--<button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalPortadaCrud"><i class="fa-solid fa-plus"></i></button>-->
+                        <button class="btn" (click)="about.id? cargarAbout(about.id): null"  data-bs-toggle="modal"data-bs-target="#modalAboutmeCrud"><i class="fa-solid fa-pencil"></i></button>
+                        <!--<button class="btn" (click)="perso.id? borrarPersona(perso.id): null"><i class="fa-solid fa-trash-can-arrow-up"></i></button>-->
+                        <!--<button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>-->
                       </div>
-
-                      <div class="text-end">
-                        <button type="button" class="btn" data-bs-target="#modalAboutmeDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                        <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-
-                </div>
-              </form>
-
+                  <hr>
+              </li>
+          </div>     
+      </div>
     </div>
   </div>
 </div>
 
 
 
-<!--Modal ABOUT ME DELETE-->
-<div class="modal fade" id="modalAboutmeDelete" tabindex="-1" aria-labelledby="modalAboutmeDelete" aria-hidden="true">
+<!--Modal ABOUT ME CRUD-->
+<div class="modal fade" id="modalAboutmeCrud" tabindex="-1" aria-labelledby="modalAboutmeCrud" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title" id="modalAboutmeDelete">Delete About me</h5>
+        <h5 class="modal-title" id="modalAboutmeCrud">Edit About me</h5> <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
         <div class="modal-body">
-              <div class="text-end">
-                <button type="button" class="btn" data-bs-target="#modalAboutme" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
-                <button type="button" class="btn"  aria-label="Delete"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-        </div>
+          <form [formGroup]="aboutme_form">       <!-- (ngSubmit)="onSubmit($event)" id="aboutme_form"-->
+            <div class="mb-3">
+              <label for="imagen" class="form-label"><i>Imagen personal</i></label>
+              <input type="text" formControlName="imagen" id="imagen" [ngClass]="{'is-invalid':Imagen?.errors && Imagen?.touched,'is-valid':!Imagen?.errors && Imagen?.touched}" 
+              class="form-control col-12" aria-describedby="imagenHelp">
+              <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
+                <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
+              </div>
+            </div>
 
+            <div class="mb-3">
+              <label for="saludoA" class="form-label"><i>Algo más sobre mí</i></label>
+              <textarea class="text w-100" formControlName="saludoA" id="saludoA" [ngClass]="{'is-invalid':SaludoA?.errors && SaludoA?.touched,'is-valid':!SaludoA?.errors && SaludoA?.touched}" 
+              style="overflow:auto;" rows="7" aria-describedby="saludoAHelp"></textarea>
+              <div *ngIf="SaludoA?.errors  && SaludoA?.touched" class="mb-4">    
+                <small *ngIf="SaludoA?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
+                <small *ngIf="SaludoA?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="saludoB" class="form-label"><i>Saludo B</i></label>
+              <input type="text" formControlName="saludoB" id="saludoB" class="form-control col-12" aria-describedby="saludoBHelp">
+            </div>
+
+            <div class="mb-3">
+              <label for="saludoC" class="form-label"><i>Saludo C</i></label>
+              <input type="text" formControlName="saludoC" id="saludoC" class="form-control col-12" aria-describedby="saludoCHelp">
+            </div>
+
+            <div class="mb-3">
+              <label for="saludoD" class="form-label"><i>Saludo D</i></label>
+              <input type="text" formControlName="saludoD" id="saludoD" class="form-control col-12" aria-describedby="saludoDHelp">
+            </div>
+
+            <div class="mb-3">
+              <label for="saludoE" class="form-label"><i>Saludo E</i></label>
+              <input type="text" formControlName="saludoE" id="saludoE" class="form-control col-12" aria-describedby="saludoEHelp">
+            </div>
+
+            <div class="mb-3">
+              <label for="saludoF" class="form-label"><i>Saludo F</i></label>
+              <input type="text" formControlName="saludoF" id="saludoF" class="form-control col-12" aria-describedby="saludoFHelp">
+            </div>
+
+            <div class="mb-3">
+              <label for="saludoG" class="form-label"><i>Saludo G</i></label>
+              <input type="text" formControlName="saludoG" id="saludoG" class="form-control col-12" aria-describedby="saludoGHelp">
+            </div>
+
+            <input type="hidden" name="" id="id">
+              <div class="text-end">           
+                <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
+                <button type="btn" class="btn" data-bs-dismiss="modal" (click)="guardarAbout()" [disabled]="aboutme_form.invalid"><i class="fa-solid fa-circle-check"></i></button>
+                <!--<button type="btn" class="btn" (click)="limpiar()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
+                <button class="btn" (click)="volver()" data-bs-toggle="modal"data-bs-target="#modalAbout"><i class="fa-solid fa-chevron-left"></i></button>
+              </div>
+  
+          </form>
+        </div>
     </div>
   </div>
 </div>

@@ -22,6 +22,7 @@ export class ModalredesComponent implements OnInit {
   constructor(private redServ: RedService, private formBuilder: FormBuilder, private httpClient: HttpClient, private ruta: Router) { 
     this.redes_form= this.formBuilder.group({
       id: [''],
+      redes:['', Validators.required],
       icono:['', Validators.required],
       link: ['', Validators.required],
       });
@@ -30,18 +31,26 @@ export class ModalredesComponent implements OnInit {
 
 
 //estos son todos métodos y validaciones
+get Redes(){
+  return this.redes_form.get("redes");
+}
+/* get RedesValid() {
+  return this.Redes?.touched && !this.Redes?.valid;
+} */
+
 get Icono(){
   return this.redes_form.get("icono");
 }
-get IconoValid() {
+/* get IconoValid() {
   return this.Icono?.touched && !this.Icono?.valid;
-}
+} */
+
 get Link(){
   return this.redes_form.get("link");
 }
-get LinkValid(){
+/* get LinkValid(){
   return this.Link?.touched && !this.Link?.valid;
-}
+} */
 
 
 
@@ -99,7 +108,7 @@ listarRedes(): void{
   }
 
   borrarRed(id: number) {
-    if (confirm("Confirme si desea eliminar esta red")) {
+    if (confirm("Querés eliminar esta red?")) {
       this.redServ.deleteRed(id).subscribe(data => {});
       window.location.reload();
       console.log("Red eliminada correctamente");
@@ -112,7 +121,10 @@ listarRedes(): void{
   }
 
 
-
-
+  volver(){
+    this.ruta.navigate(['/aadmin']);
+  }
   
+
+
 }

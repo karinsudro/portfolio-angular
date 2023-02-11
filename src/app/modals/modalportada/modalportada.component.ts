@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { Router } from '@angular/router';
+import { Persona } from 'src/app/model/persona';
+import { PersonaService } from 'src/app/servicios/persona.service';
+
 
 
 @Component({
@@ -10,59 +14,122 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class ModalportadaComponent implements OnInit {
   portada_form!: FormGroup;
-  submitted=false;
+  persona: Persona[]=[];
+  id?: number;
 
 
-  constructor(private portfolioService:PortfolioService, private formBuilder: FormBuilder) {
-    this.portfolioService.getDatos().subscribe(portfolio =>{
-      this.portada_form=portfolio.portada;
-      });
-      //controles
+
+  constructor(private persoServ: PersonaService, private formBuilder: FormBuilder, private httpClient: HttpClient, private ruta: Router) {
     this.portada_form= this.formBuilder.group({
-      imagen:['', Validators.required],
-      intro:['', Validators.required],
+      id: [''],
+      hola: [''],
+      nombre:['', Validators.required],
+      apellido:['', Validators.required],
+      cargo:['', Validators.required],
    })
    }
 
-  ngOnInit(): void {
-    
-      
-  }
 
-  //estos son todos métodos
-  get Imagen(){
-    return this.portada_form.get("imagen");
+
+  //estos son todos métodos y validaciones
+  get Hola(){
+    return this.portada_form.get("hola");
    }
-  get ImagenValid() {
-     return this.Imagen?.touched;
+  get HolaValid() {
+     return this.Hola?.touched;
+   }
+
+  get Nombre(){
+    return this.portada_form.get("nombre");
+   }
+  get NombreValid() {
+     return this.Nombre?.touched;
    }
   
-   get Intro(){
-     return this.portada_form.get("intro");
+   get Apellido(){
+     return this.portada_form.get("apellido");
    }
-   get IntroValid(){
-     return this.Intro?.touched && !this.Intro?.valid;
-   } 
+   get ApellidoValid(){
+     return this.Apellido?.touched && !this.Apellido?.valid;
+   }
+   
+   get Cargo(){
+    return this.portada_form.get("cargo");
+  }
+  get CargoValid(){
+    return this.Cargo?.touched && !this.Cargo?.valid;
+  } 
  
 
-   onSubmit(event: Event) {
-    // Detenemos la propagación o ejecución del comportamiento submit de un form
-    event.preventDefault; 
- 
-    if (this.portada_form.valid){
-      // Llamamos a nuestro servicio para enviar los datos al servidor
-      // También podríamos ejecutar alguna lógica extra
-      alert("Todo en orden. Ya puede enviar su formulario.");
-    }else{
-      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
-      this.portada_form.markAllAsTouched()
-      alert("Revise su formulario."); 
+  
+listarPersonas(): void{
+  this.persoServ.getPersonas().subscribe({
+    next: (data) => {
+      this.persona=data;
+      console.log("Portadas cargadas correctamente");
+    },
+    error: (e) => console.error(e),
+    complete: () => console.info('complete')
+})
+}
+
+  ngOnInit(): void {
+    this.listarPersonas();
+  }
+
+
+  cargarPersona(id: number){
+    this.persoServ.findPersona(id).subscribe({
+      next: (data) => {
+        this.portada_form.setValue(data);
+      },
+      error: (e) => console.error(e),
+      complete: ()=> console.info('complete')
+    });
+    console.log("Portada cargada correctamente");
+  }
+
+
+  guardarPersona() {
+    let perso = this.portada_form.value;
+    if (perso.id == '') {
+      this.persoServ.savePersona(perso).subscribe({
+        next: (data) => {
+          this.limpiar();
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      });
+      window.location.reload();
+      console.log("Portada agregada correctamente");
+    } else {
+      this.persoServ.editPersona(perso).subscribe({
+        next: (data) => {
+          this.limpiar();
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      });
+      window.location.reload();
+      console.log("Portada modificada correctamente");
     }
   }
 
-  onReset(): void {
-    this.submitted = false;
+  borrarPersona(id: number) {
+    if (confirm("Querés eliminar esta persona?")) {
+      this.persoServ.deletePersona(id).subscribe(data => {});
+      window.location.reload();
+      console.log("Portada eliminada correctamente");
+    }
+  }
+       
+  limpiar() {
+    console.log("Se limpió el formulario");
     this.portada_form.reset();
+  }
+
+  volver(){
+    this.ruta.navigate(['/aadmin']);
   }
 
 
