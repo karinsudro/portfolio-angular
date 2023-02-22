@@ -16,12 +16,12 @@ export class RedesComponent implements OnInit {
   constructor(private redesServ:RedService) { }
 
   ngOnInit(): void {
-    this.cargarRed();
+    this.getRed();
   }
 
 
 
-  cargarRed(): void{   //sin retorno, solo caraga datos
+  getRed(): void{   //sin retorno, solo caraga datos
     this.redesServ.getRedes().subscribe(data => (this.redes=data));
   }
 

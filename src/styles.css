@@ -25,20 +25,25 @@ background-size:cover;
 -o-background-size:cover;
 -ms-background-size:cover;
 --opacidad-negro: 0.5;
+margin-bottom: 4rem;
 }
 
-  /*--ICONOS NAVBAR--*/
-  .fa-brands.fa-linkedin:hover,
-  .fa-solid.fa-house:hover,
-  .fa-brands.fa-github:hover,
-  .fa-solid.fa-comment:hover,
-  .fa-solid.fa-user-lock:hover,
-  .fa-solid.fa-user:hover,
-  .fa-solid.fa-user-lock:hover,
-  .fas.fa-sign-out-alt:hover,
-  .fa-solid.fa-file:hover{
-    color: #f7a61a;
-  }
+/*--ICONOS NAVBAR--*/
+.logo-ap{
+  max-width: 8rem;
+}
+
+.fa-brands.fa-linkedin:hover,
+.fa-solid.fa-house:hover,
+.fa-brands.fa-github:hover,
+.fa-solid.fa-comment:hover,
+.fa-solid.fa-user-lock:hover,
+.fa-solid.fa-user:hover,
+.fas.fa-sign-out-alt:hover,
+.fa-solid.fa-file:hover,
+.fa-solid.fa-eye:hover{
+  color: #f7a61a;
+}
 
 /*--NAVEGACION--*/
 a, a:hover{
@@ -62,6 +67,10 @@ a, a:hover{
 .fa-circle-xmark:hover{
   color:#b1b1b0;
 }
+.fa-solid.fa-chevron-left:hover{
+  color:#54b4f5
+}
+
 .btn-form-cierre{
   margin-top: -1.2rem;
   margin-left:1rem;
@@ -70,8 +79,8 @@ a, a:hover{
   border: none;
 }
 
-/*---CONTENEDORES---*/
 
+/*---CONTENEDORES---*/
 .caja{
   width:70%;
   margin-bottom:0.938rem;
@@ -85,6 +94,8 @@ a, a:hover{
   -webkit-box-shadow: 0.063rem 0.375rem 0.875rem 0.125rem #af014bbf;
   -moz-box-shadow: 0.063rem 0.375rem 0.875rem 0.125rem #af014bbf;
 }
+
+
 
 /*---TEXTOS---*/
 .titulo-centrado{
@@ -109,12 +120,29 @@ p.fechas{
   color:#a9a7a7;
 }
 
+
 /*--@media--*/
 @media (max-width: 575px){
   .container.bio{
-      max-width: 21.875rem;
+    max-width: 21.875rem;
   }
   .bio-image-col{
     max-width: 10rem;
   }
+  .logo-ap{
+    max-width: 6rem;
+  }
+  .aadmin-iconos{
+    font-size:130%;
+    }
+  .aadmin-panel{
+    max-width: 100%;
+  }
+  .salida{
+    font-size:150%;
+  }
+  .peque{
+    width: 80%;
+  }
+  
 }

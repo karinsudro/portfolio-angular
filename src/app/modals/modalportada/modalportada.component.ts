@@ -14,7 +14,7 @@ import { PersonaService } from 'src/app/servicios/persona.service';
 })
 export class ModalportadaComponent implements OnInit {
   portada_form!: FormGroup;
-  persona: Persona[]=[];
+  portada: Persona[]=[];
   id?: number;
 
 
@@ -25,7 +25,7 @@ export class ModalportadaComponent implements OnInit {
       hola: [''],
       nombre:['', Validators.required],
       apellido:['', Validators.required],
-      cargo:['', Validators.required],
+      cargo:['', Validators.required]
    })
    }
 
@@ -62,10 +62,10 @@ export class ModalportadaComponent implements OnInit {
  
 
   
-listarPersonas(): void{
+getPersonas(): void{
   this.persoServ.getPersonas().subscribe({
     next: (data) => {
-      this.persona=data;
+      this.portada=data;
       console.log("Portadas cargadas correctamente");
     },
     error: (e) => console.error(e),
@@ -74,11 +74,11 @@ listarPersonas(): void{
 }
 
   ngOnInit(): void {
-    this.listarPersonas();
+    this.getPersonas();
   }
 
 
-  cargarPersona(id: number){
+  findPersona(id: number){
     this.persoServ.findPersona(id).subscribe({
       next: (data) => {
         this.portada_form.setValue(data);
@@ -90,12 +90,12 @@ listarPersonas(): void{
   }
 
 
-  guardarPersona() {
+  savePersona() {
     let perso = this.portada_form.value;
     if (perso.id == '') {
       this.persoServ.savePersona(perso).subscribe({
         next: (data) => {
-          this.limpiar();
+          this.reset();
         },
         error: (e) => console.error(e),
         complete: () => console.info('complete')
@@ -105,7 +105,7 @@ listarPersonas(): void{
     } else {
       this.persoServ.editPersona(perso).subscribe({
         next: (data) => {
-          this.limpiar();
+          this.reset();
         },
         error: (e) => console.error(e),
         complete: () => console.info('complete')
@@ -115,20 +115,20 @@ listarPersonas(): void{
     }
   }
 
-  borrarPersona(id: number) {
+ /* deletePersona(id: number) {
     if (confirm("Querés eliminar esta persona?")) {
       this.persoServ.deletePersona(id).subscribe(data => {});
       window.location.reload();
       console.log("Portada eliminada correctamente");
     }
-  }
+  }  */
        
-  limpiar() {
+  reset() {
     console.log("Se limpió el formulario");
     this.portada_form.reset();
   }
 
-  volver(){
+  back(){
     this.ruta.navigate(['/aadmin']);
   }
 

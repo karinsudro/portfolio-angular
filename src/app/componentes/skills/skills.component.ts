@@ -25,11 +25,11 @@ export class SkillsComponent implements OnInit {
   constructor(private skillServ:SkillService) { }
 
   ngOnInit(): void {
-    this.cargarSkills();
+    this.getSkills();
   }
 
 
-  cargarSkills(): void{
+  getSkills(): void{
     this.skillServ.getSkills().subscribe(data =>{
       this.skills=data;
   })}

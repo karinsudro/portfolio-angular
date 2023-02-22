@@ -26,11 +26,11 @@ export class RedService {
     }
   //crear
     public saveRed(red: Red): Observable<any> {
-      return this.httpClient.post<Red>(this.url + `new`, red);
+      return this.httpClient.post<Red>(this.url + 'new', red);
     }
   //eliminar
     public deleteRed(id: number): Observable<Red> {
-      return this.httpClient.delete<Red>(this.url + `delete/` + id);
+      return this.httpClient.delete<Red>(this.url + 'delete/' + id);
     }
   //editar
     public editRed(red: Red): Observable<any> {

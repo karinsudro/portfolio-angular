@@ -21,11 +21,11 @@ export class TeachingComponent implements OnInit {
   constructor(private expeTeachServ: ExpeTeachingService) { }
 
   ngOnInit(): void {
-    this.cargarExpeTeach();
+    this.getExpeTeachings();
   }
 
 
-  cargarExpeTeach(): void{
+  getExpeTeachings(): void{
     this.expeTeachServ.getExpeTeachings().subscribe(data =>{
       this.expeTeach=data;
   })}

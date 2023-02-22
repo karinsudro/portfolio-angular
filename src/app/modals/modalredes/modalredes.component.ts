@@ -14,15 +14,15 @@ import { RedService } from 'src/app/servicios/red.service';
 })
 export class ModalredesComponent implements OnInit {
   redes_form !: FormGroup;
-  redes: Red[]=[];
-  red: any;
+  red: Red[]=[];
+  redes: any;
   id?: number;
 
   
   constructor(private redServ: RedService, private formBuilder: FormBuilder, private httpClient: HttpClient, private ruta: Router) { 
     this.redes_form= this.formBuilder.group({
       id: [''],
-      redes:['', Validators.required],
+      red:['', Validators.required],
       icono:['', Validators.required],
       link: ['', Validators.required],
       });
@@ -31,33 +31,33 @@ export class ModalredesComponent implements OnInit {
 
 
 //estos son todos métodos y validaciones
-get Redes(){
-  return this.redes_form.get("redes");
+get Red(){
+  return this.redes_form.get("red");
 }
-/* get RedesValid() {
-  return this.Redes?.touched && !this.Redes?.valid;
-} */
+get RedValid() {
+  return this.Red?.touched && !this.Red?.valid;
+} 
 
 get Icono(){
   return this.redes_form.get("icono");
 }
-/* get IconoValid() {
+get IconoValid() {
   return this.Icono?.touched && !this.Icono?.valid;
-} */
+} 
 
 get Link(){
   return this.redes_form.get("link");
 }
-/* get LinkValid(){
+get LinkValid(){
   return this.Link?.touched && !this.Link?.valid;
-} */
+} 
 
 
 
-listarRedes(): void{
+getRedes(): void{
   this.redServ.getRedes().subscribe({
     next: (data) => {
-      this.redes=data;
+      this.red=data;
       console.log("Redes cargadas correctamente");
     },
     error: (e) => console.error(e),
@@ -66,11 +66,11 @@ listarRedes(): void{
 }
 
   ngOnInit(): void {
-    this.listarRedes();
+    this.getRedes();
   }
 
 
-  cargarRed(id: number){
+  findRed(id: number){
     this.redServ.findRed(id).subscribe({
       next: (data) => {
         this.redes_form.setValue(data);
@@ -82,12 +82,12 @@ listarRedes(): void{
   }
 
 
-  guardarRed() {
-    let red = this.redes_form.value;
-    if (red.id == '') {
-      this.redServ.saveRed(red).subscribe({
+  saveRed() {
+    let redes = this.redes_form.value;
+    if (redes.id == '') {
+      this.redServ.saveRed(redes).subscribe({
         next: (data) => {
-          this.limpiar();
+          this.reset();
         },
         error: (e) => console.error(e),
         complete: () => console.info('complete')
@@ -95,19 +95,19 @@ listarRedes(): void{
       window.location.reload();
       console.log("Red agregada correctamente");
     } else {
-      this.redServ.editRed(red).subscribe({
+      this.redServ.editRed(redes).subscribe({
         next: (data) => {
-          this.limpiar();
+          this.reset();
         },
         error: (e) => console.error(e),
         complete: () => console.info('complete')
       });
       window.location.reload();
-      console.log("Red modificada correctamente");
+      console.log("Proyecto modificado correctamente");
     }
   }
 
-  borrarRed(id: number) {
+  deleteRed(id: number) {
     if (confirm("Querés eliminar esta red?")) {
       this.redServ.deleteRed(id).subscribe(data => {});
       window.location.reload();
@@ -115,16 +115,17 @@ listarRedes(): void{
     }
   }
        
-  limpiar() {
+  reset() {
     console.log("Se limpió el formulario");
     this.redes_form.reset();
   }
 
 
-  volver(){
+  back(){
     this.ruta.navigate(['/aadmin']);
   }
-  
+
+
 
 
 }

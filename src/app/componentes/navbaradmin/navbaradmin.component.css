@@ -1,16 +1,44 @@
 /*--NAV LATERAL DERECHO--*/
-.nav-vertical{
+/* .nav-vertical{
   margin-right: 1rem;
   margin-top:0rem;
   align-items: center;
   float:right;
   text-decoration: none;
   writing-mode: vertical;
-  height: 70vh;
-}
+  height: 100vh;
+} */
 .logo-ap-admin-vertical{
   max-width: 2.3em;
 }
-.alin-vertical{
+/* .alin-vertical{
   margin-top:2.2rem;
+} */
+
+.center {
+  display: flex;
+  align-items: center;
+  height: 100vh;
 }
+
+.centrado-vert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-left: auto;
+  float:right;
+  text-decoration: none;
+  writing-mode: vertical;
+  padding: .3rem;
+  margin-right:1rem;
+}
+
+/* 
+.proy-sep-abajo{
+  margin-bottom: 5rem;
+}
+
+.iconitos{
+  list-style-type: none;
+} */

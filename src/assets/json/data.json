@@ -23,8 +23,9 @@
         {
             "id":1,
             "red": "Github",
-            "link":"https://github.com/karinsudro",
-            "icono": "fa-brands fa-github fa-lg"
+            "icono": "fa-brands fa-github fa-lg",
+            "link":"https://github.com/karinsudro"
+            
         },
         {
             "id":2,
@@ -278,7 +279,7 @@
     "projects":[
         {
             "id": 1,
-            "imagen": "assets/images/portfolio_frente2.png",
+            "imagen": "assets/images/portfolio_frente3.png",
             "proyecto": "Portfolio personal",
             "descripcion": "Armado de portfolio personal utilizando las herramientas aprendidas de FrontEnd y BackEnd para 'Argentina Programa', 3ª cohorte.",
             "live_demo": "URL live demo",
@@ -286,7 +287,7 @@
         },
         {
             "id": 2,
-            "imagen": "assets/images/pelu_canina.png",
+            "imagen": "assets/images/pelu_canina2.png",
             "proyecto": "Peluquería canina",
             "descripcion": "Armado de aplicación básica en Java que permite hacer un CRUD (o ABML).",
             "live_demo": "URL live demo",

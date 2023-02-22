@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Skill } from 'src/app/model/skill';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import { SkillService } from 'src/app/servicios/skill.service';
 
 @Component({
@@ -33,10 +32,11 @@ export class ModalskillsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listarSkills();
+    this.getSkills();
   }
 
 
+  //métodos y validaciones
   get Skill_tipo(){
     return this.skills_form.get("skill_tipo");
    }
@@ -51,6 +51,20 @@ export class ModalskillsComponent implements OnInit {
      return this.Skill?.touched && !this.Skill?.valid;
    }
 
+   get Icono(){
+    return this.skills_form.get("icono");
+   }
+   get IconoValid() {
+     return this.Icono?.touched && !this.Icono?.valid;
+   }
+
+   get Progreso(){
+    return this.skills_form.get("progreso");
+   }
+   get ProgresoValid() {
+     return this.Progreso?.touched && !this.Progreso?.valid;
+   }
+
    get Color(){
     return this.skills_form.get("color");
    }
@@ -58,15 +72,10 @@ export class ModalskillsComponent implements OnInit {
      return this.Color?.touched && !this.Color?.valid;
    }
 
-   get Porcentaje(){
-    return this.skills_form.get("porcentaje");
-   }
-   get PorcentajeValid() {
-     return this.Porcentaje?.touched && !this.Porcentaje?.valid;
-   }
+   
 
 
-   listarSkills(): void{
+   getSkills(): void{
     this.skillServ.getSkills().subscribe({next: (data) => {
       this.skills = data;
       console.log("Skills cargados correctamente");
@@ -77,7 +86,7 @@ export class ModalskillsComponent implements OnInit {
    }
 
 
-   cargarSkill(id: number){
+   findSkill(id: number){
     this.skillServ.findSkill(id).subscribe({
         next: (data) => {
           this.skills_form.setValue(data);
@@ -88,13 +97,13 @@ export class ModalskillsComponent implements OnInit {
     console.log("Skill cargado correctamente");
     }
 
-    guardarSkill() {
+    saveSkill() {
       let skill = this.skills_form.value;
 
       if (skill.id == '') {
         this.skillServ.saveSkill(skill).subscribe({
           next: (data) => {
-            this.limpiar();
+            this.reset();
           },
           error: (e) => console.error(e),
           complete: () => console.info('complete')
@@ -104,7 +113,7 @@ export class ModalskillsComponent implements OnInit {
       } else {
         this.skillServ.editSkill(skill).subscribe({
           next: (data) => {
-            this.limpiar();
+            this.reset();
           },
           error: (e) => console.error(e),
           complete: () => console.info('complete')
@@ -114,7 +123,7 @@ export class ModalskillsComponent implements OnInit {
       }
     }
   
-    borrarSkill(id: number) {
+    deleteSkill(id: number) {
       if (confirm("Desea eliminar este skill?")) {
         this.skillServ.deleteSkill(id).subscribe(data => {});
         window.location.reload();
@@ -122,9 +131,14 @@ export class ModalskillsComponent implements OnInit {
       }
     }
 
-    limpiar(): void {
+    reset(): void {
       this.skills_form.reset();
     }
+
+    back(){
+      this.ruta.navigate(['/aadmin']);
+    }
+  
 
 
 }

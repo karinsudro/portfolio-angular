@@ -1,8 +1,11 @@
+<!---ABOUT ME-->
+<!-- Modal que trae la info a editar-->
 <div class="modal fade" id="modalAboutme" aria-hidden="true" aria-labelledby="modalAboutme" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalAboutme">About me</h1> <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
+        <h1 class="modal-title fs-5" id="modalAboutme">About me</h1> 
+        <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <!-- Modal que muestra info -->
       <div class="modal-body">
@@ -20,7 +23,7 @@
                       </div>
                       <div class="col-12 text-end">
                         <!--<button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalPortadaCrud"><i class="fa-solid fa-plus"></i></button>-->
-                        <button class="btn" (click)="about.id? cargarAbout(about.id): null"  data-bs-toggle="modal"data-bs-target="#modalAboutmeCrud"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="btn" (click)="about.id? findAbout(about.id): null"  data-bs-toggle="modal"data-bs-target="#modalAboutmeCrud"><i class="fa-solid fa-pencil"></i></button>
                         <!--<button class="btn" (click)="perso.id? borrarPersona(perso.id): null"><i class="fa-solid fa-trash-can-arrow-up"></i></button>-->
                         <!--<button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>-->
                       </div>
@@ -40,22 +43,26 @@
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title" id="modalAboutmeCrud">Edit About me</h5> <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
+        <h5 class="modal-title" id="modalAboutmeCrudLabel">Edit About me</h5>
+        <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
         <div class="modal-body">
           <form [formGroup]="aboutme_form">       <!-- (ngSubmit)="onSubmit($event)" id="aboutme_form"-->
+
+            <input type="hidden" name="" id="id">
+
             <div class="mb-3">
-              <label for="imagen" class="form-label"><i>Imagen personal</i></label>
-              <input type="text" formControlName="imagen" id="imagen" [ngClass]="{'is-invalid':Imagen?.errors && Imagen?.touched,'is-valid':!Imagen?.errors && Imagen?.touched}" 
-              class="form-control col-12" aria-describedby="imagenHelp">
-              <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
-                <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
+              <label for="foto" class="form-label"><b>IMAGEN PERSONAL</b></label>
+              <input type="text" formControlName="foto" id="foto" [ngClass]="{'is-invalid':Foto?.errors && Foto?.touched,'is-valid':!Foto?.errors && Foto?.touched}" 
+              class="form-control col-12" aria-describedby="FotoHelp">
+              <div *ngIf="Foto?.errors  && Foto?.touched" class="mb-4">
+                <small *ngIf="Foto?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="saludoA" class="form-label"><i>Algo más sobre mí</i></label>
+              <label for="saludoA" class="form-label"><b>ALGO MAS SOBRE MI</b></label>
               <textarea class="text w-100" formControlName="saludoA" id="saludoA" [ngClass]="{'is-invalid':SaludoA?.errors && SaludoA?.touched,'is-valid':!SaludoA?.errors && SaludoA?.touched}" 
               style="overflow:auto;" rows="7" aria-describedby="saludoAHelp"></textarea>
               <div *ngIf="SaludoA?.errors  && SaludoA?.touched" class="mb-4">    
@@ -65,42 +72,41 @@
             </div>
 
             <div class="mb-3">
-              <label for="saludoB" class="form-label"><i>Saludo B</i></label>
+              <label for="saludoB" class="form-label"><b>SALUDO B</b></label>
               <input type="text" formControlName="saludoB" id="saludoB" class="form-control col-12" aria-describedby="saludoBHelp">
             </div>
 
             <div class="mb-3">
-              <label for="saludoC" class="form-label"><i>Saludo C</i></label>
+              <label for="saludoC" class="form-label"><b>SALUDO C</b></label>
               <input type="text" formControlName="saludoC" id="saludoC" class="form-control col-12" aria-describedby="saludoCHelp">
             </div>
 
             <div class="mb-3">
-              <label for="saludoD" class="form-label"><i>Saludo D</i></label>
+              <label for="saludoD" class="form-label"><b>SALUDO D</b></label>
               <input type="text" formControlName="saludoD" id="saludoD" class="form-control col-12" aria-describedby="saludoDHelp">
             </div>
 
             <div class="mb-3">
-              <label for="saludoE" class="form-label"><i>Saludo E</i></label>
+              <label for="saludoE" class="form-label"><b>SALUDO E</b></label>
               <input type="text" formControlName="saludoE" id="saludoE" class="form-control col-12" aria-describedby="saludoEHelp">
             </div>
 
             <div class="mb-3">
-              <label for="saludoF" class="form-label"><i>Saludo F</i></label>
+              <label for="saludoF" class="form-label"><b>SALUDO F</b></label>
               <input type="text" formControlName="saludoF" id="saludoF" class="form-control col-12" aria-describedby="saludoFHelp">
             </div>
 
             <div class="mb-3">
-              <label for="saludoG" class="form-label"><i>Saludo G</i></label>
+              <label for="saludoG" class="form-label"><b>SALUDO G</b></label>
               <input type="text" formControlName="saludoG" id="saludoG" class="form-control col-12" aria-describedby="saludoGHelp">
             </div>
 
-            <input type="hidden" name="" id="id">
-              <div class="text-end">           
-                <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
-                <button type="btn" class="btn" data-bs-dismiss="modal" (click)="guardarAbout()" [disabled]="aboutme_form.invalid"><i class="fa-solid fa-circle-check"></i></button>
-                <!--<button type="btn" class="btn" (click)="limpiar()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
-                <button class="btn" (click)="volver()" data-bs-toggle="modal"data-bs-target="#modalAbout"><i class="fa-solid fa-chevron-left"></i></button>
-              </div>
+            <div class="text-end">           
+              <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
+              <button type="btn" class="btn" data-bs-dismiss="modal" (click)="saveAbout()" [disabled]="aboutme_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>
+              <!--<button type="btn" class="btn" (click)="limpiar()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
+              <button class="btn" (click)="back()" data-bs-toggle="modal"data-bs-target="#modalAboutme"><i class="fa-solid fa-chevron-left"></i></button>
+            </div>
   
           </form>
         </div>

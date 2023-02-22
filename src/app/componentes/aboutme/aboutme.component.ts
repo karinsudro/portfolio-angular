@@ -22,7 +22,7 @@ export class AboutMeComponent implements OnInit {
   constructor(private aboutServ: AboutService) { }
 
   ngOnInit(): void {
-    this.cargarAbout();
+    this.getAbout();
   }
 
 
@@ -31,7 +31,7 @@ export class AboutMeComponent implements OnInit {
     this.personaServ.get().subscribe(data => (this.persona=data));
   }*/
 
-  cargarAbout(): void{   //sin retorno, solo caraga datos
+  getAbout(): void{   //sin retorno, solo caraga datos
     this.aboutServ.getAbouts().subscribe(data => (this.acerca=data));
   }
 

@@ -1,6 +1,7 @@
-/*--- NAVBAR ---*/
-nav.navbar{
+/*--- NAVBAR PRINCIPAL---*/
+nav.menu{
     position:fixed;
+        top:0;
     width:100%;
     z-index:1200;
     background-color: #fff;
@@ -8,6 +9,11 @@ nav.navbar{
     -webkit-box-shadow: 0.063rem 0.375rem 0.875rem 0.152rem #af014bbf;
     -moz-box-shadow: 0.063rem 0.375rem 0.875rem 0.152rem #af014bbf;
     -ms-box-shadow: 0.063rem 0.375rem 0.875rem 0.152rem #af014bbf;
+}
+
+.nav-link{
+  text-decoration: none;
+  color:#d9d5d5 !important;
 }
 
 .list-group-item {
@@ -36,3 +42,36 @@ a, a:hover{
   .fa-solid.fa-right-to-bracket:hover{
     color: #f7a61a;
   }
+
+.navbar-toggler{
+  text-decoration: none;
+  border:none;
+}
+
+/*---MENU-SECUNDARIO SECCIONES---*/
+::-webkit-scrollbar {
+  display: none;
+}
+.flotante{
+  float:left;
+  position:fixed;
+}
+.lateral{
+  display: block;
+  margin: 0;
+  padding: 3rem 0;
+  transform: rotateZ(-90deg)
+}
+
+.scroll{
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}

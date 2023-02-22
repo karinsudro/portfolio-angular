@@ -19,11 +19,11 @@ titulo= "Graphic designer experience";
 constructor(private expeDesServ:ExpeDesignService) { }
 
 ngOnInit(): void {
-  this.cargarExpeDesigns();
+  this.getExpeDesigns();
 }
 
 
-cargarExpeDesigns(): void{
+getExpeDesigns(): void{
   this.expeDesServ.getExpeDesigns().subscribe(data =>{
     this.expeDes=data;
 })}

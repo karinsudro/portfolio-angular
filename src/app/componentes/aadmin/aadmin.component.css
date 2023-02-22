@@ -1,23 +1,5 @@
 /*---ADMIN---*/
 
-/*--NAV LATERAL DERECHO--*/
-  .nav-vertical{
-    margin-right: 1rem;
-    margin-top:0rem;
-    align-items: center;
-    float:right;
-    text-decoration: none;
-    writing-mode: vertical;
-    height: 70vh;
-  }
-  .logo-ap-admin-vertical{
-    max-width: 2.3em;
-  }
-  .alin-vertical{
-    margin-top:2.2rem;
-  }
-
-
 /*--ADMIN PANEL DAMERO--*/
 .aadmin-panel{
   width:70%;
@@ -26,8 +8,7 @@
 }
 
 .admin-iconos{
-  position: relative;
-  display: block;
+  text-align:center;
 }
 
 .aadmin-iconos:hover{
@@ -35,22 +16,45 @@
 }
 
 
-  .admin{
+/*   .admin{
     margin-top: 1.25rem;
+  } */
+
+  /* .aadmin{
+    margin-top: 5rem !important;
   }
-  .aadmin{
-    margin-top: 7rem !important;
+ */
+
+ ul{
+  text-decoration: none;
+}
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
   
+  /*---formularios---*/
+  textarea::placeholder{
+    font-style: italic;
+    font-size: .9em;
+  }
   
   .links{
     text-decoration: none;
   }
+
   .yo-image{
-    width: 50%;;
+    width: 40%;;
+  }
+
+  a, a:hover{
+    text-decoration: none;
   }
   
-  /*--BOTONES FORMULARIOS--*/
+  /*--botones formularios--*/
   .fa-plus:hover{
     color:#f71aa6;
   }
@@ -63,26 +67,7 @@
   .fa-xmark:hover{
     color:#f1ee06;
   }
-  
-  textarea::placeholder{
-    font-style: italic;
-    font-size: .9em;
+  .fa-solid.fa-chevron-left:hover{
+    color:#54b4f5
   }
-  
-  
-
-
-  ul{
-    text-decoration: none;
-  }
-
-
-
- 
-  a, a:hover{
-    text-decoration: none;
-  }
-
-
-  
-
+  /*--------------------------*/

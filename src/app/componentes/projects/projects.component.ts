@@ -16,7 +16,7 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectServ:ProjectService) { }
 
   ngOnInit(): void {
-    this.cargarProject();
+    this.getProject();
   }
 
 
@@ -25,7 +25,7 @@ export class ProjectsComponent implements OnInit {
     this.personaServ.get().subscribe(data => (this.persona=data));
   }*/
 
-  cargarProject(): void{   //sin retorno, solo caraga datos
+  getProject(): void{   //sin retorno, solo caraga datos
     this.projectServ.getProjects().subscribe(data => (this.project=data));
   }
 

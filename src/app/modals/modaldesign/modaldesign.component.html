@@ -1,300 +1,110 @@
-<!--Modal DESIGN EDIT-->
-<div class="modal 'fade" id="modalDesign" tabindex="-1" aria-labelledby="modalDesign" aria-hidden="true">
+<!---DESIGN-->
+<!-- Modal que trae la info a editar-->
+<div class="modal fade" id="modalDesign" aria-hidden="true" aria-labelledby="modalDesign" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-  <!----------------------------------->
       <div class="modal-header">
-        <h5 class="modal-title" id="modalDesign">Edit Design Experience</h5>
+        <h1 class="modal-title fs-5" id="modalDesign">Design</h1> 
+        <div class="text-end">
+          <button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalDesignCrud"><i class="fa-solid fa-plus"></i></button>
+          <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
       </div>
-  
-              <form [formGroup]="design_form" (ngSubmit)="onSubmit($event)" id="design_form">
 
-                <div class="modal-body">
+      <div class="modal-body">
+          <div class="container mb-3" >
+            <li class="list-group-item mt-4" *ngFor="let design of expeDes">
+              <div class="col-12">
+                <p><b>CARGO:   </b>     {{design.cargo}} </p>
+                <p><b>INICIO:   </b>     {{design.inicio}} </p>  
+                <p><b>FIN:   </b>     {{design.fin}}</p>
+                <p><b>LUGAR:   </b>     {{design.lugar}} </p>
+                <p><b>DESCRIPCION:   </b>     {{design.descripcion}} </p>
+              </div>
 
-                  <div class="mb-3">
-                    <label for="designLugar" class="form-label col-12"><i>Elegir experiencia</i></label>
-                    <select formControlName="designId" id="designId" class="mb-3" >
-                      <option>Seleccionar Design Experience</option>
-                      <option *ngFor="let id of lugar">{{id.lugar}}</option>
-                    </select>
-                  </div>
-                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
-                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
-                  </div>
-                  
-
-                  <div class="mb-3">
-                    <label for="designLugar" class="form-label"><i>Lugar</i></label>
-                    <input type="text" formControlName="designLugar" id="designLugar" class="col-12" [class.border-danger]="LugarValid" aria-describedby="designLugarHelp">
-                  </div>
-                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
-                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="designAnioInicio" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="designAnioInicio" id="designAnioInicio" class="col-12" [class.border-danger]="AnioInicioValid" aria-describedby="designAnioInicioHelp">
-                  </div>
-                  <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
-                    <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año inicio requerido.</i></small>
-                    <!--<small *ngIf="AnioInicio?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="designAnioFin" class="form-label"><i>Fin</i></label>
-                    <input type="text" formControlName="designAnioFin" id="designAnioFin" class="col-12" [class.border-danger]="AnioFinValid" aria-describedby="designAnioFinHelp">
-                  </div>
-                  <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
-                    <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año fin requerido.</i></small>
-                    <!-- <small *ngIf="AnioFin?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
-                  </div>
-
-
-                  <div class="mb-3">
-                    <label for="designDescripcion" class="form-label"><i>Descripción</i></label>
-                    <textarea class="text w-100" id="designDescripcion" style="overflow:auto;" rows="7"></textarea>
-                  </div>
-                  <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
-                    <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Completar descripción.</i></small>
-                  </div>
-                </div>
-                <!--cierre body del modal-->
-                <div class="text-center">
-                  <button type="button" class="btn" data-bs-target="#modalDesignAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
-                  <button type="button" class="btn" data-bs-target="#modalDesignDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                  <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                </div> 
-              
-              </form>
-
+              <div class="col-12 text-end">
+                <!-- <button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalDesignCrud"><i class="fa-solid fa-plus"></i></button> -->
+                <button class="btn" (click)="design.id? findExpeDesign(design.id): null"  data-bs-toggle="modal"data-bs-target="#modalDesignCrud"><i class="fa-solid fa-pencil"></i></button>
+                <button class="btn" (click)="design.id? deleteExpeDesign(design.id): null"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                <!--<button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>-->
+              </div>
+              <hr>
+            </li>
+          </div>     
+      </div>
     </div>
   </div>
 </div>
-  
 
 
-<!--Modal DESIGN ADD-->
-<div class="modal 'fade" id="modalDesignAdd" tabindex="-1" aria-labelledby="modalDesignAdd" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+
+<!--Modal DESIGN CRUD-->
+<div class="modal 'fade" id="modalDesignCrud" tabindex="-1" aria-labelledby="modalDesignCrud" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">    <!--modal-dialog modal-lg-->
     <div class="modal-content">
   <!----------------------------------->
       <div class="modal-header">
-        <h5 class="modal-title" id="modalDesignAdd">Add Design Experience</h5>
+        <h5 class="modal-title" id="modalDesignCrud">Add / Edit a Design Experience</h5> 
+        <button type="btn" class="btn" (click)="reset()" data-bs-dismiss="modal"  aria-label="Close" ><i class="fa-solid fa-xmark"></i></button>
       </div>
-  
-              <form [formGroup]="design_form" (ngSubmit)="onSubmit($event)" id="design_formAdd">
 
-                <div class="modal-body">
-                  
-                  <div class="mb-3">
-                    <label for="designLugarAdd" class="form-label"><i>Lugar</i></label>
-                    <input type="text" formControlName="designLugarAdd" id="designLugarAdd" class="col-12" [class.border-danger]="LugarValid" aria-describedby="designLugarAddHelp">
-                  </div>
-                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
-                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
-                  </div>
+        <div class="modal-body">
+          <form [formGroup]="design_form">
 
-                  <div class="mb-3">
-                    <label for="designAnioInicioAdd" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="designAnioInicioAdd" id="designAnioInicioAdd" class="col-12" [class.border-danger]="AnioInicioValid" aria-describedby="designAnioInicioAddHelp">
-                  </div>
-                  <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
-                    <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
-                    <!--<small *ngIf="AnioInicio?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
-                  </div>
+          <input type="hidden" name="" id="id">
 
-                  <div class="mb-3">
-                    <label for="designAnioFinAdd" class="form-label"><i>Fin</i></label>
-                    <input type="text" formControlName="designAnioFinAdd" id="designAnioFinAdd" class="col-12" [class.border-danger]="AnioFinValid" aria-describedby="designAnioFinAddHelp">
-                  </div>
-                  <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
-                    <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año requerido.</i></small>
-                    <!-- <small *ngIf="AnioFin?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="designDescripcionAdd" class="form-label"><i>Descripción</i></label>
-                    <textarea class="text w-100" id="designDescripcionAdd" style="overflow:auto;" rows="7"></textarea>
-                  </div>
-                  <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
-                    <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Completar descripción.</i></small>
-                  </div>
-                </div>
-                <!--cierre body del modal-->
-                <div class="text-center">
-                  <button type="button" class="btn" data-bs-target="#modalDesign" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
-                  <button type="button" class="btn" data-bs-target="#modalDesignDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                  <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                </div> 
-              
-              </form>
-
-    </div>
-  </div>
-</div>
-  
-  
-
-<!--Modal DESIGN DELETE-->
-<div class="modal 'fade" id="modalDesignDelete" tabindex="-1" aria-labelledby="modalDesignDelete" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-  <!----------------------------------->
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalDesignDelete">Delete Design Experience</h5>
-      </div>
-  
-              <form [formGroup]="design_form" (ngSubmit)="onSubmit($event)" id="design_formDelete">
-
-                <div class="modal-body">
-
-                  <div class="mb-3">
-                    <label for="designLugarDelete" class="form-label col-12"><i>Elegir experiencia</i></label>
-                    <select formControlName="designIdDelete" id="designIdDelete" class="mb-3">
-                      <option selected>Seleccionar Design Experience</option>
-                      <option *ngFor="let id of lugar">{{id.lugar}}</option>
-                    </select>
-                  </div>
-                  
-                </div>
-                <!--cierre body del modal-->
-                <div class="text-center">
-                  <button type="button" class="btn" data-bs-target="#modalDesignAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
-                  <button type="button" class="btn" data-bs-target="#modalDesign" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></button>
-                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                  <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                </div> 
-              
-              </form>
-
-    </div>
-  </div>
-</div>
-  
-  <!----------
-  HTML
-
-  <div *ngIf="mje === 'eliminar'">
-    titulito  agregar....
-    <ul *ngFor="let proyecto of proyectoList">
-      <li>botoncito para eliminar (i iconito)</li>
-    </ul>
-    botoncito para guardar elección
-  </div>
-  
-  
-    <div *ngIf="mje === 'agregar'">
-    titulito  agregar....
-    <form (ngSubmit)="onCreate()">
-      desarrollo del form
-      botoncito para guardar eleccion
-    </div>
-  
-    <div *ngIf="mje === 'editar'">
-    titulito  agregar....
-        <div *ngFor="let proyecto of proyectoList">
-<ul><li type="button" class="proyecto" (click)="cargarDetalle(proyecto.id)">{{proyecto......}}
-  <i fontawesome></i></li></ul>
-    </div>
-
-    <div *ngIf="proyec">
-      titulito para gregar proyecto
-      <form (ngSubmit)="OnUpdate(proyect.id)">
-
-
-        TS
-
- import { Component, OnInit,Input } from '@angular/core';
-import { Proyecto } from 'src/app/model/proyecto';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
-import { ProyectoService } from 'src/app/servicios/proyecto.service';
-import { ImageService } from 'src/app/servicios/image.service';
-
-@Component({
-  selector: 'app-modal-proyectos',
-  templateUrl: './modal-proyectos.component.html',
-  styleUrls: ['./modal-proyectos.component.css']
-})
-export class ModalProyectosComponent implements OnInit {
- 
-  @Input() mje:string="";
-  proyectoList: Proyecto[]=[];
-  img:string="";
-  path:string="";
-  proyec:Proyecto|any=null;
-  proyecto:string=""
-  id:number=0;
-  completo:boolean=false;
- 
-  constructor(private proyectos:ProyectoService,private imageService:ImageService) { }
-
-  ngOnInit(): void {
-    this.proyectos.lista().subscribe(data =>{
-      this.proyectoList= data;
-      
-    })
-  }
-cargarDetalle(id?:number){
-    if(id != undefined){
-    this.proyectos.detail(id).subscribe(data=>{
-      this.proyec=data;
-    },err=>{
-      alert("error al modificar");
-    })
-  }
-  }
-  cargarProyecto():void{
-    this.proyectos.lista().subscribe(data =>{this.proyec=data;})
-    
-  }
-  borrar(id?:number){
-    if(id != undefined){
-      this.proyectos.delete(id).subscribe(data =>{
-        this.cargarProyecto();
-        alert("se pudo eliminar satisfactoriamente");
-      },err =>{
-        alert(
-
-  
-OnUpdate(id?:number):void{
-    this.completo= this.imageService.completed;
-      if(id != undefined){
-          this.proyectos.update(id,this.proyec).subscribe(data=>{
-          alert("certificado modificado"); 
-          this.cargarProyecto();
-      },err =>{
-        alert("Error al modificar certificado");
+            <div class="mb-3">
+              <label for="cargo" class="form-label"><b>CARGO</b></label>
+              <input type="text" formControlName="cargo" id="cargo" name="" class="form-control col-12" aria-describedby="CargoHelp" [ngClass]="{'is-invalid':Cargo?.errors && Cargo?.touched,'is-valid':!Cargo?.errors && Cargo?.touched}">
+              <div *ngIf="Cargo?.errors  && Cargo?.touched" class="mb-4">
+                <small *ngIf="Cargo?.hasError('required')" class="error text-small"><i>Cargo requerido.</i></small>
+              </div>
+            </div>
+                                       
+            <div class="mb-3">
+              <label for="inicio" class="form-label"><b>INICIO</b></label>
+              <input type="text" formControlName="inicio" id="inicio" name="" class="form-control col-12" aria-describedby="InicioHelp" [ngClass]="{'is-invalid':Inicio?.errors && Inicio?.touched,'is-valid':!Inicio?.errors && Inicio?.touched}">
+              <div *ngIf="Inicio?.errors  && Inicio?.touched" class="mb-4">
+                <small *ngIf="Inicio?.hasError('required')" class="error text-small"><i>Inicio requerido.</i></small>
+              </div>
+            </div>
         
-      })
-    }
-  }
-  uploadImage($event:any){
-    
-     const name="proyect_"+ this.proyec.id;
-     this.imageService.uploadImage($event,name,3);
-   
-
-   }
-
-OnCreate():void{
-    // this.habilidad.icono = this.imageService.url;
-   this.completo= this.imageService.completed;
-    this.img= this.imageService.url[this.imageService.url.length-1]
-   console.log( this.img)
-     const habi= new Proyecto(this.proyecto,this.path,this.img)
-    
-     this.proyectos.save(habi).subscribe(data=>{
-       alert("Proyecto añadido");
-       
-     },err=>{
-       alert("Fallo al añadir");
-     })
-     
-   }
-
-
-}
-  
-  -->
+            <div class="mb-3">
+              <label for="fin" class="form-label"><b>FIN</b></label>
+              <input type="text" formControlName="fin" id="fin" name="" class="form-control col-12" aria-describedby="FinHelp" [ngClass]="{'is-invalid':Fin?.errors && Fin?.touched,'is-valid':!Fin?.errors && Fin?.touched}">
+              <div *ngIf="Fin?.errors  && Fin?.touched" class="mb-4">
+                <small *ngIf="Fin?.hasError('required')" class="error text-small"><i>Fin requerido.</i></small>
+              </div>
+            </div>
+        
+            <div class="mb-3">
+              <label for="lugar" class="form-label"><b>LUGAR</b></label>
+              <input type="text" formControlName="lugar" id="lugar" name="" class="form-control col-12" aria-describedby="LugarHelp" [ngClass]="{'is-invalid':Lugar?.errors && Lugar?.touched,'is-valid':!Lugar?.errors && Lugar?.touched}">
+              <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">
+                <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar requerido.</i></small>
+              </div>
+            </div>
+        
+            <div class="mb-3">
+              <label for="descripcion" class="form-label"><b>DESCRIPCION</b></label>
+              <textarea class="text w-100" formControlName="descripcion" id="descripcion" name="" [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched,'is-valid':!Descripcion?.errors && Descripcion?.touched}" 
+              style="overflow:auto;" rows="7" aria-describedby="descripcionHelp"></textarea>
+              <div *ngIf="Descripcion?.errors  && Descripcion?.touched" class="mb-4">    
+                <small *ngIf="Descripcion?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
+                <small *ngIf="Descripcion?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+              </div>
+            </div>
+        
+            <div class="text-end">           
+              <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
+              <button type="btn" class="btn" data-bs-dismiss="modal" (click)="saveExpeDesign()" [disabled]="design_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>
+              <!--<button type="btn" class="btn" (click)="reset()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
+              <button class="btn" (click)="back()" data-bs-toggle="modal"data-bs-target="#modalDesign"><i class="fa-solid fa-chevron-left"></i></button>
+            </div>
+          </form>
+        </div>
+        
+    </div>
+  </div>
+</div>
+ 

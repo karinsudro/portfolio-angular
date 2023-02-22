@@ -36,11 +36,11 @@ export class ModalaboutmeComponent implements OnInit {
 
 
   //estos son todos métodos y validaciones
-  get Imagen(){
-    return this.aboutme_form.get("imagen");
+  get Foto(){
+    return this.aboutme_form.get("foto");
    }
   get ImagenValid() {
-     return this.Imagen?.touched;
+     return this.Foto?.touched;
    }
    
   get SaludoA(){
@@ -52,7 +52,7 @@ export class ModalaboutmeComponent implements OnInit {
 
 
   
-   listarAbouts(): void{
+   getAbouts(): void{
     this.aboutServ.getAbouts().subscribe({
       next: (data) => {
         this.acerca=data;
@@ -64,11 +64,11 @@ export class ModalaboutmeComponent implements OnInit {
   }
   
     ngOnInit(): void {
-      this.listarAbouts();
+      this.getAbouts();
     }
   
   
-    cargarAbout(id: number){
+    findAbout(id: number){
       this.aboutServ.findAbout(id).subscribe({
         next: (data) => {
           this.aboutme_form.setValue(data);
@@ -80,12 +80,12 @@ export class ModalaboutmeComponent implements OnInit {
     }
   
   
-    guardarAbout() {
+    saveAbout() {
       let about = this.aboutme_form.value;
       if (about.id == '') {
         this.aboutServ.saveAbout(about).subscribe({
           next: (data) => {
-            this.limpiar();
+            this.reset();
           },
           error: (e) => console.error(e),
           complete: () => console.info('complete')
@@ -95,7 +95,7 @@ export class ModalaboutmeComponent implements OnInit {
       } else {
         this.aboutServ.editAbout(about).subscribe({
           next: (data) => {
-            this.limpiar();
+            this.reset();
           },
           error: (e) => console.error(e),
           complete: () => console.info('complete')
@@ -105,7 +105,7 @@ export class ModalaboutmeComponent implements OnInit {
       }
     }
   
-    borrarAbout(id: number) {
+    deleteAbout(id: number) {
       if (confirm("Querés eliminar about me?")) {
         this.aboutServ.deleteAbout(id).subscribe(data => {});
         window.location.reload();
@@ -113,12 +113,12 @@ export class ModalaboutmeComponent implements OnInit {
       }
     }
          
-    limpiar() {
+    reset() {
       console.log("Se limpió el formulario");
       this.aboutme_form.reset();
     }
   
-    volver(){
+    back(){
       this.ruta.navigate(['/aadmin']);
     }
 

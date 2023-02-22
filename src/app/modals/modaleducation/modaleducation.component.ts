@@ -1,81 +1,141 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { Router } from '@angular/router';
+import { Education } from 'src/app/model/education';
+import { EducationService } from 'src/app/servicios/education.service';
 
 @Component({
   selector: 'app-modaleducation',
   templateUrl: './modaleducation.component.html',
   styleUrls: ['./modaleducation.component.css']
 })
+
 export class ModaleducationComponent implements OnInit {
   education_form!: FormGroup;
-  lugar:any;
-  submitted=false;
+  education: Education[]=[];
+  educs: any;
+  id?: number;
 
-  constructor(private portfolioService:PortfolioService, private formBuilder: FormBuilder) {
-    this.portfolioService.getDatos().subscribe(portfolio =>{
-      this.education_form=portfolio.aboutme;
-      });
+
+  constructor(private educServ: EducationService, private formBuilder: FormBuilder, private httpClient: HttpClient, private ruta: Router) {
     this.education_form= this.formBuilder.group({
-      lugar:['', Validators.required],
-      anioInicio:['',Validators.required],
-      anioFin:['',Validators.required],
-      descrip:['', Validators.required],
+      id: [''],
+      carrera:['', Validators.required],
+      inicio:['', Validators.required],
+      fin:['', Validators.required],
+      institucion:['', Validators.required],
+      descripcion:['', Validators.required]
    })
    }
 
+
+//metodos y validaciones
+  get Carrera(){
+   return this.education_form.get("carrera");
+  }
+  get CarreraValid() {
+    return this.Carrera?.touched && !this.Carrera?.valid;
+  }
+
+  get Inicio(){
+   return this.education_form.get("inicio");
+  }
+  get InicioValid() {
+    return this.Inicio?.touched && !this.Inicio?.valid;
+  }
+
+  get Fin(){
+   return this.education_form.get("fin");
+  }
+  get FinValid() {
+    return this.Fin?.touched && !this.Fin?.valid;
+  }
+
+  get Institucion(){
+   return this.education_form.get("institucion");
+  }
+  get InstitucionValid() {
+    return this.Institucion?.touched && !this.Institucion?.valid;
+  }
+
+  get Descripcion(){
+   return this.education_form.get("descripcion");
+  }
+  get DescripcionValid() {
+    return this.Descripcion?.touched && !this.Descripcion?.valid;
+  }
+
+
+  getEducations(): void{
+    this.educServ.getEducations().subscribe({
+      next: (data) => {
+        this.education=data;
+        console.log("Estudios cargados correctamente");
+      },
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
+  })
+  }
+  
   ngOnInit(): void {
-    
+    this.getEducations();
   }
-
-  get Lugar(){
-    return this.education_form.get("lugar");
-   }
-   get LugarValid() {
-     return this.Lugar?.touched && !this.Lugar?.valid;
-   }
- 
-   get AnioInicio(){
-    return this.education_form.get("anioInicio");
-   }
-   get AnioInicioValid() {
-     return this.AnioInicio?.touched && !this.AnioInicio?.valid;
-   }
-
-   get AnioFin(){
-    return this.education_form.get("anioFin");
-   }
-   get AnioFinValid() {
-     return this.AnioFin?.touched && !this.AnioFin?.valid;
-   }
-
-   get Descrip(){
-    return this.education_form.get("descrip");
-   }
-   get DescripValid() {
-     return this.Descrip?.touched && !this.Descrip?.valid;
-   }
-
-
-   onSubmit(event: Event) {
-    // Detenemos la propagación o ejecución del comportamiento submit de un form
-    event.preventDefault; 
- 
-    if (this.education_form.valid){
-      // Llamamos a nuestro servicio para enviar los datos al servidor
-      // También podríamos ejecutar alguna lógica extra
-      alert("Todo en orden. Ya puede enviar su formulario.");
-    }else{
-      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
-      this.education_form.markAllAsTouched()
-      alert("Revise su formulario."); 
+  
+  
+  findEducation(id: number){
+    this.educServ.findEducation(id).subscribe({
+      next: (data) => {
+        this.education_form.setValue(data);
+      },
+      error: (e) => console.error(e),
+      complete: ()=> console.info('complete')
+    });
+    console.log("Estudios cargados correctamente");
+  }
+  
+  
+    saveEducation() {
+      let educs = this.education_form.value;
+      if (educs.id == '') {
+        this.educServ.saveEducation(educs).subscribe({
+          next: (data) => {
+            this.reset();
+          },
+          error: (e) => console.error(e),
+          complete: () => console.info('complete')
+        });
+        window.location.reload();
+        console.log("Estudios cargados correctamente");
+      } else {
+        this.educServ.editEducation(educs).subscribe({
+          next: (data) => {
+            this.reset();
+          },
+          error: (e) => console.error(e),
+          complete: () => console.info('complete')
+        });
+        window.location.reload();
+        console.log("Estudios modificados correctamente");
+      }
     }
-  }
-
-  onReset(): void {
-    this.submitted = false;
-    this.education_form.reset();
-  }
+  
+    deleteEducation(id: number) {
+      if (confirm("Querés eliminar este estudio?")) {
+        this.educServ.deleteEducation(id).subscribe(data => {});
+        window.location.reload();
+        console.log("Estudio eliminado correctamente");
+      }
+    }
+         
+    reset() {
+      console.log("Se limpió el formulario");
+      this.education_form.reset();
+    }
+  
+    back(){
+      this.ruta.navigate(['/aadmin']);
+    }
 
 
 

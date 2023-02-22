@@ -1,7 +1,40 @@
+<!---EDUCATION-->
+<!-- Modal que trae la info a editar-->
+<div class="modal fade" id="modalEducation" aria-hidden="true" aria-labelledby="modalEducation" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalEducation">Education</h1> 
+        <div class="text-end">
+          <button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalEducationCrud"><i class="fa-solid fa-plus"></i></button>
+          <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
 
-
-
-
+      <div class="modal-body">
+          <div class="container mb-3" >
+            <li class="list-group-item mt-4" *ngFor="let educs of education">
+              <div class="col-12">
+                <p><b>CARRERA:   </b>     {{educs.carrera}} </p>
+                <p><b>INICIO:   </b>     {{educs.inicio}} </p>  
+                <p><b>FIN:   </b>     {{educs.fin}}</p>
+                <p><b>INSTITUCION:   </b>     {{educs.institucion}} </p>
+                <p><b>DESCRIPCION:   </b>     {{educs.descripcion}} </p>
+              </div>
+                
+              <div class="col-12 text-end">
+                <!-- <button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalEducationCrud"><i class="fa-solid fa-plus"></i></button> -->
+                <button class="btn" (click)="educs.id? findEducation(educs.id): null"  data-bs-toggle="modal"data-bs-target="#modalEducationCrud"><i class="fa-solid fa-pencil"></i></button>
+                <button class="btn" (click)="educs.id? deleteEducation(educs.id): null"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+                <!--<button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>-->
+              </div>
+              <hr>
+            </li>
+          </div>     
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -11,69 +44,69 @@
     <div class="modal-content">
   <!----------------------------------->
       <div class="modal-header">
-        <h5 class="modal-title" id="modalEducationCrud">Add / Edit Education</h5>
+        <h5 class="modal-title" id="modalEducationCrudLabel">Add / Edit an Education</h5> 
+        <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
       </div>
-  
-              <form [formGroup]="education_form" (ngSubmit)="onSubmit($event)" id="education_form">
 
-                <div class="modal-body">
-                  
-                  <div class="mb-3">
-                    <label for="educationLugar" class="form-label col-12"><i>Elegir experiencia</i></label>
-                    <select formControlName="educationId" id="educationId" class="mb-3">
-                      <option selected>Seleccionar Education Experience</option>
-                      <option *ngFor="let id of lugar">{{id.lugar}}</option>
-                    </select>
-                  </div>
-                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
-                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
-                  </div>
+        <div class="modal-body">
+          <form [formGroup]="education_form">    <!-- (ngSubmit)="onSubmit($event)" id="education_form"-->
 
-                  <div class="mb-3">
-                    <label for="educationLugar" class="form-label"><i>Lugar</i></label>
-                    <input type="text" formControlName="educationLugar" id="educationLugar" class="col-12" [class.border-danger]="LugarValid" aria-describedby="educationLugarHelp">
-                  </div>
-                  <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">    
-                    <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar de trabajo requerido.</i></small>
-                  </div>
+            <div class="mb-3">
+              <label for="carrera" class="form-label"><b>CARRERA</b></label>
+              <input type="text" formControlName="carrera" id="carrera" name="" class="form-control col-12" aria-describedby="carreraHelp" 
+              [ngClass]="{'is-invalid':Carrera?.errors && Carrera?.touched,'is-valid':!Carrera?.errors && Carrera?.touched}">
+              <div *ngIf="Carrera?.errors  && Carrera?.touched" class="mb-4">    
+                <small *ngIf="Carrera?.hasError('required')" class="error text-small"><i>Estudio requerido.</i></small>
+              </div>
+            </div>
 
-                  <div class="mb-3">
-                    <label for="educationAnioInicio" class="form-label"><i>Inicio</i></label>
-                    <input type="text" formControlName="educationAnioInicio" id="educationAnioInicio" class="col-12" [class.border-danger]="AnioInicioValid" aria-describedby="educationAnioInicioHelp">
-                  </div>
-                  <div *ngIf="AnioInicio?.errors  && AnioInicio?.touched" class="mb-4">    
-                    <small *ngIf="AnioInicio?.hasError('required')" class="error text-small"><i>Año inicio requerido.</i></small>
-                    <!--<small *ngIf="AnioInicio?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
-                  </div>
+            <div class="mb-3">
+              <label for="inicio" class="form-label"><b>INICIO</b></label>
+              <input type="text" formControlName="inicio" id="inicio" name="" class="form-control col-12" aria-describedby="inicioHelp" 
+              [ngClass]="{'is-invalid':Inicio?.errors && Inicio?.touched,'is-valid':!Inicio?.errors && Inicio?.touched}">
+              <div *ngIf="Inicio?.errors  && Inicio?.touched" class="mb-4">    
+                <small *ngIf="Inicio?.hasError('required')" class="error text-small"><i>Inicio requerido.</i></small>
+              </div>
+            </div>
 
-                  <div class="mb-3">
-                    <label for="educationAnioFin" class="form-label"><i>Fin</i></label>
-                    <input type="text" formControlName="educationAnioFin" id="educationAnioFin" class="col-12" [class.border-danger]="AnioFinValid" aria-describedby="educationAnioFinHelp">
-                  </div>
-                  <div *ngIf="AnioFin?.errors  && AnioFin?.touched" class="mb-4">    
-                    <small *ngIf="AnioFin?.hasError('required')" class="error text-small"><i>Año fin requerido.</i></small>
-                    <!-- <small *ngIf="AnioFin?.hasError('text')" class="error text-small"><i>El formato debe ser válido.</i></small> -->
-                  </div>
+            <div class="mb-3">
+              <label for="fin" class="form-label"><b>FIN</b></label>
+              <input type="text" formControlName="fin" id="fin" name="" class="form-control col-12" aria-describedby="finHelp" 
+              [ngClass]="{'is-invalid':Fin?.errors && Fin?.touched,'is-valid':!Fin?.errors && Fin?.touched}">
+              <div *ngIf="Fin?.errors  && Fin?.touched" class="mb-4">    
+                <small *ngIf="Fin?.hasError('required')" class="error text-small"><i>Finalización o status requerido.</i></small>
+              </div>
+            </div>
 
+            <div class="mb-3">
+              <label for="institucion" class="form-label"><b>INSTITUCION</b></label>
+              <input type="text" formControlName="institucion" id="institucion" name="" class="form-control col-12" aria-describedby="institucionHelp" 
+              [ngClass]="{'is-invalid':Institucion?.errors && Institucion?.touched,'is-valid':!Institucion?.errors && Institucion?.touched}">
+              <div *ngIf="Institucion?.errors  && Institucion?.touched" class="mb-4">    
+                <small *ngIf="Institucion?.hasError('required')" class="error text-small"><i>Institución requerida.</i></small>
+              </div>
+            </div>
 
-                  <div class="mb-3">
-                    <label for="educationDescripcion" class="form-label"><i>Descripción</i></label>
-                    <textarea class="text w-100" id="educationDescripcion" style="overflow:auto;" rows="7"></textarea>
-                  </div>
-                  <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
-                    <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Completar descripción.</i></small>
-                  </div>
-                </div>
-                <!--cierre body del modal-->
-                <div class="text-center">
-                  <button type="button" class="btn" data-bs-target="#modalEducationAdd" data-bs-toggle="modal"><i class="fa-solid fa-plus"></i></button>
-                  <button type="button" class="btn" data-bs-target="#modalEducationDelete" data-bs-toggle="modal"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                  <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                  <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
-                </div> 
+            <div class="mb-3">
+              <label for="descripcion" class="form-label"><i>Descripción</i></label>
+              <textarea class="text w-100" formControlName="descripcion" id="descripcion" name=""
+              [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched,'is-valid':!Descripcion?.errors && Descripcion?.touched}" 
+              style="overflow:auto;" rows="7" aria-describedby="descripcionHelp"></textarea>
+              <div *ngIf="Descripcion?.errors  && Descripcion?.touched" class="mb-4">    
+                <small *ngIf="Descripcion?.hasError('required')" class="error text-small"><i>Descripción requerida.</i></small>
+              </div>
+            </div>
+
+            <input type="hidden" name="" id="id">
+            <div class="text-end">           
+              <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
+              <button type="btn" class="btn" data-bs-dismiss="modal" (click)="saveEducation()" [disabled]="education_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>
+              <!--<button type="btn" class="btn" (click)="reset()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
+              <button class="btn" (click)="back()" data-bs-toggle="modal"data-bs-target="#modalEducation"><i class="fa-solid fa-chevron-left"></i></button>
+            </div>
               
-              </form>
-
+         </form>
+        </div>
     </div>
   </div>
 </div>

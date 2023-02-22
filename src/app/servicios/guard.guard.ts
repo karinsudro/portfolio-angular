@@ -18,6 +18,7 @@ export class GuardGuard implements CanActivate {
     let currentUser= this.autenService.usuarioAutenticado;
 
     if(currentUser && currentUser.id){
+      //this.ruta.navigate(['/aadmin']);
       return true;
     }else{
       this.ruta.navigate(['/']);

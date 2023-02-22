@@ -1,8 +1,8 @@
 /*--CARDS PROJECTS--*/
-.btn-project{
+/* .btn-project{
     margin-left: 1rem;
     margin-right:1rem;
-  }
+  } */
   .card-proy:hover{
     transform: translate(-0.438rem, -0.438rem);
     box-shadow: 0.063rem 0.375rem 0.875rem 0.152rem #69014bbf;
@@ -10,6 +10,16 @@
     -moz-box-shadow: 0.063rem 0.375rem 0.875rem 0.152rem #af014bbf;
     transition: .5s;
   }
-  .proy-sep-abajo{
-    margin-bottom: 5rem;
+
+  .card-header{
+    background-color: #fff;
   }
+
+  /* .card-footer{
+    position: relative;
+   bottom: 0;
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   
+  } */

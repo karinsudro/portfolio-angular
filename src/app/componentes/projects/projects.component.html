@@ -1,22 +1,24 @@
 <!---PROJECTS-->
-<div class="container caja justify-content-center proy-sep-abajo">
+<div class="container caja justify-content-center" id="#projects">
     <h3 class="titulo-centrado">{{titulo}}</h3>
     
      <!--ARMADO TARJETAS CON PROYECTOS--> 
      <div class="card-group">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-g-4">
+      <div class="row g-4">
         <!--PROYECTO PORTFOLIO-->
-        <div class="col"  *ngFor="let proy of project">
+        <div class="col sm-12 md-6"  *ngFor="let proy of project">
           
-          <div class="card card-proy h-100">
+          <div class="card card-proy h-100">        
             <img class="card-img-top"  [src]="proy.imagen" alt="proyectos">
-            <div class="card-body">
+            <div class="card-header d-flex justify-content-between">
               <h5 class="card-title">{{proy.proyecto}}</h5>
+              <ul class="list-group list-group-horizontal list-unstyled iconitos">
+                <li class="mx-2"><a [href]="proy.live_url" target="_blank"><i class="fa-solid fa-eye fa-lg"></i></a></li>
+                <li class="mx-2"><a [href]="proy.repo_url" target="_blank"><i class="fa-brands fa-github fa-lg"></i></a></li>
+              </ul>
+            </div>
+              <div class="card-body">
               <p class="card-text"><i>{{proy.descripcion}}</i></p>
-                <div class="text-center">
-                <a href="#" class="btn btn-secondary btn-sm btn-project">{{proy.live_url}}</a>
-                <a href="#" class="btn btn-secondary btn-sm btn-project">{{proy.repo_url}}</a>
-                </div>
             </div>
           </div>
           </div>
@@ -24,4 +26,4 @@
         
       </div>
       <!--Fin armado CARDS de proyectos-->
-  </div>
+</div>

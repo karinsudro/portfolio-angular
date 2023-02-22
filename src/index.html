@@ -5,7 +5,7 @@
   <title>Yo soy Karin</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="styles.css" rel="stylesheet" type="text/css">
+  <link href="src/stylng buildes.css" rel="stylesheet" type="text/css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/95e96c4317.js" crossorigin="anonymous"></script>
@@ -21,6 +21,47 @@
 <body>
   <app-root></app-root>
 
+  <!-- Accessibility Code for "portfolio-karinsd.web.app" -->
+<script>
+  window.interdeal = {
+      "sitekey": "3137eaedd2b9c73c5735b39c8e84d5af",
+      "Position": "Left",
+      "Menulang": "ES",
+      "domains": {
+          "js": "https://cdn.equalweb.com/",
+          "acc": "https://access.equalweb.com/"
+      },
+      "btnStyle": {
+          "vPosition": [
+              "80%",
+              null
+          ],
+          "scale": [
+              "0.6",
+              "0.6"
+          ],
+          "color": {
+              "main": "#6e7577",
+              "second": ""
+          },
+          "icon": {
+              "type": 11,
+              "shape": "semicircle",
+              "outline": false
+          }
+      }
+  };
+  (function(doc, head, body){
+    var coreCall             = doc.createElement('script');
+    coreCall.src             = interdeal.domains.js + 'core/4.4.1/accessibility.js';
+    coreCall.defer           = true;
+    coreCall.integrity       = 'sha512-tq2wb4PBHqpUqBTfTG32Sl7oexERId9xGHX2O3yF91IYLII2OwM1gJVBXGbEPaLmfSQrIE+uAOzNOuEUZHHM+g==';
+    coreCall.crossOrigin     = 'anonymous';
+    coreCall.setAttribute('data-cfasync', true );
+    body? body.appendChild(coreCall) : head.appendChild(coreCall);
+  })(document, document.head, document.body);
+  </script>
+<!-- cierre accesibilidad-->
 
 
 

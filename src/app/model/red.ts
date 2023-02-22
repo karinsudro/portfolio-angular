@@ -2,17 +2,20 @@ export class Red {
 
     id?: number;   
     red: string;
-    link: string;
     icono: string;
+    link: string;
+    
 
     constructor(
     red: string,
-    link: string,
-    icono: string){
+    icono: string,
+    link: string
+    ){
 
         this.red=red;
-        this.link=link;
         this.icono=icono;
+        this.link=link;
+        
         
     }
 

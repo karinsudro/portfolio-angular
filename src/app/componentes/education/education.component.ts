@@ -19,7 +19,7 @@ export class EducationComponent implements OnInit {
   constructor(private educationServ:EducationService) { }
 
   ngOnInit(): void {
-    this.cargarEducation();
+    this.getEducation();
   }
 
 
@@ -28,7 +28,7 @@ export class EducationComponent implements OnInit {
     this.personaServ.get().subscribe(data => (this.persona=data));
   }*/
 
-  cargarEducation(): void{   //sin retorno, solo caraga datos
+  getEducation(): void{   //sin retorno, solo caraga datos
     this.educationServ.getEducations().subscribe(data => (this.education=data));
   }
   

@@ -1,22 +1,28 @@
+<!---PORTADA-->
 <!-- Modal que trae la info a editar-->
-<div class="modal fade" id="modalPortada" aria-hidden="true" aria-labelledby="modalPortada" tabindex="-1">
+<div class="modal fade" id="modalPortada" aria-hidden="true" aria-labelledby="modalPortadaLabel" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
+
+
+
+      
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalPortada">Portada</h1> <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
+        <h1 class="modal-title fs-5" id="modalPortada">I am...</h1> 
+        <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <!-- Modal que muestra info -->
       <div class="modal-body">
           <div class="container mb-3" >
-              <li class="list-group-item mt-4" *ngFor="let perso of persona">
+              <li class="list-group-item mt-4" *ngFor="let perso of portada">
                       <div class="col-12">
                           <p><b>HOLA:</b>     {{ perso.hola }}</p>
-                          <p><b>ME LLAMO:</b>     {{ perso.nombre }} {{ perso.apellido }}</p>
+                          <p><b>YO SOY:</b>     {{ perso.nombre }} {{ perso.apellido }}</p>
                           <p><b>CARGO:</b>     {{ perso.cargo }}</p>
                       </div>
                       <div class="col-12 text-end">
                         <!--<button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalPortadaCrud"><i class="fa-solid fa-plus"></i></button>-->
-                        <button class="btn" (click)="perso.id? cargarPersona(perso.id): null"  data-bs-toggle="modal"data-bs-target="#modalPortadaCrud"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="btn" (click)="perso.id? findPersona(perso.id): null"  data-bs-toggle="modal"data-bs-target="#modalPortadaCrud"><i class="fa-solid fa-pencil"></i></button>
                         <!--<button class="btn" (click)="perso.id? borrarPersona(perso.id): null"><i class="fa-solid fa-trash-can-arrow-up"></i></button>-->
                         <!--<button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>-->
                       </div>
@@ -36,54 +42,56 @@
     <div class="modal-content">
 <!----------------------------------->
       <div class="modal-header">
-        <h5 class="modal-title" id="modalPortadaCrud">Edit Portada</h5> <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>
+        <h5 class="modal-title" id="modalPortadaCrudLabel">Edit the "I am..." board</h5>
+        <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       
           <div class="modal-body">
             <form [formGroup]="portada_form">       <!-- (ngSubmit)="onSubmit($event)" id="portada_form"-->
+
+              <input type="hidden" name="" id="id">
+
               <div class="mb-3">
-                <label for="hola" class="form-label"><i>Bienvenida</i></label>
-                <input type="text" formControlName="hola" id="hola" class="form-control col-12" name="" [ngClass]="{'is-invalid':Hola?.errors && Hola?.touched,'is-valid':!Hola?.errors && Hola?.touched}" aria-describedby="holaHelp">
+                <label for="hola" class="form-label"><b>BIENVENIDA</b></label>
+                <input type="text" formControlName="hola" id="hola" class="form-control col-12" [ngClass]="{'is-invalid':Hola?.errors && Hola?.touched,'is-valid':!Hola?.errors && Hola?.touched}" aria-describedby="holaHelp">
                 <div *ngIf="Hola?.errors && Hola?.touched" class="mb-4">    
                   <small *ngIf="Hola?.hasError('required')" class="error text-small"><i>Escribir un nombre.</i></small>
                 </div>
               </div>
 
               <div class="mb-3">
-                <label for="nombre" class="form-label"><i>Nombre</i></label>
-                <input type="text" formControlName="nombre" id="nombre" class="form-control col-12" name="" [ngClass]="{'is-invalid':Nombre?.errors && Nombre?.touched,'is-valid':!Nombre?.errors && Nombre?.touched}" aria-describedby="nombreHelp">
+                <label for="nombre" class="form-label"><b>NOMBRE</b></label>
+                <input type="text" formControlName="nombre" id="nombre" class="form-control col-12" [ngClass]="{'is-invalid':Nombre?.errors && Nombre?.touched,'is-valid':!Nombre?.errors && Nombre?.touched}" aria-describedby="nombreHelp">
                 <div *ngIf="Nombre?.errors && Nombre?.touched" class="mb-4">    
                   <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Escribir un nombre.</i></small>
                 </div>
               </div>
 
               <div class="mb-3">
-                <label for="apellido" class="form-label"><i>Apellido</i></label>
-                <input type="text" formControlName="apellido" id="apellido" class="form-control col-12" name="" [ngClass]="{'is-invalid':Apellido?.errors && Apellido?.touched,'is-valid':!Apellido?.errors && Apellido?.touched}" aria-describedby="apellidoHelp">
+                <label for="apellido" class="form-label"><b>APELLIDO</b></label>
+                <input type="text" formControlName="apellido" id="apellido" class="form-control col-12" [ngClass]="{'is-invalid':Apellido?.errors && Apellido?.touched,'is-valid':!Apellido?.errors && Apellido?.touched}" aria-describedby="apellidoHelp">
                 <div *ngIf="Apellido?.errors && Apellido?.touched" class="mb-4">    
                   <small *ngIf="Apellido?.hasError('required')" class="error text-small"><i>Escribir un apellido.</i></small>
                 </div>
               </div>
 
               <div class="mb-3">
-                <label for="cargo" class="form-label"><i>Cargo</i></label>
-                <input type="text" formControlName="cargo" id="cargo" class="form-control col-12" name="" [ngClass]="{'is-invalid':Cargo?.errors && Cargo?.touched,'is-valid':!Cargo?.errors && Cargo?.touched}" aria-describedby="cargoHelp">
+                <label for="cargo" class="form-label"><b>CARGO</b></label>
+                <input type="text" formControlName="cargo" id="cargo" class="form-control col-12" [ngClass]="{'is-invalid':Cargo?.errors && Cargo?.touched,'is-valid':!Cargo?.errors && Cargo?.touched}" aria-describedby="cargoHelp">
                 <div *ngIf="Cargo?.errors && Cargo?.touched" class="mb-4">    
                   <small *ngIf="Cargo?.hasError('required')" class="error text-small"><i>Escribir un cargo.</i></small>
                 </div>
               </div>
 
-              <input type="hidden" name="" id="id">
               <div class="text-end">           
                 <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
-                <button type="btn" class="btn" data-bs-dismiss="modal" (click)="guardarPersona()" [disabled]="portada_form.invalid"><i class="fa-solid fa-circle-check"></i></button>
+                <button type="btn" class="btn" data-bs-dismiss="modal" (click)="savePersona()" [disabled]="portada_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>
                 <!--<button type="btn" class="btn" (click)="limpiar()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
-                <button class="btn" (click)="volver()" data-bs-toggle="modal"data-bs-target="#modalPortada"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="btn" (click)="back()" data-bs-toggle="modal"data-bs-target="#modalPortada"><i class="fa-solid fa-chevron-left"></i></button>
               </div>
 
             </form>
           </div>
-
     </div>
   </div>
 </div>

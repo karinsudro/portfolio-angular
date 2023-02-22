@@ -1,82 +1,129 @@
-<!--Modal SKILLS-->
-<div class="modal 'fade" id="modalProjects" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+<!---PROJECTS-->
+<div class="modal fade" id="modalProjects" aria-hidden="true" aria-labelledby="modalProjectsLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="container" id="project">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalProjects">Projects</h1>
+          <div class="text-end">
+          <button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalProjectsCrud"><i class="fa-solid fa-plus"></i></button>
+          <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <li class="list-group-item mt-4"  *ngFor="let proy of project">
+
+          <div class="col-12">
+            <div class="mb-3">
+            <img class="card-img-top"  [src]="proy.imagen" alt="proyectos">
+          </div>
+            <p><b>PROYECTO:</b>     {{proy.proyecto}}</p>
+            <p><b>DESCRIPCION:</b>     {{proy.descripcion}}</p>    
+            <p><b>LIVE URL:</b>     {{proy.live_url}}</p>
+            <p><b>REPO URL:</b>     {{proy.repo_url}}</p>
+            </div>
+            <div class="col-12 text-end">
+              <!-- <button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalProjectsCrud"><i class="fa-solid fa-plus"></i></button> -->
+              <button class="btn" (click)="proy.id? findProject(proy.id): null"  data-bs-toggle="modal"data-bs-target="#modalProjectsCrud"><i class="fa-solid fa-pencil"></i></button>
+              <button class="btn" (click)="proy.id? deleteProject(proy.id): null"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
+              <!--<button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>-->
+            </div>
+          <hr>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--Modal PROJECTS CRUD-->
+<div class="modal 'fade" id="modalProjectsCrud" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">    <!--modal-dialog modal-lg-->
     <div class="modal-content">
   <!----------------------------------->
-  <div class="modal-header">
-    <h5 class="modal-title" id="modalDesign">Edit a Project</h5>
-  </div>
-
-          <form [formGroup]="project_form" (ngSubmit)="onSubmit($event)" id="project_form">
-
-            <div class="modal-body">
-
-              <div class="mb-3">
-                <label for="proyId" class="form-label col-12"><i>Elegir proyecto</i></label>
-                <select formControlName="proyId" id="proyId" class="mb-3">
-                  <option selected>Seleccionar proyecto</option>
-                  <option *ngFor="let id of proyecto">{{id.proyecto}}</option>
-                </select>
-              </div>
-            
-
-                  <div class="mb-3">
-                    <label for="projectImagen" class="form-label"><i>Imagen</i></label>
-                    <input type="file" class="form-control" id="projectImagen" placeholder="imagen" class="col-12" [class.border-danger]="ImagenValid" >
-                  </div>
-                  <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">    
-                    <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Insertar imagen.</i></small>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="projectTitulo" class="form-label"><i>Proyecto</i></label>
-                    <input type="text" class="form-control" id="projectTitulo" class="col-12" [class.border-danger]="TituloValid" >
-                  </div>
-                  <div *ngIf="Titulo?.errors  && Titulo?.touched" class="mb-4">    
-                    <small *ngIf="Titulo?.hasError('required')" class="error text-small"><i>Título del proyecto.</i></small>
-                    <small *ngIf="Titulo?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="projectDescripcion" class="form-label"><i>Descripción</i></label>
-                    <textarea class="text w-100" id="projectDescripcion" style="overflow:auto;" rows="3" [class.border-danger]="DescripValid" ></textarea>
-                  </div>
-                  <div *ngIf="Descrip?.errors  && Descrip?.touched" class="mb-4">    
-                    <small *ngIf="Descrip?.hasError('required')" class="error text-small"><i>Escribir descripción.</i></small>
-                    <small *ngIf="Descrip?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="projectDemo" class="form-label"><i>Demo</i></label>
-                    <input type="text" class="form-control" id="projectDemo" placeholder="URL live demo" class="col-12" [class.border-danger]="DemoValid" >
-                  </div>
-                  <div *ngIf="Demo?.errors  && Demo?.touched" class="mb-4">    
-                    <small *ngIf="Demo?.hasError('required')" class="error text-small"><i>Url demo.</i></small>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="projectRepo" class="form-label"><i>Repositorio</i></label>
-                    <input type="text" class="form-control" id="projectRepo" placeholder="URL repositorio" class="col-12" [class.border-danger]="RepoValid" >
-                  </div>
-                  <div *ngIf="Repo?.errors  && Repo?.touched" class="mb-4">    
-                    <small *ngIf="Repo?.hasError('required')" class="error text-small"><i>Url repositorio.</i></small>
-                  </div>
-            </div>
-            <!--cierre body del modal-->
-            <div class="text-center">
-              <button type="button" class="btn"><i class="fa-solid fa-plus"></i></button>
-              <button type="button" class="btn"><i class="fa-solid fa-pencil"></i></button>
-              <button type="button" class="btn"><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-              <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-              <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-circle-xmark"></i></button>
-            </div>
-
-          </form>
-
-        </div>
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProjectsCrud">Add / Edit a Project</h5> 
+        <button type="btn" class="btn" (click)="reset()" data-bs-dismiss="modal"  aria-label="Close" ><i class="fa-solid fa-xmark"></i></button>
       </div>
 
+        <div class="modal-body">
+          <form [formGroup]="project_form">
+          <!-- <div class="mb-3">
+            <label for="proyId" class="form-label col-12"><i>Elegir proyecto</i></label>
+            <select formControlName="proyId" id="proyId" class="mb-3">
+              <option selected>Seleccionar proyecto</option>
+              <option *ngFor="let id of project">{{id.proyecto}}</option>
+            </select>
+          </div> -->
+
+          <!-- ID de cada proyecto-->
+          <!-- <div class="" *ngIf="!!project_form.value.id">
+            <div class="">
+              <span class="" id="basic-addon1">ID:</span>
+            </div>
+            <input class="form-control" type="text" readonly formControlName="id" id="id">
+          </div> -->
+
+          <input type="hidden" name="" id="id">
+
+          <div class="mb-3">
+            <label for="imagen" class="form-label"><b>IMAGEN</b></label>
+            <input type="text" formControlName="imagen" id="imagen" name="" [ngClass]="{'is-invalid':Imagen?.errors && Imagen?.touched,'is-valid':!Imagen?.errors && Imagen?.touched}" 
+            class="form-control col-12" aria-describedby="imagenHelp">
+            <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
+              <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="proyecto" class="form-label"><b>PROYECTO</b></label>
+            <input type="text" formControlName="proyecto" id="proyecto" name="" [ngClass]="{'is-invalid':Proyecto?.errors && Proyecto?.touched,'is-valid':!Proyecto?.errors && Proyecto?.touched}" 
+            class="form-control col-12" aria-describedby="proyectoHelp">
+            <div *ngIf="Proyecto?.errors  && Proyecto?.touched" class="mb-4">
+              <small *ngIf="Proyecto?.hasError('required')" class="error text-small"><i>Título de proyecto requerido.</i></small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="descripcion" class="form-label"><b>DESCRIPCION</b></label>
+            <input type="text" formControlName="descripcion" id="descripcion" name="" [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched,'is-valid':!Descripcion?.errors && Descripcion?.touched}" 
+            class="form-control col-12" aria-describedby="descripcionHelp">
+            <div *ngIf="Descripcion?.errors  && Descripcion?.touched" class="mb-4">
+              <small *ngIf="Descripcion?.hasError('required')" class="error text-small"><i>Título de proyecto requerido.</i></small>
+              <small *ngIf="Descripcion?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="live_url" class="form-label"><b>LIVE URL</b></label>
+            <input type="text" formControlName="live_url" id="live_url" name="" [ngClass]="{'is-invalid':LiveUrl?.errors && LiveUrl?.touched,'is-valid':!LiveUrl?.errors && LiveUrl?.touched}" 
+            class="form-control col-12" aria-describedby="live_urlHelp">
+            <div *ngIf="LiveUrl?.errors  && LiveUrl?.touched" class="mb-4">
+              <small *ngIf="LiveUrl?.hasError('required')" class="error text-small"><i>URL a la muestra requerido.</i></small>
+              <small *ngIf="LiveUrl?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="repo_url" class="form-label"><b>REPO URL</b></label>
+            <input type="text" formControlName="repo_url" id="repo_url" name="" [ngClass]="{'is-invalid':RepoUrl?.errors && RepoUrl?.touched,'is-valid':!RepoUrl?.errors && RepoUrl?.touched}" 
+            class="form-control col-12" aria-describedby="repo_urlHelp">
+            <div *ngIf="RepoUrl?.errors  && RepoUrl?.touched" class="mb-4">
+              <small *ngIf="RepoUrl?.hasError('required')" class="error text-small"><i>URL al repositorio requerido.</i></small>
+              <small *ngIf="RepoUrl?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+            </div>
+          </div>
+
+          <div class="text-end">           
+            <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
+            <button type="submit" class="btn" data-bs-dismiss="modal" (click)="saveProject()" [disabled]="project_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>
+            <!--<button type="btn" class="btn" (click)="limpiar()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
+            <button class="btn" (click)="back()" data-bs-toggle="modal" data-bs-target="#modalProjects"><i class="fa-solid fa-chevron-left"></i></button>
+          </div>
+
+          </form>
+        </div>
     </div>
-  
-  
-  
+  </div>
+</div>

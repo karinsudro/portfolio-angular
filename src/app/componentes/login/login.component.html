@@ -15,8 +15,9 @@
           <h5 class="modal-title" id="modalLogin">Logueate</h5>
         </div>
   
-        <form  [formGroup]="login_form" name="login_form" (ngSubmit)="onEnviar($event)">
           <div class="modal-body">
+            <form  [formGroup]="login_form" (ngSubmit)="onEnviar($event)">
+          
           
         <!-----------EMAIL-->
                 <div class="mb-3">
@@ -41,12 +42,12 @@
                 </div>
   
                 <div class="text-end">
-                <button type="submit" class="btn" value="Ingresar"><i class="fa-solid fa-circle-check"></i></button>
+                <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
                 <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-circle-xmark"></i></button>
                 </div>
-              
+            </form>
           </div>
-        </form>
+        
       
 
         <!--Register a implementarse más adelante con los roles-->
