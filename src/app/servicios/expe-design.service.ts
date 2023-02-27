@@ -13,27 +13,30 @@ export class ExpeDesignService {
   
   constructor(private httpClient:HttpClient) { }
 
-//traigo métodos del netbeans
-//ver todos
+  //traigo métodos del netbeans
+  //ver todos
   public getExpeDesigns(): Observable<ExpeDesign[]> {
-    return this.httpClient.get<ExpeDesign[]>(this.url + `lista`);
+    return this.httpClient.get<ExpeDesign[]>(this.url + 'lista');
   }
-//ver uno
+
+  //ver uno
   public findExpeDesign(id: number): Observable<ExpeDesign> {
     return this.httpClient.get<ExpeDesign>(this.url + `find/${id}`);
   }
-//crear
+
+  //crear
   public saveExpeDesign(exper: ExpeDesign): Observable<any> {
-    return this.httpClient.post<ExpeDesign>(this.url + `new`, exper);
-  }
-//eliminar
-  public deleteExpeDesign(id: number): Observable<ExpeDesign> {
-    return this.httpClient.delete<ExpeDesign>(this.url + `delete/` + id);
-  }
-//editar
-  public editExpeDesign(exper: ExpeDesign): Observable<any> {
-    return this.httpClient.put<ExpeDesign>(this.url + `edit/$`, exper);
+    return this.httpClient.post<ExpeDesign>(this.url + 'new', exper);
   }
 
+  //editar
+  public updateExpeDesign(id:number, exper: ExpeDesign): Observable<any> {
+    return this.httpClient.put<any>(this.url + `update/${id}`, exper);    
+  }
+
+  //eliminar
+  public deleteExpeDesign(id: number): Observable<ExpeDesign> {
+    return this.httpClient.delete<ExpeDesign>(this.url + `delete/${id}`);
+  }
 
 }

@@ -1,7 +1,60 @@
 <!-- Button trigger modal -->
-<button type="button"class="btn list-group-item" data-bs-toggle="modal" data-bs-target="#modalContactme">
-    <i class="fa-solid fa-comment fa-lg"></i>
-</button>
+<a class="btn list-group-item" role="button"data-bs-toggle="modal" href="#modalContactMe"><i class="fa-solid fa-comment fa-lg"></i></a>
+<!--fin del diseño inicial-->
 
-<app-modalcontactme></app-modalcontactme>
+
+<!--Modal CONTACT ME-->
+<div class="modal fade" id="modalContactMe" aria-hidden="true" aria-labelledby="modalContactMe" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalContactMe">Contact me!</h5>
+        </div>
+  
+          <div class="modal-body">
+            <form  [formGroup]="contact_form" (ngSubmit)="onEnviar($event)">
+                <div class="modal-body">
+
+                    <!--DATOS--> 
+                    <div class="mb-3">
+                      <label for="nombre" class="form-label">Nombre</label>
+                      <input type="text" formControlName="nombre" class="form-control col-12"  id="nombre" [ngClass]="{'is-invalid':Nombre?.errors && Nombre?.touched,'is-valid':!Nombre?.errors && Nombre?.touched}" 
+                      placeholder="  Steve Jobs" aria-describedby="nombreHelp">
+                    </div>
+                    <div *ngIf="Nombre?.errors  && Nombre?.touched"class="mb-4">    
+                      <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Por favor, escribí tu nombre.</i></small>
+                    </div>
+  
+                    <!--EMAIL-->
+                    <div class="mb-3">
+                        <label for="mail" class="form-label"><i>Email</i></label>
+                        <input type="email" formControlName="mail" class="form-control col-12" [ngClass]="{'is-invalid':Mail?.errors && Mail?.touched,'is-valid':!Mail?.errors && Mail?.touched}"
+                        id="mail" placeholder="  email@correo.com" aria-describedby="mailHelp" pattern="[^ @]*@[^ @]*">
+                      </div>
+                      <div *ngIf="Mail?.errors && Mail?.touched" class="mb-4">    
+                        <small *ngIf="Mail?.hasError('required')" class="error text-small"><i>Por favor escribí tu email.</i></small>
+                        <small *ngIf="Mail?.hasError('email')" class="error text-small"><i>El formato debe ser válido.</i></small>
+                      </div>
+  
+                    <!--MENSAJE-->
+                    <div class="mb-3">
+                      <label for="mensaje" class="form-label col-12">Mensaje</label>
+                      <textarea  formControlName="mensaje" name="mensaje" class="text w-100" id="mensaje" [ngClass]="{'is-invalid':Mensaje?.errors && Mensaje?.touched,'is-valid':!Mensaje?.errors && Mensaje?.touched}"></textarea>
+                    </div>
+                    <div *ngIf="Mensaje?.errors  && Mensaje?.touched" class="['mb-4']">    
+                      <small *ngIf="Mensaje?.hasError('required')" class="error text-small"><i>Dejame tu mensaje. ¡Muchas gracias!</i></small>
+                      <small *ngIf="Mensaje?.hasError('minlength')" class="error text-small"><i>Escribí un mínimo de 5 caracteres.</i></small>
+                      <small *ngIf="Mensaje?.hasError('maxlength')" class="error text-small"><i>Escribí un máximo de 250 caracteres.</i></small></div>
+                    </div>
+                    <div class="text-end">
+                      <button type="submit" class="btn" title="Próximo a implementarse"><i class="fa-solid fa-circle-check"></i></button>
+                      <button type="button" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="onReset()"><i class="fa-solid fa-xmark"></i></button>
+                    </div> 
+                  </form>
+  
+                 </div>
+                
+               </div>
+             </div>
+             
 

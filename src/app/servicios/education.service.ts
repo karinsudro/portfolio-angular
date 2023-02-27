@@ -9,29 +9,34 @@ import { Education } from '../model/education';
 export class EducationService {
 
   //ruta del netbeans que trae los estudios
-    url= 'http://localhost:8080/education/'; //reemplazar x ruta render
-  
-    constructor(private httpClient:HttpClient) { }
+  url= 'http://localhost:8080/education/'; //reemplazar x ruta render
+
+  constructor(private httpClient:HttpClient) { }
   
   //traigo métodos del netbeans
   //vet todos
-    public getEducations(): Observable<Education[]> {
-      return this.httpClient.get<Education[]>(this.url + `lista`);
-    }
+  public getEducations(): Observable<Education[]> {
+    return this.httpClient.get<Education[]>(this.url + 'lista');
+  }
+
   //ver uno
-    public findEducation(id: number): Observable<Education> {
-      return this.httpClient.get<Education>(this.url + `find/${id}`);
-    }
+  public findEducation(id: number): Observable<Education> {
+    return this.httpClient.get<Education>(this.url + `find/${id}`);
+  }
+
   //crear
-    public saveEducation(educ: Education): Observable<any> {
-      return this.httpClient.post<Education>(this.url + `new`, educ);
-    }
-  //eliminar
-    public deleteEducation(id: number): Observable<Education> {
-      return this.httpClient.delete<Education>(this.url + `delete/` + id);
-    }
+  public saveEducation(educ: Education): Observable<any> {
+    return this.httpClient.post<Education>(this.url + 'new', educ);
+  }
+
   //editar
-    public editEducation(educ: Education): Observable<any> {
-      return this.httpClient.put<Education>(this.url + `edit/$`, educ);
-    }
+  public updateEducation(id:number, educ: Education): Observable<any> {
+    return this.httpClient.put<any>(this.url + `update/${id}`, educ);    
+  }
+
+  //eliminar
+  public deleteEducation(id: number): Observable<Education> {
+    return this.httpClient.delete<Education>(this.url + `delete/` + id);
+  }
+  
 }

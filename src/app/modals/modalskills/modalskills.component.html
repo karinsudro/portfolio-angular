@@ -155,7 +155,7 @@
 
               <div class="mb-3">
                 <label for="skill_tipo" class="form-label col-12"><b>TIPO DE HABILIDAD</b></label>
-                <input type="text" formControlName="skill_tipo" id="skill_tipo" name="" placeholder="FronteEnd, BackEnd, Design, Language, SoftSkills"
+                <input type="text" formControlName="skill_tipo" id="skill_tipo" name="" placeholder="FrontEnd, BackEnd, Design, Language, SoftSkills"
                 [ngClass]="{'is-invalid':Skill_tipo?.errors && Skill_tipo?.touched,'is-valid':!Skill_tipo?.errors && Skill_tipo?.touched}" class="form-control col-12" aria-describedby="Skill_tipoHelp">
                 <div *ngIf="Skill_tipo?.errors  && Skill_tipo?.touched" class="mb-4">
                   <small *ngIf="Skill_tipo?.hasError('required')" class="error text-small"><i>Tipo de habilidad requerida.</i></small>

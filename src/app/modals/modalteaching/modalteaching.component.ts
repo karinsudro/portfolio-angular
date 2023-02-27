@@ -109,9 +109,9 @@ export class ModalteachingComponent implements OnInit {
           complete: () => console.info('complete')
         });
         window.location.reload();
-        console.log("Experiencia en enseñanza agregada correctamente");
+        alert("Experiencia en enseñanza agregada correctamente");
       } else {
-        this.expeTeachServ.editExpeTeaching(teach).subscribe({
+        this.expeTeachServ.updateExpeTeaching(teach.id, teach).subscribe({
           next: (data) => {
             this.reset();
           },
@@ -119,7 +119,7 @@ export class ModalteachingComponent implements OnInit {
           complete: () => console.info('complete')
         });
         window.location.reload();
-        console.log("Experiencia en enseñanza modificada correctamente");
+        alert("Experiencia en enseñanza modificada correctamente");
       }
     }
   
@@ -127,7 +127,7 @@ export class ModalteachingComponent implements OnInit {
       if (confirm("Querés eliminar esta experiencia?")) {
         this.expeTeachServ.deleteExpeTeaching(id).subscribe(data => {});
         window.location.reload();
-        console.log("Experiencia en enseñanza eliminada correctamente");
+        alert("Experiencia en enseñanza eliminada correctamente");
       }
     }
          

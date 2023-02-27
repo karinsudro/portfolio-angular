@@ -106,9 +106,9 @@ export class ModaleducationComponent implements OnInit {
           complete: () => console.info('complete')
         });
         window.location.reload();
-        console.log("Estudios cargados correctamente");
+        alert("Estudio cargado correctamente");
       } else {
-        this.educServ.editEducation(educs).subscribe({
+        this.educServ.updateEducation(educs.id, educs).subscribe({
           next: (data) => {
             this.reset();
           },
@@ -116,7 +116,7 @@ export class ModaleducationComponent implements OnInit {
           complete: () => console.info('complete')
         });
         window.location.reload();
-        console.log("Estudios modificados correctamente");
+        alert("Estudio modificado correctamente");
       }
     }
   
@@ -124,7 +124,7 @@ export class ModaleducationComponent implements OnInit {
       if (confirm("Querés eliminar este estudio?")) {
         this.educServ.deleteEducation(id).subscribe(data => {});
         window.location.reload();
-        console.log("Estudio eliminado correctamente");
+        alert("Estudio eliminado correctamente");
       }
     }
          

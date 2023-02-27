@@ -17,23 +17,27 @@ export class SkillService {
   
   //traigo métodos del netbeans
   //ver todos
-    public getSkills(): Observable<Skill[]> {
-      return this.httpClient.get<Skill[]>(this.url + `lista`);
-    }
+  public getSkills(): Observable<Skill[]> {
+    return this.httpClient.get<Skill[]>(this.url + 'lista');
+  }
+  
   //ver uno
-    public findSkill(id: number): Observable<Skill> {
-      return this.httpClient.get<Skill>(this.url + `find/${id}`);
-    }
+  public findSkill(id: number): Observable<Skill> {
+    return this.httpClient.get<Skill>(this.url + `find/${id}`);
+  }
+
   //crear
-    public saveSkill(skill: Skill): Observable<any> {
-      return this.httpClient.post<Skill>(this.url + `new`, skill);
-    }
-  //eliminar
-    public deleteSkill(id: number): Observable<Skill> {
-      return this.httpClient.delete<Skill>(this.url + `delete/` + id);
-    }
+  public saveSkill(skill: Skill): Observable<any> {
+    return this.httpClient.post<Skill>(this.url + 'new', skill);
+  }
+  
   //editar
-    public editSkill(skill: Skill): Observable<any> {
-      return this.httpClient.put<Skill>(this.url + `edit/$`, skill);
-    }
+  public updateSkill(id:number, skill: Skill): Observable<any> {
+    return this.httpClient.put<any>(this.url + `update/${id}`, skill);    
+  }
+
+  //eliminar
+  public deleteSkill(id: number): Observable<Skill> {
+    return this.httpClient.delete<Skill>(this.url + `delete/` + id);
+  }
 }

@@ -1,34 +1,34 @@
-<!---PORTADA-->
+<!---PERSONA-->
 <!-- Modal que trae la info a editar-->
-<div class="modal fade" id="modalPortada" aria-hidden="true" aria-labelledby="modalPortadaLabel" tabindex="-1">
+<div class="modal fade" id="modalPersona" aria-hidden="true" aria-labelledby="modalPersona" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-
-
-
-      
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalPortada">I am...</h1> 
-        <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
+        <h1 class="modal-title fs-5" id="modalPersona">I am...</h1> 
+        <div class="text-end">
+          <button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalPersonaCrud"><i class="fa-solid fa-plus"></i></button>
+          <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
       </div>
+
       <!-- Modal que muestra info -->
       <div class="modal-body">
-          <div class="container mb-3" >
-              <li class="list-group-item mt-4" *ngFor="let perso of portada">
-                      <div class="col-12">
-                          <p><b>HOLA:</b>     {{ perso.hola }}</p>
-                          <p><b>YO SOY:</b>     {{ perso.nombre }} {{ perso.apellido }}</p>
-                          <p><b>CARGO:</b>     {{ perso.cargo }}</p>
-                      </div>
-                      <div class="col-12 text-end">
-                        <!--<button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalPortadaCrud"><i class="fa-solid fa-plus"></i></button>-->
-                        <button class="btn" (click)="perso.id? findPersona(perso.id): null"  data-bs-toggle="modal"data-bs-target="#modalPortadaCrud"><i class="fa-solid fa-pencil"></i></button>
-                        <!--<button class="btn" (click)="perso.id? borrarPersona(perso.id): null"><i class="fa-solid fa-trash-can-arrow-up"></i></button>-->
-                        <!--<button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>-->
-                      </div>
-                  <hr>
-              </li>
-          </div>     
+        <div class="container mb-3" >
+          <li class="list-group-item mt-4" *ngFor="let perso of persona">
+            <div class="col-12">
+                <p><b>HOLA:</b>     {{ perso.hola }}</p>
+                <p><b>YO SOY:</b>     {{ perso.nombre }} {{ perso.apellido }}</p>
+                <p><b>CARGO:</b>     {{ perso.cargo }}</p>
+            </div>
+            <div class="col-12 text-end">
+              <!--<button type="btn" class="btn" data-bs-toggle="modal" data-bs-target="#modalPersonaCrud"><i class="fa-solid fa-plus"></i></button>-->
+              <button class="btn" (click)="perso.id? findPersona(perso.id): null"  data-bs-toggle="modal"data-bs-target="#modalPersonaCrud"><i class="fa-solid fa-pencil"></i></button>
+              <!--<button class="btn" (click)="perso.id? borrarPersona(perso.id): null"><i class="fa-solid fa-trash-can-arrow-up"></i></button>-->
+              <!--<button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-xmark"></i></button>-->
+            </div>
+            <hr>
+          </li>
+        </div>     
       </div>
     </div>
   </div>
@@ -36,18 +36,18 @@
 
 
 
-<!--Modal PORTADA CRUD-->
-<div class="modal fade" id="modalPortadaCrud" tabindex="-1" aria-labelledby="modalPortadaCrud" aria-hidden="true">
+<!--Modal PERSONA CRUD-->
+<div class="modal fade" id="modalPersonaCrud" tabindex="-1" aria-labelledby="modalPersonaCrud" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 <!----------------------------------->
       <div class="modal-header">
-        <h5 class="modal-title" id="modalPortadaCrudLabel">Edit the "I am..." board</h5>
+        <h5 class="modal-title" id="modalPersonaCrudLabel">Edit the "I am..." board</h5>
         <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       
           <div class="modal-body">
-            <form [formGroup]="portada_form">       <!-- (ngSubmit)="onSubmit($event)" id="portada_form"-->
+            <form [formGroup]="persona_form">       <!-- (ngSubmit)="onSubmit($event)" id="portada_form"-->
 
               <input type="hidden" name="" id="id">
 
@@ -85,9 +85,9 @@
 
               <div class="text-end">           
                 <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
-                <button type="btn" class="btn" data-bs-dismiss="modal" (click)="savePersona()" [disabled]="portada_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>
+                <button type="btn" class="btn" data-bs-dismiss="modal" (click)="savePersona()" [disabled]="persona_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>
                 <!--<button type="btn" class="btn" (click)="limpiar()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
-                <button class="btn" (click)="back()" data-bs-toggle="modal"data-bs-target="#modalPortada"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="btn" (click)="reset()" data-bs-toggle="modal"data-bs-target="#modalPersona"><i class="fa-solid fa-chevron-left"></i></button>
               </div>
 
             </form>

@@ -1,8 +1,5 @@
-<!--antes de meter todo en el btn login-->
 <!-- Button trigger modal -->
 <a data-bs-toggle="modal" href="#modalLogin" role="button" class="btn list-group-item" ><i class="fa-solid fa-user-lock fa-lg"></i></a>
-
-<!--<app-modallogin></app-modallogin>-->
 <!--fin del diseño inicial-->
 
 
@@ -30,7 +27,7 @@
                   <small *ngIf="Email?.hasError('email')" class="error text-small"><i>El formato debe ser válido.</i></small>
                 </div>
                
-        <!-----------PASSWORD-->
+        <!-----------CLAVE-->
                 <div class="mb-3">
                   <label for="clave" class="form-label"><i>Password</i></label>
                   <input type="password" formControlName="clave" class="form-control col-12" [ngClass]="{'is-invalid':Clave?.errors && Clave?.touched,'is-valid':!Clave?.errors && Clave?.touched}"
@@ -42,8 +39,8 @@
                 </div>
   
                 <div class="text-end">
-                <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()"><i class="fa-solid fa-circle-xmark"></i></button>
+                <button type="submit" class="btn" id="form-submit" value="Ingresar"><i class="fa-solid fa-circle-check"></i></button>
+                <button type="button" class="btn"data-bs-dismiss="modal" aria-label="Close" (click)="onCerrar()"><i class="fa-solid fa-circle-xmark"></i></button>
                 </div>
             </form>
           </div>

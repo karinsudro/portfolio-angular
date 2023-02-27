@@ -108,9 +108,9 @@ getProjects(): void{
         complete: () => console.info('complete')
       });
       window.location.reload();
-      console.log("Proyecto agregado correctamente");
+      alert("Proyecto agregado correctamente");
     } else {
-      this.projServ.editProject(proy).subscribe({
+      this.projServ.updateProject(proy.id, proy).subscribe({
         next: (data) => {
           this.reset();
         },
@@ -118,7 +118,7 @@ getProjects(): void{
         complete: () => console.info('complete')
       });
       window.location.reload();
-      console.log("Proyecto modificado correctamente");
+      alert("Proyecto modificado correctamente");
     }
   }
 
@@ -126,7 +126,7 @@ getProjects(): void{
     if (confirm("Querés eliminar este proyecto?")) {
       this.projServ.deleteProject(id).subscribe(data => {});
       window.location.reload();
-      console.log("Proyecto eliminado correctamente");
+      alert("Proyecto eliminado correctamente");
     }
   }
        

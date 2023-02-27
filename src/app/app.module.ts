@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; //, HTTP_INTERCEPTORS
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; //, HTTP_INTERCEPTORS
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
-import { PortadaComponent } from './componentes/portada/portada.component';
+import { PersonaComponent } from './componentes/persona/persona.component';
 import { AboutMeComponent } from './componentes/aboutme/aboutme.component';
 import { TeachingComponent } from './componentes/teaching/teaching.component';
 import { DesignComponent } from './componentes/design/design.component';
@@ -30,7 +30,6 @@ import { LogoutComponent } from './componentes/navbaradmin/logout/logout.compone
 import { HomeeadminComponent } from './componentes/navbaradmin/homeeadmin/homeeadmin.component';
 import { AadminComponent } from './componentes/aadmin/aadmin.component';
 import { ModalredesComponent } from './modals/modalredes/modalredes.component';
-import { ModalportadaComponent } from './modals/modalportada/modalportada.component';
 import { ModalregisterComponent } from './modals/modalregister/modalregister.component';
 import { ModalteachingComponent } from './modals/modalteaching/modalteaching.component';
 import { ModalaboutmeComponent } from './modals/modalaboutme/modalaboutme.component';
@@ -38,11 +37,10 @@ import { ModaldesignComponent } from './modals/modaldesign/modaldesign.component
 import { ModaleducationComponent } from './modals/modaleducation/modaleducation.component';
 import { ModalskillsComponent } from './modals/modalskills/modalskills.component';
 import { ModalprojectsComponent } from './modals/modalprojects/modalprojects.component';
-import { ModalcontactmeComponent } from './modals/modalcontactme/modalcontactme.component';
 import { ResumeComponent } from './componentes/navbar/resume/resume.component';
 import { PersonaService } from './servicios/persona.service';
-//import { InterceptorInterceptor } from './interceptor.interceptor';
-
+import { ModalpersonaComponent } from './modals/modalpersona/modalpersona.component';
+import { InterceptorInterceptor } from './servicios/interceptor.interceptor';
 
 
 
@@ -51,7 +49,7 @@ import { PersonaService } from './servicios/persona.service';
     declarations: [
         AppComponent,
         NavbarComponent,
-        PortadaComponent,
+        PersonaComponent,
         AboutMeComponent,
         TeachingComponent,
         DesignComponent,
@@ -72,20 +70,19 @@ import { PersonaService } from './servicios/persona.service';
         HomeeadminComponent,
         AadminComponent,
         ModalredesComponent,
-        ModalportadaComponent,
+        ModalpersonaComponent,
         ModalregisterComponent,
         ModalteachingComponent,
         ModalaboutmeComponent,
         ModaldesignComponent,
         ModaleducationComponent,
         ModalskillsComponent,
-        ModalcontactmeComponent,
         ModalprojectsComponent,
         ResumeComponent
     ],
     providers: [
         PersonaService,
-        //{provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi:true}
+        {provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi:true}
     ],
     bootstrap: [AppComponent],
     imports: [

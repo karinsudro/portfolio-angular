@@ -91,9 +91,9 @@ export class ModalaboutmeComponent implements OnInit {
           complete: () => console.info('complete')
         });
         window.location.reload();
-        console.log("About me agregado correctamente");
+        alert("About me agregado correctamente");
       } else {
-        this.aboutServ.editAbout(about).subscribe({
+        this.aboutServ.updateAbout(about.id, about).subscribe({
           next: (data) => {
             this.reset();
           },
@@ -101,7 +101,7 @@ export class ModalaboutmeComponent implements OnInit {
           complete: () => console.info('complete')
         });
         window.location.reload();
-        console.log("About me modificado correctamente");
+        alert("About me modificado correctamente");
       }
     }
   
@@ -109,7 +109,7 @@ export class ModalaboutmeComponent implements OnInit {
       if (confirm("Querés eliminar about me?")) {
         this.aboutServ.deleteAbout(id).subscribe(data => {});
         window.location.reload();
-        console.log("About me eliminado correctamente");
+        alert("About me eliminado correctamente");
       }
     }
          

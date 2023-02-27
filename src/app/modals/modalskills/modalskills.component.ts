@@ -99,7 +99,6 @@ export class ModalskillsComponent implements OnInit {
 
     saveSkill() {
       let skill = this.skills_form.value;
-
       if (skill.id == '') {
         this.skillServ.saveSkill(skill).subscribe({
           next: (data) => {
@@ -111,7 +110,7 @@ export class ModalskillsComponent implements OnInit {
         window.location.reload();
         alert("Skill agregado correctamente");
       } else {
-        this.skillServ.editSkill(skill).subscribe({
+        this.skillServ.updateSkill(skill.id, skill).subscribe({
           next: (data) => {
             this.reset();
           },

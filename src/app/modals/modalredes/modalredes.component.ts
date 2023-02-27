@@ -93,9 +93,9 @@ getRedes(): void{
         complete: () => console.info('complete')
       });
       window.location.reload();
-      console.log("Red agregada correctamente");
+      alert("Red agregada correctamente");
     } else {
-      this.redServ.editRed(redes).subscribe({
+      this.redServ.updateRed(redes.id, redes).subscribe({
         next: (data) => {
           this.reset();
         },
@@ -103,7 +103,7 @@ getRedes(): void{
         complete: () => console.info('complete')
       });
       window.location.reload();
-      console.log("Proyecto modificado correctamente");
+      alert("Proyecto modificado correctamente");
     }
   }
 
@@ -111,7 +111,7 @@ getRedes(): void{
     if (confirm("Querés eliminar esta red?")) {
       this.redServ.deleteRed(id).subscribe(data => {});
       window.location.reload();
-      console.log("Red eliminada correctamente");
+      alert("Red eliminada correctamente");
     }
   }
        

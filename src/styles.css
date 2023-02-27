@@ -144,5 +144,8 @@ p.fechas{
   .peque{
     width: 80%;
   }
+  .flotante{
+    display: none;
+  }
   
 }

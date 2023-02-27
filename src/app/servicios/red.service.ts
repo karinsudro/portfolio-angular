@@ -10,30 +10,40 @@ import { Red } from '../model/red';
 
 export class RedService {
 
-   //ruta del netbeans que trae las redes
-    url= 'http://localhost:8080/red/';
-  
-    constructor(private httpClient:HttpClient) { }
+  //ruta del netbeans que trae las redes
+   url= 'http://localhost:8080/red/';
+
+   constructor(private httpClient:HttpClient) { }
   
   //traigo métodos del netbeans
   //ver todos
     public getRedes(): Observable<Red[]> {
-      return this.httpClient.get<Red[]>(this.url + `lista`);
+      return this.httpClient.get<Red[]>(this.url + 'lista');
     }
+
   //ver uno
     public findRed(id: number): Observable<Red> {
       return this.httpClient.get<Red>(this.url + `find/${id}`);
     }
+
   //crear
     public saveRed(red: Red): Observable<any> {
-      return this.httpClient.post<Red>(this.url + 'new', red);
+      return this.httpClient.post<any>(this.url + 'new', red);
     }
+
+    //editar
+    public updateRed(id:number, red: Red): Observable<any> {
+      return this.httpClient.put<any>(this.url + `update/${id}`, red);    
+    }
+    
   //eliminar
     public deleteRed(id: number): Observable<Red> {
-      return this.httpClient.delete<Red>(this.url + 'delete/' + id);
+      return this.httpClient.delete<Red>(this.url + `delete/` + id);
     }
-  //editar
-    public editRed(red: Red): Observable<any> {
-      return this.httpClient.put<Red>(this.url + `edit/$`, red);
-    }
+  
 }
+
+/* 
+public updateRed(red: Red): Observable<any> {
+  return this.httpClient.put<Red>(this.url + `edit/$`, red);    
+} */

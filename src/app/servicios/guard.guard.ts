@@ -8,22 +8,19 @@ import { AuthService } from './auth.service';
 })
 export class GuardGuard implements CanActivate {
 
-  constructor(private autenService: AuthService, private ruta: Router){
-
-  }
+  constructor(private authService: AuthService, private ruta: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let currentUser= this.autenService.usuarioAutenticado;
+    const usuarioAutenticado = this.authService.usuarioAutenticado;
 
-    if(currentUser && currentUser.id){
-      //this.ruta.navigate(['/aadmin']);
+    if (usuarioAutenticado && usuarioAutenticado.id) {
       return true;
-    }else{
-      this.ruta.navigate(['/']);
+    } else {
+      this.ruta.navigate(['/login']);
       return false;
     }
   }
-  
 }
+

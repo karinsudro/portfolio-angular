@@ -108,9 +108,9 @@ export class ModaldesignComponent implements OnInit {
           complete: () => console.info('complete')
         });
         window.location.reload();
-        console.log("Experiencias en diseño cargadas correctamente");
+        alert("Experiencia en diseño guardada correctamente");
       } else {
-        this.expeDesServ.editExpeDesign(design).subscribe({
+        this.expeDesServ.updateExpeDesign(design.id, design).subscribe({
           next: (data) => {
             this.reset();
           },
@@ -118,7 +118,7 @@ export class ModaldesignComponent implements OnInit {
           complete: () => console.info('complete')
         });
         window.location.reload();
-        console.log("Experiencias en diseño modificadas correctamente");
+        alert("Experiencia en diseño modificada correctamente");
       }
     }
   
@@ -126,7 +126,7 @@ export class ModaldesignComponent implements OnInit {
       if (confirm("Querés eliminar esta experiencia?")) {
         this.expeDesServ.deleteExpeDesign(id).subscribe(data => {});
         window.location.reload();
-        console.log("Experiencia en diseño eliminada correctamente");
+        alert("Experiencia en diseño eliminada correctamente");
       }
     }
          

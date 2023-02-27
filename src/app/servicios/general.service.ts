@@ -5,9 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class GeneralService {
   gralServ: any;
-  getById: any;
+  find: any;
   list: any;
   save: any;
+  update:any;
   delete: any;
 
 
