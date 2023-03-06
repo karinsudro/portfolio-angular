@@ -11,10 +11,9 @@ import { PersonaService } from 'src/app/servicios/persona.service';
 export class PersonaComponent implements OnInit {
   //crear (inicializar) variables de instancia para guardar los datos con los que trata el servicio. SOn todos los datos que tenga q mostrar.
   //se pone el nombre q asigné en el apartado del json. Reepetir en cada .ts de componentes
-  //portada:any;
 
   persona?:Persona[];
-  portada:any;
+ 
 
 
   //inyectar servicio para tener acceso en la clase a los métodos

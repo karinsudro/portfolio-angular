@@ -14,7 +14,7 @@ export class EducationService {
   constructor(private http:HttpClient) { }
   
   //traigo métodos del netbeans
-  //vet todos
+  //ver todos
   public getEducations(): Observable<Education[]> {
     return this.http.get<Education[]>(this.url + 'lista');
   }

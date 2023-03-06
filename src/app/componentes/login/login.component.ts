@@ -52,13 +52,13 @@ export class LoginComponent implements OnInit {
 
 //marie
 onEnviar(event: Event) {
-  event.preventDefault();    //cambio chatGPT poner ()
+  event.preventDefault;    //cambio chatGPT poner ()
   if (this.login_form.valid) {
     //console.log(JSON.stringify(this.login_form.value));
     this.autenService.login(this.login_form.value).subscribe(data => {
       console.log("DATA: " + JSON.stringify(data.id));
       if (data.id) {
-        alert("Puedes editar el portfolio");
+        alert("Ingresando al aadmin");
         this.ruta.navigate(['/aadmin']);
       } else {
         alert("Error al iniciar sesión, credenciales no válidas!!!");
@@ -178,11 +178,11 @@ onEnviar(event: Event) {
 
 
 
-onCerrar() {
+/* onCerrar() {
   sessionStorage.setItem('currentUser', "null");
   sessionStorage.setItem('idUser', "0");  
   this.ruta.navigate(['/']);
-}
+} */
 
 
 reset() {
