@@ -34,11 +34,14 @@
   margin-right:1rem;
 }
 
-/* 
-.proy-sep-abajo{
-  margin-bottom: 5rem;
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+  /*color: var(--bs-list-group-color);*/
+  color: #505050;
+  /* text-decoration: none; */
+  background-color: var(--bs-list-group-bg);
+  /* border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color); */
+  border:none;
 }
-
-.iconitos{
-  list-style-type: none;
-} */

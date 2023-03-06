@@ -16,8 +16,7 @@ const routes: Routes = [
   {path:'index', component:IndexComponent},
   {path: 'Login', component: LoginComponent},
   {path: 'aadmin', component:AadminComponent},   /*, canActivate:[GuardGuard] - agregarlo luego de resolver aadmin*/
-  /* {path: 'Logout', component:LogoutComponent}, */
-  {path: '', redirectTo: '/index', pathMatch: 'full'},
+  {path: '', redirectTo:'/index', pathMatch:'full'},
   {path:'**', component:ErrorComponent}
 ];
 

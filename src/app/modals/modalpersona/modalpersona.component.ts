@@ -34,7 +34,7 @@ export class ModalpersonaComponent implements OnInit {
 
 
 
-  //estos son todos métodos y validaciones
+  //campos y validaciones
   get Hola(){
     return this.persona_form.get("hola");
    }

@@ -32,7 +32,7 @@ export class ModalteachingComponent implements OnInit {
 
 
 
-  //metodos y validaciones
+  //campos y validaciones
   get Cargo(){
   return this.teaching_form.get("cargo");
   }

@@ -1,6 +1,7 @@
 a, a:hover{
-    text-decoration: none;
-  }
+  text-decoration: none;
+  border: none;
+}
 
   /*---LOGIN MODAL---*/
   input::placeholder{
@@ -19,4 +20,8 @@ a, a:hover{
     /* border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color); */
     border:none;
     /* scroll-behavior: smooth; */
+  }
+
+  .fa-house{
+    color: #505050;
   }

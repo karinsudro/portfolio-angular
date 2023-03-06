@@ -26,7 +26,6 @@ import { LogoapComponent } from './componentes/navbar/logoap/logoap.component';
 import { HomeComponent } from './componentes/navbar/home/home.component';
 import { RedesComponent } from './componentes/navbar/redes/redes.component';
 import { LogoapadminComponent } from './componentes/navbaradmin/logoapadmin/logoapadmin.component';
-import { LogoutComponent } from './componentes/navbaradmin/logout/logout.component';
 import { HomeeadminComponent } from './componentes/navbaradmin/homeeadmin/homeeadmin.component';
 import { AadminComponent } from './componentes/aadmin/aadmin.component';
 import { ModalredesComponent } from './modals/modalredes/modalredes.component';
@@ -66,7 +65,6 @@ import { InterceptorInterceptor } from './servicios/interceptor.interceptor';
         HomeComponent,
         RedesComponent,
         LogoapadminComponent,
-        LogoutComponent,
         HomeeadminComponent,
         AadminComponent,
         ModalredesComponent,

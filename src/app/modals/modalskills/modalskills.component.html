@@ -178,8 +178,6 @@
                 [ngClass]="{'is-invalid':Icono?.errors && Icono?.touched,'is-valid':!Icono?.errors && Icono?.touched}" class="form-control col-12" aria-describedby="IconoHelp">
               </div>
 
-
-
               <div class="mb-3">
                 <label for="progreso" class="form-label col-12"><b>PROGRESO</b></label>
                 <input type="text" formControlName="progreso" id="progreso" name="" placeholder="75, 85, 100..."
@@ -187,7 +185,7 @@
                 <div *ngIf="Progreso?.errors  && Progreso?.touched" class="mb-4">
                   <small *ngIf="Progreso?.hasError('required')" class="error text-small"><i>Porcentaje requerido.</i></small>
                   <small *ngIf="Progreso?.hasError('minlength')" class="error text-small"><i>Debe tener una valoración mínimo de 0.</i></small>
-                  <small *ngIf="Progreso?.hasError('maxlength')" class="error text-small"><i>Debe tener una valoración mínimo de 0áxima de 100.</i></small>
+                  <small *ngIf="Progreso?.hasError('maxlength')" class="error text-small"><i>Debe tener una valoración máxima de 100.</i></small>
                 </div>
               </div>
 

@@ -11,32 +11,32 @@ export class EducationService {
   //ruta del netbeans que trae los estudios
   url= 'http://localhost:8080/education/'; //reemplazar x ruta render
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private http:HttpClient) { }
   
   //traigo métodos del netbeans
   //vet todos
   public getEducations(): Observable<Education[]> {
-    return this.httpClient.get<Education[]>(this.url + 'lista');
+    return this.http.get<Education[]>(this.url + 'lista');
   }
 
   //ver uno
   public findEducation(id: number): Observable<Education> {
-    return this.httpClient.get<Education>(this.url + `find/${id}`);
+    return this.http.get<Education>(this.url + `find/${id}`);
   }
 
   //crear
   public saveEducation(educ: Education): Observable<any> {
-    return this.httpClient.post<Education>(this.url + 'new', educ);
+    return this.http.post<Education>(this.url + 'new', educ);
   }
 
   //editar
   public updateEducation(id:number, educ: Education): Observable<any> {
-    return this.httpClient.put<any>(this.url + `update/${id}`, educ);    
+    return this.http.put<any>(this.url + `update/${id}`, educ);    
   }
 
   //eliminar
   public deleteEducation(id: number): Observable<Education> {
-    return this.httpClient.delete<Education>(this.url + `delete/` + id);
+    return this.http.delete<Education>(this.url + `delete/` + id);
   }
   
 }

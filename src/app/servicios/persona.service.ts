@@ -15,32 +15,32 @@ export class PersonaService {
   url= 'http://localhost:8080/persona/';  //reemplazar x ruta render
 
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private http:HttpClient) { }
 
   //traigo métodos del netbeans
   //ver todos
   public getPersonas(): Observable<any> {
-    return this.httpClient.get<Persona[]>(this.url + 'lista');  //con render (this.url)
+    return this.http.get<Persona[]>(this.url + 'lista');  //con render (this.url)
   }
 
   //ver uno
   public findPersona(id: number): Observable<Persona[]> {
-    return this.httpClient.get<Persona[]>(this.url + `find/${id}`);   //(this.url + `/${id}`)
+    return this.http.get<Persona[]>(this.url + `find/${id}`);   //(this.url + `/${id}`)
   }
 
   //crear
    public savePersona(per: Persona): Observable<any> {
-    return this.httpClient.post<any>(this.url + 'new', per);   //(this.url, persona)
+    return this.http.post<any>(this.url + 'new', per);   //(this.url, persona)
   } 
 
   //editar
   public updatePersona(id:number, per: Persona): Observable<any> {
-    return this.httpClient.put<any>(this.url + `update/${id}`, per);    
+    return this.http.put<any>(this.url + `update/${id}`, per);    
   }
 
   //eliminar
   public deletePersona(id: number): Observable<Persona> {
-    return this.httpClient.delete<Persona>(this.url + `delete/` + id);   //(this.url + `/${id}`)
+    return this.http.delete<Persona>(this.url + `delete/` + id);   //(this.url + `/${id}`)
   } 
 
 }

@@ -1,23 +1,21 @@
 a, a:hover{
     text-decoration: none;
     border: none;
-  }
-
-  /*---LOGIN MODAL---*/
-
-  input::placeholder{
-    font-style: italic;
-    font-size: .9em;
-  }
-
-  .list-group-item {
-    position: relative;
-    display: inline-block;
-    padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
-    /*color: var(--bs-list-group-color);*/
     color: #505050;
-    /* text-decoration: none; */
-    background-color: var(--bs-list-group-bg);
-    /* border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color); */
-    border:none;
-  }
+}
+/*---LOGIN MODAL---*/
+input::placeholder{
+  font-style: italic;
+  font-size: .9em;
+}
+.list-group-item {
+  position: relative;
+  display: inline-block;
+  padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+  /*color: var(--bs-list-group-color);*/
+  color: #505050;
+  background-color: var(--bs-list-group-bg);
+  /* border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color); */
+  border:none;
+}
+

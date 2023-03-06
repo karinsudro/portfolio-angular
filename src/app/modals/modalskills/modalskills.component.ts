@@ -36,7 +36,7 @@ export class ModalskillsComponent implements OnInit {
   }
 
 
-  //métodos y validaciones
+  //campos y validaciones
   get Skill_tipo(){
     return this.skills_form.get("skill_tipo");
    }

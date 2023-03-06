@@ -29,8 +29,9 @@ nav.menu{
 }
 
 a, a:hover{
-    text-decoration: none;
-  }
+  text-decoration: none;
+  border: none;
+}
   /*--ICONOS NAVBAR--*/
   .fa-brands.fa-linkedin:hover,
   .fa-solid.fa-house:hover,

@@ -14,3 +14,7 @@ a, a:hover{
     /* border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color); */
     border:none;
   }
+
+  .fa-file{
+    color: #505050;
+  }

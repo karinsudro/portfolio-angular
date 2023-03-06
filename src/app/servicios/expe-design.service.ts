@@ -11,32 +11,32 @@ export class ExpeDesignService {
   //ruta del netbeans que trae las experiencias laborales
   url= 'http://localhost:8080/expeDesign/';
   
-  constructor(private httpClient:HttpClient) { }
+  constructor(private http:HttpClient) { }
 
   //traigo métodos del netbeans
   //ver todos
   public getExpeDesigns(): Observable<ExpeDesign[]> {
-    return this.httpClient.get<ExpeDesign[]>(this.url + 'lista');
+    return this.http.get<ExpeDesign[]>(this.url + 'lista');
   }
 
   //ver uno
   public findExpeDesign(id: number): Observable<ExpeDesign> {
-    return this.httpClient.get<ExpeDesign>(this.url + `find/${id}`);
+    return this.http.get<ExpeDesign>(this.url + `find/${id}`);
   }
 
   //crear
   public saveExpeDesign(exper: ExpeDesign): Observable<any> {
-    return this.httpClient.post<ExpeDesign>(this.url + 'new', exper);
+    return this.http.post<ExpeDesign>(this.url + 'new', exper);
   }
 
   //editar
   public updateExpeDesign(id:number, exper: ExpeDesign): Observable<any> {
-    return this.httpClient.put<any>(this.url + `update/${id}`, exper);    
+    return this.http.put<any>(this.url + `update/${id}`, exper);    
   }
 
   //eliminar
   public deleteExpeDesign(id: number): Observable<ExpeDesign> {
-    return this.httpClient.delete<ExpeDesign>(this.url + `delete/${id}`);
+    return this.http.delete<ExpeDesign>(this.url + `delete/${id}`);
   }
 
 }

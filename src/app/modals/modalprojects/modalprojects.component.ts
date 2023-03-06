@@ -31,7 +31,7 @@ export class ModalprojectsComponent implements OnInit {
   }
 
 
-//estos son todos métodos y validaciones
+//campos y validaciones
 get Imagen(){
   return this.project_form.get("imagen");
 }

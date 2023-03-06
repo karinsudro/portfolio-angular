@@ -11,32 +11,32 @@ export class ExpeTeachingService {
   //ruta del netbeans que trae las experiencias laborales
   url= 'http://localhost:8080/expeTeaching/';  //se cambia x url en render
   
-  constructor(private httpClient:HttpClient) { }
+  constructor(private http:HttpClient) { }
 
   //traigo métodos del netbeans
   //ver todos
   public getExpeTeachings(): Observable<ExpeTeaching[]> {
-    return this.httpClient.get<ExpeTeaching[]>(this.url + 'lista'); //sacar +lista
+    return this.http.get<ExpeTeaching[]>(this.url + 'lista'); //sacar +lista
   }
 
   //ver uno
   public findExpeTeaching(id: number): Observable<ExpeTeaching> {
-    return this.httpClient.get<ExpeTeaching>(this.url + `find/${id}`);  //sacar +find
+    return this.http.get<ExpeTeaching>(this.url + `find/${id}`);  //sacar +find
   }
 
   //crear
   public saveExpeTeaching(expe: ExpeTeaching): Observable<any> {
-    return this.httpClient.post<ExpeTeaching>(this.url + 'new', expe);  //sacar new
+    return this.http.post<ExpeTeaching>(this.url + 'new', expe);  //sacar new
   }
 
   //editar
   public updateExpeTeaching(id:number, teach: ExpeTeaching): Observable<any> {
-    return this.httpClient.put<any>(this.url + `update/${id}`, teach);    
+    return this.http.put<any>(this.url + `update/${id}`, teach);    
   }
   
   //eliminar
   public deleteExpeTeaching(id: number): Observable<ExpeTeaching> {
-    return this.httpClient.delete<ExpeTeaching>(this.url + `delete/` + id);  //sacar +delete
+    return this.http.delete<ExpeTeaching>(this.url + `delete/` + id);  //sacar +delete
   }
 
 }

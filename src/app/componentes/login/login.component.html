@@ -10,8 +10,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalLogin">Logueate</h5>
+          <button type="btn" class="btn" (click)="reset()" data-bs-dismiss="modal"  aria-label="Close" ><i class="fa-solid fa-xmark"></i></button>
         </div>
-  
+
           <div class="modal-body">
             <form  [formGroup]="login_form" (ngSubmit)="onEnviar($event)">
           
@@ -19,7 +20,7 @@
         <!-----------EMAIL-->
                 <div class="mb-3">
                   <label for="email" class="form-label"><i>Email</i></label>
-                  <input type="email" formControlName="email" class="form-control col-12" [ngClass]="{'is-invalid':Email?.errors && Email?.touched,'is-valid':!Email?.errors && Email?.touched}"
+                  <input type="email" formControlName="email" class="form-control col-12" pattern="[^ @]*@[^ @]*" [ngClass]="{'is-invalid':Email?.errors && Email?.touched,'is-valid':!Email?.errors && Email?.touched}"
                   id="email" placeholder="  email@correo.com" aria-describedby="emailHelp" pattern="[^ @]*@[^ @]*">
                 </div>
                 <div *ngIf="Email?.errors && Email?.touched" class="mb-4">    
@@ -39,8 +40,8 @@
                 </div>
   
                 <div class="text-end">
-                <button type="submit" class="btn" id="form-submit" value="Ingresar"><i class="fa-solid fa-circle-check"></i></button>
-                <button type="button" class="btn"data-bs-dismiss="modal" aria-label="Close" (click)="onCerrar()"><i class="fa-solid fa-circle-xmark"></i></button>
+                <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+                <!-- <button type="button" class="btn"data-bs-dismiss="modal" aria-label="Close" (click)="onCerrar()"><i class="fa-solid fa-circle-xmark"></i></button> -->
                 </div>
             </form>
           </div>
@@ -52,8 +53,8 @@
           <small>Si no tenés cuenta <a data-bs-target="#modalRegister" data-bs-toggle="modal"><b>registrate</b></a></small>
         </div> -->
         
-     <!--</div>
+     </div>
     </div>
   </div>
--->
+
   <!-- <app-modalregister></app-modalregister> -->

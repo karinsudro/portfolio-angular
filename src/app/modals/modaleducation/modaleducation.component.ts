@@ -30,7 +30,7 @@ export class ModaleducationComponent implements OnInit {
    }
 
 
-//metodos y validaciones
+//campos y validaciones
   get Carrera(){
    return this.education_form.get("carrera");
   }

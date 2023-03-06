@@ -11,33 +11,33 @@ import { Skill } from '../model/skill';
 export class SkillService {
   
     //ruta del netbeans que trae las habilidades
-    url= 'http://localhost:8080/skill/';
+    url= 'http://localhost:8080/skill/';  //en render la url lleva /skill
   
-    constructor(private httpClient:HttpClient) { }
+    constructor(private http:HttpClient) { }
   
   //traigo métodos del netbeans
   //ver todos
   public getSkills(): Observable<Skill[]> {
-    return this.httpClient.get<Skill[]>(this.url + 'lista');
+    return this.http.get<Skill[]>(this.url + 'lista');
   }
   
   //ver uno
   public findSkill(id: number): Observable<Skill> {
-    return this.httpClient.get<Skill>(this.url + `find/${id}`);
+    return this.http.get<Skill>(this.url + `find/${id}`);
   }
 
   //crear
   public saveSkill(skill: Skill): Observable<any> {
-    return this.httpClient.post<Skill>(this.url + 'new', skill);
+    return this.http.post<Skill>(this.url + 'new', skill);
   }
   
   //editar
   public updateSkill(id:number, skill: Skill): Observable<any> {
-    return this.httpClient.put<any>(this.url + `update/${id}`, skill);    
+    return this.http.put<any>(this.url + `update/${id}`, skill);    
   }
 
   //eliminar
   public deleteSkill(id: number): Observable<Skill> {
-    return this.httpClient.delete<Skill>(this.url + `delete/` + id);
+    return this.http.delete<Skill>(this.url + `delete/` + id);
   }
 }

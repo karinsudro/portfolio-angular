@@ -32,7 +32,7 @@ export class ModaldesignComponent implements OnInit {
 
 
 
-  //metodos y validaciones
+  //campos y validaciones
   get Cargo(){
   return this.design_form.get("cargo");
   }
@@ -84,7 +84,6 @@ export class ModaldesignComponent implements OnInit {
     ngOnInit(): void {
       this.getExpeDesigns();
     }
-  
   
     findExpeDesign(id: number){
       this.expeDesServ.findExpeDesign(id).subscribe({

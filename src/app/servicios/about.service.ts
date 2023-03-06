@@ -12,32 +12,32 @@ export class AboutService {
     url= 'http://localhost:8080/about/';  //reemplazar x ruta render
 
 
-    constructor(private httpClient:HttpClient) { }
+    constructor(private http:HttpClient) { }
   
   //traigo métodos del netbeans
   //ver todos
   public getAbouts(): Observable<About[]> {
-    return this.httpClient.get<About[]>(this.url + 'lista');
+    return this.http.get<About[]>(this.url + 'lista');
   }
 
   //ver uno
   public findAbout(id: number): Observable<About> {
-    return this.httpClient.get<About>(this.url + `find/${id}`);
+    return this.http.get<About>(this.url + `find/${id}`);
   }
 
   //crear
   public saveAbout(acerca: About): Observable<any> {
-    return this.httpClient.post<About>(this.url + 'new', acerca);
+    return this.http.post<About>(this.url + 'new', acerca);
   }
 
   //editar
   public updateAbout(id:number, acerca: About): Observable<any> {
-    return this.httpClient.put<any>(this.url + `update/${id}`, acerca);    
+    return this.http.put<any>(this.url + `update/${id}`, acerca);    
   }
   
   //eliminar
   public deleteAbout(id: number): Observable<About> {
-    return this.httpClient.delete<About>(this.url + `delete/` + id);
+    return this.http.delete<About>(this.url + `delete/` + id);
   }
 
 

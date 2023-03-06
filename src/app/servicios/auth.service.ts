@@ -8,31 +8,30 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AuthService {
   //private url = 'http://localhost:8080/login'; // Reemplazar x render y sacar private acá
-  url = 'http://localhost:8080/auth/login'  //empieza con private?
+  url = 'http://localhost:8080/auth/login'
   //private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
   currentUserSubject: BehaviorSubject<any>; //cdo suba a render
 
+  
   constructor(private http: HttpClient) { 
    // console.log('Auth está corriendo');
    this.currentUserSubject=new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
   }
   
-  loginPersona(credenciales: any): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+  login(credenciales: any): Observable<any>{
+    //console.log(credenciales);
+    var httpOptions={
+      headers:new HttpHeaders({
+        'ContentType':'application/json'
       })
-    };
-
-    return this.http.post<any>(this.url, credenciales, httpOptions).pipe(
-      map(data => {
-        sessionStorage.setItem('currentUser', JSON.stringify(data));
+    }
+    return this.http.post<any>(this.url, credenciales, httpOptions).pipe(map(data=> {
+        sessionStorage.setItem('currentUser',JSON.stringify(data));
         this.currentUserSubject.next(data);
-        console.log(`Servicio está corriendo: ${JSON.stringify(data)}`);
+        console.log("authService está corriendo " + JSON.stringify(data));
         return data;
-      })
-    );
-  }
+      }));
+   }
 
   get usuarioAutenticado() {
     return this.currentUserSubject.value;

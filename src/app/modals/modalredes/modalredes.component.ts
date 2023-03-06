@@ -30,7 +30,7 @@ export class ModalredesComponent implements OnInit {
   }
 
 
-//estos son todos métodos y validaciones
+//campos y validaciones
 get Red(){
   return this.redes_form.get("red");
 }
@@ -103,7 +103,7 @@ getRedes(): void{
         complete: () => console.info('complete')
       });
       window.location.reload();
-      alert("Proyecto modificado correctamente");
+      alert("Red modificada correctamente");
     }
   }
 

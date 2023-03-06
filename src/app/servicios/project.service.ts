@@ -13,32 +13,32 @@ export class ProjectService {
   //ruta del netbeans que trae a la persona
   url= 'http://localhost:8080/project/';
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private http:HttpClient) { }
   
   //traigo métodos del netbeans
   //ver todods
   public getProjects(): Observable<Project[]> {
-    return this.httpClient.get<Project[]>(this.url + 'lista');
+    return this.http.get<Project[]>(this.url + 'lista');
   }
 
   //ver uno
   public findProject(id: number): Observable<Project> {
-    return this.httpClient.get<Project>(this.url + `find/${id}`);
+    return this.http.get<Project>(this.url + `find/${id}`);
   }
 
   //crear
   public saveProject(proj: Project): Observable<any> {
-    return this.httpClient.post<Project>(this.url + 'new', proj);
+    return this.http.post<Project>(this.url + 'new', proj);
   }
 
   //editar  
   public updateProject(id:number, proj: Project): Observable<any> {
-    return this.httpClient.put<any>(this.url + `update/${id}`, proj);    
+    return this.http.put<any>(this.url + `update/${id}`, proj);    
   }
   
   //eliminar
   public deleteProject(id: number): Observable<Project> {
-    return this.httpClient.delete<Project>(this.url + `delete/` + id);
+    return this.http.delete<Project>(this.url + `delete/` + id);
   }
   
 }

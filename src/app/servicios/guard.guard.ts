@@ -13,12 +13,12 @@ export class GuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const usuarioAutenticado = this.authService.usuarioAutenticado;
+    let currentUser = this.authService.usuarioAutenticado;
 
-    if (usuarioAutenticado && usuarioAutenticado.id) {
+    if (currentUser && currentUser.id) {
       return true;
     } else {
-      this.ruta.navigate(['/login']);
+      this.ruta.navigate(['/index']);  
       return false;
     }
   }

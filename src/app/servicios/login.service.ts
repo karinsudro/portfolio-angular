@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+/* import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginComponent } from '../componentes/login/login.component';
@@ -17,30 +17,31 @@ export class LoginService {
     }, (error: any) => console.log(error));
   }
 
-  url= 'http://localhost:8080/login';
+  url= 'http://localhost:8080/auth/login';
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
   public getLogins(): Observable<LoginComponent[]>{
-    return this.httpClient.get<any[]>(this.url);
+    return this.http.get<any[]>(this.url);
   }
 
   public findLogin(id: number): Observable<LoginComponent>{
-    return this.httpClient.get<LoginComponent>(this.url + '/${id}');
+    return this.http.get<LoginComponent>(this.url + '/${id}');
   }
 
   public saveLogin(login: LoginComponent): Observable<any>{
-    return this.httpClient.post<any>(this.url, login);
+    return this.http.post<any>(this.url, login);
   }
 
   public updateLogin(id: number, login: LoginComponent): Observable<any>{
-    return this.httpClient.put<any>(this.url, login);
+    return this.http.put<any>(this.url, login);
   }
 
   public deleteLogin(id: number): Observable<any>{
-    return this.httpClient.delete<any>(this.url + '/${id}');
-  }
+    return this.http.delete<any>(this.url + '/${id}');
+  } 
 
 }
+ */
