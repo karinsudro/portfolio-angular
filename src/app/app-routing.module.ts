@@ -15,7 +15,7 @@ import { LoginComponent } from './componentes/login/login.component';
 const routes: Routes = [
   {path:'index', component:IndexComponent},
   {path: 'Login', component: LoginComponent},
-  {path: 'aadmin', component:AadminComponent},   /*, canActivate:[GuardGuard] - agregarlo luego de resolver aadmin*/
+  {path: 'aadmin', component:AadminComponent, canActivate:[GuardGuard]},   /*, canActivate:[GuardGuard] - agregarlo luego de resolver aadmin*/
   {path: '', redirectTo:'/index', pathMatch:'full'},
   {path:'**', component:ErrorComponent}
 ];
