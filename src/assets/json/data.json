@@ -1,6 +1,6 @@
 
 {
-    "portada":{
+    "persona":{
         "hola": "¡Hola! Yo soy",
         "nombre": "Karin",
         "apellido": "Suchowlanski Drobiner",
@@ -25,34 +25,33 @@
             "red": "Github",
             "icono": "fa-brands fa-github fa-lg",
             "link":"https://github.com/karinsudro"
-            
         },
         {
             "id":2,
             "red": "LinkedIn",
-            "link":"https://www.linkedin.com/in/karin-sudro/",
-            "icono": "fa-brands fa-linkedin fa-lg"
+            "icono": "fa-brands fa-linkedin fa-lg",
+            "link":"https://www.linkedin.com/in/karin-sudro/" 
         },
         {
             "id":3,
             "red": "Curriculum Vitae",
-            "link":"https://drive.google.com/file/d/1HVA1TZshHUlMAf6H4tn-EhgvqtOrCrqD/view?usp=share_link",
-            "icono": "fa-solid fa-file fa-lg"
+            "icono": "fa-solid fa-file fa-lg",
+            "link":"https://drive.google.com/file/d/1HVA1TZshHUlMAf6H4tn-EhgvqtOrCrqD/view?usp=share_link"
         }
     ],
 
-    "teaching":[
+    "expe_teaching":[
         {
             "id": 4,
             "cargo": "Facilitadora Pedagógico Digital",
             "inicio": "2011",
-            "fin": "actualidad",
+            "fin": "Actualidad",
             "lugar": "GoINTEC (Ministerio de Educación C.A.B.A.)",
             "descripcion": "Soy facilitadora pedagógico digital en nivel primario. Trabajo como par pedagógico del docente, planificando conjuntamente diversas actividades con incorporación de TIC. Capacito a niños y a adultos en el uso de las herramientas necesarias para los diferentes dispositivos y web."
         },
         {
             "id": 3,
-            "cargo": "Profesora de computación",
+            "cargo": "Profesora de Computación",
             "inicio": "2021",
             "fin": "2022",
             "lugar": "Escuela Dr.Hertz - Iona",
@@ -60,7 +59,7 @@
         },
         {
             "id": 2,
-            "cargo": "Docente de hebreo",
+            "cargo": "Docente de Hebreo",
             "inicio": "2008",
             "fin": "2018",
             "lugar": "Escuela Tel Aviv",
@@ -76,7 +75,7 @@
         }
     ],
 
-    "design":[
+    "expe_design":[
         {
             "id": 3,
             "cargo": "Diseñadora gráfica",
@@ -97,7 +96,7 @@
             "id": 1,
             "cargo": "Diseñadora gráfica",
             "inicio": "1994",
-            "fin": "actualidad",
+            "fin": "Actualidad",
             "lugar": "Trabajos varios",
             "descripcion": "Trabajos varios de diseño gráfico, diseño editorial y web."
         }
@@ -123,7 +122,7 @@
         },
         {
             "id": 2,
-            "carrera": "Profesorado de hebreo",
+            "carrera": "Profesorado de Hebreo",
             "inicio": "1990",
             "fin": "1993",
             "institucion": "Mijlelet Shazar",
@@ -144,35 +143,35 @@
             "id": 1,
             "skill": "HTML 5",
             "icono": "fa-brands fa-html5",
-            "progress": "90",
+            "progreso": "90",
             "color": "progress-bar-frontend"
         },
         {
             "id": 2,
             "skill": "CSS 3",
             "icono": "fa-brands fa-css3-alt",
-            "progress": "90",
+            "progreso": "90",
             "color": "progress-bar-frontend"
         },
         {
             "id": 3,
             "skill": "JAVASCRIPT",
             "icono": "fa-brands fa-square-js",
-            "progress": "70",
+            "progreso": "65",
             "color": "progress-bar-frontend"
         },
         {
             "id": 4,
             "skill": "BOOTSTRAP",
             "icono": "fa-brands fa-bootstrap",
-            "progress": "90",
+            "progreso": "90",
             "color": "progress-bar-frontend"
         },
         {
             "id": 5,
             "skill": "ANGULAR",
             "icono": "fa-brands fa-angular",
-            "progress": "80",
+            "progreso": "80",
             "color": "progress-bar-frontend"
         }
     ],
@@ -181,28 +180,28 @@
                 "id": 1,
                 "skill": "MYSQL",
                 "icono": "",
-                "progress": "75",
+                "progreso": "75",
                 "color": "progress-bar-backend"
             },
             {
                 "id": 2,
                 "skill": "NETBEANS",
                 "icono": "",
-                "progress": "75",
+                "progreso": "75",
                 "color": "progress-bar-backend"
             },
             {
                 "id": 3,
                 "skill": "POSTMAN",
                 "icono": "",
-                "progress": "75",
+                "progreso": "75",
                 "color": "progress-bar-backend"
             },
             {
                 "id": 4,
                 "skill": "JAVA",
                 "icono": "fa-brands fa-java",
-                "progress": "60",
+                "progreso": "60",
                 "color": "progress-bar-backend"
             }
     ],
@@ -211,21 +210,21 @@
                 "id": 1,
                 "skill": "PHOTOSHOP",
                 "icono":"",
-                "progress": "90",
+                "progreso": "90",
                 "color": "progress-bar-design"
             },
             {
                 "id": 2,
                 "skill": "INDESIGN",
                 "icono":"",
-                "progress": "90",
+                "progreso": "90",
                 "color": "progress-bar-design"
             },
             {
                 "id": 3,
                 "skill": "ILLUSTRATOR",
                 "icono":"",
-                "progress": "90",
+                "progreso": "90",
                 "color": "progress-bar-design"
             }
 ],
@@ -234,14 +233,14 @@
                 "id": 1,
                 "skill": "HEBREO",
                 "icono":"fa-solid fa-language",
-                "progress": "95",
+                "progreso": "95",
                 "color": "progress-bar-language"
             },
             {
                 "id": 2,
                 "skill": "INGLES",
                 "icono":"fa-solid fa-language",
-                "progress": "90",
+                "progreso": "90",
                 "color": "progress-bar-language"
             }
 ],
@@ -250,28 +249,28 @@
             "id": 1,
             "skill": "COLABORATIVA",
             "icono":"fa-solid fa-hand-holding-hand",
-            "progress": "85",
+            "progreso": "85",
             "color": "progress-bar-soft"
         },
         {
             "id": 2,
             "skill": "COMUNICATIVA",
             "icono":"fa-regular fa-comments",
-            "progress": "90",
+            "progreso": "90",
             "color": "progress-bar-soft"
         },
         {
             "id": 3,
             "skill": "EMPATICA",
             "icono":"fa-solid fa-hand-holding-heart",
-            "progress": "90",
+            "progreso": "90",
             "color": "progress-bar-soft"
         },
         {
             "id": 4,
             "skill": "AUTODIDACTA",
             "icono":"fa-solid fa-book",
-            "progress": "90",
+            "progreso": "90",
             "color": "progress-bar-soft"
         }
     ],
@@ -291,7 +290,7 @@
             "proyecto": "Peluquería canina",
             "descripcion": "Armado de aplicación básica en Java que permite hacer un CRUD (o ABML).",
             "live_demo": "URL live demo",
-            "repo": "URL repositorio"
+            "repo": "https://github.com/karinsudro/peluqueria-canina.git"
         }
     ]
 }

@@ -16,10 +16,10 @@ export class ModalredesComponent implements OnInit {
   redes_form !: FormGroup;
   red: Red[]=[];
   redes: any;
-  id?: number;
+  //id?: number;
 
   
-  constructor(private redServ: RedService, private formBuilder: FormBuilder, private httpClient: HttpClient, private ruta: Router) { 
+  constructor(private redServ: RedService, private formBuilder: FormBuilder, private ruta: Router) {  //, private httpClient: HttpClient
     this.redes_form= this.formBuilder.group({
       id: [''],
       red:['', Validators.required],
@@ -59,9 +59,9 @@ getRedes(): void{
     next: (data) => {
       this.red=data;
       console.log("Redes cargadas correctamente");
-    },
+    }/* ,
     error: (e) => console.error(e),
-    complete: () => console.info('complete')
+    complete: () => console.info('complete') */
 })
 }
 
@@ -93,7 +93,7 @@ getRedes(): void{
         complete: () => console.info('complete')
       });
       window.location.reload();
-      alert("Red agregada correctamente");
+      alert("Red agregada correctamente");     //sale alert pero no carga en db
     } else {
       this.redServ.updateRed(redes.id, redes).subscribe({
         next: (data) => {
@@ -106,6 +106,7 @@ getRedes(): void{
       alert("Red modificada correctamente");
     }
   }
+  
 
   deleteRed(id: number) {
     if (confirm("Querés eliminar esta red?")) {

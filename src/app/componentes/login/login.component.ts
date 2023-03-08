@@ -50,27 +50,43 @@ export class LoginComponent implements OnInit {
   }
 
 
-//marie
+//Josman
 onEnviar(event: Event) {
-  event.preventDefault;    //cambio chatGPT poner ()
   if (this.login_form.valid) {
-    //console.log(JSON.stringify(this.login_form.value));
-    this.autenService.login(this.login_form.value).subscribe(data => {
-      console.log("DATA: " + JSON.stringify(data.id));
-      if (data.id) {
-        alert("Ingresando al aadmin");
-        this.ruta.navigate(['/aadmin']);
-      } else {
-        alert("Error al iniciar sesión, credenciales no válidas!!!");
-      }
-    }, error => {
-      alert("ERROR!!!");
-    })
-  } else {
-    sessionStorage.setItem('currentUser', "");
-    alert("Error! No tienes acceso");
-    this.ruta.navigate(['/']);
+      event.preventDefault;
+      this.autenService.login(this.login_form.value).subscribe(data => {               
+          if (data === null || data === undefined)
+          {
+            alert("Credenciales no validas");
+          }else{
+            this.ruta.navigate(['/aadmin']); 
+          }
+        },            
+        error => {
+            alert("hay liooooo " + error);
+        })             
+  }else {
+      sessionStorage.setItem('currentUser', "null");
+      sessionStorage.setItem('idUser', "0");
+      alert("Credenciales no validas");
+      
   }
+}
+
+
+
+/* onCerrar() {
+  sessionStorage.setItem('currentUser', "null");
+  sessionStorage.setItem('idUser', "0");  
+  this.ruta.navigate(['/']);
+} */
+
+
+reset() {
+  console.log("Se limpió el formulario");
+  this.login_form.reset();
+}
+
 }
 
 //melinda
@@ -94,6 +110,30 @@ onEnviar(event: Event) {
     // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
     sessionStorage.setItem('currentUser', "null");
     alert("Hay un error en el formulario")
+  }
+} */
+
+
+//marie
+/* onEnviar(event: Event) {
+  event.preventDefault;    //cambio chatGPT poner ()
+  if (this.login_form.valid) {
+    //console.log(JSON.stringify(this.login_form.value));
+    this.autenService.login(this.login_form.value).subscribe(data => {
+      console.log("DATA: " + JSON.stringify(data.id));
+      if (data.id) {
+        alert("Ingresando al aadmin");
+        this.ruta.navigate(['/aadmin']);
+      } else {
+        alert("Error al iniciar sesión, credenciales no válidas!!!");
+      }
+    }, error => {
+      alert("ERROR!!!");
+    })
+  } else {
+    sessionStorage.setItem('currentUser', "");
+    alert("Error! No tienes acceso");
+    this.ruta.navigate(['/']);
   }
 } */
 
@@ -151,43 +191,3 @@ onEnviar(event: Event) {
       this.ruta.navigate(['/']);
     }
   }  */
-
-
-//Josman
-/* onEnviar(event: Event) {
-  if (this.login_form.valid) {
-      event.preventDefault;
-      this.autenService.loginPersona(this.login_form.value).subscribe(data => {               
-          if (data === null || data === undefined)
-          {
-            alert("Credenciales no validas");
-          }else{
-            this.ruta.navigate(['/aadmin/' + data.id]); 
-          }
-        },            
-        error => {
-            alert("hay liooooo " + error);
-        })             
-  }else {
-      sessionStorage.setItem('currentUser', "null");
-      sessionStorage.setItem('idUser', "0");
-      alert("Credenciales no validas");
-      
-  }
-} */
-
-
-
-/* onCerrar() {
-  sessionStorage.setItem('currentUser', "null");
-  sessionStorage.setItem('idUser', "0");  
-  this.ruta.navigate(['/']);
-} */
-
-
-reset() {
-  console.log("Se limpió el formulario");
-  this.login_form.reset();
-}
-
-}

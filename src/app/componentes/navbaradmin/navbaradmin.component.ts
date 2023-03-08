@@ -10,13 +10,13 @@ import { PersonaService } from 'src/app/servicios/persona.service';
   styleUrls: ['./navbaradmin.component.css']
 })
 export class NavbaradminComponent implements OnInit {
-  /* persona!: any;
+  //persona!: any;
 
-  modoEdit:boolean=false; 
-  loginServ: any; */
+  modoEditar:boolean=false; 
+  //loginServ: any;
 
 
-  constructor(private autenService: AuthService, private ruta: Router) { }  // , private persoServ: PersonaService
+  constructor(private ruta: Router) { }  // private autenService: AuthService, , private persoServ: PersonaService
 
 
   ngOnInit(): void {
@@ -41,20 +41,22 @@ export class NavbaradminComponent implements OnInit {
     }
   } */
 
-
+//marie
   /* logOut(){
-    sessionStorage.setItem('currentUser', "");
-    sessionStorage.setItem('idUser', "");
-    alert("SESION CERRADA");
-    this.modoEdit=false;
-
-    this.ruta.navigate(['/index']);
-  }  */
-
-  logOut(){
     if (confirm("Desea salir del Aadmin?")) {
       this.ruta.navigate(['/']);
       console.log("Se carga la web principal del portfolio");
+    }
+  }  */
+
+  //marie + celina
+  logOut(){
+    if (confirm("Desea salir del Aadmin?")) {
+      sessionStorage.setItem('currentUser', "null");
+      this.modoEditar=false;
+      window.sessionStorage.removeItem;
+      this.ruta.navigate(['/']);
+      //console.log("Se carga la web principal del portfolio");
     }
   } 
 

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
-import Validation from '../../utils/validation';
 
 
 @Component({
@@ -23,7 +22,7 @@ export class ModalregisterComponent implements OnInit {
       {username: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
         email: ['', [Validators.required, Validators.email]],
         password: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]]},
-      {validators: [Validation.match('password', 'confirmPassword')]}
+      /* {validators: [Validation.match('password', 'confirmPassword')]} */
     );
   }
 

@@ -8,7 +8,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AuthService {
   //private url = 'http://localhost:8080/login'; // Reemplazar x render y sacar private acá
-  url = 'http://localhost:8080/persona/login'
+  
+  url = 'http://localhost:8080/persona/auth/login'  
+  
   //private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
   currentUserSubject: BehaviorSubject<any>; //cdo suba a render
 
@@ -33,6 +35,7 @@ export class AuthService {
       }));
    }
 
+  
   get usuarioAutenticado() {
     return this.currentUserSubject.value;
   }
