@@ -22,10 +22,10 @@ export class ModaleducationComponent implements OnInit {
     this.education_form= this.formBuilder.group({
       id: [''],
       carrera:['', Validators.required],
-      inicio:['', Validators.required],
+      inicio:['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
       fin:['', Validators.required],
       institucion:['', Validators.required],
-      descripcion:['', Validators.required]
+      descripcion:['', [Validators.required, Validators.minLength(6)]]
    })
    }
 

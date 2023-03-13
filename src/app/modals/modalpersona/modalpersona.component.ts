@@ -23,7 +23,7 @@ export class ModalpersonaComponent implements OnInit {
   constructor(private persoServ: PersonaService, private formBuilder: FormBuilder, private httpClient: HttpClient, private ruta: Router) {
     this.persona_form= this.formBuilder.group({
       id: [''],
-      hola: [''],
+      hola: ['', Validators.required],
       nombre:['', Validators.required],
       apellido:['', Validators.required],
       cargo:['', Validators.required],

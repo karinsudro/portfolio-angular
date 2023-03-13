@@ -23,7 +23,7 @@ export class ModalaboutmeComponent implements OnInit {
       id: [''],
       foto:['', Validators.required],
       saludoA: ['', Validators.required],
-      saludoB: [''],
+      saludoB: ['', [Validators.required, Validators.minLength(6)]],
       saludoC: [''],
       saludoD: [''],
       saludoE: [''],
@@ -48,6 +48,13 @@ export class ModalaboutmeComponent implements OnInit {
    }
   get SaludoAValid() {
      return this.SaludoA?.touched;
+   }
+
+   get SaludoB(){
+    return this.aboutme_form.get("saludoB");
+   }
+  get SaludoBValid() {
+     return this.SaludoB?.touched;
    }
 
 

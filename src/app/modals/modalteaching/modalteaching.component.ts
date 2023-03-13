@@ -22,10 +22,10 @@ export class ModalteachingComponent implements OnInit {
     this.teaching_form= this.formBuilder.group({
       id: [''],
       cargo:['', Validators.required],
-      inicio:['', Validators.required],
+      inicio:['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
       fin:['', Validators.required],
       lugar:['', Validators.required],
-      descripcion:['', Validators.required],
+      descripcion:['', [Validators.required, Validators.minLength(6)]],
       });
   }
 

@@ -55,7 +55,7 @@
                 <label for="hola" class="form-label"><b>BIENVENIDA</b></label>
                 <input type="text" formControlName="hola" id="hola" class="form-control col-12" [ngClass]="{'is-invalid':Hola?.errors && Hola?.touched,'is-valid':!Hola?.errors && Hola?.touched}" aria-describedby="holaHelp">
                 <div *ngIf="Hola?.errors && Hola?.touched" class="mb-4">    
-                  <small *ngIf="Hola?.hasError('required')" class="error text-small"><i>Escribir un nombre.</i></small>
+                  <p *ngIf="Hola?.hasError('required')" class="error text-small"><i>Escribir un nombre.</i></p>
                 </div>
               </div>
 
@@ -63,7 +63,7 @@
                 <label for="nombre" class="form-label"><b>NOMBRE</b></label>
                 <input type="text" formControlName="nombre" id="nombre" class="form-control col-12" [ngClass]="{'is-invalid':Nombre?.errors && Nombre?.touched,'is-valid':!Nombre?.errors && Nombre?.touched}" aria-describedby="nombreHelp">
                 <div *ngIf="Nombre?.errors && Nombre?.touched" class="mb-4">    
-                  <small *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Escribir un nombre.</i></small>
+                  <p *ngIf="Nombre?.hasError('required')" class="error text-small"><i>Escribir un nombre.</i></p>
                 </div>
               </div>
 
@@ -71,7 +71,7 @@
                 <label for="apellido" class="form-label"><b>APELLIDO</b></label>
                 <input type="text" formControlName="apellido" id="apellido" class="form-control col-12" [ngClass]="{'is-invalid':Apellido?.errors && Apellido?.touched,'is-valid':!Apellido?.errors && Apellido?.touched}" aria-describedby="apellidoHelp">
                 <div *ngIf="Apellido?.errors && Apellido?.touched" class="mb-4">    
-                  <small *ngIf="Apellido?.hasError('required')" class="error text-small"><i>Escribir un apellido.</i></small>
+                  <p *ngIf="Apellido?.hasError('required')" class="error text-small"><i>Escribir un apellido.</i></p>
                 </div>
               </div>
 
@@ -79,7 +79,7 @@
                 <label for="cargo" class="form-label"><b>CARGO</b></label>
                 <input type="text" formControlName="cargo" id="cargo" class="form-control col-12" [ngClass]="{'is-invalid':Cargo?.errors && Cargo?.touched,'is-valid':!Cargo?.errors && Cargo?.touched}" aria-describedby="cargoHelp">
                 <div *ngIf="Cargo?.errors && Cargo?.touched" class="mb-4">    
-                  <small *ngIf="Cargo?.hasError('required')" class="error text-small"><i>Escribir un cargo.</i></small>
+                  <p *ngIf="Cargo?.hasError('required')" class="error text-small"><i>Escribir un cargo.</i></p>
                 </div>
               </div>
 

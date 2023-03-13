@@ -72,7 +72,7 @@
             <input type="text" formControlName="imagen" id="imagen" name="" [ngClass]="{'is-invalid':Imagen?.errors && Imagen?.touched,'is-valid':!Imagen?.errors && Imagen?.touched}" 
             class="form-control col-12" aria-describedby="imagenHelp">
             <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
-              <small *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
+              <p *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></p>
             </div>
           </div>
 
@@ -81,17 +81,17 @@
             <input type="text" formControlName="proyecto" id="proyecto" name="" [ngClass]="{'is-invalid':Proyecto?.errors && Proyecto?.touched,'is-valid':!Proyecto?.errors && Proyecto?.touched}" 
             class="form-control col-12" aria-describedby="proyectoHelp">
             <div *ngIf="Proyecto?.errors  && Proyecto?.touched" class="mb-4">
-              <small *ngIf="Proyecto?.hasError('required')" class="error text-small"><i>Título de proyecto requerido.</i></small>
+              <p *ngIf="Proyecto?.hasError('required')" class="error text-small"><i>Título del proyecto requerido.</i></p>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="descripcion" class="form-label"><b>DESCRIPCION</b></label>
-            <input type="text" formControlName="descripcion" id="descripcion" name="" [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched,'is-valid':!Descripcion?.errors && Descripcion?.touched}" 
-            class="form-control col-12" aria-describedby="descripcionHelp">
-            <div *ngIf="Descripcion?.errors  && Descripcion?.touched" class="mb-4">
-              <small *ngIf="Descripcion?.hasError('required')" class="error text-small"><i>Título de proyecto requerido.</i></small>
-              <small *ngIf="Descripcion?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+            <textarea type="text" class="form-control" formControlName="descripcion" id="descripcion" name="" [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched,'is-valid':!Descripcion?.errors && Descripcion?.touched}" 
+            aria-describedby="descripcionHelp"></textarea>
+            <div *ngIf="Descripcion?.errors  && Descripcion?.touched" class="mb-4">    
+              <p *ngIf="Descripcion?.hasError('required')" class="error text-small"><i>Descripción requerida.</i></p>
+              <p *ngIf="Descripcion?.errors?.['minLength']" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></p>
             </div>
           </div>
 
@@ -99,20 +99,12 @@
             <label for="live_url" class="form-label"><b>LIVE URL</b></label>
             <input type="text" formControlName="live_url" id="live_url" name="" [ngClass]="{'is-invalid':LiveUrl?.errors && LiveUrl?.touched,'is-valid':!LiveUrl?.errors && LiveUrl?.touched}" 
             class="form-control col-12" aria-describedby="live_urlHelp">
-            <div *ngIf="LiveUrl?.errors  && LiveUrl?.touched" class="mb-4">
-              <small *ngIf="LiveUrl?.hasError('required')" class="error text-small"><i>URL a la muestra requerido.</i></small>
-              <small *ngIf="LiveUrl?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
-            </div>
           </div>
 
           <div class="mb-3">
             <label for="repo_url" class="form-label"><b>REPO URL</b></label>
             <input type="text" formControlName="repo_url" id="repo_url" name="" [ngClass]="{'is-invalid':RepoUrl?.errors && RepoUrl?.touched,'is-valid':!RepoUrl?.errors && RepoUrl?.touched}" 
             class="form-control col-12" aria-describedby="repo_urlHelp">
-            <div *ngIf="RepoUrl?.errors  && RepoUrl?.touched" class="mb-4">
-              <small *ngIf="RepoUrl?.hasError('required')" class="error text-small"><i>URL al repositorio requerido.</i></small>
-              <small *ngIf="RepoUrl?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
-            </div>
           </div>
 
           <div class="text-end">           

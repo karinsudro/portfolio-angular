@@ -143,14 +143,6 @@
         <div class="modal-body">
           <form [formGroup]="skills_form">
 
-          <!-- ID de cada proyecto-->
-          <!-- <div class="" *ngIf="!!project_form.value.id">
-            <div class="">
-              <span class="" id="basic-addon1">ID:</span>
-            </div>
-            <input class="form-control" type="text" readonly formControlName="id" id="id">
-          </div> -->
-
             <input type="hidden" name="" id="id">
 
               <div class="mb-3">
@@ -158,7 +150,7 @@
                 <input type="text" formControlName="skill_tipo" id="skill_tipo" name="" placeholder="FrontEnd, BackEnd, Design, Language, SoftSkills"
                 [ngClass]="{'is-invalid':Skill_tipo?.errors && Skill_tipo?.touched,'is-valid':!Skill_tipo?.errors && Skill_tipo?.touched}" class="form-control col-12" aria-describedby="Skill_tipoHelp">
                 <div *ngIf="Skill_tipo?.errors  && Skill_tipo?.touched" class="mb-4">
-                  <small *ngIf="Skill_tipo?.hasError('required')" class="error text-small"><i>Tipo de habilidad requerida.</i></small>
+                  <p *ngIf="Skill_tipo?.hasError('required')" class="error text-small"><i>Tipo de habilidad requerida.</i></p>
                 </div>
               </div>
 
@@ -167,8 +159,8 @@
                 <input type="text" formControlName="skill" id="skill" name="" placeholder="HTML, Angular, otros..."
                 [ngClass]="{'is-invalid':Skill?.errors && Skill?.touched,'is-valid':!Skill?.errors && Skill?.touched}" class="form-control col-12" aria-describedby="SkillHelp">
                 <div *ngIf="Skill?.errors  && Skill?.touched" class="mb-4">
-                  <small *ngIf="Skill?.hasError('required')" class="error text-small"><i>Habilidad requerida.</i></small>
-                  <small *ngIf="Skill?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 2 caracteres.</i></small>
+                  <p *ngIf="Skill?.hasError('required')" class="error text-small"><i>Habilidad requerida.</i></p>
+                  <p *ngIf="Skill?.errors?.['minLength']" class="error text-small"><i>Debe tener un mínimo de 2 caracteres.</i></p>
                 </div>
               </div>
 
@@ -183,9 +175,9 @@
                 <input type="text" formControlName="progreso" id="progreso" name="" placeholder="75, 85, 100..."
                 [ngClass]="{'is-invalid':Progreso?.errors && Progreso?.touched,'is-valid':!Progreso?.errors && Progreso?.touched}" class="form-control col-12" aria-describedby="ProgresoHelp">
                 <div *ngIf="Progreso?.errors  && Progreso?.touched" class="mb-4">
-                  <small *ngIf="Progreso?.hasError('required')" class="error text-small"><i>Porcentaje requerido.</i></small>
-                  <small *ngIf="Progreso?.hasError('minlength')" class="error text-small"><i>Debe tener una valoración mínimo de 0.</i></small>
-                  <small *ngIf="Progreso?.hasError('maxlength')" class="error text-small"><i>Debe tener una valoración máxima de 100.</i></small>
+                  <p *ngIf="Progreso?.hasError('required')" class="error text-small"><i>Porcentaje requerido.</i></p>
+                  <p *ngIf="Progreso?.errors?.['min']" class="error text-small"><i>Debe tener una valoración mínima de 0.</i></p>
+                  <p *ngIf="Progreso?.errors?.['max']" class="error text-small"><i>Debe tener una valoración máxima de 100.</i></p>
                 </div>
               </div>
 
@@ -194,7 +186,7 @@
                 <input type="text" formControlName="color" id="color" name="" placeholder="progress-bar-frontend, progress-bar-design, progress-bar-soft..."
                 [ngClass]="{'is-invalid':Color?.errors && Color?.touched,'is-valid':!Color?.errors && Color?.touched}" class="form-control col-12" aria-describedby="ColorHelp">
                 <div *ngIf="Color?.errors  && Color?.touched" class="mb-4">
-                  <small *ngIf="Color?.hasError('required')" class="error text-small"><i>Color para la habilidad requerido.</i></small>
+                  <p *ngIf="Color?.hasError('required')" class="error text-small"><i>Color para la habilidad requerido.</i></p>
                 </div>
               </div>
 

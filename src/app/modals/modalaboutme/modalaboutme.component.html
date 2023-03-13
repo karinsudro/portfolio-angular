@@ -60,23 +60,28 @@
               <input type="text" formControlName="foto" id="foto" [ngClass]="{'is-invalid':Foto?.errors && Foto?.touched,'is-valid':!Foto?.errors && Foto?.touched}" 
               class="form-control col-12" aria-describedby="FotoHelp">
               <div *ngIf="Foto?.errors  && Foto?.touched" class="mb-4">
-                <small *ngIf="Foto?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></small>
+                <p *ngIf="Foto?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></p>
               </div>
             </div>
 
             <div class="mb-3">
               <label for="saludoA" class="form-label"><b>ALGO MAS SOBRE MI</b></label>
-              <textarea class="text w-100" formControlName="saludoA" id="saludoA" [ngClass]="{'is-invalid':SaludoA?.errors && SaludoA?.touched,'is-valid':!SaludoA?.errors && SaludoA?.touched}" 
-              style="overflow:auto;" rows="7" aria-describedby="saludoAHelp"></textarea>
+              <textarea type="text" class="form-control" formControlName="saludoA" id="saludoA" name="" [ngClass]="{'is-invalid':SaludoA?.errors && SaludoA?.touched,'is-valid':!SaludoA?.errors && SaludoA?.touched}" 
+              aria-describedby="saludoAHelp"></textarea>
               <div *ngIf="SaludoA?.errors  && SaludoA?.touched" class="mb-4">    
-                <small *ngIf="SaludoA?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
-                <small *ngIf="SaludoA?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+                <p *ngIf="SaludoA?.hasError('required')" class="error text-small"><i>Texto requerido.</i></p>
+                <p *ngIf="SaludoA?.errors?.['minlength']" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></p>
               </div>
             </div>
 
             <div class="mb-3">
               <label for="saludoB" class="form-label"><b>SALUDO B</b></label>
-              <input type="text" formControlName="saludoB" id="saludoB" class="form-control col-12" aria-describedby="saludoBHelp">
+              <textarea type="text" class="form-control" formControlName="saludoB" id="saludoB" name="" [ngClass]="{'is-invalid':SaludoB?.errors && SaludoB?.touched,'is-valid':!SaludoB?.errors && SaludoB?.touched}" 
+              aria-describedby="saludoBHelp"></textarea>
+              <div *ngIf="SaludoB?.errors  && SaludoB?.touched" class="mb-4">    
+                <p *ngIf="SaludoB?.hasError('required')" class="error text-small"><i>Texto requerido.</i></p>
+                <p *ngIf="SaludoB?.errors?.['minlength']" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></p>
+              </div>
             </div>
 
             <div class="mb-3">

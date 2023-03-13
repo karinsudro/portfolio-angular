@@ -53,7 +53,7 @@
               <label for="red" class="form-label"><b>RED</b></label>
               <input type="text" formControlName="red" id="red" name="" class="form-control col-12" aria-describedby="RedHelp" [ngClass]="{'is-invalid':Red?.errors && Red?.touched, 'is-valid':!Red?.errors && Red?.touched}">
               <div *ngIf="Red?.errors && Red?.touched" class="mb-4">
-                <small *ngIf="Red?.hasError('required')" class="error text-small"><i>Red requerida.</i></small>
+                <p *ngIf="Red?.hasError('required')" class="error text-small"><i>Red requerida.</i></p>
               </div>
             </div>
 
@@ -61,7 +61,7 @@
               <label for="icono" class="form-label"><b>ICONO</b></label>
               <input type="text" formControlName="icono" id="icono" name="" class="form-control col-12" aria-describedby="IconoHelp" [ngClass]="{'is-invalid':Icono?.errors && Icono?.touched, 'is-valid':!Icono?.errors && Icono?.touched}">
               <div *ngIf="Icono?.errors && Icono?.touched" class="mb-4">
-                <small *ngIf="Icono?.hasError('required')" class="error text-small"><i>Icono requerido.</i></small>
+                <p *ngIf="Icono?.hasError('required')" class="error text-small"><i>Icono requerido.</i></p>
               </div>
             </div>
 
@@ -69,7 +69,7 @@
               <label for="link" class="form-label"><b>LINK</b></label>
               <input type="url" formControlName="link" id="link" name="" class="form-control col-12" aria-describedBy="linkHelp" [ngClass]="{'is-invalid':Link?.errors && Link?.touched,'is-valid':!Link?.errors && Link?.touched}">                          
               <div *ngIf="Link?.errors  && Link?.touched" class="mb-4">    
-                <small *ngIf="Link?.hasError('required')" class="error text-small"><i>Link requerido.</i></small>
+                <p *ngIf="Link?.hasError('required')" class="error text-small"><i>Link requerido.</i></p>
                 <!--<small *ngIf="Link?.hasError('pattern')" class="error text-small"><i>Debe ser un formato válido.</i></small>-->
               </div>
             </div>

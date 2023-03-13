@@ -57,7 +57,7 @@
               <label for="cargo" class="form-label"><b>CARGO</b></label>
               <input type="text" formControlName="cargo" id="cargo" name="" class="form-control col-12" aria-describedby="CargoHelp" [ngClass]="{'is-invalid':Cargo?.errors && Cargo?.touched,'is-valid':!Cargo?.errors && Cargo?.touched}">
               <div *ngIf="Cargo?.errors  && Cargo?.touched" class="mb-4">
-                <small *ngIf="Cargo?.hasError('required')" class="error text-small"><i>Cargo requerido.</i></small>
+                <p *ngIf="Cargo?.hasError('required')" class="error text-small"><i>Cargo requerido.</i></p>
               </div>
             </div>
                                        
@@ -65,7 +65,9 @@
               <label for="inicio" class="form-label"><b>INICIO</b></label>
               <input type="text" formControlName="inicio" id="inicio" name="" class="form-control col-12" aria-describedby="InicioHelp" [ngClass]="{'is-invalid':Inicio?.errors && Inicio?.touched,'is-valid':!Inicio?.errors && Inicio?.touched}">
               <div *ngIf="Inicio?.errors  && Inicio?.touched" class="mb-4">
-                <small *ngIf="Inicio?.hasError('required')" class="error text-small"><i>Inicio requerido.</i></small>
+                <p *ngIf="Inicio?.hasError('required')" class="error text-small"><i>Inicio requerido.</i></p>
+              <p *ngIf="Inicio?.errors?.['minLength']" class="error text-small"><i>Debe ser de 4 caracteres.</i></p>
+              <p *ngIf="Inicio?.errors?.['maxLength']" class="error text-small"><i>Debe ser de 4 caracteres.</i></p>
               </div>
             </div>
         
@@ -73,7 +75,7 @@
               <label for="fin" class="form-label"><b>FIN</b></label>
               <input type="text" formControlName="fin" id="fin" name="" class="form-control col-12" aria-describedby="FinHelp" [ngClass]="{'is-invalid':Fin?.errors && Fin?.touched,'is-valid':!Fin?.errors && Fin?.touched}">
               <div *ngIf="Fin?.errors  && Fin?.touched" class="mb-4">
-                <small *ngIf="Fin?.hasError('required')" class="error text-small"><i>Fin requerido.</i></small>
+                <p *ngIf="Fin?.hasError('required')" class="error text-small"><i>Finalización o status requerido.</i></p>
               </div>
             </div>
         
@@ -81,20 +83,20 @@
               <label for="lugar" class="form-label"><b>LUGAR</b></label>
               <input type="text" formControlName="lugar" id="lugar" name="" class="form-control col-12" aria-describedby="LugarHelp" [ngClass]="{'is-invalid':Lugar?.errors && Lugar?.touched,'is-valid':!Lugar?.errors && Lugar?.touched}">
               <div *ngIf="Lugar?.errors  && Lugar?.touched" class="mb-4">
-                <small *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar requerido.</i></small>
+                <p *ngIf="Lugar?.hasError('required')" class="error text-small"><i>Lugar requerido.</i></p>
               </div>
             </div>
         
             <div class="mb-3">
               <label for="descripcion" class="form-label"><b>DESCRIPCION</b></label>
-              <textarea class="text w-100" formControlName="descripcion" id="descripcion" name="" [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched,'is-valid':!Descripcion?.errors && Descripcion?.touched}" 
-              style="overflow:auto;" rows="7" aria-describedby="descripcionHelp"></textarea>
+              <textarea type="text" class="form-control" formControlName="descripcion" id="descripcion" name="" [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched,'is-valid':!Descripcion?.errors && Descripcion?.touched}" 
+              aria-describedby="descripcionHelp"></textarea>
               <div *ngIf="Descripcion?.errors  && Descripcion?.touched" class="mb-4">    
-                <small *ngIf="Descripcion?.hasError('required')" class="error text-small"><i>Texto requerido.</i></small>
-                <small *ngIf="Descripcion?.hasError('minlength')" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></small>
+                <p *ngIf="Descripcion?.hasError('required')" class="error text-small"><i>Descripción requerida.</i></p>
+                <p *ngIf="Descripcion?.errors?.['minLength']" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></p>
               </div>
             </div>
-        
+
             <div class="text-end">           
               <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
               <button type="btn" class="btn" data-bs-dismiss="modal" (click)="saveExpeDesign()" [disabled]="design_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>

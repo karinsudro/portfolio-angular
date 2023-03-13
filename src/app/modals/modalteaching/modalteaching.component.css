@@ -3,14 +3,8 @@ input::placeholder{
   font-size: .9em;
 }
 
-.txt-small{
+p::text-small{
   margin-bottom: 1.3rem;
-}
-
-.error{
+  font-style: italic;
   color:#770000
-}
-
-.border-danger{
-  border-color: #770000;
 }
