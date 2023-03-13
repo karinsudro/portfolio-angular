@@ -13,7 +13,7 @@
         "saludoA" : "¡Hola! Yo soy Karin.",
         "saludoB": "Me apasiona aprender y enseñar, la tecnología, el diseño y la astronomía.",
         "saludoC": "Mi meta es crecer y afianzarme profesionalmente como",
-        "saludoD": "Desarrolladora Web Full Stack Jr.",
+        "saludoD": "Desarrolladora Web Full Stack.",
         "saludoE": "Busco formarme, estar actualizada, utilizando lo aprendido.", 
         "saludoF": "Soy una persona curiosa, responsable, creativa, empática, ávida por aprender y descubrir soluciones nuevas.",
         "saludoG": "Me gustaría ser parte de un equipo y proyectos que me permitan seguir desarrollándome como profesional, mejorar mis habilidades y colaborar para lograr los objetivos."
@@ -141,6 +141,7 @@
     "skillsfront":[
         {
             "id": 1,
+            "skill_tipo": "FrontEnd",
             "skill": "HTML 5",
             "icono": "fa-brands fa-html5",
             "progreso": "90",
@@ -148,6 +149,7 @@
         },
         {
             "id": 2,
+            "skill_tipo": "FrontEnd",
             "skill": "CSS 3",
             "icono": "fa-brands fa-css3-alt",
             "progreso": "90",
@@ -155,6 +157,7 @@
         },
         {
             "id": 3,
+            "skill_tipo": "FrontEnd",
             "skill": "JAVASCRIPT",
             "icono": "fa-brands fa-square-js",
             "progreso": "65",
@@ -162,6 +165,7 @@
         },
         {
             "id": 4,
+            "skill_tipo": "FrontEnd",
             "skill": "BOOTSTRAP",
             "icono": "fa-brands fa-bootstrap",
             "progreso": "90",
@@ -169,6 +173,7 @@
         },
         {
             "id": 5,
+            "skill_tipo": "FrontEnd",
             "skill": "ANGULAR",
             "icono": "fa-brands fa-angular",
             "progreso": "80",
@@ -178,13 +183,15 @@
         "skillsback":[
             {
                 "id": 1,
+                "skill_tipo": "BackEnd",
                 "skill": "MYSQL",
-                "icono": "",
+                "icono": "fa-solid fa-database",
                 "progreso": "75",
                 "color": "progress-bar-backend"
             },
             {
                 "id": 2,
+                "skill_tipo": "BackEnd",
                 "skill": "NETBEANS",
                 "icono": "",
                 "progreso": "75",
@@ -192,6 +199,7 @@
             },
             {
                 "id": 3,
+                "skill_tipo": "BackEnd",
                 "skill": "POSTMAN",
                 "icono": "",
                 "progreso": "75",
@@ -199,6 +207,7 @@
             },
             {
                 "id": 4,
+                "skill_tipo": "BackEnd",
                 "skill": "JAVA",
                 "icono": "fa-brands fa-java",
                 "progreso": "60",
@@ -208,13 +217,15 @@
         "skillsdesign":[
             {
                 "id": 1,
+                "skill_tipo": "Design",
                 "skill": "PHOTOSHOP",
                 "icono":"",
-                "progreso": "90",
+                "progreso": "85",
                 "color": "progress-bar-design"
             },
             {
                 "id": 2,
+                "skill_tipo": "Design",
                 "skill": "INDESIGN",
                 "icono":"",
                 "progreso": "90",
@@ -222,15 +233,17 @@
             },
             {
                 "id": 3,
+                "skill_tipo": "Design",
                 "skill": "ILLUSTRATOR",
                 "icono":"",
-                "progreso": "90",
+                "progreso": "85",
                 "color": "progress-bar-design"
             }
 ],
         "skillslang":[
             {
                 "id": 1,
+                "skill_tipo": "Language",
                 "skill": "HEBREO",
                 "icono":"fa-solid fa-language",
                 "progreso": "95",
@@ -238,6 +251,7 @@
             },
             {
                 "id": 2,
+                "skill_tipo": "Language",
                 "skill": "INGLES",
                 "icono":"fa-solid fa-language",
                 "progreso": "90",
@@ -247,6 +261,7 @@
         "skillssoft":[
         {
             "id": 1,
+            "skill_tipo": "SoftSkills",
             "skill": "COLABORATIVA",
             "icono":"fa-solid fa-hand-holding-hand",
             "progreso": "85",
@@ -254,6 +269,7 @@
         },
         {
             "id": 2,
+            "skill_tipo": "SoftSkills",
             "skill": "COMUNICATIVA",
             "icono":"fa-regular fa-comments",
             "progreso": "90",
@@ -261,6 +277,7 @@
         },
         {
             "id": 3,
+            "skill_tipo": "SoftSkills",
             "skill": "EMPATICA",
             "icono":"fa-solid fa-hand-holding-heart",
             "progreso": "90",
@@ -268,6 +285,7 @@
         },
         {
             "id": 4,
+            "skill_tipo": "SoftSkills",
             "skill": "AUTODIDACTA",
             "icono":"fa-solid fa-book",
             "progreso": "90",
@@ -278,7 +296,7 @@
     "projects":[
         {
             "id": 1,
-            "imagen": "assets/images/portfolio_frente3.png",
+            "imagen": "assets/images/portfolio_frente4.png",
             "proyecto": "Portfolio personal",
             "descripcion": "Armado de portfolio personal utilizando las herramientas aprendidas de FrontEnd y BackEnd para 'Argentina Programa', 3ª cohorte.",
             "live_demo": "URL live demo",

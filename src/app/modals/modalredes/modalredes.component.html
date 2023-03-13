@@ -12,7 +12,7 @@
             <button type="btn" class="btn" data-bs-dismiss="modal"  aria-label="Close" (click)="reset()"><i class="fa-solid fa-xmark"></i></button>
           </div>
         </div>
-        <li class="list-group-item mt-4"  *ngFor="let redes of red">
+        <li class="list-group-item mt-4"  *ngFor="let redes of net">
 
           <div class="col-12">
             <p><b>RED:   </b>     {{redes.red}} </p>
@@ -45,7 +45,7 @@
       </div>
 
         <div class="modal-body">
-          <form [formGroup]="redes_form">
+          <form [formGroup]="redes_form" >  <!--(ngSubmit)="onEnviar($event)"    agrego ngSubmit para probar CREATE para los nuevos-->
 
           <input type="hidden" name="" id="id">
 
@@ -87,3 +87,6 @@
     </div>
   </div>
 </div>
+
+
+

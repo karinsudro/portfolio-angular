@@ -15,7 +15,7 @@ box-sizing: border-box;
 }
 
 body{
-background-image:url(assets/images/painting3.jpg);
+background-image:url(https://i.ibb.co/nBMYqrc/painting3.jpg);
 background-position: center center;
 background-repeat:no-repeat;
 background-attachment: fixed;
@@ -37,8 +37,8 @@ margin-bottom: 4rem;
 .fa-solid.fa-house:hover,
 .fa-brands.fa-github:hover,
 .fa-solid.fa-comment:hover,
-.fa-solid.fa-user-lock:hover,
-.fa-solid.fa-user:hover,
+.fa-solid.fa-door-open:hover,
+.fa-solid.fa-door-closed:hover,
 .fas.fa-sign-out-alt:hover,
 .fa-solid.fa-file:hover,
 .fa-solid.fa-eye:hover{
@@ -121,29 +121,80 @@ p.fechas{
 }
 
 
+
+/*--------------------*/
 /*--@media--*/
-@media (max-width: 575px){
-  .container.bio{
-    max-width: 21.875rem;
+@media (max-width: 1024px){
+  #menuNav{
+    font-size:75%
   }
-  .bio-image-col{
-    max-width: 10rem;
+
+  .login{
+    /* margin: 5rem auto; */
+    margin: 15rem auto !important;
+    padding: 2.5%;
+    width: 75% !important;
   }
+
+  .caratula-intro{
+    margin-top:10%;
+  }
+
   .logo-ap{
     max-width: 6rem;
   }
-  .aadmin-iconos{
-    font-size:130%;
-    }
+
   .aadmin-panel{
     max-width: 100%;
   }
+}
+
+/*---------------------------------*/
+
+@media (max-width: 575px){
+  #menuNav{
+    font-size:75%
+  }
+
+  .login{
+    /* margin: 5rem auto; */
+    margin: 15rem auto !important;
+    padding: 2.5%;
+    width: 75% !important;
+  }
+
+  .container.bio{
+    max-width: 21.875rem;
+  }
+
+  .bio-image-col{
+    max-width: 10rem;
+  }
+
+  .logo-ap{
+    max-width: 6rem;
+  }
+
+  .aadmin-iconos{
+    font-size:130%;
+  }
+
+  .aadmin-panel{
+    max-width: 100%;
+  }
+
   .salida{
     font-size:150%;
   }
+
   .peque{
     width: 80%;
   }
+
+  .caratula-intro{
+    margin-top:50%;
+  }
+
   .flotante{
     display: none;
   }

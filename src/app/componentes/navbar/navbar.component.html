@@ -49,8 +49,9 @@
       aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fa-solid fa-ellipsis"></i>
       </button>
+      <!--cierre colapsable-->
 
-      <!-- iconos colapsables a la derecha -->
+      <!-- iconos colapsables -->
       <div class="collapse navbar-collapse" id="menuNav">
         <!--ICONOS NAVBAR-->
         <ul class="list-group list-group-horizontal ms-auto">
@@ -58,7 +59,10 @@
           <app-redes></app-redes>
           <app-contact></app-contact>
           <!--<app-resume></app-resume>-->
-          <app-login></app-login>
+          <!-- <app-login></app-login> -->
+          <li class="list-group-item">
+            <a routerLink="/login"><i class="fa-solid fa-door-open fa-xl" type="button"></i></a>
+          </li>
         </ul> 
       </div>
 
@@ -95,11 +99,3 @@
     </nav>
   </div>
 </div> -->
-
-<!-- <app-persona></app-persona>
-<app-aboutme></app-aboutme>
-<app-teaching></app-teaching>
-<app-design></app-design>
-<app-education></app-education>
-<app-skills></app-skills>
-<app-projects></app-projects> -->

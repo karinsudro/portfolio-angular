@@ -105,7 +105,7 @@ export class ModalskillsComponent implements OnInit {
             this.reset();
           },
           error: (e) => console.error(e),
-          complete: () => console.info('complete')
+          //complete: () => console.info('complete')
         });
         window.location.reload();
         alert("Skill agregado correctamente");
@@ -115,7 +115,7 @@ export class ModalskillsComponent implements OnInit {
             this.reset();
           },
           error: (e) => console.error(e),
-          complete: () => console.info('complete')
+          //complete: () => console.info('complete')
         });
         window.location.reload();
         alert("Skill modificado correctamente");

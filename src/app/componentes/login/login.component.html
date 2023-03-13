@@ -1,60 +1,55 @@
 <!-- Button trigger modal -->
-<a data-bs-toggle="modal" href="#modalLogin" role="button" class="btn list-group-item" ><i class="fa-solid fa-user-lock fa-lg"></i></a>
-<!--fin del diseño inicial-->
+<!-- <a data-bs-toggle="modal" href="#modalLogin" role="button" class="btn list-group-item" ><i class="fa-solid fa-user-lock fa-lg"></i></a> -->
 
+<app-navbar></app-navbar>
 
-
-<!--Modal LOGIN-->
-<div class="modal fade" id="modalLogin" aria-hidden="true" aria-labelledby="modalLogin" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalLogin">Logueate</h5>
-          <button type="btn" class="btn" (click)="reset()" data-bs-dismiss="modal"  aria-label="Close" ><i class="fa-solid fa-xmark"></i></button>
-        </div>
-
-          <div class="modal-body">
-            <form  [formGroup]="login_form" (ngSubmit)="onEnviar($event)">
-          
-          
-        <!-----------EMAIL-->
-                <div class="mb-3">
-                  <label for="email" class="form-label"><i>Email</i></label>
-                  <input type="email" formControlName="email" class="form-control col-12" pattern="[^ @]*@[^ @]*" [ngClass]="{'is-invalid':Email?.errors && Email?.touched,'is-valid':!Email?.errors && Email?.touched}"
-                  id="email" placeholder="  email@correo.com" aria-describedby="emailHelp" pattern="[^ @]*@[^ @]*">
-                </div>
-                <div *ngIf="Email?.errors && Email?.touched" class="mb-4">    
-                  <small *ngIf="Email?.hasError('required')" class="error text-small"><i>Por favor escribí tu email.</i></small>
-                  <small *ngIf="Email?.hasError('email')" class="error text-small"><i>El formato debe ser válido.</i></small>
-                </div>
-               
-        <!-----------CLAVE-->
-                <div class="mb-3">
-                  <label for="clave" class="form-label"><i>Password</i></label>
-                  <input type="password" formControlName="clave" class="form-control col-12" [ngClass]="{'is-invalid':Clave?.errors && Clave?.touched,'is-valid':!Clave?.errors && Clave?.touched}"
-                  id="clave" placeholder="  Ingresá tu contraseña" aria-describedby="claveHelp">
-                </div>
-                <div *ngIf="Clave?.errors  && Clave?.touched" class="mb-4">
-                  <small *ngIf="Clave?.hasError('required')" class="error text-small"><i>El password es requerido.</i></small>
-                  <small *ngIf="Clave?.hasError('minlength')" class="error text-small"><i>El password debe tener más de 8 caracteres.</i></small>
-                </div>
+<!--LOGIN-->
+<!-- <div class="container">-->  
+<div class="container login">
+  <div class="modal-header">
+    <h5 class="modal-title">Logueate</h5>
+    <button class="btn" (click)="back()"><i class="fa-solid fa-chevron-left"></i></button>
+  </div>
   
-                <div class="text-end">
-                <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
-                <!-- <button type="button" class="btn"data-bs-dismiss="modal" aria-label="Close" (click)="onCerrar()"><i class="fa-solid fa-circle-xmark"></i></button> -->
-                </div>
-            </form>
-          </div>
-        
+  <form  [formGroup]="login_form" (ngSubmit)="onEnviar($event)">
+           
+    <!-- EMAIL -->
+    <div class="mb-3">
+      <label for="email" class="form-label"><i>Email</i></label>
+      <input type="email" formControlName="email" class="form-control col-12" pattern="[^ @]*@[^ @]*" [ngClass]="{'is-invalid':Email?.errors && Email?.touched,'is-valid':!Email?.errors && Email?.touched}"
+      id="email" placeholder="  ada.lovelace@mail.com" aria-describedby="emailHelp" pattern="[^ @]*@[^ @]*">
+    </div>
+    <div *ngIf="Email?.errors && Email?.touched" class="mb-4">    
+      <small *ngIf="Email?.hasError('required')" class="error text-small"><i>Por favor escribí tu email.</i></small>
+      <small *ngIf="Email?.hasError('email')" class="error text-small"><i>El formato debe ser válido.</i></small>
+    </div>
+             
+    <!-- CLAVE -->
+    <div class="mb-3">
+      <label for="clave" class="form-label"><i>Password</i></label>
+      <input type="password" formControlName="clave" class="form-control col-12" [ngClass]="{'is-invalid':Clave?.errors && Clave?.touched,'is-valid':!Clave?.errors && Clave?.touched}"
+      id="clave" placeholder="  Ingresá tu contraseña" aria-describedby="claveHelp">
+    </div>
+    <div *ngIf="Clave?.errors  && Clave?.touched" class="mb-4">
+      <small *ngIf="Clave?.hasError('required')" class="error text-small"><i>El password es requerido.</i></small>
+      <small *ngIf="Clave?.hasError('minlength')" class="error text-small"><i>El password debe tener más de 8 caracteres.</i></small>
+    </div>
+    <div class="text-end">
+    <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>
+    <!-- <button type="button" class="btn"data-bs-dismiss="modal" aria-label="Close" (click)="onCerrar()"><i class="fa-solid fa-circle-xmark"></i></button> -->
+    </div>
+  </form>
+</div>
+
+
+    
+<app-footer></app-footer>
       
 
         <!--Register a implementarse más adelante con los roles-->
         <!-- <div class="modal-footer">
           <small>Si no tenés cuenta <a data-bs-target="#modalRegister" data-bs-toggle="modal"><b>registrate</b></a></small>
         </div> -->
-        
-     </div>
-    </div>
-  </div>
+
 
   <!-- <app-modalregister></app-modalregister> -->

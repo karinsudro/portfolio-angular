@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
 
 
 //Josman
-onEnviar(event: Event) {
+/* onEnviar(event: Event) {
   if (this.login_form.valid) {
       event.preventDefault;
       this.autenService.login(this.login_form.value).subscribe(data => {               
@@ -71,20 +71,40 @@ onEnviar(event: Event) {
       alert("Credenciales no validas");
       
   }
-}
-
-
-
-/* onCerrar() {
-  sessionStorage.setItem('currentUser', "null");
-  sessionStorage.setItem('idUser', "0");  
-  this.ruta.navigate(['/']);
 } */
 
+//marie
+onEnviar(event: Event) {
+  event.preventDefault;
+  if (this.login_form.valid) {
+    console.log(JSON.stringify(this.login_form.value));
+    this.autenService.login(this.login_form.value).subscribe(data => {
+      console.log("DATA: " + JSON.stringify(data.id));
+      if (data.id) {
+        alert("Puedes editar el portfolio");
+        this.ruta.navigate(['aadmin']);
+      } else {
+        alert("Error al iniciar sesión. Credenciales no válidas!!!");
+      }
+    }, error => {
+      alert("ERROR!!!");
+    })
+  } else {
+    sessionStorage.setItem('currentUser', "");
+    alert("Error! No tienes acceso");
+    this.ruta.navigate(['/']);
+  }
+}
 
 reset() {
   console.log("Se limpió el formulario");
   this.login_form.reset();
+  this.ruta.navigate(['']);
+}
+
+
+back(){
+  this.ruta.navigate(['/']);
 }
 
 }

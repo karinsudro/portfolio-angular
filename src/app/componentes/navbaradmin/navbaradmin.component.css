@@ -1,19 +1,8 @@
 /*--NAV LATERAL DERECHO--*/
-/* .nav-vertical{
-  margin-right: 1rem;
-  margin-top:0rem;
-  align-items: center;
-  float:right;
-  text-decoration: none;
-  writing-mode: vertical;
-  height: 100vh;
-} */
+
 .logo-ap-admin-vertical{
   max-width: 2.3em;
 }
-/* .alin-vertical{
-  margin-top:2.2rem;
-} */
 
 .center {
   display: flex;
