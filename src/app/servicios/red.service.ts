@@ -11,7 +11,8 @@ import { Red } from '../model/red';
 export class RedService {
 
   //ruta del netbeans que trae las redes
-   url= 'http://localhost:8080/red/';
+   //url= 'http://localhost:8080/red/';
+   url= 'https://portfolio-backend2-1iv6.onrender.com/red/';
 
    constructor(private http:HttpClient) { }
   

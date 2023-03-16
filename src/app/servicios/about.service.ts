@@ -9,7 +9,8 @@ import { About } from '../model/about';
 export class AboutService {
 
     //ruta del netbeans que trae a la persona
-    url= 'http://localhost:8080/about/';  //reemplazar x ruta render
+    //url= 'http://localhost:8080/about/';  //reemplazar x ruta render
+    url= 'https://portfolio-backend2-1iv6.onrender.com/about/';
 
 
     constructor(private http:HttpClient) { }

@@ -9,7 +9,8 @@ import { Education } from '../model/education';
 export class EducationService {
 
   //ruta del netbeans que trae los estudios
-  url= 'http://localhost:8080/education/'; //reemplazar x ruta render
+  //url= 'http://localhost:8080/education/'; //reemplazar x ruta render
+  url= 'https://portfolio-backend2-1iv6.onrender.com/education/';
 
   constructor(private http:HttpClient) { }
   

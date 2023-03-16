@@ -11,7 +11,8 @@ import { Skill } from '../model/skill';
 export class SkillService {
   
     //ruta del netbeans que trae las habilidades
-    url= 'http://localhost:8080/skill/';  //en render la url lleva /skill
+    //url= 'http://localhost:8080/skill/';  //en render la url lleva /skill
+    url= 'https://portfolio-backend2-1iv6.onrender.com/skill/';
   
     constructor(private http:HttpClient) { }
   
