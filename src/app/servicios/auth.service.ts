@@ -10,14 +10,14 @@ export class AuthService {
   //private url = 'http://localhost:8080/login'; // Reemplazar x render y sacar private acá
   
   //url = 'http://localhost:8080/persona/auth/login'  
-  url = 'https://portfolio-backend2-1iv6.onrender.com/persona/auth/login'
+  //url = 'https://portfolio-backend2-1iv6.onrender.com/persona/auth/login'
+  url = 'https://portfolio-backend2-1iv6.onrender.com//login'
   
-  //private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
   currentUserSubject: BehaviorSubject<any>; //cdo suba a render
 
   
   constructor(private http: HttpClient) { 
-   // console.log('Auth está corriendo');
+   console.log('Auth está corriendo');
    this.currentUserSubject=new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
   }
   
