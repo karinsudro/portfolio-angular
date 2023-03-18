@@ -10,7 +10,7 @@ export class EducationService {
 
   //ruta del netbeans que trae los estudios
   //url= 'http://localhost:8080/education/'; //reemplazar x ruta render
-  url= 'https://portfolio-backend2-1iv6.onrender.com/education/';
+  url= 'https://portfolio-backend2-ntgp.onrender.com/education/';
 
   constructor(private http:HttpClient) { }
   

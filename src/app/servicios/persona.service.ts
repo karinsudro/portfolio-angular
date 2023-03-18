@@ -13,7 +13,7 @@ export class PersonaService {
   personaServ: any;
   //ruta del netbeans que trae a la persona
   //url= 'http://localhost:8080/persona/';  //reemplazar x ruta render
-  url= 'https://portfolio-backend2-1iv6.onrender.com/persona/';
+  url= 'https://portfolio-backend2-ntgp.onrender.com/persona/';
 
 
   constructor(private http:HttpClient) { }

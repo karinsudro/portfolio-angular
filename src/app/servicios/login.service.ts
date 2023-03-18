@@ -18,7 +18,7 @@ export class LoginService {
   }
 
   //url= 'http://localhost:8080/auth/login';
-  url= 'https://portfolio-backend2-1iv6.onrender.com/auth/login';
+  url= 'https://portfolio-backend2-ntgp.onrender.com/auth/login';
 
 
   constructor(private http: HttpClient) { }

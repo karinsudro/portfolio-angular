@@ -12,7 +12,7 @@ export class ProjectService {
   
   //ruta del netbeans que trae los proyectos
   //url= 'http://localhost:8080/project/';
-  url= 'https://portfolio-backend2-1iv6.onrender.com/project/';
+  url= 'https://portfolio-backend2-ntgp.onrender.com/project/';
 
   constructor(private http:HttpClient) { }
   

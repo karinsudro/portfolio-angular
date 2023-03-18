@@ -10,7 +10,7 @@ export class ExpeTeachingService {
 
   //ruta del netbeans que trae las experiencias laborales
   //url= 'http://localhost:8080/expeTeaching/';  //se cambia x url en render
-  url= 'https://portfolio-backend2-1iv6.onrender.com/expeTeaching/';
+  url= 'https://portfolio-backend2-ntgp.onrender.com/expeTeaching/';
   
   constructor(private http:HttpClient) { }
 

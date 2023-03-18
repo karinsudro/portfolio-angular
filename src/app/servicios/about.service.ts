@@ -10,7 +10,7 @@ export class AboutService {
 
     //ruta del netbeans que trae a la persona
     //url= 'http://localhost:8080/about/';  //reemplazar x ruta render
-    url= 'https://portfolio-backend2-1iv6.onrender.com/about/';
+    url= 'https://portfolio-backend2-ntgp.onrender.com/about/';
 
 
     constructor(private http:HttpClient) { }
