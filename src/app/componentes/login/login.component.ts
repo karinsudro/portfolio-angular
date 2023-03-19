@@ -97,7 +97,7 @@ onEnviar(event: Event) {
     })
 
   } else {
-    sessionStorage.setItem('currentUser', null);
+    sessionStorage.setItem('currentUser',"");  //celi tiene null y a mi me da error
     alert("Error al iniciar sesión. Credenciales no válidas!!!");
     this.ruta.navigate(['/']);
   }
