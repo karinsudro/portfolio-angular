@@ -73,9 +73,27 @@ export class LoginComponent implements OnInit {
   }
 } */
 
+//Ale Bombini
+onEnviar(event: Event){
+  event.preventDefault;
+  if (this.login_form.valid){
+  this.autenService.login(JSON.stringify(this.login_form.value)).subscribe(data =>
+    {
+      console.log("DATA: " + JSON.stringify(data));
+      //window.location.reload();  
+      this.ruta.navigate(['/aadmin'])
+    }, error =>{
+      alert("Error al iniciar sesion")
+    })
+    //this.ruta.navigate([''])
+  }  else {
+    alert("Hay un error en el formulario")
+  }
+ 
+}
 
 //marie
-onEnviar(event: Event) {
+/* onEnviar(event: Event) {
   event.preventDefault;
   if (this.login_form.valid) {
     console.log(JSON.stringify(this.login_form.value));
@@ -95,7 +113,7 @@ onEnviar(event: Event) {
     alert("Error! No tienes acceso");
     this.ruta.navigate(['/']);
   }
-}
+} */
 
 reset() {
   console.log("Se limpió el formulario");
@@ -135,24 +153,7 @@ back(){
 } */
 
 
-//Ale Bombini
-/* onEnviar(event: Event){
-  event.preventDefault;
-  if (this.login_form.valid){
-  this.autenService.loginPersona(JSON.stringify(this.login_form.value)).subscribe(data =>
-    {
-      console.log("DATA: " + JSON.stringify(data));
-      //window.location.reload();  
-      this.ruta.navigate(['/aadmin'])
-    }, error =>{
-      alert("error al iniciar sesion")
-    })
-    //this.ruta.navigate([''])
-  }  else {
-    alert("Hay un error en el formulario")
-  }
- 
-} */
+
 
   //cintia
 /*   onEnviar(event: Event) {
