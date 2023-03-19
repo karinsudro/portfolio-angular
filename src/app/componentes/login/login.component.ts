@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
 
 
 //Josman
-/* onEnviar(event: Event) {
+onEnviar(event: Event) {
   if (this.login_form.valid) {
       event.preventDefault;
       this.autenService.login(this.login_form.value).subscribe(data => {               
@@ -71,10 +71,10 @@ export class LoginComponent implements OnInit {
       alert("Credenciales no validas");
       
   }
-} */
+}
 
 //marie
-onEnviar(event: Event) {
+/* onEnviar(event: Event) {
   event.preventDefault;
   if (this.login_form.valid) {
     console.log(JSON.stringify(this.login_form.value));
@@ -94,7 +94,7 @@ onEnviar(event: Event) {
     alert("Error! No tienes acceso");
     this.ruta.navigate(['/']);
   }
-}
+} */
 
 reset() {
   console.log("Se limpió el formulario");
@@ -130,30 +130,6 @@ back(){
     // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
     sessionStorage.setItem('currentUser', "null");
     alert("Hay un error en el formulario")
-  }
-} */
-
-
-//marie
-/* onEnviar(event: Event) {
-  event.preventDefault;    //cambio chatGPT poner ()
-  if (this.login_form.valid) {
-    //console.log(JSON.stringify(this.login_form.value));
-    this.autenService.login(this.login_form.value).subscribe(data => {
-      console.log("DATA: " + JSON.stringify(data.id));
-      if (data.id) {
-        alert("Ingresando al aadmin");
-        this.ruta.navigate(['/aadmin']);
-      } else {
-        alert("Error al iniciar sesión, credenciales no válidas!!!");
-      }
-    }, error => {
-      alert("ERROR!!!");
-    })
-  } else {
-    sessionStorage.setItem('currentUser', "");
-    alert("Error! No tienes acceso");
-    this.ruta.navigate(['/']);
   }
 } */
 
