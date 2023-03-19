@@ -81,6 +81,7 @@ onEnviar(event: Event){
     {
       console.log("DATA: " + JSON.stringify(data));
       //window.location.reload();  
+      alert("Puedes editar el portfolio");   //agrego alert
       this.ruta.navigate(['/aadmin'])
     }, error =>{
       alert("error al iniciar sesion")
