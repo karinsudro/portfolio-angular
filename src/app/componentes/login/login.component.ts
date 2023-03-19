@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
 onEnviar(event: Event) {
   event.preventDefault;
   if (this.login_form.valid) {
-    console.log(JSON.stringify(this.login_form.value));
+    //console.log(JSON.stringify(this.login_form.value));
     this.autenService.login(this.login_form.value).subscribe(data => {
       console.log("DATA: " + JSON.stringify(data.id));
       if (data.id) {
