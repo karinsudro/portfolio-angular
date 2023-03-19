@@ -73,25 +73,39 @@ export class LoginComponent implements OnInit {
   }
 } */
 
-//Ale Bombini
-onEnviar(event: Event){
-  event.preventDefault;
-  if (this.login_form.valid){
-  this.autenService.login(JSON.stringify(this.login_form.value)).subscribe(data =>
-    {
-      console.log("DATA: " + JSON.stringify(data));
-      //window.location.reload();  
-      alert("Puedes editar el portfolio");   //agrego alert
-      this.ruta.navigate(['/aadmin'])
-    }, error =>{
-      alert("error al iniciar sesion")
-    })
-    //this.ruta.navigate([''])
-  }  else {
-    alert("Hay un error en el formulario")
+onEnviar(event: Event) {
+  event.preventDefault();
+  // Si el formulario es válido, llamamos al servicio para enviar los datos al servidor
+  if (this.login_form.valid) {
+    let persona: Persona = new Persona("", "", "", "", this.login_form?.get("email")?.value, this.login_form?.get("password")?.value);
+    this.autenService.login(this.login_form.value).subscribe(data => {
+      //console.log("DATA:" + JSON.stringify(data));
+      console.log("DATA:" + JSON.stringify(data.id));
+      //if (data === null || data === undefined) 
+      if(data.id){
+        //alert("Credenciales no válidas");
+        alert("Ingresando a aadmin");
+        this.ruta.navigate(['/aadmin']);
+      } else {
+        //this.ruta.navigate(['/aadmin']);
+        alert("Error al iniciar la sesión. Credenciales no válidas.")
+      }
+    },
+      error => {
+        //console.log(error);
+        //alert("Hay liooooo" + error);
+        alert("Hay liooooo");
+      })
+  } else {
+    // Si el formulario no es válido, mostramos una alerta
+    sessionStorage.setItem('currenUser', "null");
+    sessionStorage.setItem('currenUser', "");
+    sessionStorage.setItem('idUser', "0");
+    alert("Credenciales no válidas");
+    alert("Error! No tenés acceso.");
+    this.ruta.navigate(['/']);
   }
 }
-
 
 //marie
 /* onEnviar(event: Event) {
