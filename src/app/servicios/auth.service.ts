@@ -21,7 +21,7 @@ url = 'https://portfolio-backend2-ntgp.onrender.com/persona/auth/login'
    this.currentUserSubject=new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
   }
   
-  public login(credenciales: any): Observable<any>{
+  login(credenciales: any): Observable<any>{
     //console.log(credenciales);
     var httpOptions={
       headers:new HttpHeaders({
