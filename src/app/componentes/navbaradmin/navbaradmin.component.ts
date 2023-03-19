@@ -44,7 +44,8 @@ export class NavbaradminComponent implements OnInit {
 //marie
   logOut(){
     if (confirm("Desea salir del Aadmin?")) {
-      window.sessionStorage.clear();
+      window.sessionStorage.clear();  //probar con removeItem
+      window.location.reload();  //lo tiene nico c
       this.ruta.navigate(['/']);
       console.log("Cargando el index");
     }
