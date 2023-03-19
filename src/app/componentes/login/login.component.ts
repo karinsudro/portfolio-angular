@@ -49,32 +49,9 @@ export class LoginComponent implements OnInit {
     return this.Email?.touched && !this.Email?.valid;
   }
 
-//melinda
-onEnviar(event: Event){
-  event.preventDefault; 
-  if (this.login_form.valid){
-    //console.log(JSON.stringify(this.form.value));
-    this.autenService.login(this.login_form.value).subscribe(data=> {
-        //console.log("DATA: " + JSON.stringify(data.id));
-        if (data){
-          alert("Acceso correcto");
-          this.ruta.navigate(['']);
-        } else {
-          alert("Acceso incorrecto, verifique email y contraseña");
-        }            
-      }, error => {
-        //this.ruta.navigate(['login'])
-        alert("Error al iniciar sesion")
-      })     
-  }else{
-    // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
-    sessionStorage.setItem('currentUser', "null");
-    alert("Hay un error en el formulario")
-  }
-}
 
 //marie
-/* onEnviar(event: Event) {
+onEnviar(event: Event) {
   event.preventDefault;
   if (this.login_form.valid) {
     console.log(JSON.stringify(this.login_form.value));
@@ -82,7 +59,7 @@ onEnviar(event: Event){
       console.log("DATA: " + JSON.stringify(data.id));
       if (data.id) {
         alert("Puedes editar el portfolio");
-        this.ruta.navigate(['aadmin']);
+        this.ruta.navigate(['/aadmin']);
       } else {
         alert("Error al iniciar sesión. Credenciales no válidas!!!");
       }
@@ -94,7 +71,7 @@ onEnviar(event: Event){
     alert("Error! No tienes acceso");
     this.ruta.navigate(['/']);
   }
-} */
+}
 
 reset() {
   console.log("Se limpió el formulario");
