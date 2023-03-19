@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
 
 
 //marie
-/* onEnviar(event: Event) {
+onEnviar(event: Event) {
   event.preventDefault;
   if (this.login_form.valid) {
     console.log(JSON.stringify(this.login_form.value));
@@ -71,11 +71,25 @@ export class LoginComponent implements OnInit {
     alert("Error! No tienes acceso");
     this.ruta.navigate(['/']);
   }
-} */
+}
+
+
+reset() {
+  console.log("Se limpió el formulario");
+  this.login_form.reset();
+  this.ruta.navigate(['']);
+}
+
+
+back(){
+  this.ruta.navigate(['/']);
+}
+
+}
 
 
 //celina
-onEnviar(event: Event) {
+/* onEnviar(event: Event) {
   //console.log("QUIZA ME ALEGRO!!!");
   
   event.preventDefault;
@@ -101,21 +115,7 @@ onEnviar(event: Event) {
     alert("Error al iniciar sesión. Credenciales no válidas!!!");
     this.ruta.navigate(['/']);
   }
-}
-
-
-reset() {
-  console.log("Se limpió el formulario");
-  this.login_form.reset();
-  this.ruta.navigate(['']);
-}
-
-
-back(){
-  this.ruta.navigate(['/']);
-}
-
-}
+} */
 
 //melinda
 /* onEnviar(event: Event){
