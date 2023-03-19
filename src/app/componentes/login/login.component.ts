@@ -49,47 +49,28 @@ export class LoginComponent implements OnInit {
     return this.Email?.touched && !this.Email?.valid;
   }
 
-
-//Josman
-/* onEnviar(event: Event) {
-  if (this.login_form.valid) {
-      event.preventDefault;
-      this.autenService.login(this.login_form.value).subscribe(data => {               
-          if (data === null || data === undefined)
-          {
-            alert("Credenciales no validas");
-          }else{
-            this.ruta.navigate(['/aadmin']); 
-          }
-        },            
-        error => {
-            alert("hay liooooo " + error);
-        })             
-  }else {
-      sessionStorage.setItem('currentUser', "null");
-      sessionStorage.setItem('idUser', "0");
-      alert("Credenciales no validas");
-      
-  }
-} */
-
-//Ale Bombini
+//melinda
 onEnviar(event: Event){
-  event.preventDefault;
+  event.preventDefault; 
   if (this.login_form.valid){
-  this.autenService.login(JSON.stringify(this.login_form.value)).subscribe(data =>
-    {
-      console.log("DATA: " + JSON.stringify(data));
-      //window.location.reload();  
-      this.ruta.navigate(['/aadmin'])
-    }, error =>{
-      alert("Error al iniciar sesion")
-    })
-    //this.ruta.navigate([''])
-  }  else {
+    //console.log(JSON.stringify(this.form.value));
+    this.autenService.login(this.login_form.value).subscribe(data=> {
+        //console.log("DATA: " + JSON.stringify(data.id));
+        if (data){
+          alert("Acceso correcto");
+          this.ruta.navigate(['']);
+        } else {
+          alert("Acceso incorrecto, verifique email y contraseña");
+        }            
+      }, error => {
+        //this.ruta.navigate(['login'])
+        alert("Error al iniciar sesion")
+      })     
+  }else{
+    // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+    sessionStorage.setItem('currentUser', "null");
     alert("Hay un error en el formulario")
   }
- 
 }
 
 //marie
@@ -152,8 +133,47 @@ back(){
   }
 } */
 
+//Josman
+/* onEnviar(event: Event) {
+  if (this.login_form.valid) {
+      event.preventDefault;
+      this.autenService.login(this.login_form.value).subscribe(data => {               
+          if (data === null || data === undefined)
+          {
+            alert("Credenciales no validas");
+          }else{
+            this.ruta.navigate(['/aadmin']); 
+          }
+        },            
+        error => {
+            alert("hay liooooo " + error);
+        })             
+  }else {
+      sessionStorage.setItem('currentUser', "null");
+      sessionStorage.setItem('idUser', "0");
+      alert("Credenciales no validas");
+      
+  }
+} */
 
-
+//Ale Bombini
+/* onEnviar(event: Event){
+  event.preventDefault;
+  if (this.login_form.valid){
+  this.autenService.login(JSON.stringify(this.login_form.value)).subscribe(data =>
+    {
+      console.log("DATA: " + JSON.stringify(data));
+      //window.location.reload();  
+      this.ruta.navigate(['/aadmin'])
+    }, error =>{
+      alert("Error al iniciar sesion")
+    })
+    //this.ruta.navigate([''])
+  }  else {
+    alert("Hay un error en el formulario")
+  }
+ 
+} */
 
   //cintia
 /*   onEnviar(event: Event) {
