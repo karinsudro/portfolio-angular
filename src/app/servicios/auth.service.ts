@@ -10,9 +10,8 @@ export class AuthService {
   //private url = 'http://localhost:8080/login'; // Reemplazar x render y sacar private acá
   
   //url = 'http://localhost:8080/persona/auth/login'  
-
-  //url = 'https://portfolio-backend2-ntgp.onrender.com/persona/auth/login'
-  url = 'https://portfolio-backend2-ntgp.onrender.com/login' //saco persona/auth para probar error pst en login
+  url = 'https://portfolio-backend2-ntgp.onrender.com/persona/auth/login'
+  //url = 'https://portfolio-backend2-ntgp.onrender.com/login'
   
   currentUserSubject: BehaviorSubject<any>; //cdo suba a render
 
