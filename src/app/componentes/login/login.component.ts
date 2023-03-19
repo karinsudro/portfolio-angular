@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
 
 
 //Josman
-onEnviar(event: Event) {
+/* onEnviar(event: Event) {
   if (this.login_form.valid) {
       event.preventDefault;
       this.autenService.login(this.login_form.value).subscribe(data => {               
@@ -71,7 +71,26 @@ onEnviar(event: Event) {
       alert("Credenciales no validas");
       
   }
+} */
+
+//Ale Bombini
+onEnviar(event: Event){
+  event.preventDefault;
+  if (this.login_form.valid){
+  this.autenService.login(JSON.stringify(this.login_form.value)).subscribe(data =>
+    {
+      console.log("DATA: " + JSON.stringify(data));
+      //window.location.reload();  
+      this.ruta.navigate(['/aadmin'])
+    }, error =>{
+      alert("error al iniciar sesion")
+    })
+    //this.ruta.navigate([''])
+  }  else {
+    alert("Hay un error en el formulario")
+  }
 }
+
 
 //marie
 /* onEnviar(event: Event) {
