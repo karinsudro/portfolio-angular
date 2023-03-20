@@ -17,8 +17,7 @@ export class ExpeTeachingService {
   //traigo métodos del netbeans
   //ver todos
   public getExpeTeachings(): Observable<ExpeTeaching[]> {
-    //return this.http.get<ExpeTeaching[]>(this.url + 'lista'); //sacar +lista
-    return this.http.get<ExpeTeaching[]>(this.url);
+    return this.http.get<ExpeTeaching[]>(this.url + 'lista'); //sacar +lista
   }
 
   //ver uno
