@@ -11,10 +11,10 @@ import { ErrorComponent } from './componentes/error/error.component';
 
 
 const routes: Routes = [
-  {path:'', component:IndexComponent},
+  {path:'index', component:IndexComponent},
   {path: 'login', component: LoginComponent},
   {path: 'aadmin', component:AadminComponent},   //, canActivate:[GuardGuard]
-  /* {path: '', redirectTo:'', pathMatch:'full'}, */
+  {path: '', redirectTo:'/index', pathMatch:'full'},
   {path:'**', component:ErrorComponent}
 ];
 
