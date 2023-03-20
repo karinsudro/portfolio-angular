@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'', component:IndexComponent},
   {path: 'login', component: LoginComponent},
   {path: 'aadmin', component:AadminComponent, canActivate:[GuardGuard]},   //, canActivate:[GuardGuard]
- /*  {path: '', redirectTo:'/index', pathMatch:'full'}, */
+  {path: '', redirectTo:'/', pathMatch:'full'},
   {path:'**', component:ErrorComponent}
 ];
 
