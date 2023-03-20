@@ -18,7 +18,7 @@ export class GuardGuard implements CanActivate {
     if (currentUser && currentUser.id) {
       return true;
     } else {
-      this.ruta.navigate(['/index']);  
+      this.ruta.navigate(['/']);  
       return false;
     }
   }

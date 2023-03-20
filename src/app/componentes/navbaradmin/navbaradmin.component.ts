@@ -44,22 +44,18 @@ export class NavbaradminComponent implements OnInit {
 //marie
   logOut(){
     if (confirm("Desea salir del Aadmin?")) {
-      window.sessionStorage.clear();  //probar con removeItem
-      window.location.reload();  //lo tiene nico c
       this.ruta.navigate(['/']);
       console.log("Cargando el index");
     }
   } 
 
-  //marie + celina
-  /* logOut(){
-    if (confirm("Desea salir del Aadmin?")) {
-      sessionStorage.setItem('currentUser', "null");
-      this.modoEditar=false;
-      window.sessionStorage.removeItem;
-      this.ruta.navigate(['/']);
-      //console.log("Se carga la web principal del portfolio");
-    }
-  }  */
-
 }
+
+/* logOut(){
+  if (confirm("Desea salir del Aadmin?")) {
+    window.sessionStorage.clear();  //probar con removeItem
+    window.location.reload();  //lo tiene nico c
+    this.ruta.navigate(['/']);
+    console.log("Cargando el index");
+  }
+}  */
