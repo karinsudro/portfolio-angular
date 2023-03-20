@@ -58,8 +58,8 @@ onEnviar(event: Event) {
     this.autenService.login(this.login_form.value).subscribe(data => {
       console.log("DATA: " + JSON.stringify(data.id));
       if (data.id) {
-        alert("Puedes editar el portfolio");
-        this.ruta.navigate(['/aadmin']);
+        alert("Ingresando al portfolio");
+        this.ruta.navigate(['aadmin']);
       } else {
         alert("Error al iniciar sesión. Credenciales no válidas!!!");
       }

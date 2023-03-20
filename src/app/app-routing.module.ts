@@ -11,7 +11,7 @@ import { ErrorComponent } from './componentes/error/error.component';
 
 
 const routes: Routes = [
-  {path:'index', component:IndexComponent},
+  {path:'', component:IndexComponent},
   {path: 'login', component: LoginComponent},
   {path: 'aadmin', component:AadminComponent, canActivate:[GuardGuard]},   //, canActivate:[GuardGuard]
   /* {path: '', redirectTo:'/index', pathMatch:'full'}, */

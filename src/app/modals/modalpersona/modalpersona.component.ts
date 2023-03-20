@@ -63,7 +63,7 @@ export class ModalpersonaComponent implements OnInit {
     return this.Cargo?.touched && !this.Cargo?.valid;
   } 
  
-
+  
   
   getPersonas(): void{
     this.persoServ.getPersonas().subscribe({
@@ -75,48 +75,47 @@ export class ModalpersonaComponent implements OnInit {
       complete: () => console.info('complete')
   })
   }
-  
-    ngOnInit(): void {
-      this.getPersonas();
-    }
-  
-  
-    findPersona(id: number){
-      this.persoServ.findPersona(id).subscribe({
+
+  ngOnInit(): void {
+    this.getPersonas();
+  }
+
+  findPersona(id: number){
+    this.persoServ.findPersona(id).subscribe({
+      next: (data) => {
+        this.persona_form.setValue(data);
+      },
+      error: (e) => console.error(e),
+      complete: ()=> console.info('complete')
+    });
+    console.log("Persona cargada correctamente");
+  }
+
+
+  savePersona() {
+    let perso = this.persona_form.value;
+    if (perso.id == '') {
+      this.persoServ.savePersona(perso).subscribe({
         next: (data) => {
-          this.persona_form.setValue(data);
+          this.reset();
         },
         error: (e) => console.error(e),
-        complete: ()=> console.info('complete')
+        complete: () => console.info('complete')
       });
-      console.log("Persona cargada correctamente");
+      window.location.reload();
+      alert("Persona agregada correctamente");
+    } else {
+      this.persoServ.updatePersona(perso.id, perso).subscribe({
+        next: (data) => {
+          this.reset();
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      });
+      window.location.reload();
+      alert("Persona modificada correctamente");
     }
-  
-  
-    savePersona() {
-      let perso = this.persona_form.value;
-      if (perso.id == '') {
-        this.persoServ.savePersona(perso).subscribe({
-          next: (data) => {
-            this.reset();
-          },
-          error: (e) => console.error(e),
-          complete: () => console.info('complete')
-        });
-        window.location.reload();
-        alert("Persona agregada correctamente");
-      } else {
-        this.persoServ.updatePersona(perso.id, perso).subscribe({
-          next: (data) => {
-            this.reset();
-          },
-          error: (e) => console.error(e),
-          complete: () => console.info('complete')
-        });
-        window.location.reload();
-        alert("Persona modificada correctamente");
-      }
-    }
+  }
   
    /* deletePersona(id: number) {
       if (confirm("Querés eliminar esta persona?")) {
@@ -126,14 +125,14 @@ export class ModalpersonaComponent implements OnInit {
       }
     }  */
          
-    reset() {
-      console.log("Se limpió el formulario");
-      this.persona_form.reset();
-    }
-  
-    back(){
-      this.ruta.navigate(['/aadmin']);
-    }
+  reset() {
+    console.log("Se limpió el formulario");
+    this.persona_form.reset();
+  }
+
+  back(){
+    this.ruta.navigate(['/aadmin']);
+  }
   
 
 }
