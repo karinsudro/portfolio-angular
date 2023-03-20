@@ -22,26 +22,22 @@ export class ExpeTeachingService {
 
   //ver uno
   public findExpeTeaching(id: number): Observable<ExpeTeaching> {
-    //return this.http.get<ExpeTeaching>(this.url + `find/${id}`);  //sacar +find
-    return this.http.get<ExpeTeaching>(this.url + `/${id}`);
+    return this.http.get<ExpeTeaching>(this.url + `find/${id}`);  //sacar +find
   }
 
   //crear
   public saveExpeTeaching(expe: ExpeTeaching): Observable<any> {
-    //return this.http.post<ExpeTeaching>(this.url + 'new', expe);  //sacar new
-    return this.http.post<ExpeTeaching>(this.url, expe);
+    return this.http.post<ExpeTeaching>(this.url + 'new', expe);  //sacar new
   }
 
   //editar
   public updateExpeTeaching(id:number, teach: ExpeTeaching): Observable<any> {
-    //return this.http.put<any>(this.url + `update/${id}`, teach);
-    return this.http.put<any>(this.url, teach);    
+    return this.http.put<any>(this.url + `update/${id}`, teach); 
   }
   
   //eliminar
   public deleteExpeTeaching(id: number): Observable<ExpeTeaching> {
-    //return this.http.delete<ExpeTeaching>(this.url + `delete/` + id);  //sacar +delete
-    return this.http.delete<ExpeTeaching>(this.url + `/${id}`);
+    return this.http.delete<ExpeTeaching>(this.url + `delete/` + id);  //sacar +delete
   }
 
 }
