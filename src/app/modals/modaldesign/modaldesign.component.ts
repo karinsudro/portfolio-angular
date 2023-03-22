@@ -30,8 +30,6 @@ export class ModaldesignComponent implements OnInit {
   }
 
 
-
-
   //campos y validaciones
   get Cargo(){
   return this.design_form.get("cargo");

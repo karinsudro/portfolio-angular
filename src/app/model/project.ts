@@ -13,15 +13,15 @@ export class Project {
         proyecto:string,
         descripcion:string,
         live_url:string,
-        repo_url:string){
+        repo_url:string)
 
-        this.imagen=imagen;
-        this.proyecto=proyecto;
-        this.descripcion=descripcion;
-        this.live_url=live_url;
-        this.repo_url=repo_url;
-
-    }
+        {
+            this.imagen=imagen;
+            this.proyecto=proyecto;
+            this.descripcion=descripcion;
+            this.live_url=live_url;
+            this.repo_url=repo_url;
+        }
 
 
 }

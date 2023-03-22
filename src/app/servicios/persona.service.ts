@@ -9,7 +9,6 @@ import { Persona } from '../model/persona';
 
 export class PersonaService {
   persona: Persona[]=[];
-  //listarPersonas: any;
   personaServ: any;
   //ruta del netbeans que trae a la persona
   //url= 'http://localhost:8080/persona/';  //reemplazar x ruta render
@@ -21,17 +20,17 @@ export class PersonaService {
   //traigo métodos del netbeans
   //ver todos
   public getPersonas(): Observable<any> {
-    return this.http.get<Persona[]>(this.url + 'lista');  //con render (this.url)
+    return this.http.get<Persona[]>(this.url + 'lista');
   }
 
   //ver uno
   public findPersona(id: number): Observable<Persona[]> {
-    return this.http.get<Persona[]>(this.url + `find/${id}`);   //(this.url + `/${id}`)
+    return this.http.get<Persona[]>(this.url + `find/${id}`); 
   }
 
   //crear
    public savePersona(per: Persona): Observable<any> {
-    return this.http.post<any>(this.url + 'new', per);   //(this.url, persona)
+    return this.http.post<any>(this.url + 'new', per); 
   } 
 
   //editar
@@ -41,7 +40,7 @@ export class PersonaService {
 
   //eliminar
   public deletePersona(id: number): Observable<Persona> {
-    return this.http.delete<Persona>(this.url + `delete/` + id);   //(this.url + `/${id}`)
+    return this.http.delete<Persona>(this.url + `delete/` + id); 
   } 
 
 }

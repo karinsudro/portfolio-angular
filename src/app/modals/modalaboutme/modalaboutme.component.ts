@@ -34,31 +34,29 @@ export class ModalaboutmeComponent implements OnInit {
    }
 
 
-
-  //estos son todos métodos y validaciones
+  //estos son campos y validaciones
   get Foto(){
     return this.aboutme_form.get("foto");
-   }
+  }
   get ImagenValid() {
      return this.Foto?.touched;
-   }
+  }
    
   get SaludoA(){
     return this.aboutme_form.get("saludoA");
-   }
+  }
   get SaludoAValid() {
      return this.SaludoA?.touched;
-   }
+  }
 
    get SaludoB(){
     return this.aboutme_form.get("saludoB");
-   }
+  }
   get SaludoBValid() {
      return this.SaludoB?.touched;
-   }
+  }
 
 
-  
    getAbouts(): void{
     this.aboutServ.getAbouts().subscribe({
       next: (data) => {

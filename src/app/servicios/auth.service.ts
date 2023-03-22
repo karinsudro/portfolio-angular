@@ -7,11 +7,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  //private url = 'http://localhost:8080/login'; // Reemplazar x render y sacar private acá
   
   //url = 'http://localhost:8080/persona/auth/login'  
   url = 'https://portfolio-backend2-ntgp.onrender.com/persona/auth/login'
-  //url = 'https://portfolio-backend2-ntgp.onrender.com/persona/login'
   
   currentUserSubject: BehaviorSubject<any>; 
 

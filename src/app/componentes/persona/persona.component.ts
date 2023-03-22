@@ -14,8 +14,6 @@ export class PersonaComponent implements OnInit {
 
   persona?:Persona[];
  
-
-
   //inyectar servicio para tener acceso en la clase a los métodos
   constructor(private personaServ: PersonaService) { }
 

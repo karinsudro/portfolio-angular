@@ -13,8 +13,9 @@ export class Education {
         inicio: string,
         fin: string,
         institucion: string,
-        descripcion: string){
-
+        descripcion: string)
+        
+    {
         this.carrera=carrera;
         this.inicio=inicio;
         this.fin=fin;

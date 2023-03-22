@@ -68,7 +68,6 @@ get RepoUrlValid(){
 } 
 
 
-
 getProjects(): void{
   this.projServ.getProjects().subscribe({
     next: (data) => {

@@ -78,68 +78,68 @@ export class ModalteachingComponent implements OnInit {
       },
       error: (e) => console.error(e),
       complete: () => console.info('complete')
-  })
+    })
   }
   
-    ngOnInit(): void {
-      this.getExpeTeachings();
-    }
+  ngOnInit(): void {
+    this.getExpeTeachings();
+  }
   
   
-    findExpeTeaching(id: number){
-      this.expeTeachServ.findExpeTeaching(id).subscribe({
+  findExpeTeaching(id: number){
+    this.expeTeachServ.findExpeTeaching(id).subscribe({
+      next: (data) => {
+        this.teaching_form.setValue(data);
+      },
+      error: (e) => console.error(e),
+      complete: ()=> console.info('complete')
+    });
+    console.log("Experiencia en enseñanza cargada correctamente");
+  }
+  
+  
+  saveExpeTeaching() {
+    let teach = this.teaching_form.value;
+    if (teach.id == '') {
+      this.expeTeachServ.saveExpeTeaching(teach).subscribe({
         next: (data) => {
-          this.teaching_form.setValue(data);
+          this.reset();
         },
         error: (e) => console.error(e),
-        complete: ()=> console.info('complete')
+        complete: () => console.info('complete')
       });
-      console.log("Experiencia en enseñanza cargada correctamente");
+      window.location.reload();
+      alert("Experiencia en enseñanza agregada correctamente");
+    } else {
+      this.expeTeachServ.updateExpeTeaching(teach.id, teach).subscribe({
+        next: (data) => {
+          this.reset();
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      });
+      window.location.reload();
+      alert("Experiencia en enseñanza modificada correctamente");
     }
+  }
   
-  
-    saveExpeTeaching() {
-      let teach = this.teaching_form.value;
-      if (teach.id == '') {
-        this.expeTeachServ.saveExpeTeaching(teach).subscribe({
-          next: (data) => {
-            this.reset();
-          },
-          error: (e) => console.error(e),
-          complete: () => console.info('complete')
-        });
-        window.location.reload();
-        alert("Experiencia en enseñanza agregada correctamente");
-      } else {
-        this.expeTeachServ.updateExpeTeaching(teach.id, teach).subscribe({
-          next: (data) => {
-            this.reset();
-          },
-          error: (e) => console.error(e),
-          complete: () => console.info('complete')
-        });
-        window.location.reload();
-        alert("Experiencia en enseñanza modificada correctamente");
-      }
+  deleteExpeTeaching(id: number) {
+    if (confirm("Querés eliminar esta experiencia?")) {
+      this.expeTeachServ.deleteExpeTeaching(id).subscribe(data => {});
+      window.location.reload();
+      alert("Experiencia en enseñanza eliminada correctamente");
     }
-  
-    deleteExpeTeaching(id: number) {
-      if (confirm("Querés eliminar esta experiencia?")) {
-        this.expeTeachServ.deleteExpeTeaching(id).subscribe(data => {});
-        window.location.reload();
-        alert("Experiencia en enseñanza eliminada correctamente");
-      }
-    }
-         
-    reset() {
-      console.log("Se limpió el formulario");
-      this.teaching_form.reset();
-    }
-  
-  
-    back(){
-      this.ruta.navigate(['/aadmin']);
-    }
+  }
+       
+  reset() {
+    console.log("Se limpió el formulario");
+    this.teaching_form.reset();
+  }
+
+
+  back(){
+    this.ruta.navigate(['/aadmin']);
+  }
   
 
 }

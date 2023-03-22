@@ -9,8 +9,6 @@ import { ExpeTeachingService } from 'src/app/servicios/expe-teaching.service';
   styleUrls: ['./teaching.component.css']
 })
 export class TeachingComponent implements OnInit {
-    //inicializo variables de instancias
-  //teaching: any = [];
 
   //para el ngFor en el html
   expeTeach!:ExpeTeaching[]; //trae array con info. CRUD con modales

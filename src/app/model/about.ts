@@ -19,9 +19,9 @@ export class About {
         saludoD: string,
         saludoE: string,
         saludoF: string,
-        saludoG: string,
-        fondo: string){
-
+        saludoG: string)
+        
+    {
         this.foto=foto;
         this.saludoA=saludoA;
         this.saludoB=saludoB;

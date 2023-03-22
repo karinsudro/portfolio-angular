@@ -3,7 +3,7 @@ a, a:hover{
     border: none;
     color: #505050;
 }
-/*---LOGIN MODAL---*/
+
 input::placeholder{
   font-style: italic;
   font-size: .9em;

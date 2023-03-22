@@ -16,7 +16,6 @@ export class ModalredesComponent implements OnInit {
   redes_form !: FormGroup;
   net: Red[]=[];
   redes: any;
-  //id?: number;
 
   //para probar OnCreate
   red:string='';
@@ -35,40 +34,39 @@ export class ModalredesComponent implements OnInit {
   }
 
 
-//campos y validaciones
-get Red(){
-  return this.redes_form.get("red");
-}
-get RedValid() {
-  return this.Red?.touched && !this.Red?.valid;
-} 
+  //campos y validaciones
+  get Red(){
+    return this.redes_form.get("red");
+  }
+  get RedValid() {
+    return this.Red?.touched && !this.Red?.valid;
+  } 
 
-get Icono(){
-  return this.redes_form.get("icono");
-}
-get IconoValid() {
-  return this.Icono?.touched && !this.Icono?.valid;
-} 
+  get Icono(){
+    return this.redes_form.get("icono");
+  }
+  get IconoValid() {
+    return this.Icono?.touched && !this.Icono?.valid;
+  } 
 
-get Link(){
-  return this.redes_form.get("link");
-}
-get LinkValid(){
-  return this.Link?.touched && !this.Link?.valid;
-} 
+  get Link(){
+    return this.redes_form.get("link");
+  }
+  get LinkValid(){
+    return this.Link?.touched && !this.Link?.valid;
+  } 
 
 
-
-getRedes(): void{
-  this.redServ.getRedes().subscribe({
-    next: (data) => {
-      this.net=data;
-      console.log("Redes cargadas correctamente");
-    },
-    error: (e) => console.error(e),
-    complete: () => console.info('complete')
-})
-}
+  getRedes(): void{
+    this.redServ.getRedes().subscribe({
+      next: (data) => {
+        this.net=data;
+        console.log("Redes cargadas correctamente");
+      },
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
+  })
+  }
 
   ngOnInit(): void {
     this.getRedes();
@@ -130,8 +128,6 @@ getRedes(): void{
   back(){
     this.ruta.navigate(['/aadmin']);
   }
-
-
 
 
 }

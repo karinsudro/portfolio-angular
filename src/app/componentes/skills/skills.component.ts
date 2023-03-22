@@ -10,12 +10,6 @@ import { SkillService } from 'src/app/servicios/skill.service';
 })
 
 export class SkillsComponent implements OnInit {
-//inicializo variables de instancias (el array)
-  /* skillsfront:any = [];
-  skillsback:any=[];
-  skillsdesign:any=[];
-  skillslang:any=[];
-  skillssoft:any = []; */
 
   //para el ngFor en el html
   skills:Skill[]=[]; //trae array con info. CRUD conmodales

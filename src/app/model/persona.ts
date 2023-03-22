@@ -15,8 +15,9 @@ export class Persona {
         apellido: string,
         cargo: string,
         email: string,
-        clave: string){
-
+        clave: string)
+        
+    {
         this.hola=hola;
         this.nombre=nombre;
         this.apellido=apellido;

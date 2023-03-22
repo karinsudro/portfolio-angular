@@ -49,70 +49,55 @@
 
         <div class="modal-body">
           <form [formGroup]="project_form">
-          <!-- <div class="mb-3">
-            <label for="proyId" class="form-label col-12"><i>Elegir proyecto</i></label>
-            <select formControlName="proyId" id="proyId" class="mb-3">
-              <option selected>Seleccionar proyecto</option>
-              <option *ngFor="let id of project">{{id.proyecto}}</option>
-            </select>
-          </div> -->
 
-          <!-- ID de cada proyecto-->
-          <!-- <div class="" *ngIf="!!project_form.value.id">
-            <div class="">
-              <span class="" id="basic-addon1">ID:</span>
-            </div>
-            <input class="form-control" type="text" readonly formControlName="id" id="id">
-          </div> -->
+            <input type="hidden" name="" id="id">
 
-          <input type="hidden" name="" id="id">
+              <div class="mb-3">
+                <label for="imagen" class="form-label"><b>IMAGEN</b></label>
+                <input type="text" formControlName="imagen" id="imagen" name="" [ngClass]="{'is-invalid':Imagen?.errors && Imagen?.touched,'is-valid':!Imagen?.errors && Imagen?.touched}" 
+                class="form-control col-12" aria-describedby="imagenHelp">
+                <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
+                  <p *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></p>
+                </div>
+              </div>
 
-          <div class="mb-3">
-            <label for="imagen" class="form-label"><b>IMAGEN</b></label>
-            <input type="text" formControlName="imagen" id="imagen" name="" [ngClass]="{'is-invalid':Imagen?.errors && Imagen?.touched,'is-valid':!Imagen?.errors && Imagen?.touched}" 
-            class="form-control col-12" aria-describedby="imagenHelp">
-            <div *ngIf="Imagen?.errors  && Imagen?.touched" class="mb-4">
-              <p *ngIf="Imagen?.hasError('required')" class="error text-small"><i>Imagen requerida.</i></p>
-            </div>
-          </div>
+              <div class="mb-3">
+                <label for="proyecto" class="form-label"><b>PROYECTO</b></label>
+                <input type="text" formControlName="proyecto" id="proyecto" name="" [ngClass]="{'is-invalid':Proyecto?.errors && Proyecto?.touched,'is-valid':!Proyecto?.errors && Proyecto?.touched}" 
+                class="form-control col-12" aria-describedby="proyectoHelp">
+                <div *ngIf="Proyecto?.errors  && Proyecto?.touched" class="mb-4">
+                  <p *ngIf="Proyecto?.hasError('required')" class="error text-small"><i>Título del proyecto requerido.</i></p>
+                </div>
+              </div>
 
-          <div class="mb-3">
-            <label for="proyecto" class="form-label"><b>PROYECTO</b></label>
-            <input type="text" formControlName="proyecto" id="proyecto" name="" [ngClass]="{'is-invalid':Proyecto?.errors && Proyecto?.touched,'is-valid':!Proyecto?.errors && Proyecto?.touched}" 
-            class="form-control col-12" aria-describedby="proyectoHelp">
-            <div *ngIf="Proyecto?.errors  && Proyecto?.touched" class="mb-4">
-              <p *ngIf="Proyecto?.hasError('required')" class="error text-small"><i>Título del proyecto requerido.</i></p>
-            </div>
-          </div>
+              <div class="mb-3">
+                <label for="descripcion" class="form-label"><b>DESCRIPCION</b></label>
+                <textarea type="text" class="form-control" formControlName="descripcion" id="descripcion" name="" [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched,'is-valid':!Descripcion?.errors && Descripcion?.touched}" 
+                aria-describedby="descripcionHelp"></textarea>
+                <div *ngIf="Descripcion?.errors  && Descripcion?.touched" class="mb-4">    
+                  <p *ngIf="Descripcion?.hasError('required')" class="error text-small"><i>Descripción requerida.</i></p>
+                  <p *ngIf="Descripcion?.errors?.['minLength']" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></p>
+                </div>
+              </div>
 
-          <div class="mb-3">
-            <label for="descripcion" class="form-label"><b>DESCRIPCION</b></label>
-            <textarea type="text" class="form-control" formControlName="descripcion" id="descripcion" name="" [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched,'is-valid':!Descripcion?.errors && Descripcion?.touched}" 
-            aria-describedby="descripcionHelp"></textarea>
-            <div *ngIf="Descripcion?.errors  && Descripcion?.touched" class="mb-4">    
-              <p *ngIf="Descripcion?.hasError('required')" class="error text-small"><i>Descripción requerida.</i></p>
-              <p *ngIf="Descripcion?.errors?.['minLength']" class="error text-small"><i>Debe tener un mínimo de 6 caracteres.</i></p>
-            </div>
-          </div>
+              <div class="mb-3">
+                <label for="live_url" class="form-label"><b>LIVE URL</b></label>
+                <input type="text" formControlName="live_url" id="live_url" name="" [ngClass]="{'is-invalid':LiveUrl?.errors && LiveUrl?.touched,'is-valid':!LiveUrl?.errors && LiveUrl?.touched}" 
+                class="form-control col-12" aria-describedby="live_urlHelp">
+              </div>
 
-          <div class="mb-3">
-            <label for="live_url" class="form-label"><b>LIVE URL</b></label>
-            <input type="text" formControlName="live_url" id="live_url" name="" [ngClass]="{'is-invalid':LiveUrl?.errors && LiveUrl?.touched,'is-valid':!LiveUrl?.errors && LiveUrl?.touched}" 
-            class="form-control col-12" aria-describedby="live_urlHelp">
-          </div>
+              <div class="mb-3">
+                <label for="repo_url" class="form-label"><b>REPO URL</b></label>
+                <input type="text" formControlName="repo_url" id="repo_url" name="" [ngClass]="{'is-invalid':RepoUrl?.errors && RepoUrl?.touched,'is-valid':!RepoUrl?.errors && RepoUrl?.touched}" 
+                class="form-control col-12" aria-describedby="repo_urlHelp">
+              </div>
 
-          <div class="mb-3">
-            <label for="repo_url" class="form-label"><b>REPO URL</b></label>
-            <input type="text" formControlName="repo_url" id="repo_url" name="" [ngClass]="{'is-invalid':RepoUrl?.errors && RepoUrl?.touched,'is-valid':!RepoUrl?.errors && RepoUrl?.touched}" 
-            class="form-control col-12" aria-describedby="repo_urlHelp">
-          </div>
-
-          <div class="text-end">           
-            <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
-            <button type="submit" class="btn" data-bs-dismiss="modal" (click)="saveProject()" [disabled]="project_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>
-            <!--<button type="btn" class="btn" (click)="limpiar()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
-            <button class="btn" (click)="back()" data-bs-toggle="modal" data-bs-target="#modalProjects"><i class="fa-solid fa-chevron-left"></i></button>
-          </div>
+              <div class="text-end">           
+                <!--<button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i></button>-->
+                <button type="submit" class="btn" data-bs-dismiss="modal" (click)="saveProject()" [disabled]="project_form.invalid" style="border:none"><i class="fa-solid fa-circle-check"></i></button>
+                <!--<button type="btn" class="btn" (click)="limpiar()" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>-->
+                <button class="btn" (click)="back()" data-bs-toggle="modal" data-bs-target="#modalProjects"><i class="fa-solid fa-chevron-left"></i></button>
+              </div>
 
           </form>
         </div>

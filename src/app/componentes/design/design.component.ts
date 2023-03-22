@@ -8,9 +8,6 @@ import { ExpeDesignService } from 'src/app/servicios/expe-design.service';
   styleUrls: ['./design.component.css']
 })
 export class DesignComponent implements OnInit {
-  //inicializo variables de instancias
-//design: any = [];
-
 //para el ngFor en el html
 expeDes!:ExpeDesign[]; //trae array con info. CRUD conmodales
 titulo= "Graphic designer experience";

@@ -7,16 +7,14 @@ export class Red {
     
 
     constructor(
-    red: string,
-    icono: string,
-    link: string
-    ){
-
+        red: string,
+        icono: string,
+        link: string
+    )
+    {
         this.red=red;
         this.icono=icono;
         this.link=link;
-        
-        
     }
 
 }

@@ -19,8 +19,6 @@ export class RedesComponent implements OnInit {
     this.getRed();
   }
 
-
-
   getRed(): void{   //sin retorno, solo caraga datos
     this.redesServ.getRedes().subscribe(data => (this.redes=data));
   }

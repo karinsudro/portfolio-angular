@@ -8,12 +8,12 @@ import { About } from '../model/about';
 })
 export class AboutService {
 
-    //ruta del netbeans que trae a la persona
-    //url= 'http://localhost:8080/about/';  //reemplazar x ruta render
-    url= 'https://portfolio-backend2-ntgp.onrender.com/about/';
+  //ruta del netbeans que trae a la persona
+  //url= 'http://localhost:8080/about/';  //reemplazar x ruta render
+  url= 'https://portfolio-backend2-ntgp.onrender.com/about/';
 
 
-    constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { }
   
   //traigo métodos del netbeans
   //ver todos

@@ -10,11 +10,6 @@ import { AboutService } from 'src/app/servicios/about.service';
 })
 
 export class AboutMeComponent implements OnInit {
-  //inicializo variables de instancias
-  //aboutme:any;
-  
-  //personas:Persona[]=[];  //llama al modelo, q es un array 
-  //personas:any;
   acerca: About[]=[];
   titulo= "About me";
 
