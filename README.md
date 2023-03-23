@@ -39,9 +39,6 @@ Para ver este proyecto funcionando, [**clickeá acá**.](https://portfolio-karin
 
 Para acceder al dashboard, debés clickear en el botón de **login** ubicado en el extremo derecho del navbar e introducir el email y la clave solicitados.
 
-***Email:*** admin@portfolio.com  
-***Clave:*** 123456789
-
 Para salir del mismo, clickeando en el botón de **logout** ubicado en el menú vertical a la derecha, se regresa a la página principal.
 
 Agradecimientos
