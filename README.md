@@ -18,7 +18,7 @@ Desarrollo
 ---
 Se implementa como arquitectura distribuida contando con un frontend, una base de datos y un backend.
 #### FRONTEND
-El proceso inicia desde una maqueta estática hasta la dinámica, la cual se despliega en **Firebase**. 
+El proceso inicia desde una maqueta estática hasta la dinámica, la cual se despliega en **Firebase**.  
 Es la interfaz gráfica del usuario que muestra la información.
 
 Tecnologías
