@@ -39,13 +39,13 @@ Para ver este proyecto funcionando, [**clickeá acá**.](https://portfolio-karin
 
 Para acceder al dashboard, debés clickear en el botón de **login** ubicado en el extremo derecho del navbar e introducir el email y la clave solicitados.
 
-***Email:*** admin@portfolio.com
+***Email:*** admin@portfolio.com  
 ***Clave:*** 123456789
 
 Para salir del mismo, clickeando en el botón de **logout** ubicado en el menú vertical a la derecha, se regresa a la página principal.
 
 Agradecimientos
 ---
-A **todos mis afectos**, desde el momento que empecé a transitar este nuevo mundo.
+A **todos mis afectos**, muchas gracias.
 
 A **"ProgramaTK"**, un grupo de estudiantes -***comunidad increíble de gente***- del programa, con la idea de aprender, entender el material y llegar todos a la meta. Somos todos maestros y alumnos ;)
